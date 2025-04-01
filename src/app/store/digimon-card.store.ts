@@ -3,18 +3,18 @@ import {
   setupDigimonCardMap,
   setupDigimonCards,
 } from '../../assets/cardlists/DigimonCards';
-import { CARDSET, DigimonCard } from '../../models';
+import { BackroomsCard, CARDSET } from '../../models';
 
-type DigimonCards = {
-  cards: DigimonCard[];
-  filteredCards: DigimonCard[];
-  cardsMap: Map<string, DigimonCard>;
+type BackroomsCards = {
+  cards: BackroomsCard[];
+  filteredCards: BackroomsCard[];
+  cardsMap: Map<string, BackroomsCard>;
 };
 
-const initialState: DigimonCards = {
+const initialState: BackroomsCards = {
   cards: [],
   filteredCards: [],
-  cardsMap: new Map<string, DigimonCard>(),
+  cardsMap: new Map<string, BackroomsCard>(),
 };
 
 export const DigimonCardStore = signalStore(
@@ -33,7 +33,7 @@ export const DigimonCardStore = signalStore(
         cardsMap,
       }));
     },
-    updateFilteredCards(filteredCards: DigimonCard[]): void {
+    updateFilteredCards(filteredCards: BackroomsCard[]): void {
       patchState(store, (state) => ({ filteredCards }));
     },
   })),

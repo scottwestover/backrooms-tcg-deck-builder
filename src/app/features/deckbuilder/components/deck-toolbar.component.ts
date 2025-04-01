@@ -25,7 +25,6 @@ import { DigimonCardStore } from '../../../store/digimon-card.store';
 import { WebsiteStore } from '../../../store/website.store';
 import { ExportDeckDialogComponent } from '../../shared/dialogs/export-deck-dialog.component';
 import { ImportDeckDialogComponent } from '../../shared/dialogs/import-deck-dialog.component';
-import { PriceCheckDialogComponent } from './price-check-dialog.component';
 
 @Component({
   selector: 'digimon-deck-toolbar',
@@ -93,13 +92,6 @@ import { PriceCheckDialogComponent } from './price-check-dialog.component';
         pButton
         pTooltip="Click to simulate your draw hand and the security stack!"
         tooltipPosition="top"></button>
-
-      <button
-        (click)="checkPrice()"
-        class="p-button-outlined h-[30px] w-full cursor-pointer"
-        icon="pi pi-dollar"
-        iconPos="left"
-        pButton></button>
     </div>
 
     <p-dialog
@@ -110,8 +102,6 @@ import { PriceCheckDialogComponent } from './price-check-dialog.component';
       [resizable]="false"
       styleClass="w-[100%] min-w-[250px] sm:min-w-[500px] sm:w-[700px] min-h-[500px]"
       [baseZIndex]="10000">
-      <digimon-price-check-dialog
-        [checkPrice]="checkPrice$"></digimon-price-check-dialog>
     </p-dialog>
 
     <p-dialog
@@ -173,7 +163,6 @@ import { PriceCheckDialogComponent } from './price-check-dialog.component';
     TooltipModule,
     NgClass,
     DialogModule,
-    PriceCheckDialogComponent,
     NgFor,
     ExportDeckDialogComponent,
     ImportDeckDialogComponent,

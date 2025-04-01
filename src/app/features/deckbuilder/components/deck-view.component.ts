@@ -84,24 +84,6 @@ import { DeckToolbarComponent } from './deck-toolbar.component';
               [missingCards]="missingCards"></digimon-deck-card>
           </div>
         </p-accordionTab>
-        <p-accordionTab
-          *ngIf="displaySideDeck()"
-          [pDroppable]="['toDeck', 'fromDeck']"
-          [(selected)]="sideExpanded"
-          (onDrop)="drop(draggedCard(), 'Side')"
-          [header]="'Side-Deck (' + getCardCount(sideDeck, 'All') + ')'">
-          <div class="grid w-full grid-cols-4 md:grid-cols-6">
-            <digimon-deck-card
-              *ngFor="let card of sideDeck"
-              pDraggable="fromSide"
-              (onDragStart)="setDraggedCard(card, DRAG.Side)"
-              (removeCard)="removeSideCard(card)"
-              [cardHave]="getCardHave(card)"
-              [sideDeck]="true"
-              [card]="card"
-              [missingCards]="missingCards"></digimon-deck-card>
-          </div>
-        </p-accordionTab>
       </p-accordion>
     </ng-container>
   `,

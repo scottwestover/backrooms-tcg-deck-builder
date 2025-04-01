@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { filter, first, map, Observable } from 'rxjs';
 import {
-  DigimonCard,
+  BackroomsCard,
   IColor,
   ICountCard,
   IDeck,
@@ -212,7 +212,7 @@ export class DigimonBackendService {
   updateDeck(
     deck: IDeck,
     user: IUser | null = null,
-    allCards: DigimonCard[],
+    allCards: BackroomsCard[],
   ): Observable<any> {
     let newDeck: any;
     if (user) {

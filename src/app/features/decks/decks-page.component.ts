@@ -1,5 +1,12 @@
 import { AsyncPipe, NgFor, NgIf } from '@angular/common';
-import { ChangeDetectorRef, Component, effect, HostListener, inject, OnInit } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  effect,
+  HostListener,
+  inject,
+  OnInit,
+} from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { Meta, Title } from '@angular/platform-browser';
 import { ToastrService } from 'ngx-toastr';
@@ -23,7 +30,6 @@ import { DeckSubmissionComponent } from '../shared/dialogs/deck-submission.compo
 import { PageComponent } from '../shared/page.component';
 import { DeckStatisticsComponent } from './components/deck-statistics.component';
 import { DecksFilterComponent } from './components/decks-filter.component';
-import { TierlistComponent } from './components/tierlist.component';
 
 @Component({
   selector: 'digimon-decks-page',
@@ -93,8 +99,6 @@ import { TierlistComponent } from './components/tierlist.component';
           styleClass="surface-ground p-0 mx-auto"></p-paginator>
 
         <p-divider></p-divider>
-
-        <digimon-tierlist></digimon-tierlist>
       </div>
     </digimon-page>
 
@@ -126,7 +130,6 @@ import { TierlistComponent } from './components/tierlist.component';
     NgIf,
     AsyncPipe,
     ProgressSpinnerModule,
-    TierlistComponent,
     DividerModule,
     PageComponent,
     TooltipModule,

@@ -8,7 +8,6 @@ import { Router } from '@angular/router';
 import { CarouselModule } from 'primeng/carousel';
 import { ISave } from '../../../../models';
 import { PaginationCardListComponent } from '../../collection/components/pagination-card-list.component';
-import { CollectionPriceCheckDialogComponent } from './collection-price-check-dialog.component';
 import { DialogModule } from 'primeng/dialog';
 import { CollectionCircleComponent } from './collection-circle.component';
 import { NgIf } from '@angular/common';
@@ -78,11 +77,6 @@ import { NgIf } from '@angular/common';
           class="surface-ground hover:primary-background text-shadow border flex-grow border-black p-2 font-bold text-[#e2e4e6]">
           View Collection
         </button>
-        <button
-          (click)="priceCheckDialog = true"
-          class="surface-ground hover:primary-background text-shadow border flex-grow border-black p-2 font-bold text-[#e2e4e6]">
-          Collection Worth
-        </button>
       </div>
     </div>
 
@@ -94,8 +88,6 @@ import { NgIf } from '@angular/common';
       [modal]="true"
       [dismissableMask]="true"
       [resizable]="false">
-      <digimon-collection-price-check-dialog
-        [save]="save"></digimon-collection-price-check-dialog>
     </p-dialog>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -104,7 +96,6 @@ import { NgIf } from '@angular/common';
     NgIf,
     CollectionCircleComponent,
     DialogModule,
-    CollectionPriceCheckDialogComponent,
     PaginationCardListComponent,
     CarouselModule,
   ],

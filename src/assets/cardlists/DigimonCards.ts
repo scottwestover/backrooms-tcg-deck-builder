@@ -1,38 +1,31 @@
-import { find } from 'rxjs';
-import { CARDSET, IDigimonCards } from '../../models';
+import { BackroomsCard, CARDSET } from '../../models';
 import { DigimonCard } from '../../models';
 import DigimonCardsJsonENG from './PreparedDigimonCardsENG.json';
-import DigimonCardsJsonJAP from './PreparedDigimonCardsJAP.json';
 
-export function setupDigimonCards(cardset: CARDSET): DigimonCard[] {
-  return cardset === CARDSET.English ? setupJsonENG() : setupJsonJAP();
+export function setupDigimonCards(cardset: CARDSET): BackroomsCard[] {
+  return setupJsonENG();
 }
 
-function setupJsonENG(): DigimonCard[] {
-  const digimonCards: DigimonCard[] = [...DigimonCardsJsonENG];
+function setupJsonENG(): BackroomsCard[] {
+  const digimonCards: BackroomsCard[] = [...DigimonCardsJsonENG];
   return digimonCards;
 }
 
-function setupJsonJAP(): DigimonCard[] {
-  const japCards: DigimonCard[] = [...DigimonCardsJsonJAP];
-  return japCards;
-}
-
 export function setupDigimonCardMap(
-  cards: DigimonCard[],
-): Map<string, DigimonCard> {
-  const digimonCardMap = new Map<string, DigimonCard>();
+  cards: BackroomsCard[],
+): Map<string, BackroomsCard> {
+  const digimonCardMap = new Map<string, BackroomsCard>();
   cards.forEach((digimonCard) => {
     digimonCardMap.set(digimonCard.id, digimonCard);
   });
   return digimonCardMap;
 }
 
-function mapJsonToEngCardList(): Map<string, DigimonCard> {
-  const cards: Map<string, DigimonCard> = new Map<string, DigimonCard>();
+function mapJsonToEngCardList(): Map<string, BackroomsCard> {
+  const cards: Map<string, BackroomsCard> = new Map<string, BackroomsCard>();
 
-  const digimonCards: DigimonCard[] = [...DigimonCardsJsonENG];
-  digimonCards.forEach((digimonCard: DigimonCard) => {
+  const digimonCards: BackroomsCard[] = [...DigimonCardsJsonENG];
+  digimonCards.forEach((digimonCard: BackroomsCard) => {
     cards.set(digimonCard.id, digimonCard);
   });
 

@@ -11,6 +11,24 @@ export interface DigivolveCondition {
   level: string;
 }
 
+export interface BackroomsCard {
+  id: string;
+  name: {
+    english: string;
+  };
+  rarity: string;
+  types: string[];
+  ccs: {
+    type: string;
+    value: number;
+  };
+  navigationPoints: number;
+  sanityPoints: number;
+  attackDamage: string;
+  health: string;
+  cardImage: string;
+}
+
 export interface DigimonCard {
   aceEffect: string;
   attribute: string;

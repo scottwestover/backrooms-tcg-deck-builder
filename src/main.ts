@@ -39,7 +39,6 @@ import { BlogPageComponent } from './app/features/community/components/blog-page
 import { DeckbuilderPageComponent } from './app/features/deckbuilder/deckbuilder-page.component';
 import { DecksPageComponent } from './app/features/decks/decks-page.component';
 import { HomePageComponent } from './app/features/home/home-page.component';
-import { ProductsComponent } from './app/features/products/products.component.ts';
 import { ProfilePageComponent } from './app/features/profile/profile-page.component';
 import { TestPageComponent } from './app/features/test/test-page.component';
 import { AuthService } from './app/services/auth.service';
@@ -59,10 +58,6 @@ const routes: Routes = [
   {
     path: 'decks',
     component: DecksPageComponent,
-  },
-  {
-    path: 'products',
-    component: ProductsComponent,
   },
   {
     path: 'user',

@@ -1,5 +1,5 @@
 import {
-  DigimonCard,
+  BackroomsCard,
   dummyCard,
   ICountCard,
   IDeck,
@@ -13,7 +13,7 @@ import { ReleaseOrder } from '../../models/data/release-order.data';
 import { ColorOrderMap, DeckColorMap } from '../../models/maps/color.map';
 import { sortID } from './filter.functions';
 
-export function setTags(deck: IDeck, allCards: DigimonCard[]) {
+export function setTags(deck: IDeck, allCards: BackroomsCard[]) {
   let tags = [];
 
   tags = setNewestSet(deck.cards);
@@ -50,7 +50,7 @@ export function setNewestSet(cards: ICountCard[]): ITag[] {
 
 export function bannedCardsIncluded(
   cards: ICountCard[],
-  allCards: DigimonCard[],
+  allCards: BackroomsCard[],
 ): boolean {
   let banned = false;
   if (!cards) {
@@ -72,7 +72,7 @@ export function bannedCardsIncluded(
 
 export function tooManyRestrictedCardsIncluded(
   cards: ICountCard[],
-  allCards: DigimonCard[],
+  allCards: BackroomsCard[],
 ): boolean {
   let restricted = false;
   if (!cards) {
@@ -93,7 +93,7 @@ export function tooManyRestrictedCardsIncluded(
   return restricted;
 }
 
-export function setColors(deck: IDeck, allCards: DigimonCard[]) {
+export function setColors(deck: IDeck, allCards: BackroomsCard[]) {
   if (deck.cards.length === 0) {
     return ['White', { name: 'White', img: 'assets/images/decks/white.svg' }];
   }
@@ -116,9 +116,10 @@ export function setColors(deck: IDeck, allCards: DigimonCard[]) {
 
   cards.forEach((card) => {
     colorArray.forEach((color, index) => {
-      if (card.color && card.color.includes(color.name)) {
-        colorArray[index].count += card.count;
-      }
+      // if (card.color && card.color.includes(color.name)) {
+      //   colorArray[index].count += card.count;
+      // }
+      colorArray[index].count += card.count;
     });
   });
 
@@ -147,8 +148,8 @@ export function formatId(id: string): string {
   return id.replace('ST0', 'ST').split('_P')[0];
 }
 
-export function deckIsValid(deck: IDeck, allCards: DigimonCard[]): string {
-  const cardMap = new Map<string, DigimonCard>();
+export function deckIsValid(deck: IDeck, allCards: BackroomsCard[]): string {
+  const cardMap = new Map<string, BackroomsCard>();
 
   allCards.forEach((card) => {
     cardMap.set(formatId(card.id), card);
@@ -198,7 +199,7 @@ export function sortColors(colorA: string, colorB: string): number {
 
 export function mapToDeckCards(
   cards: ICountCard[],
-  allCards: DigimonCard[],
+  allCards: BackroomsCard[],
 ): IDeckCard[] {
   const deckCards: IDeckCard[] = [];
 
@@ -235,144 +236,133 @@ export function getCountFromDeckCards(
 }
 
 export function colorSort(deck: IDeckCard[]) {
-  const eggs = deck
-    .filter((card) => card.cardType === 'Digi-Egg')
-    .sort((a, b) => sortColors(a.color, b.color) || sortID(a.id, b.id));
+  return deck;
+  // const eggs = deck
+  //   .filter((card) => card.cardType === 'Digi-Egg')
+  //   .sort((a, b) => sortColors(a.color, b.color) || sortID(a.id, b.id));
 
-  const red = deck
-    .filter(
-      (card) => card.color.startsWith('Red') && card.cardType === 'Digimon',
-    )
-    .sort((a, b) => a.cardLv.localeCompare(b.cardLv) || sortID(a.id, b.id));
-  const blue = deck
-    .filter(
-      (card) => card.color.startsWith('Blue') && card.cardType === 'Digimon',
-    )
-    .sort((a, b) => a.cardLv.localeCompare(b.cardLv) || sortID(a.id, b.id));
-  const yellow = deck
-    .filter(
-      (card) =>
-        card.color.startsWith('Yellow') && card.cardType === 'Digimon',
-    )
-    .sort((a, b) => a.cardLv.localeCompare(b.cardLv) || sortID(a.id, b.id));
-  const green = deck
-    .filter(
-      (card) => card.color.startsWith('Green') && card.cardType === 'Digimon',
-    )
-    .sort((a, b) => a.cardLv.localeCompare(b.cardLv) || sortID(a.id, b.id));
-  const black = deck
-    .filter(
-      (card) => card.color.startsWith('Black') && card.cardType === 'Digimon',
-    )
-    .sort((a, b) => a.cardLv.localeCompare(b.cardLv) || sortID(a.id, b.id));
-  const purple = deck
-    .filter(
-      (card) =>
-        card.color.startsWith('Purple') && card.cardType === 'Digimon',
-    )
-    .sort((a, b) => a.cardLv.localeCompare(b.cardLv) || sortID(a.id, b.id));
+  // const red = deck
+  //   .filter(
+  //     (card) => card.color.startsWith('Red') && card.cardType === 'Digimon',
+  //   )
+  //   .sort((a, b) => a.cardLv.localeCompare(b.cardLv) || sortID(a.id, b.id));
+  // const blue = deck
+  //   .filter(
+  //     (card) => card.color.startsWith('Blue') && card.cardType === 'Digimon',
+  //   )
+  //   .sort((a, b) => a.cardLv.localeCompare(b.cardLv) || sortID(a.id, b.id));
+  // const yellow = deck
+  //   .filter(
+  //     (card) =>
+  //       card.color.startsWith('Yellow') && card.cardType === 'Digimon',
+  //   )
+  //   .sort((a, b) => a.cardLv.localeCompare(b.cardLv) || sortID(a.id, b.id));
+  // const green = deck
+  //   .filter(
+  //     (card) => card.color.startsWith('Green') && card.cardType === 'Digimon',
+  //   )
+  //   .sort((a, b) => a.cardLv.localeCompare(b.cardLv) || sortID(a.id, b.id));
+  // const black = deck
+  //   .filter(
+  //     (card) => card.color.startsWith('Black') && card.cardType === 'Digimon',
+  //   )
+  //   .sort((a, b) => a.cardLv.localeCompare(b.cardLv) || sortID(a.id, b.id));
+  // const purple = deck
+  //   .filter(
+  //     (card) =>
+  //       card.color.startsWith('Purple') && card.cardType === 'Digimon',
+  //   )
+  //   .sort((a, b) => a.cardLv.localeCompare(b.cardLv) || sortID(a.id, b.id));
 
-  const white = deck
-    .filter(
-      (card) => card.color.startsWith('White') && card.cardType === 'Digimon',
-    )
-    .sort((a, b) => a.cardLv.localeCompare(b.cardLv) || sortID(a.id, b.id));
+  // const white = deck
+  //   .filter(
+  //     (card) => card.color.startsWith('White') && card.cardType === 'Digimon',
+  //   )
+  //   .sort((a, b) => a.cardLv.localeCompare(b.cardLv) || sortID(a.id, b.id));
 
-  const tamer = deck
-    .filter((card) => card.cardType === 'Tamer')
-    .sort((a, b) => sortColors(a.color, b.color) || sortID(a.id, b.id));
+  // const tamer = deck
+  //   .filter((card) => card.cardType === 'Tamer')
+  //   .sort((a, b) => sortColors(a.color, b.color) || sortID(a.id, b.id));
 
-  const options = deck
-    .filter((card) => card.cardType === 'Option')
-    .sort((a, b) => sortColors(a.color, b.color) || sortID(a.id, b.id));
+  // const options = deck
+  //   .filter((card) => card.cardType === 'Option')
+  //   .sort((a, b) => sortColors(a.color, b.color) || sortID(a.id, b.id));
 
-  return [
-    ...new Set([
-      ...eggs,
-      ...red,
-      ...blue,
-      ...yellow,
-      ...green,
-      ...black,
-      ...purple,
-      ...white,
-      ...tamer,
-      ...options,
-    ]),
-  ];
+  // return [
+  //   ...new Set([
+  //     ...eggs,
+  //     ...red,
+  //     ...blue,
+  //     ...yellow,
+  //     ...green,
+  //     ...black,
+  //     ...purple,
+  //     ...white,
+  //     ...tamer,
+  //     ...options,
+  //   ]),
+  // ];
 }
 
 export function levelSort(deck: IDeckCard[]) {
-  const eggs = deck
-    .filter((card) => card.cardType === 'Digi-Egg')
-    .sort((a, b) => sortColors(a.color, b.color) || sortID(a.id, b.id));
+  // const eggs = deck
+  //   .filter((card) => card.cardType === 'Digi-Egg')
+  //   .sort((a, b) => sortColors(a.color, b.color) || sortID(a.id, b.id));
 
-  const lv0 = deck
-    .filter((card) => card.cardLv === '-' && card.cardType === 'Digimon')
-    .sort((a, b) => sortColors(a.color, b.color) || sortID(a.id, b.id));
+  // const lv0 = deck
+  //   .filter((card) => card.cardLv === '-' && card.cardType === 'Digimon')
+  //   .sort((a, b) => sortColors(a.color, b.color) || sortID(a.id, b.id));
 
-  const lv3 = deck
-    .filter((card) => card.cardLv === 'Lv.3')
-    .sort((a, b) => sortColors(a.color, b.color) || sortID(a.id, b.id));
-  const lv4 = deck
-    .filter((card) => card.cardLv === 'Lv.4')
-    .sort((a, b) => sortColors(a.color, b.color) || sortID(a.id, b.id));
-  const lv5 = deck
-    .filter((card) => card.cardLv === 'Lv.5')
-    .sort((a, b) => sortColors(a.color, b.color) || sortID(a.id, b.id));
-  const lv6 = deck
-    .filter((card) => card.cardLv === 'Lv.6')
-    .sort((a, b) => sortColors(a.color, b.color) || sortID(a.id, b.id));
-  const lv7 = deck
-    .filter((card) => card.cardLv === 'Lv.7')
-    .sort((a, b) => sortColors(a.color, b.color) || sortID(a.id, b.id));
+  // const lv3 = deck
+  //   .filter((card) => card.cardLv === 'Lv.3')
+  //   .sort((a, b) => sortColors(a.color, b.color) || sortID(a.id, b.id));
+  // const lv4 = deck
+  //   .filter((card) => card.cardLv === 'Lv.4')
+  //   .sort((a, b) => sortColors(a.color, b.color) || sortID(a.id, b.id));
+  // const lv5 = deck
+  //   .filter((card) => card.cardLv === 'Lv.5')
+  //   .sort((a, b) => sortColors(a.color, b.color) || sortID(a.id, b.id));
+  // const lv6 = deck
+  //   .filter((card) => card.cardLv === 'Lv.6')
+  //   .sort((a, b) => sortColors(a.color, b.color) || sortID(a.id, b.id));
+  // const lv7 = deck
+  //   .filter((card) => card.cardLv === 'Lv.7')
+  //   .sort((a, b) => sortColors(a.color, b.color) || sortID(a.id, b.id));
 
-  const tamer = deck
-    .filter((card) => card.cardType === 'Tamer')
-    .sort((a, b) => sortColors(a.color, b.color) || sortID(a.id, b.id));
+  // const tamer = deck
+  //   .filter((card) => card.cardType === 'Tamer')
+  //   .sort((a, b) => sortColors(a.color, b.color) || sortID(a.id, b.id));
 
-  const options = deck
-    .filter((card) => card.cardType === 'Option')
-    .sort((a, b) => sortColors(a.color, b.color) || sortID(a.id, b.id));
+  // const options = deck
+  //   .filter((card) => card.cardType === 'Option')
+  //   .sort((a, b) => sortColors(a.color, b.color) || sortID(a.id, b.id));
 
-  return [
-    ...new Set([
-      ...eggs,
-      ...lv0,
-      ...lv3,
-      ...lv4,
-      ...lv5,
-      ...lv6,
-      ...lv7,
-      ...tamer,
-      ...options,
-    ]),
-  ];
+  return deck;
 }
 
 export function setDeckImage(
   deck: IDeck | ITournamentDeck,
-  allCards: DigimonCard[],
-): DigimonCard {
+  allCards: BackroomsCard[],
+): BackroomsCard {
   if (deck.cards && deck.cards.length === 0) {
     return JSON.parse(JSON.stringify(dummyCard));
   }
   let deckCards = mapToDeckCards(deck.cards, allCards);
 
-  deckCards = deckCards
-    .filter((card) => card.cardType === 'Digimon')
-    .filter((card) => card.cardLv !== 'Lv.7');
+  // deckCards = deckCards
+  //   .filter((card) => card.cardType === 'Digimon')
+  //   .filter((card) => card.cardLv !== 'Lv.7');
 
   if (deckCards.length === 0) {
     return JSON.parse(JSON.stringify(dummyCard));
   }
-  try {
-    deckCards = deckCards.sort(
-      (a, b) =>
-        Number(b.cardLv.replace('Lv.', '')) -
-        Number(a.cardLv.replace('Lv.', '')),
-    );
-  } catch (e) {}
+  // try {
+  //   deckCards = deckCards.sort(
+  //     (a, b) =>
+  //       Number(b.cardLv.replace('Lv.', '')) -
+  //       Number(a.cardLv.replace('Lv.', '')),
+  //   );
+  // } catch (e) {}
 
   return deckCards.length > 0
     ? deckCards[0]

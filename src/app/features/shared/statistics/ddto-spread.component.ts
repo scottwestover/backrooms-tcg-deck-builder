@@ -6,7 +6,7 @@ import {
   OnInit,
   SimpleChanges,
 } from '@angular/core';
-import { DigimonCard, IDeck } from '../../../../models';
+import { BackroomsCard, IDeck } from '../../../../models';
 import {
   getCountFromDeckCards,
   mapToDeckCards,
@@ -101,10 +101,10 @@ export class DdtoSpreadComponent implements OnInit, OnChanges {
       this.deck.cards,
       this.digimonCardStore.cards(),
     );
-    const digieggs = cards.filter((card) => card.cardType === 'Digi-Egg');
-    const digimon = cards.filter((card) => card.cardType === 'Digimon');
-    const tamer = cards.filter((card) => card.cardType === 'Tamer');
-    const options = cards.filter((card) => card.cardType === 'Option');
+    const digieggs: IDeck[] = []; //cards.filter((card) => card.cardType === 'Digi-Egg');
+    const digimon: IDeck[] = []; //cards.filter((card) => card.cardType === 'Digimon');
+    const tamer: IDeck[] = []; //cards.filter((card) => card.cardType === 'Tamer');
+    const options: IDeck[] = []; //cards.filter((card) => card.cardType === 'Option');
 
     this.ddto[0] = getCountFromDeckCards(digieggs);
     this.ddto[1] = getCountFromDeckCards(digimon);

@@ -113,20 +113,6 @@ import { FilterButtonComponent } from '../filter/filter-button.component';
           Decks
         </button>
       </li>
-
-      <li
-        class="flex flex-col items-center group cursor-pointer"
-        [ngClass]="getNavigationBorder('/products')"
-        (click)="router.navigateByUrl('/products')">
-        <i
-          class="pi pi-tags group-hover:text-[#64B5F6]"
-          style="font-size: 1.5rem"></i>
-        <button
-          style="font-size:smaller"
-          class="p-2 group-hover:text-[#64B5F6]">
-          Products
-        </button>
-      </li>
     </ul>
 
     <div

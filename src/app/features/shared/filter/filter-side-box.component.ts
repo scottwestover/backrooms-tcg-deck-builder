@@ -38,7 +38,6 @@ import { SortButtonsComponent } from '../sort-buttons.component';
 import { BlockFilterComponent } from './block-filter.component';
 import { CardTypeFilterComponent } from './card-type-filter.component';
 import { ColorFilterComponent } from './color-filter.component';
-import { LanguageFilterComponent } from './language-filter.component';
 import { RarityFilterComponent } from './rarity-filter.component';
 import { SetFilterComponent } from './set-filter.component';
 import { VersionFilterComponent } from './version-filter.component';
@@ -60,7 +59,6 @@ import { VersionFilterComponent } from './version-filter.component';
         </button>
       </div>
 
-      <digimon-language-filter></digimon-language-filter>
       <digimon-color-filter></digimon-color-filter>
       <digimon-card-type-filter></digimon-card-type-filter>
 
@@ -269,7 +267,6 @@ import { VersionFilterComponent } from './version-filter.component';
   standalone: true,
   imports: [
     SortButtonsComponent,
-    LanguageFilterComponent,
     ColorFilterComponent,
     CardTypeFilterComponent,
     SetFilterComponent,
