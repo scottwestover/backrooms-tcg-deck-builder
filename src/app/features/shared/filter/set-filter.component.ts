@@ -7,7 +7,7 @@ import { GroupedSets } from '../../../../models';
 import { FilterStore } from '../../../store/filter.store';
 
 @Component({
-  selector: 'digimon-set-filter',
+  selector: 'backrooms-set-filter',
   template: `
     <p-multiSelect
       [filter]="false"

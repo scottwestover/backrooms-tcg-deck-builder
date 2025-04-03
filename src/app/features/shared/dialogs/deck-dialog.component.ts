@@ -1,14 +1,15 @@
 import { NgFor, NgIf } from '@angular/common';
 import {
   ChangeDetectorRef,
-  Component, effect,
+  Component,
+  effect,
   EventEmitter,
   inject,
   Input,
   OnChanges,
   OnInit,
   Output,
-  SimpleChanges
+  SimpleChanges,
 } from '@angular/core';
 import {
   FormsModule,
@@ -27,12 +28,17 @@ import { TooltipModule } from 'primeng/tooltip';
 import { first } from 'rxjs';
 import * as uuid from 'uuid';
 
-import { emptyDeck, IDeck, IDeckCard, ITournamentDeck } from '../../../../models';
+import {
+  emptyDeck,
+  IDeck,
+  IDeckCard,
+  ITournamentDeck,
+} from '../../../../models';
 import { mapToDeckCards, setDeckImage } from '../../../functions';
 import { AuthService } from '../../../services/auth.service';
-import { DigimonBackendService } from '../../../services/digimon-backend.service';
+import { BackroomsBackendService } from '../../../services/backrooms-backend.service';
 import { DialogStore } from '../../../store/dialog.store';
-import { DigimonCardStore } from '../../../store/digimon-card.store';
+import { BackroomsCardStore } from '../../../store/backrooms-card.store';
 import { SaveStore } from '../../../store/save.store';
 import { WebsiteStore } from '../../../store/website.store';
 import { DeckCardComponent } from '../deck-card.component';
@@ -46,32 +52,32 @@ export interface DigimonCardImage {
 }
 
 @Component({
-  selector: 'digimon-deck-dialog',
+  selector: 'backrooms-deck-dialog',
   template: `
     <div class="flex h-full w-full flex-col">
       <div
         class="grid max-h-[375px] min-h-[200px] w-full grid-cols-4 overflow-y-scroll border-2 border-slate-200 md:grid-cols-6 lg:grid-cols-8">
-        <digimon-deck-card
+        <backrooms-deck-card
           *ngFor="let card of mainDeck"
           [edit]="false"
-          [card]="card"></digimon-deck-card>
+          [card]="card"></backrooms-deck-card>
       </div>
 
       <div
         class="surface-card mx-auto my-1 flex max-h-[200px] w-full flex-row border border-white">
-        <digimon-ddto-spread
+        <backrooms-ddto-spread
           [deck]="deck"
           [container]="true"
-          class="ml-auto hidden border-r border-slate-200 px-5 lg:block"></digimon-ddto-spread>
+          class="ml-auto hidden border-r border-slate-200 px-5 lg:block"></backrooms-ddto-spread>
 
-        <digimon-chart-containers
+        <backrooms-chart-containers
           [deck]="mainDeck"
-          class="mx-auto max-w-[40rem]"></digimon-chart-containers>
+          class="mx-auto max-w-[40rem]"></backrooms-chart-containers>
 
-        <digimon-color-spread
+        <backrooms-color-spread
           [deck]="deck"
           [container]="true"
-          class="mr-auto hidden border-l border-slate-200 px-5 lg:block"></digimon-color-spread>
+          class="mr-auto hidden border-l border-slate-200 px-5 lg:block"></backrooms-color-spread>
       </div>
 
       <div
@@ -248,7 +254,7 @@ export class DeckDialogComponent {
   saveStore = inject(SaveStore);
   websiteStore = inject(WebsiteStore);
   dialogStore = inject(DialogStore);
-  digimonCardStore = inject(DigimonCardStore);
+  digimonCardStore = inject(BackroomsCardStore);
 
   deck: IDeck | ITournamentDeck = emptyDeck;
   editable = true;
@@ -271,7 +277,7 @@ export class DeckDialogComponent {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private digimonBackendService: DigimonBackendService,
+    private digimonBackendService: BackroomsBackendService,
     private confirmationService: ConfirmationService,
     private messageService: MessageService,
   ) {

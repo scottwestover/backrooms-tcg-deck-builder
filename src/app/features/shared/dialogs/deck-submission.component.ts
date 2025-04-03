@@ -32,6 +32,7 @@ import {
 } from 'rxjs';
 import * as uuid from 'uuid';
 import {
+  BackroomsCard,
   Countries,
   DigimonCard,
   IDeck,
@@ -42,10 +43,10 @@ import {
 import {
   compareIDs,
   levelSort,
-} from '../../../functions/digimon-card.functions';
+} from '../../../functions/backrooms-card.functions';
 import { stringToDeck } from '../../../functions/parse-deck';
-import { DigimonBackendService } from '../../../services/digimon-backend.service';
-import { DigimonCardStore } from '../../../store/digimon-card.store';
+import { BackroomsBackendService } from '../../../services/backrooms-backend.service';
+import { BackroomsCardStore } from '../../../store/backrooms-card.store';
 import { DeckCardComponent } from '../deck-card.component';
 import { DigimonCardImage } from './deck-dialog.component';
 
@@ -55,7 +56,7 @@ interface IDropDownItem {
 }
 
 @Component({
-  selector: 'digimon-deck-submission',
+  selector: 'backrooms-deck-submission',
   template: `
     <div [formGroup]="form" class="flex w-full flex-col">
       <div class="my-3 grid h-[300px] grid-cols-2">
@@ -69,10 +70,10 @@ interface IDropDownItem {
         </span>
         <div
           class="grid h-full w-full grid-cols-4 overflow-y-scroll border-2 border-slate-200 md:grid-cols-6 lg:grid-cols-8">
-          <digimon-deck-card
+          <backrooms-deck-card
             *ngFor="let card of mainDeck"
             [edit]="false"
-            [card]="card"></digimon-deck-card>
+            [card]="card"></backrooms-deck-card>
         </div>
       </div>
 
@@ -230,10 +231,10 @@ export class DeckSubmissionComponent implements OnInit, OnChanges, OnDestroy {
     { name: 'Major Event (32+ Player)', value: 'Major' },
   ];
 
-  private digimonCardStore = inject(DigimonCardStore);
+  private digimonCardStore = inject(BackroomsCardStore);
   private onDestroy$ = new Subject();
 
-  constructor(private digimonBackendService: DigimonBackendService) {}
+  constructor(private digimonBackendService: BackroomsBackendService) {}
 
   ngOnInit(): void {
     this.form
@@ -267,7 +268,7 @@ export class DeckSubmissionComponent implements OnInit, OnChanges, OnDestroy {
     this.onDestroy$.unsubscribe();
   }
 
-  mapDeck(deck: IDeck, allCards: DigimonCard[]) {
+  mapDeck(deck: IDeck, allCards: BackroomsCard[]) {
     this.mainDeck = [];
     const iDeckCards: IDeckCard[] = [];
 

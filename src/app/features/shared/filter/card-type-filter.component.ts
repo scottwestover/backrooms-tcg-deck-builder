@@ -5,14 +5,14 @@ import { FilterStore } from '../../../store/filter.store';
 import { MultiButtonsComponent } from '../multi-buttons.component';
 
 @Component({
-  selector: 'digimon-card-type-filter',
+  selector: 'backrooms-card-type-filter',
   template: `
-    <digimon-multi-buttons
+    <backrooms-multi-buttons
       (clickEvent)="changeCardType($event, cardTypeFilter)"
       [buttonArray]="cardTypeButtons"
       [value]="cardTypeFilter"
-      [perRow]="4"
-      title="Card-Types"></digimon-multi-buttons>
+      [perRow]="2"
+      title="Card-Types"></backrooms-multi-buttons>
   `,
   standalone: true,
   imports: [NgIf, MultiButtonsComponent, AsyncPipe],
@@ -34,7 +34,6 @@ export class CardTypeFilterComponent {
     } else {
       types = [...new Set(cardTypeFilter), type];
     }
-
     this.filterStore.updateCardTypeFilter(types);
   }
 }

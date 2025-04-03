@@ -5,7 +5,7 @@ import {
   IDeck,
   IDeckCard,
 } from '../../models';
-import { compareIDs, setColors, setTags } from './digimon-card.functions';
+import { compareIDs, setColors, setTags } from './backrooms-card.functions';
 
 export function stringToDeck(
   deckList: string,

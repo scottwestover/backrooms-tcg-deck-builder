@@ -5,14 +5,14 @@ import { FilterStore } from '../../../store/filter.store';
 import { MultiButtonsComponent } from '../multi-buttons.component';
 
 @Component({
-  selector: 'digimon-rarity-filter',
+  selector: 'backrooms-rarity-filter',
   template: `
-    <digimon-multi-buttons
+    <backrooms-multi-buttons
       (clickEvent)="changeRarity($event, rarityFilter)"
       [buttonArray]="rarityButtons"
       [value]="rarityFilter"
       [perRow]="6"
-      title="Rarity"></digimon-multi-buttons>
+      title="Rarity"></backrooms-multi-buttons>
   `,
   standalone: true,
   imports: [NgIf, MultiButtonsComponent, AsyncPipe],

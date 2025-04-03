@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "digimon-card-game-collector": {
+    "backrooms-tcg-deck-builder": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
@@ -12,12 +12,12 @@
       },
       "root": "",
       "sourceRoot": "src",
-      "prefix": "digimon",
+      "prefix": "backrooms",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/digimon-card-game-collector",
+            "outputPath": "dist/backrooms-tcg-deck-builder",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -29,7 +29,7 @@
             ],
             "styles": [
               "src/styles.scss",
-              "node_modules/primeng/resources/themes/vela-blue/theme.css",
+              "node_modules/primeng/resources/themes/vela-orange/theme.css",
               "node_modules/ngx-toastr/toastr.css",
               "node_modules/primeng/resources/primeng.min.css",
               "node_modules/primeicons/primeicons.css",
@@ -37,7 +37,7 @@
             ],
             "scripts": [
               "node_modules/@fortawesome/fontawesome-free/js/all.js"
-            ],
+            ]
           },
           "configurations": {
             "production": {
@@ -84,10 +84,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "digimon-card-game-collector:build:production"
+              "buildTarget": "backrooms-tcg-deck-builder:build:production"
             },
             "development": {
-              "buildTarget": "digimon-card-game-collector:build:development"
+              "buildTarget": "backrooms-tcg-deck-builder:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -95,7 +95,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "digimon-card-game-collector:build"
+            "buildTarget": "backrooms-tcg-deck-builder:build"
           }
         },
         "test": {
@@ -113,7 +113,7 @@
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.scss"
             ],
-            "scripts": [],
+            "scripts": []
           }
         },
         "deploy": {
@@ -121,9 +121,9 @@
           "options": {
             "prerender": false,
             "ssr": false,
-            "browserTarget": "digimon-card-game-collector:build:production",
-            "firebaseProject": "digimon-card-collector",
-            "firebaseHostingSite": "digimon-card-collector"
+            "browserTarget": "backrooms-tcg-deck-builder:build:production",
+            "firebaseProject": "backrooms-tcg-deck-builder",
+            "firebaseHostingSite": "backrooms-tcg-deck-builder"
           }
         },
         "lint": {

@@ -9,36 +9,36 @@ import {
 import {
   addJBeforeWebp,
   addSampleBeforeWebp,
-} from 'src/assets/cardlists/DigimonCards';
+} from 'src/assets/cardlists/BackroomCards';
 
 @Directive({
-  selector: 'img[digimonImgFallback]',
+  selector: 'img[backroomsImgFallback]',
   standalone: true,
 })
 export class ImgFallbackDirective implements OnInit, OnChanges {
-  @Input() digimonImgFallback: string;
+  @Input() backroomsImgFallback: string;
 
   constructor(private el: ElementRef) {}
 
   ngOnInit() {
     const element: HTMLImageElement = <HTMLImageElement>this.el.nativeElement;
-    element.src = this.digimonImgFallback;
+    element.src = this.backroomsImgFallback;
   }
 
   ngOnChanges(): void {
     const element: HTMLImageElement = <HTMLImageElement>this.el.nativeElement;
-    element.src = this.digimonImgFallback;
+    element.src = this.backroomsImgFallback;
   }
 
   @HostListener('error')
   loadFallbackOnError(error: any) {
     const element: HTMLImageElement = <HTMLImageElement>this.el.nativeElement;
-    const hasJ = this.digimonImgFallback.includes('-J');
+    const hasJ = this.backroomsImgFallback.includes('-J');
     const currentSrc = 'assets' + element.src.split('assets')[1];
 
-    if (this.digimonImgFallback && !hasJ) {
-      const modifiedSrc = addJBeforeWebp(this.digimonImgFallback);
-      const sampleSrc = addSampleBeforeWebp(this.digimonImgFallback);
+    if (this.backroomsImgFallback && !hasJ) {
+      const modifiedSrc = addJBeforeWebp(this.backroomsImgFallback);
+      const sampleSrc = addSampleBeforeWebp(this.backroomsImgFallback);
       if (modifiedSrc !== currentSrc && sampleSrc !== currentSrc) {
         element.src = modifiedSrc;
         return;
@@ -47,9 +47,9 @@ export class ImgFallbackDirective implements OnInit, OnChanges {
         return;
       }
     } else {
-      const indexOfJ = this.digimonImgFallback.lastIndexOf('-J.webp');
+      const indexOfJ = this.backroomsImgFallback.lastIndexOf('-J.webp');
       const sampleJ =
-        this.digimonImgFallback.slice(0, indexOfJ) + '-Sample-J.webp';
+        this.backroomsImgFallback.slice(0, indexOfJ) + '-Sample-J.webp';
       if (sampleJ !== currentSrc) {
         element.src = sampleJ;
         return;

@@ -6,17 +6,17 @@ import {
   OnInit,
   SimpleChanges,
 } from '@angular/core';
-import { DigimonCard, IDeck } from '../../../../models';
+import { IDeck, IDeckCard } from '../../../../models';
 import {
   getCountFromDeckCards,
   mapToDeckCards,
-} from '../../../functions/digimon-card.functions';
-import { DigimonCardStore } from '../../../store/digimon-card.store';
+} from '../../../functions/backrooms-card.functions';
+import { BackroomsCardStore } from '../../../store/backrooms-card.store';
 import { SingleContainerComponent } from '../single-container.component';
 import { NgIf, NgStyle } from '@angular/common';
 
 @Component({
-  selector: 'digimon-color-spread',
+  selector: 'backrooms-color-spread',
   template: `
     <div
       *ngIf="!container"
@@ -80,41 +80,41 @@ import { NgIf, NgStyle } from '@angular/common';
     </div>
 
     <div *ngIf="container" class="flex w-full flex-row">
-      <digimon-single-container
+      <backrooms-single-container
         label="Red"
         color="#ef1919"
         class="w-10"
-        [value]="colorSpread[0]"></digimon-single-container>
-      <digimon-single-container
+        [value]="colorSpread[0]"></backrooms-single-container>
+      <backrooms-single-container
         label="Blue"
         color="#19a0e3"
         class="w-10"
-        [value]="colorSpread[1]"></digimon-single-container>
-      <digimon-single-container
+        [value]="colorSpread[1]"></backrooms-single-container>
+      <backrooms-single-container
         label="Yellow"
         color="#ffd619"
         class="w-10"
-        [value]="colorSpread[2]"></digimon-single-container>
-      <digimon-single-container
+        [value]="colorSpread[2]"></backrooms-single-container>
+      <backrooms-single-container
         label="Green"
         color="#19b383"
         class="w-10"
-        [value]="colorSpread[3]"></digimon-single-container>
-      <digimon-single-container
+        [value]="colorSpread[3]"></backrooms-single-container>
+      <backrooms-single-container
         label="Black"
         color="#191919"
         class="w-10"
-        [value]="colorSpread[4]"></digimon-single-container>
-      <digimon-single-container
+        [value]="colorSpread[4]"></backrooms-single-container>
+      <backrooms-single-container
         label="Purple"
         color="#8d6fdb"
         class="w-10"
-        [value]="colorSpread[5]"></digimon-single-container>
-      <digimon-single-container
+        [value]="colorSpread[5]"></backrooms-single-container>
+      <backrooms-single-container
         label="White"
         color="#ffffff"
         class="w-10"
-        [value]="colorSpread[6]"></digimon-single-container>
+        [value]="colorSpread[6]"></backrooms-single-container>
     </div>
   `,
   standalone: true,
@@ -126,7 +126,7 @@ export class ColorSpreadComponent implements OnInit, OnChanges {
 
   colorSpread = [0, 0, 0, 0, 0, 0, 0];
 
-  private digimonCardStore = inject(DigimonCardStore);
+  private digimonCardStore = inject(BackroomsCardStore);
 
   ngOnInit(): void {
     this.getColorSpread();
@@ -145,17 +145,25 @@ export class ColorSpreadComponent implements OnInit, OnChanges {
       this.deck.cards,
       this.digimonCardStore.cards(),
     );
-    const red = cards.filter((card) => card.color.split('/')[0] === 'Red');
-    const blue = cards.filter((card) => card.color.split('/')[0] === 'Blue');
-    const yellow = cards.filter(
-      (card) => card.color.split('/')[0] === 'Yellow',
-    );
-    const green = cards.filter((card) => card.color.split('/')[0] === 'Green');
-    const black = cards.filter((card) => card.color.split('/')[0] === 'Black');
-    const purple = cards.filter(
-      (card) => card.color.split('/')[0] === 'Purple',
-    );
-    const white = cards.filter((card) => card.color.split('/')[0] === 'White');
+    // const red = cards.filter((card) => card.color.split('/')[0] === 'Red');
+    // const blue = cards.filter((card) => card.color.split('/')[0] === 'Blue');
+    // const yellow = cards.filter(
+    //   (card) => card.color.split('/')[0] === 'Yellow',
+    // );
+    // const green = cards.filter((card) => card.color.split('/')[0] === 'Green');
+    // const black = cards.filter((card) => card.color.split('/')[0] === 'Black');
+    // const purple = cards.filter(
+    //   (card) => card.color.split('/')[0] === 'Purple',
+    // );
+    // const white = cards.filter((card) => card.color.split('/')[0] === 'White');
+
+    const red: IDeckCard[] = [];
+    const blue: IDeckCard[] = [];
+    const yellow: IDeckCard[] = [];
+    const green: IDeckCard[] = [];
+    const black: IDeckCard[] = [];
+    const purple: IDeckCard[] = [];
+    const white: IDeckCard[] = [];
 
     this.colorSpread[0] = getCountFromDeckCards(red);
     this.colorSpread[1] = getCountFromDeckCards(blue);

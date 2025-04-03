@@ -6,17 +6,17 @@ import {
   OnInit,
   SimpleChanges,
 } from '@angular/core';
-import { BackroomsCard, IDeck } from '../../../../models';
+import { BackroomsCard, IDeck, IDeckCard } from '../../../../models';
 import {
   getCountFromDeckCards,
   mapToDeckCards,
-} from '../../../functions/digimon-card.functions';
-import { DigimonCardStore } from '../../../store/digimon-card.store';
+} from '../../../functions/backrooms-card.functions';
+import { BackroomsCardStore } from '../../../store/backrooms-card.store';
 import { SingleContainerComponent } from '../single-container.component';
 import { NgIf, NgStyle } from '@angular/common';
 
 @Component({
-  selector: 'digimon-ddto-spread',
+  selector: 'backrooms-ddto-spread',
   template: `
     <div *ngIf="!container" class="no-gap grid h-full w-full grid-cols-4">
       <div
@@ -55,23 +55,23 @@ import { NgIf, NgStyle } from '@angular/common';
     </div>
 
     <div *ngIf="container" class="flex w-full flex-row">
-      <digimon-single-container
+      <backrooms-single-container
         label="Egg"
         [value]="ddto[0]"
         percent="20"
-        class="w-12"></digimon-single-container>
-      <digimon-single-container
+        class="w-12"></backrooms-single-container>
+      <backrooms-single-container
         label="Digimon"
         [value]="ddto[1]"
-        class="w-14"></digimon-single-container>
-      <digimon-single-container
+        class="w-14"></backrooms-single-container>
+      <backrooms-single-container
         label="Tamer"
         [value]="ddto[2]"
-        class="w-12"></digimon-single-container>
-      <digimon-single-container
+        class="w-12"></backrooms-single-container>
+      <backrooms-single-container
         label="Option"
         [value]="ddto[3]"
-        class="w-12"></digimon-single-container>
+        class="w-12"></backrooms-single-container>
     </div>
   `,
   standalone: true,
@@ -83,7 +83,7 @@ export class DdtoSpreadComponent implements OnInit, OnChanges {
 
   ddto = [0, 0, 0, 0];
 
-  private digimonCardStore = inject(DigimonCardStore);
+  private digimonCardStore = inject(BackroomsCardStore);
 
   ngOnInit(): void {
     this.getDDTO();
@@ -101,10 +101,10 @@ export class DdtoSpreadComponent implements OnInit, OnChanges {
       this.deck.cards,
       this.digimonCardStore.cards(),
     );
-    const digieggs: IDeck[] = []; //cards.filter((card) => card.cardType === 'Digi-Egg');
-    const digimon: IDeck[] = []; //cards.filter((card) => card.cardType === 'Digimon');
-    const tamer: IDeck[] = []; //cards.filter((card) => card.cardType === 'Tamer');
-    const options: IDeck[] = []; //cards.filter((card) => card.cardType === 'Option');
+    const digieggs: IDeckCard[] = []; //cards.filter((card) => card.cardType === 'Digi-Egg');
+    const digimon: IDeckCard[] = []; //cards.filter((card) => card.cardType === 'Digimon');
+    const tamer: IDeckCard[] = []; //cards.filter((card) => card.cardType === 'Tamer');
+    const options: IDeckCard[] = []; //cards.filter((card) => card.cardType === 'Option');
 
     this.ddto[0] = getCountFromDeckCards(digieggs);
     this.ddto[1] = getCountFromDeckCards(digimon);

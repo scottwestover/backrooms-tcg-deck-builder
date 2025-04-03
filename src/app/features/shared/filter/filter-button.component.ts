@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { WebsiteStore } from '../../../store/website.store';
 
 @Component({
-  selector: 'digimon-filter-button',
+  selector: 'backrooms-filter-button',
   template: `
     <button
       (click)="setMobileCollectionView()"

@@ -19,17 +19,17 @@ import { first } from 'rxjs';
 import { ColorList, IColor, IDeck, tagsList } from '../../../../models';
 import { ITag } from '../../../../models/interfaces/tag.interface';
 import { ColorMap } from '../../../../models/maps/color.map';
-import { deckIsValid } from '../../../functions/digimon-card.functions';
+import { deckIsValid } from '../../../functions/backrooms-card.functions';
 import { AuthService } from '../../../services/auth.service';
-import { DigimonBackendService } from '../../../services/digimon-backend.service';
-import { DigimonCardStore } from '../../../store/digimon-card.store';
+import { BackroomsBackendService } from '../../../services/backrooms-backend.service';
+import { BackroomsCardStore } from '../../../store/backrooms-card.store';
 import { emptyDeck } from '../../../store/reducers/digimon.reducers';
 import { SaveStore } from '../../../store/save.store';
 import { WebsiteStore } from '../../../store/website.store';
 import { DeckActions } from './../../../store/digimon.actions';
 
 @Component({
-  selector: 'digimon-change-accessorie-dialog',
+  selector: 'backrooms-change-accessorie-dialog',
   template: `
     <p-selectButton
       class="mt-10 text-center"
@@ -119,10 +119,10 @@ export class ChangeAccessorieDialogComponent implements OnInit, OnChanges {
   tags: ITag[] = [];
   color = { name: 'White', img: 'assets/images/decks/white.svg' };
 
-  private digimonCardStore = inject(DigimonCardStore);
+  private digimonCardStore = inject(BackroomsCardStore);
   constructor(
     private confirmationService: ConfirmationService,
-    private digimonCardService: DigimonBackendService,
+    private digimonCardService: BackroomsBackendService,
     private auth: AuthService,
     private messageService: MessageService,
   ) {}

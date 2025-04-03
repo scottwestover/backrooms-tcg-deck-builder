@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/digimon-card-game-collector",
+    "public": "dist/backrooms-tcg-deck-builder",
     "ignore": [
       "firebase.json",
       "**/.*",

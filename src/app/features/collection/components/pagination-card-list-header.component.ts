@@ -12,10 +12,10 @@ import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PaginatorModule } from 'primeng/paginator';
 import { SliderModule } from 'primeng/slider';
 import { SaveStore } from '../../../store/save.store';
-import { DigimonCardStore } from '../../../store/digimon-card.store';
+import { BackroomsCardStore } from '../../../store/backrooms-card.store';
 
 @Component({
-  selector: 'digimon-pagination-card-list-header',
+  selector: 'backrooms-pagination-card-list-header',
   template: `
     <div class="relative flex justify-center items-center h-10 w-full flex-row">
       <div
@@ -73,7 +73,7 @@ export class PaginationCardListHeaderComponent {
   @Output() filterBox = new EventEmitter<boolean>();
 
   saveStore = inject(SaveStore);
-  digimonCardStore = inject(DigimonCardStore);
+  digimonCardStore = inject(BackroomsCardStore);
 
   collectionMode = this.saveStore.collectionMode;
 

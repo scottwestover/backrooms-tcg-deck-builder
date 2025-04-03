@@ -5,13 +5,26 @@ import { saveAs } from 'file-saver';
 import { ButtonModule } from 'primeng/button';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { SelectButtonModule } from 'primeng/selectbutton';
-import { ColorsWithoutMulti, DigimonCard, ICountCard, IDeck, IDeckCard } from '../../../../models';
-import { compareIDs, formatId, levelSort, mapToDeckCards, sortColors, sortID } from '../../../functions';
+import {
+  BackroomsCard,
+  Colors,
+  ICountCard,
+  IDeck,
+  IDeckCard,
+} from '../../../../models';
+import {
+  compareIDs,
+  formatId,
+  levelSort,
+  mapToDeckCards,
+  sortColors,
+  sortID,
+} from '../../../functions';
 import { DialogStore } from '../../../store/dialog.store';
-import { DigimonCardStore } from '../../../store/digimon-card.store';
+import { BackroomsCardStore } from '../../../store/backrooms-card.store';
 
 @Component({
-  selector: 'digimon-export-deck-dialog',
+  selector: 'backrooms-export-deck-dialog',
   template: `
     <p-selectButton
       [options]="exportList"
@@ -111,17 +124,17 @@ import { DigimonCardStore } from '../../../store/digimon-card.store';
   ],
 })
 export class ExportDeckDialogComponent implements OnInit {
-  digimonCardStore = inject(DigimonCardStore);
+  digimonCardStore = inject(BackroomsCardStore);
   dialogStore = inject(DialogStore);
 
   deck: IDeck = this.dialogStore.exportDeck().deck;
-  digimonCards: DigimonCard[] = this.digimonCardStore.cards();
+  digimonCards: BackroomsCard[] = this.digimonCardStore.cards();
 
   exportList = ['TEXT', 'TTS', 'UNTAP', 'IMAGE'];
   exportType = 'TEXT';
   deckText = '';
 
-  colors = ColorsWithoutMulti;
+  colors = Colors;
   selectedColor = 'Red';
 
   normalOrder = true;
@@ -365,7 +378,7 @@ export class ExportDeckDialogComponent implements OnInit {
     let cardsInCurrentRow = 1;
     const cardsPerRow = 9;
     this.deck.cards.forEach((card) => {
-      const fullCard = this.digimonCards.find((search: DigimonCard) =>
+      const fullCard = this.digimonCards.find((search: BackroomsCard) =>
         compareIDs(card.id, search.id),
       );
       imgs.push({
@@ -463,7 +476,7 @@ export class ExportDeckDialogComponent implements OnInit {
     let cardsInCurrentRow = 1;
     const cardsPerRow = 10;
     this.deck.cards.forEach((card) => {
-      const fullCard = this.digimonCards.find((search: DigimonCard) =>
+      const fullCard = this.digimonCards.find((search: BackroomsCard) =>
         compareIDs(card.id, search.id),
       );
       for (let i = 1; i <= card.count; i++) {
@@ -540,15 +553,13 @@ export class ExportDeckDialogComponent implements OnInit {
     const mainDeckCards = mapToDeckCards(this.deck.cards, allCards);
     const sideDeckCards = mapToDeckCards(this.deck.sideDeck, allCards);
 
-    this.deck.cards = levelSort(mainDeckCards)
-      .map((card) => ({
-        id: card.id,
-        count: card.count,
-      }));
-    this.deck.sideDeck = levelSort(sideDeckCards)
-      .map((card) => ({
-        id: card.id,
-        count: card.count,
-      }));
+    this.deck.cards = levelSort(mainDeckCards).map((card) => ({
+      id: card.id,
+      count: card.count,
+    }));
+    this.deck.sideDeck = levelSort(sideDeckCards).map((card) => ({
+      id: card.id,
+      count: card.count,
+    }));
   }
 }

@@ -9,7 +9,7 @@ import { MultiSelectModule } from 'primeng/multiselect';
 import { InputTextModule } from 'primeng/inputtext';
 
 @Component({
-  selector: 'digimon-deck-filter',
+  selector: 'backrooms-deck-filter',
   template: `
     <div class="mx-auto flex flex-row">
       <div class="flex w-full flex-col sm:pr-2">

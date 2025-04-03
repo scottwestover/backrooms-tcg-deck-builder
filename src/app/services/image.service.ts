@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { defer, Observable, of } from 'rxjs';
 import { catchError, switchMap } from 'rxjs/operators';
-import { addJBeforeWebp } from '../../assets/cardlists/DigimonCards';
+import { addJBeforeWebp } from '../../assets/cardlists/BackroomCards';
 
 @Injectable()
 export class ImageService {

@@ -5,13 +5,13 @@ import { FilterStore } from '../../../store/filter.store';
 import { MultiButtonsComponent } from '../multi-buttons.component';
 
 @Component({
-  selector: 'digimon-block-filter',
+  selector: 'backrooms-block-filter',
   template: `
-    <digimon-multi-buttons
+    <backrooms-multi-buttons
       (clickEvent)="changeBlock($event, blockFilter)"
       [buttonArray]="blockButtons"
       [value]="blockFilter"
-      title="Block"></digimon-multi-buttons>
+      title="Block"></backrooms-multi-buttons>
   `,
   standalone: true,
   imports: [NgIf, MultiButtonsComponent, AsyncPipe],

@@ -16,7 +16,7 @@
 <h3 align="center">Digimon Card App</h3>
 
   <p align="center">
-    Website for tracking your Digimon Card Game Collection, creating new Decks and sharing those with the community.
+    Website for tracking your Backrooms TCG Collection, creating new Decks and sharing those with the community.
     <br />
     <br />
     <a href="https://digimoncard.app">View the Site</a>

@@ -9,34 +9,34 @@ import { IDeckCard } from '../../../../models';
 import { ChartContainerComponent } from './chart-container.component';
 
 @Component({
-  selector: 'digimon-chart-containers',
+  selector: 'backrooms-chart-containers',
   template: `
     <div class="jusify-between flex flex-row">
-      <digimon-chart-container
+      <backrooms-chart-container
         label="Lv.2"
         [fill]="digiEggs"
-        fillPercent="20"></digimon-chart-container>
-      <digimon-chart-container
+        fillPercent="20"></backrooms-chart-container>
+      <backrooms-chart-container
         label="Lv.3"
-        [fill]="lv3"></digimon-chart-container>
-      <digimon-chart-container
+        [fill]="lv3"></backrooms-chart-container>
+      <backrooms-chart-container
         label="Lv.4"
-        [fill]="lv4"></digimon-chart-container>
-      <digimon-chart-container
+        [fill]="lv4"></backrooms-chart-container>
+      <backrooms-chart-container
         label="Lv.5"
-        [fill]="lv5"></digimon-chart-container>
-      <digimon-chart-container
+        [fill]="lv5"></backrooms-chart-container>
+      <backrooms-chart-container
         label="Lv.6"
-        [fill]="lv6"></digimon-chart-container>
-      <digimon-chart-container
+        [fill]="lv6"></backrooms-chart-container>
+      <backrooms-chart-container
         label="Lv.7+"
-        [fill]="lv7"></digimon-chart-container>
-      <digimon-chart-container
+        [fill]="lv7"></backrooms-chart-container>
+      <backrooms-chart-container
         label="TM"
-        [fill]="tamer"></digimon-chart-container>
-      <digimon-chart-container
+        [fill]="tamer"></backrooms-chart-container>
+      <backrooms-chart-container
         label="OP"
-        [fill]="options"></digimon-chart-container>
+        [fill]="options"></backrooms-chart-container>
     </div>
   `,
   standalone: true,
@@ -65,38 +65,55 @@ export class ChartContainersComponent implements OnInit, OnChanges {
   }
 
   private setupChart() {
-    const eggs = this.deck.filter((card) => card.cardType === 'Digi-Egg');
-    this.digiEggs = this.filterColor(eggs);
+    // const eggs = this.deck.filter((card) => card.cardType === 'Digi-Egg');
+    // this.digiEggs = this.filterColor(eggs);
 
-    const lv3 = this.deck.filter((card) => card.cardLv === 'Lv.3');
-    this.lv3 = this.filterColor(lv3);
-    const lv4 = this.deck.filter((card) => card.cardLv === 'Lv.4');
-    this.lv4 = this.filterColor(lv4);
-    const lv5 = this.deck.filter((card) => card.cardLv === 'Lv.5');
-    this.lv5 = this.filterColor(lv5);
-    const lv6 = this.deck.filter((card) => card.cardLv === 'Lv.6');
-    this.lv6 = this.filterColor(lv6);
-    const lv7 = this.deck.filter((card) => card.cardLv === 'Lv.7');
-    this.lv7 = this.filterColor(lv7);
+    // const lv3 = this.deck.filter((card) => card.cardLv === 'Lv.3');
+    // this.lv3 = this.filterColor(lv3);
+    // const lv4 = this.deck.filter((card) => card.cardLv === 'Lv.4');
+    // this.lv4 = this.filterColor(lv4);
+    // const lv5 = this.deck.filter((card) => card.cardLv === 'Lv.5');
+    // this.lv5 = this.filterColor(lv5);
+    // const lv6 = this.deck.filter((card) => card.cardLv === 'Lv.6');
+    // this.lv6 = this.filterColor(lv6);
+    // const lv7 = this.deck.filter((card) => card.cardLv === 'Lv.7');
+    // this.lv7 = this.filterColor(lv7);
 
-    const tamer = this.deck.filter((card) => card.cardType === 'Tamer');
-    this.tamer = this.filterColor(tamer);
+    // const tamer = this.deck.filter((card) => card.cardType === 'Tamer');
+    // this.tamer = this.filterColor(tamer);
 
-    const options = this.deck.filter((card) => card.cardType === 'Option');
-    this.options = this.filterColor(options);
+    // const options = this.deck.filter((card) => card.cardType === 'Option');
+    // this.options = this.filterColor(options);
+
+    this.digiEggs = [];
+    this.lv3 = [];
+    this.lv4 = [];
+    this.lv5 = [];
+    this.lv6 = [];
+    this.lv7 = [];
+    this.options = [];
   }
 
   private filterColor(array: IDeckCard[]): number[] {
-    const red = array.filter((card) => card.color === 'Red');
-    const blue = array.filter((card) => card.color === 'Blue');
-    const yellow = array.filter((card) => card.color === 'Yellow');
-    const green = array.filter((card) => card.color === 'Green');
-    const black = array.filter((card) => card.color === 'Black');
-    const purple = array.filter((card) => card.color === 'Purple');
-    const white = array.filter((card) => card.color === 'White');
-    const multi = array.filter(
-      (card) => card.color.includes('/') || card.color === 'Multi',
-    );
+    // const red = array.filter((card) => card.color === 'Red');
+    // const blue = array.filter((card) => card.color === 'Blue');
+    // const yellow = array.filter((card) => card.color === 'Yellow');
+    // const green = array.filter((card) => card.color === 'Green');
+    // const black = array.filter((card) => card.color === 'Black');
+    // const purple = array.filter((card) => card.color === 'Purple');
+    // const white = array.filter((card) => card.color === 'White');
+    // const multi = array.filter(
+    //   (card) => card.color.includes('/') || card.color === 'Multi',
+    // );
+
+    const red: IDeckCard[] = [];
+    const blue: IDeckCard[] = [];
+    const yellow: IDeckCard[] = [];
+    const green: IDeckCard[] = [];
+    const black: IDeckCard[] = [];
+    const purple: IDeckCard[] = [];
+    const white: IDeckCard[] = [];
+    const multi: IDeckCard[] = [];
 
     return [
       this.getCount(red),

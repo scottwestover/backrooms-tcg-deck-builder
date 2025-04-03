@@ -11,9 +11,6 @@ module.exports = {
         '2xs': '0.625rem',
         '3xs': '0.5rem',
       },
-      backgroundImage: {
-        'digimon': "url('/assets/images/bg_corner.png')",
-      }
     },
   },
   variants: {

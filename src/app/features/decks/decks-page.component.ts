@@ -21,7 +21,7 @@ import { Subject } from 'rxjs';
 import { emptyDeck, ICountCard, IDeck, ITournamentDeck } from '../../../models';
 import { setDeckImage } from '../../functions';
 import { DialogStore } from '../../store/dialog.store';
-import { DigimonCardStore } from '../../store/digimon-card.store';
+import { BackroomsCardStore } from '../../store/backrooms-card.store';
 import { SaveStore } from '../../store/save.store';
 import { WebsiteStore } from '../../store/website.store';
 import { DeckContainerComponent } from '../shared/deck-container.component';
@@ -32,9 +32,9 @@ import { DeckStatisticsComponent } from './components/deck-statistics.component'
 import { DecksFilterComponent } from './components/decks-filter.component';
 
 @Component({
-  selector: 'digimon-decks-page',
+  selector: 'backrooms-decks-page',
   template: `
-    <digimon-page #page>
+    <backrooms-page #page>
       <p-blockUI [blocked]="loading2" [target]="page">
         <p-progressSpinner class="mx-auto"></p-progressSpinner>
       </p-blockUI>
@@ -67,19 +67,19 @@ import { DecksFilterComponent } from './components/decks-filter.component';
           </div>
         </div>
 
-        <digimon-decks-filter
+        <backrooms-decks-filter
           [form]="form"
-          (applyFilter)="filterChanges()"></digimon-decks-filter>
+          (applyFilter)="filterChanges()"></backrooms-decks-filter>
 
         <div
           *ngIf="decksToShow.length > 0; else loading"
           class="grid gap-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          <digimon-deck-container
+          <backrooms-deck-container
             class="mx-auto min-w-[280px] max-w-[285px]"
             *ngFor="let deck of decksToShow"
             (click)="showDeckDetails(deck)"
             (contextmenu)="showDeckDetails(deck)"
-            [deck]="deck"></digimon-deck-container>
+            [deck]="deck"></backrooms-deck-container>
         </div>
 
         <ng-template #loading>
@@ -100,7 +100,7 @@ import { DecksFilterComponent } from './components/decks-filter.component';
 
         <p-divider></p-divider>
       </div>
-    </digimon-page>
+    </backrooms-page>
 
     <p-dialog
       header="Deck Statistics for the filtered decks"
@@ -110,10 +110,10 @@ import { DecksFilterComponent } from './components/decks-filter.component';
       [resizable]="false"
       styleClass="w-full h-full max-w-6xl min-h-[500px]"
       [baseZIndex]="10000">
-      <digimon-deck-statistics
+      <backrooms-deck-statistics
         [decks]="filteredDecks"
         [updateCards]="updateStatistics"
-        [(loading)]="loading2"></digimon-deck-statistics>
+        [(loading)]="loading2"></backrooms-deck-statistics>
     </p-dialog>
   `,
   standalone: true,
@@ -167,7 +167,7 @@ export class DecksPageComponent implements OnInit {
 
   loading2 = false;
 
-  private digimonCardStore = inject(DigimonCardStore);
+  private digimonCardStore = inject(BackroomsCardStore);
 
   constructor(private changeDetection: ChangeDetectorRef) {
     this.websiteStore.loadCommunityDecks();
@@ -279,7 +279,7 @@ export class DecksPageComponent implements OnInit {
   }
 
   private makeGoogleFriendly() {
-    this.title.setTitle('Digimon Card Game - Community');
+    this.title.setTitle('Backrooms TCG - Community');
 
     this.meta.addTags([
       {

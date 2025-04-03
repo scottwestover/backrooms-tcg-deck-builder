@@ -11,7 +11,7 @@ import { StyleClassModule } from 'primeng/styleclass';
 import { TAGS } from '../../../../models';
 
 @Component({
-  selector: 'digimon-decks-filter',
+  selector: 'backrooms-decks-filter',
   template: `
     <div
       [formGroup]="form"

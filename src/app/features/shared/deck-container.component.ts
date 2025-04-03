@@ -12,10 +12,10 @@ import { BehaviorSubject, first } from 'rxjs';
 import { ColorMap, IDeck, ITournamentDeck } from '../../../models';
 import { setDeckImage } from '../../functions';
 import { ImageService } from '../../services/image.service';
-import { DigimonCardStore } from '../../store/digimon-card.store';
+import { BackroomsCardStore } from '../../store/backrooms-card.store';
 
 @Component({
-  selector: 'digimon-deck-container',
+  selector: 'backrooms-deck-container',
   template: `
     <div
       class="surface-card relative h-32 w-full cursor-pointer border border-black"
@@ -94,7 +94,7 @@ export class DeckContainerComponent implements OnChanges {
 
   colorMap = ColorMap;
 
-  private digimonCardStore = inject(DigimonCardStore);
+  private backroomsCardStore = inject(BackroomsCardStore);
 
   constructor(private imageService: ImageService) {}
 
@@ -103,7 +103,7 @@ export class DeckContainerComponent implements OnChanges {
   }
 
   setCardImage() {
-    const digimonCardMap = this.digimonCardStore.cardsMap();
+    const digimonCardMap = this.backroomsCardStore.cardsMap();
     let imagePath = '';
     // If there is an ImageCardId set it
     if (this.deck.imageCardId) {
@@ -112,7 +112,10 @@ export class DeckContainerComponent implements OnChanges {
         imageCard?.cardImage ?? '../../../assets/images/digimon-card-back.webp';
     } else if (this.deck.cards && this.deck.cards.length < 0) {
       // If there are cards in the deck, set it to the first card
-      const imageCard = setDeckImage(this.deck, this.digimonCardStore.cards()); // Replace setDeckImage with the appropriate function
+      const imageCard = setDeckImage(
+        this.deck,
+        this.backroomsCardStore.cards(),
+      ); // Replace setDeckImage with the appropriate function
       imagePath = imageCard?.cardImage ?? '';
     }
 

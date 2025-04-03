@@ -1,14 +1,14 @@
 import { Component, inject, Input, OnInit } from '@angular/core';
-import { DigimonCard, IDeck } from '../../../../models';
+import { IDeck, IDeckCard } from '../../../../models';
 import {
   getCountFromDeckCards,
   mapToDeckCards,
-} from '../../../functions/digimon-card.functions';
+} from '../../../functions/backrooms-card.functions';
 import { NgStyle } from '@angular/common';
-import { DigimonCardStore } from '../../../store/digimon-card.store';
+import { BackroomsCardStore } from '../../../store/backrooms-card.store';
 
 @Component({
-  selector: 'digimon-level-spread',
+  selector: 'backrooms-level-spread',
   template: `
     <div class="no-gap grid h-full w-full grid-cols-6">
       <div
@@ -70,7 +70,7 @@ export class LevelSpreadComponent implements OnInit {
 
   levelSpread = [0, 0, 0, 0, 0, 0];
 
-  private digimonCardStore = inject(DigimonCardStore);
+  private digimonCardStore = inject(BackroomsCardStore);
 
   ngOnInit(): void {
     this.getLevelSpread();
@@ -82,11 +82,17 @@ export class LevelSpreadComponent implements OnInit {
       this.digimonCardStore.cards(),
     );
     const digieggs = cards.filter((card) => card.cardType === 'Digi-Egg');
-    const lv3 = cards.filter((card) => card.cardLv === 'Lv.3');
-    const lv4 = cards.filter((card) => card.cardLv === 'Lv.4');
-    const lv5 = cards.filter((card) => card.cardLv === 'Lv.5');
-    const lv6 = cards.filter((card) => card.cardLv === 'Lv.6');
-    const lv7 = cards.filter((card) => card.cardLv === 'Lv.7');
+    // const lv3 = cards.filter((card) => card.cardLv === 'Lv.3');
+    // const lv4 = cards.filter((card) => card.cardLv === 'Lv.4');
+    // const lv5 = cards.filter((card) => card.cardLv === 'Lv.5');
+    // const lv6 = cards.filter((card) => card.cardLv === 'Lv.6');
+    // const lv7 = cards.filter((card) => card.cardLv === 'Lv.7');
+
+    const lv3: IDeckCard[] = [];
+    const lv4: IDeckCard[] = [];
+    const lv5: IDeckCard[] = [];
+    const lv6: IDeckCard[] = [];
+    const lv7: IDeckCard[] = [];
 
     this.levelSpread[0] = getCountFromDeckCards(digieggs);
     this.levelSpread[1] = getCountFromDeckCards(lv3);

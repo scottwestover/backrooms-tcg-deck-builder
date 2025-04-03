@@ -1,5 +1,11 @@
 import { patchState, signalStore, withMethods, withState } from '@ngrx/signals';
-import { DigimonCard, dummyCard, emptyDeck, IDeck } from '../../models';
+import {
+  BackroomsCard,
+  DigimonCard,
+  dummyCard,
+  emptyDeck,
+  IDeck,
+} from '../../models';
 
 interface DeckDialog {
   show: boolean;
@@ -14,7 +20,7 @@ interface ExportDeckDialog {
 
 interface ViewCardDialog {
   show: boolean;
-  card: DigimonCard;
+  card: BackroomsCard;
   width: string;
 }
 

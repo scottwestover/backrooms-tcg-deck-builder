@@ -1,0 +1,170 @@
+[
+  {
+    "id": "LL-001",
+    "name": {
+      "english": "Hallway"
+    },
+    "rarity": "COMMON",
+    "types": [
+      "ROOM"
+    ],
+    "ccs": {
+      "type": "PP",
+      "value": "3"
+    },
+    "navigationPoints": "2",
+    "sanityPoints": "3",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lost-level/LL-001.webp",
+    "illustrator": "vignesh652",
+    "cardNumber": "1001",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Room"
+  },
+  {
+    "id": "LL-002",
+    "name": {
+      "english": "Corner"
+    },
+    "rarity": "COMMON",
+    "types": [
+      "ROOM"
+    ],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lost-level/LL-002.webp",
+    "illustrator": "-",
+    "cardNumber": "1002",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Room"
+  },
+  {
+    "id": "LL-011",
+    "name": {
+      "english": "Death Moth Jelly"
+    },
+    "rarity": "COMMON",
+    "types": [
+      "ITEM", "EDIBLE", "CONCEAL"
+    ],
+    "ccs": {
+      "type": "-",
+      "value": "0"
+    },
+    "navigationPoints": "-",
+    "sanityPoints": "3",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lost-level/LL-011.webp",
+    "illustrator": "-",
+    "cardNumber": "1011",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Item"
+  },
+  {
+    "id": "LL-026",
+    "name": {
+      "english": "Smiler"
+    },
+    "rarity": "COMMON",
+    "types": [
+      "FRIENDLY", "GEM"
+    ],
+    "ccs": {
+      "type": "DIH",
+      "value": "1"
+    },
+    "navigationPoints": "0",
+    "sanityPoints": "-4",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lost-level/LL-026.webp",
+    "illustrator": "-",
+    "cardNumber": "1026",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "CP-001",
+    "name": {
+      "english": "Left Turn"
+    },
+    "rarity": "COMMON",
+    "types": [
+      "ROOM"
+    ],
+    "ccs": {
+      "type": "PP",
+      "value": "2"
+    },
+    "navigationPoints": "1",
+    "sanityPoints": "1",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/car-park/CP-001.webp",
+    "illustrator": "-",
+    "cardNumber": "2001",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Room"
+  },
+  {
+    "id": "CP-058",
+    "name": {
+      "english": "Echoing Intercom"
+    },
+    "rarity": "HYPER",
+    "types": [
+      "ITEM"
+    ],
+    "ccs": {
+      "type": "PP",
+      "value": "2"
+    },
+    "navigationPoints": "1",
+    "sanityPoints": "1",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/car-park/CP-058.webp",
+    "illustrator": "-",
+    "cardNumber": "2058",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Item"
+  },
+  {
+    "id": "CP-065",
+    "name": {
+      "english": "Fire Exit"
+    },
+    "rarity": "PURE",
+    "types": [
+      "OUTCOME", "PORTAL"
+    ],
+    "ccs": {
+      "type": "PP",
+      "value": "2"
+    },
+    "navigationPoints": "1",
+    "sanityPoints": "1",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/car-park/CP-065.webp",
+    "illustrator": "-",
+    "cardNumber": "2065",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Outcome"
+  }
+]

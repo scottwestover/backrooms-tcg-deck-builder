@@ -42,31 +42,31 @@ import { HomePageComponent } from './app/features/home/home-page.component';
 import { ProfilePageComponent } from './app/features/profile/profile-page.component';
 import { TestPageComponent } from './app/features/test/test-page.component';
 import { AuthService } from './app/services/auth.service';
-import { DigimonBackendService } from './app/services/digimon-backend.service';
+import { BackroomsBackendService } from './app/services/backrooms-backend.service';
 
 import { environment } from './environments/environment';
 
 const routes: Routes = [
-  {
-    path: 'test',
-    component: TestPageComponent,
-  },
-  {
-    path: 'community',
-    component: CommunityPageComponent,
-  },
+  // {
+  //   path: 'test',
+  //   component: TestPageComponent,
+  // },
+  // {
+  //   path: 'community',
+  //   component: CommunityPageComponent,
+  // },
   {
     path: 'decks',
     component: DecksPageComponent,
   },
-  {
-    path: 'user',
-    component: ProfilePageComponent,
-  },
-  {
-    path: 'user/:id',
-    component: ProfilePageComponent,
-  },
+  // {
+  //   path: 'user',
+  //   component: ProfilePageComponent,
+  // },
+  // {
+  //   path: 'user/:id',
+  //   component: ProfilePageComponent,
+  // },
   {
     path: 'deckbuilder/user/:userId/deck/:deckId',
     component: DeckbuilderPageComponent,
@@ -87,14 +87,14 @@ const routes: Routes = [
     path: 'collection/:userId',
     component: CollectionPageComponent,
   },
-  {
-    path: 'community/:id',
-    component: BlogPageComponent,
-  },
-  {
-    path: 'community/new',
-    component: BlogPageComponent,
-  },
+  // {
+  //   path: 'community/:id',
+  //   component: BlogPageComponent,
+  // },
+  // {
+  //   path: 'community/new',
+  //   component: BlogPageComponent,
+  // },
   { path: '**', component: HomePageComponent },
 ];
 
@@ -127,7 +127,7 @@ bootstrapApplication(AppComponent, {
 
     ReactiveFormsModule,
     AuthService,
-    DigimonBackendService,
+    BackroomsBackendService,
     provideHttpClient(withInterceptorsFromDi()),
     provideAnimations(),
     MessageService,

@@ -19,21 +19,22 @@ import { SelectButtonModule } from 'primeng/selectbutton';
 import { TabViewModule } from 'primeng/tabview';
 import { Subject } from 'rxjs';
 import {
+  BackroomsCard,
   DigimonCard,
   emptySettings,
   GroupedSets,
   ICountCard,
   ISave,
 } from '../../../../models';
-import { DigimonBackendService } from '../../../services/digimon-backend.service';
+import { BackroomsBackendService } from '../../../services/backrooms-backend.service';
 import { DialogStore } from '../../../store/dialog.store';
-import { DigimonCardStore } from '../../../store/digimon-card.store';
+import { BackroomsCardStore } from '../../../store/backrooms-card.store';
 import { SaveStore } from '../../../store/save.store';
 import { SetFilterComponent } from '../filter/set-filter.component';
 import { SettingsRowComponent } from '../settings-row.component';
 
 @Component({
-  selector: 'digimon-settings-dialog',
+  selector: 'backrooms-settings-dialog',
   template: `
     <p-tabView class="centered-tabs">
       <p-tabPanel class="ml-auto" header="General">
@@ -41,32 +42,32 @@ import { SettingsRowComponent } from '../settings-row.component';
           header="Deckbuilder"
           subheader="Settings for the Deckbuilder"
           styleClass="border-slate-300 border">
-          <digimon-settings-row title="Sort Cards by">
+          <backrooms-settings-row title="Sort Cards by">
             <p-selectButton
               [allowEmpty]="false"
               [formControl]="sortOrderFilter"
               [multiple]="false"
               [options]="sortOrder">
             </p-selectButton>
-          </digimon-settings-row>
+          </backrooms-settings-row>
 
-          <digimon-settings-row title="Display SideDecks">
+          <backrooms-settings-row title="Display SideDecks">
             <p-selectButton
               [allowEmpty]="false"
               [(ngModel)]="sideDeck"
               [options]="yesNoOptions"
               optionLabel="label"
               optionValue="value"></p-selectButton>
-          </digimon-settings-row>
+          </backrooms-settings-row>
 
-          <digimon-settings-row title="Display Filter on Fullscreen">
+          <backrooms-settings-row title="Display Filter on Fullscreen">
             <p-selectButton
               [allowEmpty]="false"
               [(ngModel)]="fullscreenFilter"
               [options]="yesNoOptions"
               optionLabel="label"
               optionValue="value"></p-selectButton>
-          </digimon-settings-row>
+          </backrooms-settings-row>
         </p-card>
 
         <p-card
@@ -74,7 +75,7 @@ import { SettingsRowComponent } from '../settings-row.component';
           header="Collection"
           subheader="Settings for the Collection"
           styleClass="border-slate-300 border">
-          <digimon-settings-row title="Sets you want to complete">
+          <backrooms-settings-row title="Sets you want to complete">
             <p-multiSelect
               [filter]="false"
               [(ngModel)]="setGoal"
@@ -93,94 +94,94 @@ import { SettingsRowComponent } from '../settings-row.component';
                 </div>
               </ng-template>
             </p-multiSelect>
-          </digimon-settings-row>
-          <digimon-settings-row title="Collection Goal">
+          </backrooms-settings-row>
+          <backrooms-settings-row title="Collection Goal">
             <p-inputNumber
               [(ngModel)]="collectionCount"
               mode="decimal"></p-inputNumber>
-          </digimon-settings-row>
-          <digimon-settings-row title="AA Collection Goal">
+          </backrooms-settings-row>
+          <backrooms-settings-row title="AA Collection Goal">
             <p-inputNumber
               [(ngModel)]="aaCollectionCount"
               mode="decimal"></p-inputNumber>
-          </digimon-settings-row>
-          <digimon-settings-row title="Collection Filter Max">
+          </backrooms-settings-row>
+          <backrooms-settings-row title="Collection Filter Max">
             <p-inputNumber
               [(ngModel)]="collectionFilterMax"
               mode="decimal"></p-inputNumber>
-          </digimon-settings-row>
-          <digimon-settings-row title="Alt. Art Cards">
+          </backrooms-settings-row>
+          <backrooms-settings-row title="Alt. Art Cards">
             <p-selectButton
               [allowEmpty]="false"
               [(ngModel)]="aa"
               [options]="showHideOptions"
               optionLabel="label"
               optionValue="value"></p-selectButton>
-          </digimon-settings-row>
-          <digimon-settings-row title="Foil Cards">
+          </backrooms-settings-row>
+          <backrooms-settings-row title="Foil Cards">
             <p-selectButton
               [allowEmpty]="false"
               [(ngModel)]="foil"
               [options]="showHideOptions"
               optionLabel="label"
               optionValue="value"></p-selectButton>
-          </digimon-settings-row>
-          <digimon-settings-row title="Textured Cards">
+          </backrooms-settings-row>
+          <backrooms-settings-row title="Textured Cards">
             <p-selectButton
               [allowEmpty]="false"
               [(ngModel)]="textured"
               [options]="showHideOptions"
               optionLabel="label"
               optionValue="value"></p-selectButton>
-          </digimon-settings-row>
-          <digimon-settings-row title="Pre-Release Cards">
+          </backrooms-settings-row>
+          <backrooms-settings-row title="Pre-Release Cards">
             <p-selectButton
               [allowEmpty]="false"
               [(ngModel)]="preRelease"
               [options]="showHideOptions"
               optionLabel="label"
               optionValue="value"></p-selectButton>
-          </digimon-settings-row>
-          <digimon-settings-row title="Box Topper">
+          </backrooms-settings-row>
+          <backrooms-settings-row title="Box Topper">
             <p-selectButton
               [allowEmpty]="false"
               [(ngModel)]="boxTopper"
               [options]="showHideOptions"
               optionLabel="label"
               optionValue="value"></p-selectButton>
-          </digimon-settings-row>
-          <digimon-settings-row title="Full Art Cards">
+          </backrooms-settings-row>
+          <backrooms-settings-row title="Full Art Cards">
             <p-selectButton
               [allowEmpty]="false"
               [(ngModel)]="fullArt"
               [options]="showHideOptions"
               optionLabel="label"
               optionValue="value"></p-selectButton>
-          </digimon-settings-row>
-          <digimon-settings-row title="Stamp Cards">
+          </backrooms-settings-row>
+          <backrooms-settings-row title="Stamp Cards">
             <p-selectButton
               [allowEmpty]="false"
               [(ngModel)]="stamped"
               [options]="showHideOptions"
               optionLabel="label"
               optionValue="value"></p-selectButton>
-          </digimon-settings-row>
-          <digimon-settings-row title="Special Rare">
+          </backrooms-settings-row>
+          <backrooms-settings-row title="Special Rare">
             <p-selectButton
               [allowEmpty]="false"
               [(ngModel)]="specialRare"
               [options]="showHideOptions"
               optionLabel="label"
               optionValue="value"></p-selectButton>
-          </digimon-settings-row>
-          <digimon-settings-row title="Rare Pull">
+          </backrooms-settings-row>
+          <backrooms-settings-row title="Rare Pull">
             <p-selectButton
               [allowEmpty]="false"
               [(ngModel)]="rarePull"
               [options]="showHideOptions"
               optionLabel="label"
               optionValue="value"></p-selectButton>
-          </digimon-settings-row>
+          </backrooms-settings-row>
         </p-card>
 
         <p-card
@@ -188,29 +189,29 @@ import { SettingsRowComponent } from '../settings-row.component';
           header="Profile"
           subheader="Settings for your Profile"
           styleClass="border-slate-300 border">
-          <digimon-settings-row title="Username">
+          <backrooms-settings-row title="Username">
             <input type="text" pInputText [(ngModel)]="username" />
-          </digimon-settings-row>
-          <digimon-settings-row title="Profile Image">
+          </backrooms-settings-row>
+          <backrooms-settings-row title="Profile Image">
             <input type="text" pInputText [(ngModel)]="displayImage" />
-          </digimon-settings-row>
-          <digimon-settings-row title="Collection-Stats">
+          </backrooms-settings-row>
+          <backrooms-settings-row title="Collection-Stats">
             <p-selectButton
               [allowEmpty]="false"
               [(ngModel)]="userStats"
               [options]="showHideOptions"
               optionLabel="label"
               optionValue="value"></p-selectButton>
-          </digimon-settings-row>
+          </backrooms-settings-row>
 
-          <digimon-settings-row title="Display Decks in a Table">
+          <backrooms-settings-row title="Display Decks in a Table">
             <p-selectButton
               [allowEmpty]="false"
               [(ngModel)]="deckDisplayTable"
               [options]="yesNoOptions"
               optionLabel="label"
               optionValue="value"></p-selectButton>
-          </digimon-settings-row>
+          </backrooms-settings-row>
         </p-card>
 
         <p-card
@@ -319,6 +320,7 @@ import { SettingsRowComponent } from '../settings-row.component';
             </button>
           </div>
 
+          <!--
           <h1 class="mt-3 text-center text-xs font-bold text-[#e2e4e6]">
             Version:
           </h1>
@@ -366,6 +368,7 @@ import { SettingsRowComponent } from '../settings-row.component';
               Reprint
             </button>
           </div>
+          -->
 
           <p class="mt-3 text-center font-bold">
             Missing Cards or Collected Cards?
@@ -533,11 +536,11 @@ export class SettingsDialogComponent implements OnDestroy {
   displayImage = '';
   username = '';
 
-  private digimonCardStore = inject(DigimonCardStore);
+  private digimonCardStore = inject(BackroomsCardStore);
   private onDestroy$ = new Subject();
 
   constructor(
-    private digimonBackendService: DigimonBackendService,
+    private digimonBackendService: BackroomsBackendService,
     private confirmationService: ConfirmationService,
     private toastrService: ToastrService,
   ) {
@@ -602,9 +605,6 @@ export class SettingsDialogComponent implements OnDestroy {
         countMax: this.collectionFilterMax,
       },
     };
-
-    console.log(save);
-
     this.saveStore.updateSave(save);
     this.toastrService.info(
       'Settings were saved and updated.',
@@ -723,7 +723,7 @@ export class SettingsDialogComponent implements OnDestroy {
   private getSetCards(): ICountCard[] {
     // If no filter is selected filter all cards
     let returnCards: ICountCard[] = [];
-    let allCards: DigimonCard[] = this.setupAllCards();
+    let allCards: BackroomsCard[] = this.setupAllCards();
     let collection: ICountCard[] = this.setupCollection();
 
     if (this.collectedCards) {
@@ -749,8 +749,8 @@ export class SettingsDialogComponent implements OnDestroy {
     return returnCards;
   }
 
-  private setupAllCards(): DigimonCard[] {
-    let setFiltered: DigimonCard[] =
+  private setupAllCards(): BackroomsCard[] {
+    let setFiltered: BackroomsCard[] =
       this.sets.length === 0 ? this.digimonCardStore.cards() : [];
     this.sets.forEach((filter) => {
       setFiltered = [
@@ -763,7 +763,7 @@ export class SettingsDialogComponent implements OnDestroy {
       ];
     });
 
-    let raritiesFiltered: DigimonCard[] = [];
+    let raritiesFiltered: BackroomsCard[] = [];
     if (this.rarities.length === 0) {
       raritiesFiltered = setFiltered;
     }
@@ -776,7 +776,7 @@ export class SettingsDialogComponent implements OnDestroy {
       ];
     });
 
-    let versionsFiltered: DigimonCard[] = [];
+    let versionsFiltered: BackroomsCard[] = [];
     if (this.versions.length === 0) {
       versionsFiltered = raritiesFiltered;
     }

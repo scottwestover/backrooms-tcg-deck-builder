@@ -8,7 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import * as DecoupledEditor from '@ckeditor/ckeditor5-build-decoupled-document';
 
 @Component({
-  selector: 'digimon-ckeditor',
+  selector: 'backrooms-ckeditor',
   template: `
     <div [formGroup]="content">
       <ckeditor

@@ -9,7 +9,7 @@ import { RippleModule } from 'primeng/ripple';
 import { IBlog } from '../../../../models';
 
 @Component({
-  selector: 'digimon-blog-item',
+  selector: 'backrooms-blog-item',
   template: `
     <div
       class="flex flex-col w-full h-56 border border-slate-100 shadow-md surface-ground">

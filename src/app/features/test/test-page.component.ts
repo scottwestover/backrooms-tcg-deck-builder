@@ -7,11 +7,11 @@ import { ADMINS, IDeck, ISave, ITournamentDeck } from '../../../models';
 import { setColors, setDeckImage, setTags } from '../../functions';
 import { AuthService } from '../../services/auth.service';
 import { CardMarketService } from '../../services/card-market.service';
-import { DigimonBackendService } from '../../services/digimon-backend.service';
-import { DigimonCardStore } from '../../store/digimon-card.store';
+import { BackroomsBackendService } from '../../services/backrooms-backend.service';
+import { BackroomsCardStore } from '../../store/backrooms-card.store';
 
 @Component({
-  selector: 'digimon-test-page',
+  selector: 'backrooms-test-page',
   template: `
     <button
       *ngIf="isAdmin()"
@@ -84,12 +84,12 @@ export class TestPageComponent implements OnDestroy {
   productsWithoutCorrectID: any[] = [];
   currentID = 1;
 
-  private digimonCardStore = inject(DigimonCardStore);
+  private digimonCardStore = inject(BackroomsCardStore);
   private onDestroy$ = new Subject();
 
   constructor(
     public authService: AuthService,
-    private digimonBackendService: DigimonBackendService,
+    private digimonBackendService: BackroomsBackendService,
     private cardMarketService: CardMarketService,
   ) {
     //cardTraderService.getCardPrices().subscribe((value) => {

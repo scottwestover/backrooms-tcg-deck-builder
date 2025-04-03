@@ -21,7 +21,7 @@ import { SaveStore } from '../../../store/save.store';
 import { FilterSideBoxComponent } from './filter-side-box.component';
 
 @Component({
-  selector: 'digimon-filter-and-search',
+  selector: 'backrooms-filter-and-search',
   template: `
     <div
       class="surface-ground flex h-[70px] w-full flex-col justify-center py-1">
@@ -62,7 +62,8 @@ import { FilterSideBoxComponent } from './filter-side-box.component';
       [resizable]="false"
       styleClass="w-full h-full max-w-6xl min-h-[500px]"
       [baseZIndex]="10000">
-      <digimon-filter-side-box [showColors]="true"></digimon-filter-side-box>
+      <backrooms-filter-side-box
+        [showColors]="true"></backrooms-filter-side-box>
     </p-dialog>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,

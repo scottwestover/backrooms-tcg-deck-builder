@@ -11,12 +11,12 @@ import { LazyLoadImageModule } from 'ng-lazyload-image';
 import { SharedModule } from 'primeng/api';
 import { TableModule } from 'primeng/table';
 import { IDeck } from '../../../../models';
-import { setDeckImage } from '../../../functions/digimon-card.functions';
-import { DigimonCardStore } from '../../../store/digimon-card.store';
+import { setDeckImage } from '../../../functions/backrooms-card.functions';
+import { BackroomsCardStore } from '../../../store/backrooms-card.store';
 import { SaveStore } from '../../../store/save.store';
 
 @Component({
-  selector: 'digimon-decks-table',
+  selector: 'backrooms-decks-table',
   template: `
     <p-table
       [value]="decks"
@@ -114,7 +114,7 @@ export class DecksTableComponent {
   @Output() onDeckClick = new EventEmitter<IDeck>();
 
   saveStore = inject(SaveStore);
-  digimonCardStore = inject(DigimonCardStore);
+  digimonCardStore = inject(BackroomsCardStore);
 
   getCardImage(deck: IDeck): string {
     //If there are no cards in the deck set it to the Yokomon

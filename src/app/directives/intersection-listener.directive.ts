@@ -8,11 +8,11 @@ import {
 } from '@angular/core';
 
 @Directive({
-  selector: '[digimonIntersectionListener]',
+  selector: '[backroomsIntersectionListener]',
   standalone: true,
 })
 export class IntersectionListenerDirective implements AfterViewInit, OnInit {
-  @Output() digimonIntersectionListener = new EventEmitter<boolean>();
+  @Output() backroomsIntersectionListener = new EventEmitter<boolean>();
   observer!: IntersectionObserver;
 
   constructor(private element: ElementRef) {}
@@ -33,7 +33,7 @@ export class IntersectionListenerDirective implements AfterViewInit, OnInit {
     };
     this.observer = new IntersectionObserver((entries) => {
       if (entries[0].isIntersecting) {
-        this.digimonIntersectionListener.emit(true);
+        this.backroomsIntersectionListener.emit(true);
       }
     }, options);
   }

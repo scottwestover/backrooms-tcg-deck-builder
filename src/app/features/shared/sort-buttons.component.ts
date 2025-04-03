@@ -6,7 +6,7 @@ import { ISort, ISortElement } from '../../../models';
 import { WebsiteStore } from '../../store/website.store';
 
 @Component({
-  selector: 'digimon-sort-buttons',
+  selector: 'backrooms-sort-buttons',
   template: `
     <div class="mb-1 inline-flex rounded-md shadow-sm" role="group">
       <button
@@ -48,9 +48,9 @@ export class SortButtonsComponent {
 
   sortOptions: ISortElement[] = [
     { name: 'ID', element: 'id' },
-    { name: 'Cost', element: 'playCost' },
-    { name: 'DP', element: 'dp' },
-    { name: 'Level', element: 'cardLv' },
+    // { name: 'Cost', element: 'playCost' },
+    // { name: 'DP', element: 'dp' },
+    // { name: 'Level', element: 'cardLv' },
     { name: 'Name', element: 'name' },
     { name: 'Count', element: 'count' },
   ];

@@ -12,24 +12,23 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { SidebarModule } from 'primeng/sidebar';
 import { ToastModule } from 'primeng/toast';
 import { first } from 'rxjs';
-import { CARDSET, emptyFilter, IFilter } from '../models';
+import { emptyFilter, IFilter } from '../models';
 import { DialogComponent } from './features/shared/dialog.component';
 import { NavLinksComponent } from './features/shared/navbar/nav-links.component';
 import { NavbarComponent } from './features/shared/navbar/navbar.component';
 import { filterCards } from './functions';
 import { AuthService } from './services/auth.service';
-import { DigimonBackendService } from './services/digimon-backend.service';
-import { DigimonCardStore } from './store/digimon-card.store';
+import { BackroomsBackendService } from './services/backrooms-backend.service';
+import { BackroomsCardStore } from './store/backrooms-card.store';
 import { FilterStore } from './store/filter.store';
 import { SaveStore } from './store/save.store';
 import { WebsiteStore } from './store/website.store';
 
 @Component({
-  selector: 'digimon-root',
+  selector: 'backrooms-root',
   template: `
-    <div
-      class="flex flex-col lg:flex-row bg-gradient-to-b from-[#17212f] to-[#08528d]">
-      <digimon-navbar (openSideNav)="sideNav = true"></digimon-navbar>
+    <div class="flex flex-col lg:flex-row main-root">
+      <backrooms-navbar (openSideNav)="sideNav = true"></backrooms-navbar>
 
       @if (saveLoaded()) {
         <div
@@ -45,15 +44,15 @@ import { WebsiteStore } from './store/website.store';
           class="absolute left-1/2 top-1/2 z-[5000] -translate-x-1/2 -translate-y-1/2 transform"></p-progressSpinner>
       }
 
-      <digimon-dialog></digimon-dialog>
+      <backrooms-dialog></backrooms-dialog>
 
       <p-sidebar
         [(visible)]="sideNav"
         styleClass="w-[6.5rem] overflow-hidden p-0">
         <ng-template pTemplate="content" class="p-0">
-          <digimon-nav-links
+          <backrooms-nav-links
             class="flex flex-col w-full justify-center"
-            [sidebar]="true"></digimon-nav-links>
+            [sidebar]="true"></backrooms-nav-links>
         </ng-template>
       </p-sidebar>
 
@@ -76,13 +75,13 @@ import { WebsiteStore } from './store/website.store';
   ],
 })
 export class AppComponent {
-  digimonCardStore = inject(DigimonCardStore);
+  digimonCardStore = inject(BackroomsCardStore);
   saveStore = inject(SaveStore);
   filterStore = inject(FilterStore);
   websiteStore = inject(WebsiteStore);
 
   authService = inject(AuthService);
-  backendService = inject(DigimonBackendService);
+  backendService = inject(BackroomsBackendService);
 
   saveLoaded = signal(false);
 
@@ -125,7 +124,6 @@ export class AppComponent {
 
     effect(
       () => {
-        console.log('Filter changed');
         const cards = this.digimonCardStore.cards();
 
         if (cards.length === 0) return;
@@ -161,7 +159,7 @@ export class AppComponent {
         .pipe(first())
         .subscribe(() => {});
     } else {
-      localStorage.setItem('Digimon-Card-Collector', JSON.stringify(save));
+      localStorage.setItem('backrooms-Card-Collector', JSON.stringify(save));
     }
   }
 
@@ -364,6 +362,6 @@ export class AppComponent {
       return;
     }
 
-    this.digimonCardStore.updateCards(cardSet as CARDSET);
+    this.digimonCardStore.updateCards();
   }
 }

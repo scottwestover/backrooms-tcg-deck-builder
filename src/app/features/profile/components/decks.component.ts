@@ -19,17 +19,17 @@ import { DeckDialogComponent } from '../../shared/dialogs/deck-dialog.component'
 import { DecksTableComponent } from './decks-table.component';
 
 @Component({
-  selector: 'digimon-decks',
+  selector: 'backrooms-decks',
   template: `
     <div *ngIf="!displayTables; else deckTable">
       <div class="grid gap-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 py-2">
-        <digimon-deck-container
+        <backrooms-deck-container
           class="mx-auto min-w-[280px] max-w-[285px]"
           (click)="showDeckDialog(deck)"
           (contextmenu)="showDeckDialog(deck)"
           *ngFor="let deck of decksToShow"
           [deck]="deck">
-        </digimon-deck-container>
+        </backrooms-deck-container>
       </div>
 
       <div class="flex justify-center w-full">
@@ -46,9 +46,9 @@ import { DecksTableComponent } from './decks-table.component';
     </div>
 
     <ng-template #deckTable>
-      <digimon-decks-table
+      <backrooms-decks-table
         [decks]="decks"
-        (onDeckClick)="showDeckDialog($event)"></digimon-decks-table>
+        (onDeckClick)="showDeckDialog($event)"></backrooms-decks-table>
     </ng-template>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,

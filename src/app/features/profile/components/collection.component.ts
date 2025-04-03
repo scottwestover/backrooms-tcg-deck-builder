@@ -7,9 +7,9 @@ import {
   OnInit,
   SimpleChanges,
 } from '@angular/core';
-import { DigimonCard, ICountCard } from '../../../../models';
+import { ICountCard } from '../../../../models';
 import { NgIf, NgFor } from '@angular/common';
-import { DigimonCardStore } from '../../../store/digimon-card.store';
+import { BackroomsCardStore } from '../../../store/backrooms-card.store';
 
 interface MappedCollection {
   id: string;
@@ -19,7 +19,7 @@ interface MappedCollection {
 }
 
 @Component({
-  selector: 'digimon-collection',
+  selector: 'backrooms-collection',
   template: `
     <div
       class="border-red h-[250px] overflow-y-scroll border-2 text-[#e2e4e6] lg:h-1/2">
@@ -215,11 +215,11 @@ export class CollectionComponent implements OnInit, OnChanges {
   collectionList: MappedCollection[] = [];
   mappedCollection: MappedCollection[];
 
-  private digimonCardStore = inject(DigimonCardStore);
+  private backroomsCardStore = inject(BackroomsCardStore);
 
   ngOnInit(): void {
     this.mappedCollection = this.collection.map((countCard) => {
-      const foundCard = this.digimonCardStore.cardsMap().get(countCard.id);
+      const foundCard = this.backroomsCardStore.cardsMap().get(countCard.id);
       return {
         id: countCard.id,
         name: foundCard?.name.english ?? 'Not Found',
@@ -232,7 +232,7 @@ export class CollectionComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges) {
     if (changes && changes['collection']) {
       this.mappedCollection = this.collection.map((countCard) => {
-        const foundCard = this.digimonCardStore.cardsMap().get(countCard.id);
+        const foundCard = this.backroomsCardStore.cardsMap().get(countCard.id);
         return {
           id: countCard.id,
           name: foundCard?.name.english ?? 'Not Found',

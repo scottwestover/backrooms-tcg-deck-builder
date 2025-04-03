@@ -7,7 +7,7 @@ import { catchError, first, Observable, of, retry, Subject } from 'rxjs';
 import { ISave, IUser } from '../../models';
 import { emptySave, emptySettings } from '../../models';
 import { SaveStore } from '../store/save.store';
-import { DigimonBackendService } from './digimon-backend.service';
+import { BackroomsBackendService } from './backrooms-backend.service';
 import UserCredential = firebase.auth.UserCredential;
 import User = firebase.User;
 
@@ -20,7 +20,7 @@ export class AuthService {
 
   constructor(
     public afAuth: AngularFireAuth,
-    private digimonBackendService: DigimonBackendService,
+    private digimonBackendService: BackroomsBackendService,
     private messageService: MessageService,
   ) {}
 

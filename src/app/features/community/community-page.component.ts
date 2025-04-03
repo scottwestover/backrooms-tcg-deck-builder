@@ -20,9 +20,9 @@ import { PageComponent } from '../shared/page.component';
 import { BlogItemComponent } from './components/blog-item.component';
 
 @Component({
-  selector: 'digimon-blog-page',
+  selector: 'backrooms-blog-page',
   template: `
-    <digimon-page>
+    <backrooms-page>
       <div
         class="self-start mx-auto p-3 w-[calc(100vw-0.75rem)] md:p-10 md:w-[calc(100vw-2.5rem)] max-w-xl md:max-w-6xl grid grid-cols-4">
         <div class="col-span-4 grid grid-cols-4 justify-center relative mb-3">
@@ -41,10 +41,10 @@ import { BlogItemComponent } from './components/blog-item.component';
 
         <div class="grid col-span-4 md:grid-cols-2 gap-3">
           @for (blog of showBlogs; track $index) {
-            <digimon-blog-item
+            <backrooms-blog-item
               class="w-full"
               [blog]="blog"
-              (click)="openBlog(blog)"></digimon-blog-item>
+              (click)="openBlog(blog)"></backrooms-blog-item>
           }
 
           <p-paginator
@@ -78,7 +78,7 @@ import { BlogItemComponent } from './components/blog-item.component';
           </div>
         }
       </div>
-    </digimon-page>
+    </backrooms-page>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
@@ -167,15 +167,15 @@ export class CommunityPageComponent implements OnInit {
   }
 
   private makeGoogleFriendly() {
-    this.metaTitle.setTitle('Digimon Card Game - Forum');
+    this.metaTitle.setTitle('Backrooms TCG - Forum');
 
     this.meta.addTags([
       {
         name: 'description',
         content:
-          'Share your thoughts about the Digimon Card Game with the community, write Tournament Reports or Archtype Reviews.',
+          'Share your thoughts about the Backrooms Card Game with the community, write Tournament Reports or Archtype Reviews.',
       },
-      { name: 'author', content: 'TakaOtaku' },
+      { name: 'author', content: 'scottwestover' },
       {
         name: 'keywords',
         content: 'forum, decks, tournament',

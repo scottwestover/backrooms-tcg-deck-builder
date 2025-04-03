@@ -14,11 +14,11 @@ import { IDeck, IDeckCard } from '../../../../models';
 import {
   getCountFromDeckCards,
   mapToDeckCards,
-} from '../../../functions/digimon-card.functions';
-import { DigimonCardStore } from '../../../store/digimon-card.store';
+} from '../../../functions/backrooms-card.functions';
+import { BackroomsCardStore } from '../../../store/backrooms-card.store';
 
 @Component({
-  selector: 'digimon-deck-statistics',
+  selector: 'backrooms-deck-statistics',
   template: `
     <div class="flex flex-col overflow-hidden">
       <div class="my-1 w-full border border-slate-200 p-1">
@@ -360,7 +360,7 @@ export class DeckStatisticsComponent implements OnInit, OnDestroy {
 
   mostUsedCards: IDeckCard[] = [];
 
-  private digimonCardStore = inject(DigimonCardStore);
+  private digimonCardStore = inject(BackroomsCardStore);
   private onDestroy$ = new Subject();
 
   ngOnInit() {
@@ -425,6 +425,8 @@ export class DeckStatisticsComponent implements OnInit, OnDestroy {
   }
 
   filter(cards: IDeckCard[], search: string): IDeckCard[] {
-    return cards.filter((card) => card.cardType === search);
+    // TODO
+    return cards;
+    // return cards.filter((card) => card.cardType === search);
   }
 }

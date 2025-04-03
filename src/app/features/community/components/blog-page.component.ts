@@ -13,24 +13,24 @@ import { ButtonModule } from 'primeng/button';
 import { RippleModule } from 'primeng/ripple';
 import { first, Observable, switchMap, tap, withLatestFrom } from 'rxjs';
 import { IBlog, IBlogWithText } from '../../../../models';
-import { DigimonBackendService } from '../../../services/digimon-backend.service';
+import { BackroomsBackendService } from '../../../services/backrooms-backend.service';
 import { WebsiteStore } from '../../../store/website.store';
 import { PageComponent } from '../../shared/page.component';
 import { CKEditorComponent } from './ckeditor.component';
 import { HeaderComponent } from './header.component';
 
 @Component({
-  selector: 'digimon-blog-page',
+  selector: 'backrooms-blog-page',
   template: `
-    <digimon-page *ngIf="blog$ | async as blog">
+    <backrooms-page *ngIf="blog$ | async as blog">
       <div class="h-full py-10 mx-auto max-w-7xl">
-        <digimon-header
+        <backrooms-header
           [edit]="edit"
           [form]="form"
           (editChanged)="edit = $event"
-          [authorid]="blog.authorid"></digimon-header>
+          [authorid]="blog.authorid"></backrooms-header>
 
-        <digimon-ckeditor [edit]="edit" [content]="form"></digimon-ckeditor>
+        <backrooms-ckeditor [edit]="edit" [content]="form"></backrooms-ckeditor>
 
         <button
           *ngIf="edit"
@@ -42,7 +42,7 @@ import { HeaderComponent } from './header.component';
           label="Save"
           (click)="save(blog)"></button>
       </div>
-    </digimon-page>
+    </backrooms-page>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
@@ -72,7 +72,7 @@ export class BlogPageComponent implements OnInit {
 
   constructor(
     private active: ActivatedRoute,
-    private digimonBackendService: DigimonBackendService,
+    private digimonBackendService: BackroomsBackendService,
     private messageService: MessageService,
     private meta: Meta,
     private metaTitle: Title,
@@ -144,9 +144,7 @@ export class BlogPageComponent implements OnInit {
   }
 
   private makeGoogleFriendly() {
-    this.metaTitle.setTitle(
-      'Digimon Card Game - ' + this.form.get('title')?.value,
-    );
+    this.metaTitle.setTitle('Backrooms TCG - ' + this.form.get('title')?.value);
 
     this.meta.addTags([
       {

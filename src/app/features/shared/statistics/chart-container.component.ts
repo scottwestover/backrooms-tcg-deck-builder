@@ -2,20 +2,20 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { NgFor, NgClass, NgStyle } from '@angular/common';
 
 @Component({
-  selector: 'digimon-chart-container',
+  selector: 'backrooms-chart-container',
   template: `
     <div class="m-0.5 h-full w-8">
       <p class="text-center text-[#e2e4e6]">
         {{ getFillCount() }}
       </p>
       <div class="stat-container">
-        <div
+        <!-- <div
           *ngFor="let color of colors; let i = index"
           [ngClass]="color"
           class="w-full"
           [ngStyle]="{
             height: 'calc(' + fill[7 - i] + ' * ' + fillPercent + '%)'
-          }"></div>
+          }"></div> -->
       </div>
       <p class="text-center text-xs text-[#e2e4e6]">{{ label }}</p>
     </div>
@@ -42,6 +42,9 @@ export class ChartContainerComponent {
 
   getFillCount(): number {
     let num = 0;
+    if (this.fill === undefined) {
+      return num;
+    }
     this.fill.forEach((number) => (num += number));
     return num;
   }

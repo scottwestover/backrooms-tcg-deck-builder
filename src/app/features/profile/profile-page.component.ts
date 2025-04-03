@@ -23,7 +23,7 @@ import {
 } from 'rxjs';
 import { IDeck, ISave } from '../../../models';
 import { AuthService } from '../../services/auth.service';
-import { DigimonBackendService } from '../../services/digimon-backend.service';
+import { BackroomsBackendService } from '../../services/backrooms-backend.service';
 import { SaveStore } from '../../store/save.store';
 import { PageComponent } from '../shared/page.component';
 import { DeckFilterComponent } from './components/deck-filter.component';
@@ -31,27 +31,27 @@ import { DecksComponent } from './components/decks.component';
 import { UserStatsComponent } from './components/user-stats.component';
 
 @Component({
-  selector: 'digimon-profile-page',
+  selector: 'backrooms-profile-page',
   template: `
-    <digimon-page *ngIf="save$ | async as save">
+    <backrooms-page *ngIf="save$ | async as save">
       <div
         class="flex flex-col self-baseline px-5 max-w-sm sm:max-w-3xl md:max-w-5xl lg:max-w-6xl xl:max-w-7xl mx-auto">
-        <digimon-user-stats
+        <backrooms-user-stats
           *ngIf="showUserStats"
           [save]="save"
-          class="mx-auto my-1 w-[calc(100%-3rem)] sm:w-full"></digimon-user-stats>
+          class="mx-auto my-1 w-[calc(100%-3rem)] sm:w-full"></backrooms-user-stats>
 
-        <digimon-deck-filter
+        <backrooms-deck-filter
           [searchFilter]="searchFilter"
           [tagFilter]="tagFilter"
-          class="mx-auto w-[calc(100%-3rem)] sm:w-full"></digimon-deck-filter>
+          class="mx-auto w-[calc(100%-3rem)] sm:w-full"></backrooms-deck-filter>
 
-        <digimon-decks
+        <backrooms-decks
           class="mx-auto mt-1 w-full"
           [editable]="editable"
-          [decks]="filteredDecks"></digimon-decks>
+          [decks]="filteredDecks"></backrooms-decks>
       </div>
-    </digimon-page>
+    </backrooms-page>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
@@ -83,7 +83,7 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
     private location: Location,
     private route: ActivatedRoute,
     public authService: AuthService,
-    private digimonBackendService: DigimonBackendService,
+    private digimonBackendService: BackroomsBackendService,
     private meta: Meta,
     private title: Title,
   ) {
@@ -168,7 +168,7 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
   }
 
   private makeGoogleFriendly() {
-    this.title.setTitle('Digimon Card Game - Profil');
+    this.title.setTitle('Backrooms TCG - Profile');
 
     this.meta.addTags([
       {

@@ -17,7 +17,7 @@ import {
 import { MessageService } from 'primeng/api';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { debounceTime, Subject, takeUntil } from 'rxjs';
-import { itemsAsSelectItem } from 'src/app/functions/digimon-card.functions';
+import { itemsAsSelectItem } from 'src/app/functions/backrooms-card.functions';
 import {
   Attributes,
   Colors,
@@ -43,13 +43,14 @@ import { SetFilterComponent } from './set-filter.component';
 import { VersionFilterComponent } from './version-filter.component';
 
 @Component({
-  selector: 'digimon-filter-side-box',
+  selector: 'backrooms-filter-side-box',
   template: `
     <div class="mx-1 flex h-full w-full flex-col pt-1 overflow-y-auto">
-      <div class="mt-1 grid w-full grid-cols-4">
+      <div class="mt-1 grid w-full grid-cols-4 spacer">
         <div></div>
 
-        <digimon-sort-buttons class="col-span-2 mx-auto"></digimon-sort-buttons>
+        <backrooms-sort-buttons
+          class="col-span-2 mx-auto spacer"></backrooms-sort-buttons>
 
         <button
           (click)="reset()"
@@ -59,80 +60,19 @@ import { VersionFilterComponent } from './version-filter.component';
         </button>
       </div>
 
-      <digimon-color-filter></digimon-color-filter>
-      <digimon-card-type-filter></digimon-card-type-filter>
+      <backrooms-color-filter class="spacer"></backrooms-color-filter>
+      <backrooms-card-type-filter class="spacer"></backrooms-card-type-filter>
 
-      <digimon-set-filter
-        class="mx-auto w-full max-w-[250px]"></digimon-set-filter>
+      <backrooms-set-filter class="mx-auto w-full max-w-[250px] spacer">
+      </backrooms-set-filter>
 
-      <div class="flex flex-row">
-        <digimon-range-slider
-          [reset]="resetEmitter"
-          [minMax]="[2, 7]"
-          [filterFormControl]="levelFilter"
-          title="Level:"
-          class="w-full"></digimon-range-slider>
-        <button
-          (click)="levelFilter.setValue([2, 7], { emitEvent: false })"
-          class="w-12 text-[#e2e4e6]"
-          type="button">
-          <i class="pi pi-refresh"></i>
-        </button>
-      </div>
-
-      <div class="flex flex-row">
-        <digimon-range-slider
-          [reset]="resetEmitter"
-          [minMax]="[0, 20]"
-          [filterFormControl]="playCostFilter"
-          title="Play Cost:"
-          class="w-full"></digimon-range-slider>
-        <button
-          (click)="playCostFilter.setValue([0, 20], { emitEvent: false })"
-          class="w-12 text-[#e2e4e6]"
-          type="button">
-          <i class="pi pi-refresh"></i>
-        </button>
-      </div>
-
-      <div class="flex flex-row">
-        <digimon-range-slider
-          [reset]="resetEmitter"
-          [minMax]="[0, 7]"
-          [filterFormControl]="digivolutionFilter"
-          title="Digivolution Cost:"
-          class="w-full"></digimon-range-slider>
-        <button
-          (click)="digivolutionFilter.setValue([0, 7], { emitEvent: false })"
-          class="w-12 text-[#e2e4e6]"
-          type="button">
-          <i class="pi pi-refresh"></i>
-        </button>
-      </div>
-
-      <div class="flex flex-row">
-        <digimon-range-slider
-          [reset]="resetEmitter"
-          [minMax]="[1, 17]"
-          [filterFormControl]="dpFilter"
-          suffix="000"
-          title="DP:"
-          class="w-full"></digimon-range-slider>
-        <button
-          (click)="dpFilter.setValue([1, 17], { emitEvent: false })"
-          class="w-12 text-[#e2e4e6]"
-          type="button">
-          <i class="pi pi-refresh"></i>
-        </button>
-      </div>
-
-      <div class="flex flex-row">
-        <digimon-range-slider
+      <div class="flex flex-row spacer">
+        <backrooms-range-slider
           [reset]="resetEmitter"
           [minMax]="[0, collectionCountMax() ?? 5]"
           [filterFormControl]="cardCountFilter"
           title="Number in Collection:"
-          class="w-full"></digimon-range-slider>
+          class="w-full"></backrooms-range-slider>
         <button
           (click)="
             cardCountFilter.setValue([0, collectionCountMax() ?? 5], {
@@ -145,122 +85,8 @@ import { VersionFilterComponent } from './version-filter.component';
         </button>
       </div>
 
-      <digimon-rarity-filter></digimon-rarity-filter>
-      <digimon-version-filter></digimon-version-filter>
-      <digimon-block-filter></digimon-block-filter>
-
-      <p-multiSelect
-        [formControl]="keywordFilter"
-        [options]="keywords"
-        [filter]="false"
-        [showClear]="false"
-        [showHeader]="false"
-        [showToggleAll]="false"
-        appendTo="body"
-        placeholder="Select a Keyword"
-        display="chip"
-        scrollHeight="250px"
-        class="mx-auto my-1 w-full max-w-[250px]"
-        styleClass="w-full mt-1 h-8 text-sm max-w-[250px]">
-      </p-multiSelect>
-
-      <p-multiSelect
-        [formControl]="formFilter"
-        [options]="forms"
-        [filter]="false"
-        [showClear]="false"
-        [showHeader]="false"
-        [showToggleAll]="false"
-        placeholder="Select a Form"
-        display="chip"
-        scrollHeight="250px"
-        class="mx-auto mb-1 w-full max-w-[250px]"
-        styleClass="w-full mt-1 h-8 text-sm max-w-[250px]">
-      </p-multiSelect>
-
-      <p-multiSelect
-        [formControl]="attributeFilter"
-        [options]="attributes"
-        [filter]="false"
-        [showClear]="false"
-        [showHeader]="false"
-        [showToggleAll]="false"
-        placeholder="Select an Attribute"
-        display="chip"
-        scrollHeight="250px"
-        class="mx-auto mb-1 w-full max-w-[250px]"
-        styleClass="w-full mt-1 h-8 text-sm max-w-[250px]">
-      </p-multiSelect>
-
-      <p-multiSelect
-        [formControl]="typeFilter"
-        [options]="types"
-        [filter]="false"
-        [showClear]="false"
-        [showHeader]="false"
-        [showToggleAll]="false"
-        placeholder="Select a Type"
-        display="chip"
-        scrollHeight="250px"
-        class="mx-auto mb-1 w-full max-w-[250px]"
-        styleClass="w-full mt-1 h-8 text-sm max-w-[250px]">
-      </p-multiSelect>
-
-      <p-multiSelect
-        [formControl]="specialRequirementsFilter"
-        [options]="specialRequirements"
-        [filter]="false"
-        [showClear]="false"
-        [showHeader]="false"
-        [showToggleAll]="false"
-        placeholder="Select a Special Requirement"
-        display="chip"
-        scrollHeight="250px"
-        class="mx-auto mb-1 w-full max-w-[250px]"
-        styleClass="w-full mt-1 h-8 text-sm max-w-[250px]">
-      </p-multiSelect>
-
-      <p-multiSelect
-        [formControl]="illustratorFilter"
-        [options]="illustrators"
-        [filter]="false"
-        [showClear]="false"
-        [showHeader]="false"
-        [showToggleAll]="false"
-        placeholder="Select an Illustrator"
-        display="chip"
-        scrollHeight="250px"
-        class="mx-auto mb-1 w-full max-w-[250px]"
-        styleClass="w-full mt-1 h-8 text-sm max-w-[250px]">
-      </p-multiSelect>
-
-      <p-multiSelect
-        [formControl]="restrictionsFilter"
-        [options]="restrictions"
-        [filter]="false"
-        [showClear]="false"
-        [showHeader]="false"
-        [showToggleAll]="false"
-        placeholder="Select a Restrictions"
-        display="chip"
-        scrollHeight="250px"
-        class="mx-auto mb-1 w-full max-w-[250px]"
-        styleClass="w-full mt-1 h-8 text-sm max-w-[250px]">
-      </p-multiSelect>
-
-      <p-multiSelect
-        [formControl]="presetFilter"
-        [options]="presets"
-        [filter]="false"
-        [showClear]="false"
-        [showHeader]="false"
-        [showToggleAll]="false"
-        placeholder="Select a Preset"
-        display="chip"
-        scrollHeight="250px"
-        class="mx-auto mb-1 w-full max-w-[250px]"
-        styleClass="w-full mt-1 h-8 text-sm max-w-[250px]">
-      </p-multiSelect>
+      <!-- <backrooms-rarity-filter></backrooms-rarity-filter> -->
+      <!-- <backrooms-version-filter></backrooms-version-filter> -->
     </div>
   `,
   styleUrls: ['filter-side-box.component.scss'],

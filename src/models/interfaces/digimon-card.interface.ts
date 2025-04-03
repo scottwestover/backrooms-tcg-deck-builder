@@ -20,13 +20,18 @@ export interface BackroomsCard {
   types: string[];
   ccs: {
     type: string;
-    value: number;
+    value: string;
   };
-  navigationPoints: number;
-  sanityPoints: number;
+  navigationPoints: string;
+  sanityPoints: string;
   attackDamage: string;
   health: string;
   cardImage: string;
+  illustrator: string;
+  cardNumber: string;
+  notes: string;
+  version: string;
+  cardType: string;
 }
 
 export interface DigimonCard {

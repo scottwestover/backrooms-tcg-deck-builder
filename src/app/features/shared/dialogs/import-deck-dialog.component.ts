@@ -6,11 +6,11 @@ import { ButtonModule } from 'primeng/button';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { IDeck } from '../../../../models';
 import { setColors, setTags, stringToDeck } from '../../../functions';
-import { DigimonCardStore } from '../../../store/digimon-card.store';
+import { BackroomsCardStore } from '../../../store/backrooms-card.store';
 import { WebsiteStore } from '../../../store/website.store';
 
 @Component({
-  selector: 'digimon-import-deck-dialog',
+  selector: 'backrooms-import-deck-dialog',
   template: `
     <div>
       <div>
@@ -70,7 +70,7 @@ export class ImportDeckDialogComponent {
 
   deckText = '';
 
-  private digimonCardStore = inject(DigimonCardStore);
+  private digimonCardStore = inject(BackroomsCardStore);
 
   constructor(private messageService: MessageService) {}
 

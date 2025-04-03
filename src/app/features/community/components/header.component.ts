@@ -22,7 +22,7 @@ import { ADMINS, IUser } from '../../../../models';
 import { AuthService } from '../../../services/auth.service';
 
 @Component({
-  selector: 'digimon-header',
+  selector: 'backrooms-header',
   template: `
     <div [formGroup]="form">
       <div *ngIf="!edit; else editView" class="relative flex flex-row">

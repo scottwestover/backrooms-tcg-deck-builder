@@ -11,15 +11,15 @@ import {
 } from '@angular/core';
 
 import { DialogModule } from 'primeng/dialog';
-import { DigimonCard, dummyCard, IDeckCard } from '../../../models';
+import { BackroomsCard, dummyCard, IDeckCard } from '../../../models';
 import { ImgFallbackDirective } from '../../directives/ImgFallback.directive';
 import { ImageService } from '../../services/image.service';
 import { DialogStore } from '../../store/dialog.store';
-import { DigimonCardStore } from '../../store/digimon-card.store';
+import { BackroomsCardStore } from '../../store/backrooms-card.store';
 import { WebsiteStore } from '../../store/website.store';
 
 @Component({
-  selector: 'digimon-deck-card',
+  selector: 'backrooms-deck-card',
   template: `
     <div class="relative m-1 flex flex-col">
       <div
@@ -57,9 +57,9 @@ import { WebsiteStore } from '../../store/website.store';
       </div>
 
       <img
-        [digimonImgFallback]="card.cardImage"
+        [backroomsImgFallback]="card.cardImage"
         loading="lazy"
-        alt="Digimon Card"
+        alt="Backrooms Card"
         class="group z-50 m-auto rounded border-2 border-black" />
 
       <div *ngIf="edit" class="flex h-1/2 w-full flex-row rounded xl:hidden">
@@ -110,12 +110,12 @@ export class DeckCardComponent implements OnChanges, OnInit {
   @Output() public removeCard = new EventEmitter<boolean>();
 
   websiteStore = inject(WebsiteStore);
-  digimonCardStore = inject(DigimonCardStore);
+  backroomsCardStore = inject(BackroomsCardStore);
   dialogStore = inject(DialogStore);
 
-  completeCard: DigimonCard = JSON.parse(JSON.stringify(dummyCard));
+  completeCard: BackroomsCard = JSON.parse(JSON.stringify(dummyCard));
 
-  viewCard: DigimonCard = JSON.parse(JSON.stringify(dummyCard));
+  viewCard: BackroomsCard = JSON.parse(JSON.stringify(dummyCard));
 
   ngOnInit() {
     this.mapCard();
@@ -127,8 +127,8 @@ export class DeckCardComponent implements OnChanges, OnInit {
 
   mapCard(): void {
     this.completeCard =
-      this.digimonCardStore.cardsMap().get(this.card.id) ??
-      (JSON.parse(JSON.stringify(dummyCard)) as DigimonCard);
+      this.backroomsCardStore.cardsMap().get(this.card.id) ??
+      (JSON.parse(JSON.stringify(dummyCard)) as BackroomsCard);
   }
 
   addCardCount(event?: any): void {
@@ -160,7 +160,7 @@ export class DeckCardComponent implements OnChanges, OnInit {
   }
 
   showCardDetails() {
-    this.viewCard = this.digimonCardStore.cardsMap().get(this.card.id)!;
+    this.viewCard = this.backroomsCardStore.cardsMap().get(this.card.id)!;
     this.dialogStore.updateViewCardDialog({
       show: true,
       card: this.viewCard,

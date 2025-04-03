@@ -1,35 +1,36 @@
 import { AsyncPipe, NgClass, NgIf } from '@angular/common';
 import {
   ChangeDetectorRef,
-  Component, computed,
+  Component,
+  computed,
   effect,
   EventEmitter,
   inject,
   Input,
   OnDestroy,
   OnInit,
-  Output
+  Output,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { DialogModule } from 'primeng/dialog';
 import { DragDropModule } from 'primeng/dragdrop';
-import { DigimonCard, DRAG, dummyCard } from '../../../models';
+import { BackroomsCard, DRAG, dummyCard } from '../../../models';
 import { withoutJ } from '../../functions';
 import { SaveStore } from '../../store/save.store';
 import { WebsiteStore } from '../../store/website.store';
 import { CardImageComponent } from './card-image.component';
 
 @Component({
-  selector: 'digimon-full-card',
+  selector: 'backrooms-full-card',
   template: `
     <div
       [pDraggable]="'toDeck'"
       (onDragStart)="setDraggedCard(card)"
       class="relative inline-flex w-full transition-transform hover:scale-105">
       <div (click)="click()" (contextmenu)="rightclick()">
-        <digimon-card-image
+        <backrooms-card-image
           [card]="card"
-          [count]="count"></digimon-card-image>
+          [count]="count"></backrooms-card-image>
       </div>
 
       <ng-container>
@@ -40,7 +41,8 @@ import { CardImageComponent } from './card-image.component';
             'bottom-1': !collectionMode(),
             ' bottom-10': collectionMode()
           }">
-          {{ getCountInDeck(this.card.id) }}<span class="pr-1 text-sky-700">/</span
+          {{ getCountInDeck(this.card.id)
+          }}<span class="pr-1 text-sky-700">/</span
           >{{
             card.cardNumber === 'BT6-085' ||
             card.cardNumber === 'EX2-046' ||
@@ -90,7 +92,7 @@ import { CardImageComponent } from './card-image.component';
   ],
 })
 export class FullCardComponent {
-  @Input() card: DigimonCard = JSON.parse(JSON.stringify(dummyCard));
+  @Input() card: BackroomsCard = JSON.parse(JSON.stringify(dummyCard));
   @Input() count: number;
 
   @Input() width?: string;
@@ -102,7 +104,7 @@ export class FullCardComponent {
 
   @Input() onlyView!: boolean;
 
-  @Output() viewCard = new EventEmitter<DigimonCard>();
+  @Output() viewCard = new EventEmitter<BackroomsCard>();
 
   websiteStore = inject(WebsiteStore);
   saveStore = inject(SaveStore);
@@ -110,9 +112,11 @@ export class FullCardComponent {
   collectionMode = this.saveStore.collectionMode;
 
   getCountInDeck(cardId: string) {
-      return this.websiteStore
+    return (
+      this.websiteStore
         .deck()
-        .cards.find((value) => value.id === withoutJ(cardId))?.count ?? 0;
+        .cards.find((value) => value.id === withoutJ(cardId))?.count ?? 0
+    );
   }
 
   addCardToDeck() {
@@ -153,7 +157,7 @@ export class FullCardComponent {
     this.saveStore.updateCard(newId, count);
   }
 
-  setDraggedCard(card: DigimonCard) {
+  setDraggedCard(card: BackroomsCard) {
     this.websiteStore.updateDraggedCard({ card: card, drag: DRAG.Collection });
   }
 

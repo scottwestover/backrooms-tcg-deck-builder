@@ -1,4 +1,11 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  effect,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { NgClass, NgFor } from '@angular/common';
 
 export interface MultiButtons {
@@ -7,10 +14,10 @@ export interface MultiButtons {
 }
 
 @Component({
-  selector: 'digimon-multi-buttons',
+  selector: 'backrooms-multi-buttons',
   template: `
     <div class="mx-auto mb-2 max-w-[250px]">
-      <h1 class="mb-1 text-center text-xs font-bold text-[#e2e4e6]">
+      <h1 class="mb-1 text-center text-xs font-bold text-[#ffffff]">
         {{ title }}:
       </h1>
       <div [ngClass]="grid" class="my-2 grid w-full justify-center">
@@ -18,8 +25,8 @@ export interface MultiButtons {
           (click)="clickEvent.emit(button.value)"
           *ngFor="let button of buttonArray; let i = index"
           [ngClass]="{
-            'bg-[#e2e4e6] text-black': value.includes(button.value),
-            'surface-card text-[#e2e4e6]': !value.includes(button.value),
+            'border-[#ffd54f] text-[#ffd54f]': value.includes(button.value),
+            'text-[#ffffff]': !value.includes(button.value),
             'rounded-l-sm': i === 0,
             'rounded-r-sm': i === buttonArray.length - 1
           }"

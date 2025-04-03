@@ -11,7 +11,7 @@ import { DigimonCard, ICountCard } from '../../../../models';
 import { ChartModule } from 'primeng/chart';
 
 @Component({
-  selector: 'digimon-collection-stats-dialog',
+  selector: 'backrooms-collection-stats-dialog',
   template: `<!--div [formGroup]="languageForm">
   <p-checkbox class="ml-2" formControlName="english" label="English" name="language"></p-checkbox>
   <p-checkbox class="ml-2" formControlName="japanese" label="Japanese" name="language"></p-checkbox>

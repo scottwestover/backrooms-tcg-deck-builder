@@ -11,7 +11,7 @@ import { filter, map, of, switchMap, tap } from 'rxjs';
 import * as uuid from 'uuid';
 import { emptySave } from '../../../models';
 import { AuthService } from '../../services/auth.service';
-import { DigimonBackendService } from '../../services/digimon-backend.service';
+import { BackroomsBackendService } from '../../services/backrooms-backend.service';
 import { SaveStore } from '../../store/save.store';
 import { WebsiteStore } from '../../store/website.store';
 import { PaginationCardListComponent } from '../collection/components/pagination-card-list.component';
@@ -21,11 +21,11 @@ import { DeckStatsComponent } from './components/deck-stats.component';
 import { DeckViewComponent } from './components/deck-view.component';
 
 @Component({
-  selector: 'digimon-deckbuilder-page',
+  selector: 'backrooms-deckbuilder-page',
   template: `
     @if ((checkUrl$ | async) !== false) {
-      <digimon-page>
-        <digimon-deck-view
+      <backrooms-page>
+        <backrooms-deck-view
           *ngIf="deckView"
           class="overflow-y-auto pb-[10rem] h-full max-h-full overflow-x-hidden self-baseline"
           [ngClass]="{
@@ -33,13 +33,13 @@ import { DeckViewComponent } from './components/deck-view.component';
             'w-full': !collectionView
           }"
           [collectionView]="collectionView"
-          (hideStats)="statsDisplay = !statsDisplay"></digimon-deck-view>
+          (hideStats)="statsDisplay = !statsDisplay"></backrooms-deck-view>
 
-        <digimon-pagination-card-list
+        <backrooms-pagination-card-list
           *ngIf="collectionView"
           [initialWidth]="3"
           [ngClass]="{ 'w-3/5 max-w-[60%]': deckView, 'w-full': !deckView }"
-          class="border-l max-h-full border-slate-200 flex flex-row  h-[calc(100vh-3.5rem)] md:h-[calc(100vh-5rem)] lg:h-screen"></digimon-pagination-card-list>
+          class="border-l max-h-full border-slate-200 flex flex-row  h-[calc(100vh-3.5rem)] md:h-[calc(100vh-5rem)] lg:h-screen"></backrooms-pagination-card-list>
 
         <button
           class="surface-card w-6 border-l border-slate-200"
@@ -52,11 +52,11 @@ import { DeckViewComponent } from './components/deck-view.component';
         </button>
 
         @if (statsDisplay && deckView) {
-          <digimon-deck-stats
+          <backrooms-deck-stats
             class="fixed left-0 lg:left-[6.5rem] z-[300]"
-            [collectionView]="collectionView"></digimon-deck-stats>
+            [collectionView]="collectionView"></backrooms-deck-stats>
         }
-      </digimon-page>
+      </backrooms-page>
     }
   `,
   standalone: true,
@@ -75,7 +75,7 @@ import { DeckViewComponent } from './components/deck-view.component';
 })
 export class DeckbuilderPageComponent implements OnInit {
   route = inject(ActivatedRoute);
-  digimonBackendService = inject(DigimonBackendService);
+  digimonBackendService = inject(BackroomsBackendService);
   authService = inject(AuthService);
   meta = inject(Meta);
   title = inject(Title);
@@ -152,7 +152,7 @@ export class DeckbuilderPageComponent implements OnInit {
   }
 
   private makeGoogleFriendly() {
-    this.title.setTitle('Digimon Card Game - Deck Builder');
+    this.title.setTitle('Backrooms TCG - Deck Builder');
 
     this.meta.addTags([
       {
