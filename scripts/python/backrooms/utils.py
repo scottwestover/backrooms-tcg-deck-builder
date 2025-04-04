@@ -1,3 +1,4 @@
+import os
 import json
 import requests
 from bs4 import BeautifulSoup
@@ -42,6 +43,7 @@ def save_links(links: list[str]):
     with open('./data/links.json', 'w') as file:
       json.dump(data, file, indent=2)
 
+
 """
 Loads the saved image links from the JSON file.
 """
@@ -73,3 +75,57 @@ def download_image_with_retry(url: str, save_directory: str, max_retries=5, retr
         break
 
   print("Failed to download the image after multiple attempts.")
+
+
+def create_card_template_json(card_set: str, card_set_id: str, id: str):
+  card = {
+    "id": card_set + "-" + id,
+    "name": {
+      "english": "TODO"
+    },
+    "rarity": "HYPER",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lost-level/" + card_set + "-" + id + ".webp",
+    "illustrator": "-",
+    "cardNumber": card_set_id + id,
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  }
+  return card
+
+
+"""
+Used to create the new cards json file for a given set. This is based on the
+card images that we have for the new set.
+
+The function will grab all of the images in a directory, and based on those filenames,
+create a new json entry for that card with the provided card id. Once all of
+the files are parsed, the list will be saved to a json file.
+
+To use the function, update the set information below:
+example: instead of lost_levels, we can do car park like so, 'car_park', 'CP', and '2'.
+"""
+def create_cards_json():
+  card_image_dir = './data/images/'
+  # update 'lost_levels' with the folder of the set we are parsing files for
+  file_list = os.listdir(card_image_dir + 'lost_levels')
+  cards = []
+  for file_name in file_list:
+    card_id = file_name[3] + file_name[4] + file_name[5]
+    # update the template below to use the correct set identifier and set id
+    # LL - Lost Levels, id = 1
+    # CP - Car Park, id = 2
+    card = create_card_template_json('LL', '1', card_id)
+    cards.append(card)
+  sorted_cards = sorted(cards, key=lambda x: x['cardNumber'])
+  with open('./data/cards.json', 'w') as file:
+    json.dump(sorted_cards, file, indent=2)

@@ -1,0 +1,1878 @@
+[
+  {
+    "id": "CP-001",
+    "name": {
+      "english": "Left Turn"
+    },
+    "rarity": "COMMON",
+    "types": [
+      "ROOM"
+    ],
+    "ccs": {
+      "type": "PP",
+      "value": "2"
+    },
+    "navigationPoints": "1",
+    "sanityPoints": "1",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/car-park/CP-001.webp",
+    "illustrator": "-",
+    "cardNumber": "2001",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Room"
+  },
+  {
+    "id": "CP-002",
+    "name": {
+      "english": "Right Turn"
+    },
+    "rarity": "COMMON",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lost-level/CP-002.webp",
+    "illustrator": "-",
+    "cardNumber": "2002",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Room"
+  },
+  {
+    "id": "CP-003",
+    "name": {
+      "english": "Straight-A-Way"
+    },
+    "rarity": "COMMON",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lost-level/CP-003.webp",
+    "illustrator": "-",
+    "cardNumber": "2003",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Room"
+  },
+  {
+    "id": "CP-004",
+    "name": {
+      "english": "Security Check"
+    },
+    "rarity": "COMMON",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lost-level/CP-004.webp",
+    "illustrator": "-",
+    "cardNumber": "2004",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Room"
+  },
+  {
+    "id": "CP-005",
+    "name": {
+      "english": "Pile Up"
+    },
+    "rarity": "COMMON",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lost-level/CP-005.webp",
+    "illustrator": "-",
+    "cardNumber": "2005",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Room"
+  },
+  {
+    "id": "CP-006",
+    "name": {
+      "english": "Blockade"
+    },
+    "rarity": "COMMON",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lost-level/CP-006.webp",
+    "illustrator": "-",
+    "cardNumber": "2006",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Room"
+  },
+  {
+    "id": "CP-007",
+    "name": {
+      "english": "Stairwell"
+    },
+    "rarity": "UNCOMMON",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lost-level/CP-007.webp",
+    "illustrator": "-",
+    "cardNumber": "2007",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Room"
+  },
+  {
+    "id": "CP-008",
+    "name": {
+      "english": "Incline"
+    },
+    "rarity": "UNCOMMON",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lost-level/CP-008.webp",
+    "illustrator": "-",
+    "cardNumber": "2008",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Room"
+  },
+  {
+    "id": "CP-009",
+    "name": {
+      "english": "Abandoned Lot"
+    },
+    "rarity": "UNCOMMON",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lost-level/CP-009.webp",
+    "illustrator": "-",
+    "cardNumber": "2009",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Room"
+  },
+  {
+    "id": "CP-010",
+    "name": {
+      "english": "Desolate Log"
+    },
+    "rarity": "UNCOMMON",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lost-level/CP-010.webp",
+    "illustrator": "-",
+    "cardNumber": "2010",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Room"
+  },
+  {
+    "id": "CP-011",
+    "name": {
+      "english": "Destroyed Log"
+    },
+    "rarity": "UNCOMMON",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lost-level/CP-011.webp",
+    "illustrator": "-",
+    "cardNumber": "2011",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Room"
+  },
+  {
+    "id": "CP-012",
+    "name": {
+      "english": "Vending Machine"
+    },
+    "rarity": "RARE",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lost-level/CP-012.webp",
+    "illustrator": "-",
+    "cardNumber": "2012",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Room"
+  },
+  {
+    "id": "CP-013",
+    "name": {
+      "english": "Service Bay"
+    },
+    "rarity": "RARE",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lost-level/CP-013.webp",
+    "illustrator": "-",
+    "cardNumber": "2013",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Room"
+  },
+  {
+    "id": "CP-014",
+    "name": {
+      "english": "Collapsed Parking Lot"
+    },
+    "rarity": "HYPER",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lost-level/CP-014.webp",
+    "illustrator": "-",
+    "cardNumber": "2014",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Room"
+  },
+  {
+    "id": "CP-015",
+    "name": {
+      "english": "Painite Toll Both"
+    },
+    "rarity": "HYPER",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lost-level/CP-015.webp",
+    "illustrator": "-",
+    "cardNumber": "2015",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Room"
+  },
+  {
+    "id": "CP-016",
+    "name": {
+      "english": "Control Room"
+    },
+    "rarity": "HYPER",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lost-level/CP-016.webp",
+    "illustrator": "-",
+    "cardNumber": "2016",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Room"
+  },
+  {
+    "id": "CP-017",
+    "name": {
+      "english": "Never Ending Row"
+    },
+    "rarity": "PURE",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lost-level/CP-017.webp",
+    "illustrator": "-",
+    "cardNumber": "2017",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Room"
+  },
+  {
+    "id": "CP-018",
+    "name": {
+      "english": "The Lift"
+    },
+    "rarity": "VOID",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lost-level/CP-018.webp",
+    "illustrator": "-",
+    "cardNumber": "2018",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Room"
+  },
+  {
+    "id": "CP-019",
+    "name": {
+      "english": "Fire Exit"
+    },
+    "rarity": "PURE",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lost-level/CP-019.webp",
+    "illustrator": "-",
+    "cardNumber": "2019",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Outcome"
+  },
+  {
+    "id": "CP-020",
+    "name": {
+      "english": "Golden Exit"
+    },
+    "rarity": "COMMON",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lost-level/CP-020.webp",
+    "illustrator": "-",
+    "cardNumber": "2020",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Outcome"
+  },
+  {
+    "id": "CP-021",
+    "name": {
+      "english": "The Void"
+    },
+    "rarity": "COMMON",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lost-level/CP-021.webp",
+    "illustrator": "-",
+    "cardNumber": "2021",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Outcome"
+  },
+  {
+    "id": "CP-022",
+    "name": {
+      "english": "Smiler"
+    },
+    "rarity": "COMMON",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lost-level/CP-022.webp",
+    "illustrator": "-",
+    "cardNumber": "2022",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "CP-023",
+    "name": {
+      "english": "Memory Wyrm"
+    },
+    "rarity": "COMMON",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lost-level/CP-023.webp",
+    "illustrator": "-",
+    "cardNumber": "2023",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "CP-024",
+    "name": {
+      "english": "Death Moth"
+    },
+    "rarity": "COMMON",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lost-level/CP-024.webp",
+    "illustrator": "-",
+    "cardNumber": "2024",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "CP-025",
+    "name": {
+      "english": "Wayfinder"
+    },
+    "rarity": "COMMON",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lost-level/CP-025.webp",
+    "illustrator": "-",
+    "cardNumber": "2025",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "CP-026",
+    "name": {
+      "english": "Hoarder"
+    },
+    "rarity": "COMMON",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lost-level/CP-026.webp",
+    "illustrator": "-",
+    "cardNumber": "2026",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "CP-027",
+    "name": {
+      "english": "Hex Doll"
+    },
+    "rarity": "UNCOMMON",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lost-level/CP-027.webp",
+    "illustrator": "-",
+    "cardNumber": "2027",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "CP-028",
+    "name": {
+      "english": "Death Rat"
+    },
+    "rarity": "UNCOMMON",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lost-level/CP-028.webp",
+    "illustrator": "-",
+    "cardNumber": "2028",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "CP-029",
+    "name": {
+      "english": "Jhkix"
+    },
+    "rarity": "UNCOMMON",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lost-level/CP-029.webp",
+    "illustrator": "-",
+    "cardNumber": "2029",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "CP-030",
+    "name": {
+      "english": "Enforcer"
+    },
+    "rarity": "UNCOMMON",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lost-level/CP-030.webp",
+    "illustrator": "-",
+    "cardNumber": "2030",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "CP-031",
+    "name": {
+      "english": "Minus Moth"
+    },
+    "rarity": "UNCOMMON",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lost-level/CP-031.webp",
+    "illustrator": "-",
+    "cardNumber": "2031",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "CP-032",
+    "name": {
+      "english": "Turncoat"
+    },
+    "rarity": "RARE",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lost-level/CP-032.webp",
+    "illustrator": "-",
+    "cardNumber": "2032",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "CP-033",
+    "name": {
+      "english": "Ancient Wyrm"
+    },
+    "rarity": "RARE",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lost-level/CP-033.webp",
+    "illustrator": "-",
+    "cardNumber": "2033",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "CP-034",
+    "name": {
+      "english": "Shadow Lurker"
+    },
+    "rarity": "RARE",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lost-level/CP-034.webp",
+    "illustrator": "-",
+    "cardNumber": "2034",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "CP-035",
+    "name": {
+      "english": "Sighton U"
+    },
+    "rarity": "RARE",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lost-level/CP-035.webp",
+    "illustrator": "-",
+    "cardNumber": "2035",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "CP-036",
+    "name": {
+      "english": "Security Kiosk"
+    },
+    "rarity": "RARE",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lost-level/CP-036.webp",
+    "illustrator": "-",
+    "cardNumber": "2036",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "CP-037",
+    "name": {
+      "english": "Scarlett Wyrm"
+    },
+    "rarity": "HYPER",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lost-level/CP-037.webp",
+    "illustrator": "-",
+    "cardNumber": "2037",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "CP-038",
+    "name": {
+      "english": "The Guide"
+    },
+    "rarity": "HYPER",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lost-level/CP-038.webp",
+    "illustrator": "-",
+    "cardNumber": "2038",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "CP-039",
+    "name": {
+      "english": "Aiden"
+    },
+    "rarity": "HYPER",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lost-level/CP-039.webp",
+    "illustrator": "-",
+    "cardNumber": "2039",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "CP-040",
+    "name": {
+      "english": "The  Tollkeeper"
+    },
+    "rarity": "PURE",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lost-level/CP-040.webp",
+    "illustrator": "-",
+    "cardNumber": "2040",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "CP-041",
+    "name": {
+      "english": "Ancient Tollkeeper"
+    },
+    "rarity": "VOID",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lost-level/CP-041.webp",
+    "illustrator": "-",
+    "cardNumber": "2041",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "CP-042",
+    "name": {
+      "english": "Skits"
+    },
+    "rarity": "COMMON",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lost-level/CP-042.webp",
+    "illustrator": "-",
+    "cardNumber": "2042",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Item"
+  },
+  {
+    "id": "CP-043",
+    "name": {
+      "english": "Liquid Pain"
+    },
+    "rarity": "COMMON",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lost-level/CP-043.webp",
+    "illustrator": "-",
+    "cardNumber": "2043",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Item"
+  },
+  {
+    "id": "CP-044",
+    "name": {
+      "english": "Hex Pipe"
+    },
+    "rarity": "COMMON",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lost-level/CP-044.webp",
+    "illustrator": "-",
+    "cardNumber": "2044",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Item"
+  },
+  {
+    "id": "CP-045",
+    "name": {
+      "english": "Death Moth Brew"
+    },
+    "rarity": "COMMON",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lost-level/CP-045.webp",
+    "illustrator": "-",
+    "cardNumber": "2045",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Item"
+  },
+  {
+    "id": "CP-046",
+    "name": {
+      "english": "Shopping Cart"
+    },
+    "rarity": "COMMON",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lost-level/CP-046.webp",
+    "illustrator": "-",
+    "cardNumber": "2046",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Item"
+  },
+  {
+    "id": "CP-047",
+    "name": {
+      "english": "Road Flares"
+    },
+    "rarity": "UNCOMMON",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lost-level/CP-047.webp",
+    "illustrator": "-",
+    "cardNumber": "2047",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Item"
+  },
+  {
+    "id": "CP-048",
+    "name": {
+      "english": "Petrol Shrooms"
+    },
+    "rarity": "UNCOMMON",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lost-level/CP-048.webp",
+    "illustrator": "-",
+    "cardNumber": "2048",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Item"
+  },
+  {
+    "id": "CP-049",
+    "name": {
+      "english": "Cursed Toy Car"
+    },
+    "rarity": "UNCOMMON",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lost-level/CP-049.webp",
+    "illustrator": "-",
+    "cardNumber": "2049",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Item"
+  },
+  {
+    "id": "CP-050",
+    "name": {
+      "english": "Smudge Pot"
+    },
+    "rarity": "UNCOMMON",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lost-level/CP-050.webp",
+    "illustrator": "-",
+    "cardNumber": "2050",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Item"
+  },
+  {
+    "id": "CP-051",
+    "name": {
+      "english": "Memory Fluid"
+    },
+    "rarity": "UNCOMMON",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lost-level/CP-051.webp",
+    "illustrator": "-",
+    "cardNumber": "2051",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Item"
+  },
+  {
+    "id": "CP-052",
+    "name": {
+      "english": "Cursed Parking Ticket"
+    },
+    "rarity": "UNCOMMON",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lost-level/CP-052.webp",
+    "illustrator": "-",
+    "cardNumber": "2052",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Item"
+  },
+  {
+    "id": "CP-053",
+    "name": {
+      "english": "Clockwork Torch"
+    },
+    "rarity": "RARE",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lost-level/CP-053.webp",
+    "illustrator": "-",
+    "cardNumber": "2053",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Item"
+  },
+  {
+    "id": "CP-054",
+    "name": {
+      "english": "Oil Slick Shrooms"
+    },
+    "rarity": "RARE",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lost-level/CP-054.webp",
+    "illustrator": "-",
+    "cardNumber": "2054",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Item"
+  },
+  {
+    "id": "CP-055",
+    "name": {
+      "english": "Reflective Vest"
+    },
+    "rarity": "RARE",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lost-level/CP-055.webp",
+    "illustrator": "-",
+    "cardNumber": "2055",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Item"
+  },
+  {
+    "id": "CP-056",
+    "name": {
+      "english": "Abandoned Backpack"
+    },
+    "rarity": "RARE",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lost-level/CP-056.webp",
+    "illustrator": "-",
+    "cardNumber": "2056",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Item"
+  },
+  {
+    "id": "CP-057",
+    "name": {
+      "english": "Key Card"
+    },
+    "rarity": "HYPER",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lost-level/CP-057.webp",
+    "illustrator": "-",
+    "cardNumber": "2057",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Item"
+  },
+  {
+    "id": "CP-058",
+    "name": {
+      "english": "Echoing Intercom"
+    },
+    "rarity": "HYPER",
+    "types": [
+      "ITEM"
+    ],
+    "ccs": {
+      "type": "PP",
+      "value": "2"
+    },
+    "navigationPoints": "1",
+    "sanityPoints": "1",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/car-park/CP-058.webp",
+    "illustrator": "-",
+    "cardNumber": "2058",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Item"
+  },
+  {
+    "id": "CP-059",
+    "name": {
+      "english": "Navigating Orb"
+    },
+    "rarity": "VOID",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lost-level/CP-059.webp",
+    "illustrator": "-",
+    "cardNumber": "2059",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Item"
+  },
+  {
+    "id": "CP-060",
+    "name": {
+      "english": "Old Bronze Compass"
+    },
+    "rarity": "PURE",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lost-level/CP-060.webp",
+    "illustrator": "-",
+    "cardNumber": "2060",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Item"
+  },
+  {
+    "id": "CP-061",
+    "name": {
+      "english": "Painite Toll Both"
+    },
+    "rarity": "HYPER",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lost-level/CP-061.webp",
+    "illustrator": "-",
+    "cardNumber": "2061",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Room"
+  },
+  {
+    "id": "CP-062",
+    "name": {
+      "english": "Control Room"
+    },
+    "rarity": "HYPER",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lost-level/CP-062.webp",
+    "illustrator": "-",
+    "cardNumber": "2062",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Room"
+  },
+  {
+    "id": "CP-063",
+    "name": {
+      "english": "Never Ending Row"
+    },
+    "rarity": "SHATTERED",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lost-level/CP-063.webp",
+    "illustrator": "-",
+    "cardNumber": "2063",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Room"
+  },
+  {
+    "id": "CP-064",
+    "name": {
+      "english": "The Lift"
+    },
+    "rarity": "VOID",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lost-level/CP-064.webp",
+    "illustrator": "-",
+    "cardNumber": "2064",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Outcome"
+  },
+  {
+    "id": "CP-065",
+    "name": {
+      "english": "Fire Exit"
+    },
+    "rarity": "PURE",
+    "types": [
+      "OUTCOME", "PORTAL"
+    ],
+    "ccs": {
+      "type": "PP",
+      "value": "2"
+    },
+    "navigationPoints": "1",
+    "sanityPoints": "1",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/car-park/CP-065.webp",
+    "illustrator": "-",
+    "cardNumber": "2065",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Outcome"
+  },
+  {
+    "id": "CP-066",
+    "name": {
+      "english": "Golden Exit"
+    },
+    "rarity": "COMMON",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lost-level/CP-066.webp",
+    "illustrator": "-",
+    "cardNumber": "2066",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Outcome"
+  },
+  {
+    "id": "CP-067",
+    "name": {
+      "english": "The Void"
+    },
+    "rarity": "COMMON",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lost-level/CP-067.webp",
+    "illustrator": "-",
+    "cardNumber": "2067",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Outcome"
+  },
+  {
+    "id": "CP-068",
+    "name": {
+      "english": "Wayfinder"
+    },
+    "rarity": "COMMON",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lost-level/CP-068.webp",
+    "illustrator": "-",
+    "cardNumber": "2068",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "CP-069",
+    "name": {
+      "english": "Hex Doll"
+    },
+    "rarity": "UNCOMMON",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lost-level/CP-069.webp",
+    "illustrator": "-",
+    "cardNumber": "2069",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "CP-070",
+    "name": {
+      "english": "Death Rat"
+    },
+    "rarity": "UNCOMMON",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lost-level/CP-070.webp",
+    "illustrator": "-",
+    "cardNumber": "2070",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "CP-071",
+    "name": {
+      "english": "Enforcer"
+    },
+    "rarity": "UNCOMMON",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lost-level/CP-071.webp",
+    "illustrator": "-",
+    "cardNumber": "2071",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "CP-072",
+    "name": {
+      "english": "Minus Moth"
+    },
+    "rarity": "UNCOMMON",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lost-level/CP-072.webp",
+    "illustrator": "-",
+    "cardNumber": "2072",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "CP-073",
+    "name": {
+      "english": "Ancient Wyrm"
+    },
+    "rarity": "RARE",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lost-level/CP-073.webp",
+    "illustrator": "-",
+    "cardNumber": "2073",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "CP-074",
+    "name": {
+      "english": "Shadow Lurker"
+    },
+    "rarity": "RARE",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lost-level/CP-074.webp",
+    "illustrator": "-",
+    "cardNumber": "2074",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "CP-075",
+    "name": {
+      "english": "Sighton U"
+    },
+    "rarity": "RARE",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lost-level/CP-075.webp",
+    "illustrator": "-",
+    "cardNumber": "2075",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "CP-076",
+    "name": {
+      "english": "Security Kiosk"
+    },
+    "rarity": "RARE",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lost-level/CP-076.webp",
+    "illustrator": "-",
+    "cardNumber": "2076",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "CP-077",
+    "name": {
+      "english": "Scarlett Wyrm"
+    },
+    "rarity": "HYPER",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lost-level/CP-077.webp",
+    "illustrator": "-",
+    "cardNumber": "2077",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "CP-078",
+    "name": {
+      "english": "The Guide"
+    },
+    "rarity": "HYPER",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lost-level/CP-078.webp",
+    "illustrator": "-",
+    "cardNumber": "2078",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "CP-079",
+    "name": {
+      "english": "Aiden"
+    },
+    "rarity": "HYPER",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lost-level/CP-079.webp",
+    "illustrator": "-",
+    "cardNumber": "2079",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "CP-080",
+    "name": {
+      "english": "The Tollkeeper"
+    },
+    "rarity": "PURE",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lost-level/CP-080.webp",
+    "illustrator": "-",
+    "cardNumber": "2080",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "CP-081",
+    "name": {
+      "english": "Ancient Tollkeeper"
+    },
+    "rarity": "VOID",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lost-level/CP-081.webp",
+    "illustrator": "-",
+    "cardNumber": "2081",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "CP-082",
+    "name": {
+      "english": "Key Card"
+    },
+    "rarity": "HYPER",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lost-level/CP-082.webp",
+    "illustrator": "-",
+    "cardNumber": "2082",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Item"
+  },
+  {
+    "id": "CP-083",
+    "name": {
+      "english": "Echoing Intercom"
+    },
+    "rarity": "HYPER",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lost-level/CP-083.webp",
+    "illustrator": "-",
+    "cardNumber": "2083",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Item"
+  },
+  {
+    "id": "CP-084",
+    "name": {
+      "english": "Navigating Orb"
+    },
+    "rarity": "VOID",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lost-level/CP-084.webp",
+    "illustrator": "-",
+    "cardNumber": "2084",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Item"
+  },
+  {
+    "id": "CP-085",
+    "name": {
+      "english": "Old Bronze Compass"
+    },
+    "rarity": "PURE",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lost-level/CP-085.webp",
+    "illustrator": "-",
+    "cardNumber": "2085",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Item"
+  }
+]

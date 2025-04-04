@@ -3,6 +3,23 @@ import utils
 import time
 from PIL import Image
 
+
+def download_images_from_links(card_links: list[str]):
+  card_image_dir = './data/images/'
+  for index, card_link in enumerate(card_links):
+    file_name = card_image_dir + str(index) + '.png'
+    utils.download_image_with_retry(card_link, file_name)
+    time.sleep(0.25)
+
+
+def convert_image_to_webp():
+  card_image_dir = './data/images/'
+  file_list = os.listdir(card_image_dir + 'lost_levels')
+  for file_name in file_list:
+    im = Image.open(card_image_dir + 'lost_levels/' + file_name).convert('RGBA')
+    im.save(card_image_dir + file_name[:-4] + '.webp', 'webp')
+
+
 if __name__ == "__main__":
   # attempt to load links from cached json file
   card_links = utils.load_links()
@@ -13,15 +30,9 @@ if __name__ == "__main__":
     utils.save_links(card_links)
 
   # attempt to download images from the provided links
-  card_image_dir = './data/images/'
-  # for index, card_link in enumerate(card_links):
-  #   file_name = card_image_dir + str(index) + '.png'
-  #   utils.download_image_with_retry(card_link, file_name)
-  #   time.sleep(0.25)
+  # download_images_from_links(card_links)
 
   # modify each image file from png to webp file
-  file_list = os.listdir(card_image_dir + 'lost_levels')
-  for file_name in file_list:
-    # file_name = card_image_dir + 'CP-001.png'
-    im = Image.open(card_image_dir + 'lost_levels/' + file_name).convert('RGBA')
-    im.save(card_image_dir + file_name[:-4] + '.webp', 'webp')
+  # convert_image_to_webp()
+
+  utils.create_cards_json()
