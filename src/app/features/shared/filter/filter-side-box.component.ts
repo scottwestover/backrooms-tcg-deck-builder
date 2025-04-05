@@ -22,7 +22,6 @@ import {
   Attributes,
   Colors,
   emptyFilter,
-  Forms,
   IFilter,
   Illustrators,
   Keywords,
@@ -47,14 +46,12 @@ import { VersionFilterComponent } from './version-filter.component';
   template: `
     <div class="mx-1 flex h-full w-full flex-col pt-1 overflow-y-auto">
       <div class="mt-1 grid w-full grid-cols-4 spacer">
-        <div></div>
-
         <backrooms-sort-buttons
-          class="col-span-2 mx-auto spacer"></backrooms-sort-buttons>
+          class="col-span-3 mx-auto"></backrooms-sort-buttons>
 
         <button
           (click)="reset()"
-          class="ml-auto mr-5 text-[#e2e4e6]"
+          class="ml-auto mr-5 text-[#e2e4e6] col-span-1"
           type="button">
           <i class="pi pi-refresh"></i>
         </button>
@@ -69,13 +66,13 @@ import { VersionFilterComponent } from './version-filter.component';
       <div class="flex flex-row spacer">
         <backrooms-range-slider
           [reset]="resetEmitter"
-          [minMax]="[0, collectionCountMax() ?? 5]"
+          [minMax]="[0, collectionCountMax()]"
           [filterFormControl]="cardCountFilter"
           title="Number in Collection:"
           class="w-full"></backrooms-range-slider>
         <button
           (click)="
-            cardCountFilter.setValue([0, collectionCountMax() ?? 5], {
+            cardCountFilter.setValue([0, collectionCountMax()], {
               emitEvent: false
             })
           "
@@ -109,12 +106,9 @@ import { VersionFilterComponent } from './version-filter.component';
 export class FilterSideBoxComponent implements OnInit, OnDestroy {
   @Input() public showColors: boolean;
   messageService = inject(MessageService);
-
   filterStore = inject(FilterStore);
   saveStore = inject(SaveStore);
-
   keywordFilter = new UntypedFormControl([]);
-  formFilter = new UntypedFormControl([]);
   attributeFilter = new UntypedFormControl([]);
   typeFilter = new UntypedFormControl([]);
   illustratorFilter = new UntypedFormControl([]);
@@ -127,10 +121,8 @@ export class FilterSideBoxComponent implements OnInit, OnDestroy {
   dpFilter = new UntypedFormControl([]);
   cardCountFilter = new UntypedFormControl([]);
   presetFilter = new UntypedFormControl([]);
-
   filterFormGroup: UntypedFormGroup = new UntypedFormGroup({
     keywordFilter: this.keywordFilter,
-    formFilter: this.formFilter,
     attributeFilter: this.attributeFilter,
     typeFilter: this.typeFilter,
     illustratorFilter: this.illustratorFilter,
@@ -144,9 +136,7 @@ export class FilterSideBoxComponent implements OnInit, OnDestroy {
     cardCountFilter: this.cardCountFilter,
     presetFilter: this.presetFilter,
   });
-
   keywords = itemsAsSelectItem(Keywords);
-  forms = itemsAsSelectItem(Forms);
   attributes = itemsAsSelectItem(Attributes);
   types = itemsAsSelectItem(Types);
   colors = itemsAsSelectItem(Colors);
@@ -154,9 +144,7 @@ export class FilterSideBoxComponent implements OnInit, OnDestroy {
   specialRequirements = itemsAsSelectItem(SpecialRequirements);
   restrictions = itemsAsSelectItem(Restrictions);
   presets = itemsAsSelectItem(Presets);
-
   resetEmitter = new EventEmitter<void>();
-
   private filter: IFilter;
   updateFilter = effect(
     () => {
@@ -176,7 +164,6 @@ export class FilterSideBoxComponent implements OnInit, OnDestroy {
       });
 
       this.keywordFilter.setValue(filter.keywordFilter, { emitEvent: false });
-      this.formFilter.setValue(filter.formFilter, { emitEvent: false });
       this.attributeFilter.setValue(filter.attributeFilter, {
         emitEvent: false,
       });
@@ -201,7 +188,7 @@ export class FilterSideBoxComponent implements OnInit, OnDestroy {
     { allowSignalWrites: true },
   );
 
-  collectionCountMax = computed(() => this.saveStore.settings().countMax);
+  collectionCountMax = computed(() => this.saveStore.settings().countMax ?? 30);
   private onDestroy$ = new Subject();
 
   ngOnInit(): void {

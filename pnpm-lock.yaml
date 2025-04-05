@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@angular-slider/ngx-slider':
+        specifier: 19.0.0
+        version: 19.0.0(@angular/common@17.0.5(@angular/core@17.0.5(rxjs@7.8.1)(zone.js@0.14.2))(rxjs@7.8.1))(@angular/core@17.0.5(rxjs@7.8.1)(zone.js@0.14.2))(@angular/forms@17.0.5(@angular/common@17.0.5(@angular/core@17.0.5(rxjs@7.8.1)(zone.js@0.14.2))(rxjs@7.8.1))(@angular/core@17.0.5(rxjs@7.8.1)(zone.js@0.14.2))(@angular/platform-browser@17.0.5(@angular/animations@17.0.5(@angular/core@17.0.5(rxjs@7.8.1)(zone.js@0.14.2)))(@angular/common@17.0.5(@angular/core@17.0.5(rxjs@7.8.1)(zone.js@0.14.2))(rxjs@7.8.1))(@angular/core@17.0.5(rxjs@7.8.1)(zone.js@0.14.2)))(rxjs@7.8.1))
       '@angular/animations':
         specifier: 17.0.5
         version: 17.0.5(@angular/core@17.0.5(rxjs@7.8.1)(zone.js@0.14.2))
@@ -372,6 +375,13 @@ packages:
     peerDependencies:
       eslint: ^7.20.0 || ^8.0.0
       typescript: '*'
+
+  '@angular-slider/ngx-slider@19.0.0':
+    resolution: {integrity: sha512-VVJ+Fij5SKnbltxh6TdoBAUAKWfCnSLRPZ7e+r2uO88t8qte5/KHqVOdK4DWCjBr3rEr4YrPR4ylqBCuAWPsKQ==}
+    peerDependencies:
+      '@angular/common': ^19.0.0
+      '@angular/core': ^19.0.0
+      '@angular/forms': ^19.0.0
 
   '@angular/animations@17.0.5':
     resolution: {integrity: sha512-NZ9Y3QWqrn0THypVNwsztMV9rnjxNMRIf6to8aZv+ehIUOvskqcA/lW5qAdcMr1uNoyloB9vahJrDniWWEKT5A==}
@@ -7828,6 +7838,15 @@ snapshots:
       typescript: 5.2.2
     transitivePeerDependencies:
       - supports-color
+
+  '@angular-slider/ngx-slider@19.0.0(@angular/common@17.0.5(@angular/core@17.0.5(rxjs@7.8.1)(zone.js@0.14.2))(rxjs@7.8.1))(@angular/core@17.0.5(rxjs@7.8.1)(zone.js@0.14.2))(@angular/forms@17.0.5(@angular/common@17.0.5(@angular/core@17.0.5(rxjs@7.8.1)(zone.js@0.14.2))(rxjs@7.8.1))(@angular/core@17.0.5(rxjs@7.8.1)(zone.js@0.14.2))(@angular/platform-browser@17.0.5(@angular/animations@17.0.5(@angular/core@17.0.5(rxjs@7.8.1)(zone.js@0.14.2)))(@angular/common@17.0.5(@angular/core@17.0.5(rxjs@7.8.1)(zone.js@0.14.2))(rxjs@7.8.1))(@angular/core@17.0.5(rxjs@7.8.1)(zone.js@0.14.2)))(rxjs@7.8.1))':
+    dependencies:
+      '@angular/common': 17.0.5(@angular/core@17.0.5(rxjs@7.8.1)(zone.js@0.14.2))(rxjs@7.8.1)
+      '@angular/core': 17.0.5(rxjs@7.8.1)(zone.js@0.14.2)
+      '@angular/forms': 17.0.5(@angular/common@17.0.5(@angular/core@17.0.5(rxjs@7.8.1)(zone.js@0.14.2))(rxjs@7.8.1))(@angular/core@17.0.5(rxjs@7.8.1)(zone.js@0.14.2))(@angular/platform-browser@17.0.5(@angular/animations@17.0.5(@angular/core@17.0.5(rxjs@7.8.1)(zone.js@0.14.2)))(@angular/common@17.0.5(@angular/core@17.0.5(rxjs@7.8.1)(zone.js@0.14.2))(rxjs@7.8.1))(@angular/core@17.0.5(rxjs@7.8.1)(zone.js@0.14.2)))(rxjs@7.8.1)
+      detect-passive-events: 2.0.3
+      rxjs: 7.8.1
+      tslib: 2.6.2
 
   '@angular/animations@17.0.5(@angular/core@17.0.5(rxjs@7.8.1)(zone.js@0.14.2))':
     dependencies:

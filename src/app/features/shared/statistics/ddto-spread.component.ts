@@ -83,7 +83,7 @@ export class DdtoSpreadComponent implements OnInit, OnChanges {
 
   ddto = [0, 0, 0, 0];
 
-  private digimonCardStore = inject(BackroomsCardStore);
+  private backroomCardStore = inject(BackroomsCardStore);
 
   ngOnInit(): void {
     this.getDDTO();
@@ -99,7 +99,7 @@ export class DdtoSpreadComponent implements OnInit, OnChanges {
     }
     const cards = mapToDeckCards(
       this.deck.cards,
-      this.digimonCardStore.cards(),
+      this.backroomCardStore.cards(),
     );
     const digieggs: IDeckCard[] = []; //cards.filter((card) => card.cardType === 'Digi-Egg');
     const digimon: IDeckCard[] = []; //cards.filter((card) => card.cardType === 'Digimon');

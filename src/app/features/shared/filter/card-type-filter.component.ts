@@ -12,7 +12,7 @@ import { MultiButtonsComponent } from '../multi-buttons.component';
       [buttonArray]="cardTypeButtons"
       [value]="cardTypeFilter"
       [perRow]="2"
-      title="Card-Types"></backrooms-multi-buttons>
+      title="Card Types"></backrooms-multi-buttons>
   `,
   standalone: true,
   imports: [NgIf, MultiButtonsComponent, AsyncPipe],

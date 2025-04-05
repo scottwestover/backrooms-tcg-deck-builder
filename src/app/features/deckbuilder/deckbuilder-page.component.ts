@@ -79,13 +79,10 @@ export class DeckbuilderPageComponent implements OnInit {
   authService = inject(AuthService);
   meta = inject(Meta);
   title = inject(Title);
-
   saveStore = inject(SaveStore);
   websiteStore = inject(WebsiteStore);
-
   collectionView = true;
   deckView = true;
-
   statsDisplay = true;
 
   checkUrl$ = this.route.params.pipe(

@@ -70,7 +70,7 @@ export class ImportDeckDialogComponent {
 
   deckText = '';
 
-  private digimonCardStore = inject(BackroomsCardStore);
+  private backroomCardStore = inject(BackroomsCardStore);
 
   constructor(private messageService: MessageService) {}
 
@@ -90,7 +90,7 @@ export class ImportDeckDialogComponent {
   importDeck(currentDeck: IDeck) {
     if (this.deckText === '') return;
     let deck: IDeck | null = { ...currentDeck };
-    const newDeck = stringToDeck(this.deckText, this.digimonCardStore.cards());
+    const newDeck = stringToDeck(this.deckText, this.backroomCardStore.cards());
 
     if (!newDeck || newDeck.cards?.length === 0) {
       this.messageService.add({
@@ -103,8 +103,8 @@ export class ImportDeckDialogComponent {
 
     deck.cards = newDeck.cards;
 
-    deck.tags = setTags(deck, this.digimonCardStore.cards());
-    deck.color = setColors(deck, this.digimonCardStore.cards());
+    deck.tags = setTags(deck, this.backroomCardStore.cards());
+    deck.color = setColors(deck, this.backroomCardStore.cards());
 
     this.websiteStore.updateDeck(deck);
     this.onClose.emit(true);

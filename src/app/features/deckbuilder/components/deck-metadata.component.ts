@@ -67,15 +67,15 @@ import { WebsiteStore } from '../../../store/website.store';
 })
 export class DeckMetadataComponent {
   websiteStore = inject(WebsiteStore);
-  digimonCardStore = inject(BackroomsCardStore);
+  backroomCardStore = inject(BackroomsCardStore);
 
   title = computed(() => this.websiteStore.deck().title);
   description = computed(() => this.websiteStore.deck().description);
   tags = computed(() =>
-    setTags(this.websiteStore.deck(), this.digimonCardStore.cards()),
+    setTags(this.websiteStore.deck(), this.backroomCardStore.cards()),
   );
   selectedColor = computed(() =>
-    setColors(this.websiteStore.deck(), this.digimonCardStore.cards()),
+    setColors(this.websiteStore.deck(), this.backroomCardStore.cards()),
   );
 
   colors = ColorList;

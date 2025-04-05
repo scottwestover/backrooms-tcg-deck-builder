@@ -34,7 +34,6 @@ import * as uuid from 'uuid';
 import {
   BackroomsCard,
   Countries,
-  DigimonCard,
   IDeck,
   IDeckCard,
   ITournamentDeck,
@@ -231,7 +230,7 @@ export class DeckSubmissionComponent implements OnInit, OnChanges, OnDestroy {
     { name: 'Major Event (32+ Player)', value: 'Major' },
   ];
 
-  private digimonCardStore = inject(BackroomsCardStore);
+  private backroomCardStore = inject(BackroomsCardStore);
   private onDestroy$ = new Subject();
 
   constructor(private digimonBackendService: BackroomsBackendService) {}
@@ -245,9 +244,9 @@ export class DeckSubmissionComponent implements OnInit, OnChanges, OnDestroy {
         takeUntil(this.onDestroy$),
       )
       .subscribe((deckList: string) => {
-        this.deck = stringToDeck(deckList, this.digimonCardStore.cards());
+        this.deck = stringToDeck(deckList, this.backroomCardStore.cards());
         this.deck
-          ? this.mapDeck(this.deck, this.digimonCardStore.cards())
+          ? this.mapDeck(this.deck, this.backroomCardStore.cards())
           : null;
         this.cardImageOptions = this.createImageOptions();
         this.form.get('cardImageId')?.setValue(this.cardImageOptions[0]);
@@ -329,7 +328,7 @@ export class DeckSubmissionComponent implements OnInit, OnChanges, OnDestroy {
     const formValues = this.form.value;
     let decklist = '// Digimon DeckList\n\n';
     inputDeck.cards.forEach((card) => {
-      const dc = this.digimonCardStore
+      const dc = this.backroomCardStore
         .cards()
         .find((dc) => compareIDs(dc.id, card.id));
       decklist += `${card.id.replace('ST0', 'ST')} ${dc?.name} ${card.count}\n`;

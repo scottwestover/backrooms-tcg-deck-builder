@@ -1,5 +1,5 @@
 import { BackroomsCard } from '../../models';
-import LostLevelCardsJson from './lost-level-cards.json';
+import LobbyLevelCardsJson from './lobby-level-cards.json';
 import CardParkCardsJson from './car-park-cards.json';
 
 export function setupCardJson(): BackroomsCard[] {
@@ -7,7 +7,7 @@ export function setupCardJson(): BackroomsCard[] {
 }
 
 function setupJsonENG(): BackroomsCard[] {
-  const cards: BackroomsCard[] = [...LostLevelCardsJson, ...CardParkCardsJson];
+  const cards: BackroomsCard[] = [...LobbyLevelCardsJson, ...CardParkCardsJson];
   return cards;
 }
 
@@ -19,27 +19,4 @@ export function setupBackroomsCardMap(
     cardMap.set(card.id, card);
   });
   return cardMap;
-}
-
-/* =========================
-       Support Functions
-   ========================= */
-export function addJBeforeWebp(imagePath: string): string {
-  if (imagePath.endsWith('.webp') && !imagePath.endsWith('-J.webp')) {
-    const index = imagePath.lastIndexOf('.webp');
-    return imagePath.slice(0, index) + '-J' + imagePath.slice(index);
-  } else {
-    // If the imagePath does not end with ".webp", return it as is.
-    return imagePath;
-  }
-}
-
-export function addSampleBeforeWebp(imagePath: string): string {
-  if (imagePath.endsWith('.webp') && !imagePath.endsWith('-Sample-J.webp')) {
-    const index = imagePath.lastIndexOf('.webp');
-    return imagePath.slice(0, index) + '-Sample-J' + imagePath.slice(index);
-  } else {
-    // If the imagePath does not end with ".webp", return it as is.
-    return imagePath;
-  }
 }

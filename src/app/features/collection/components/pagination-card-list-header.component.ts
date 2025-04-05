@@ -73,12 +73,12 @@ export class PaginationCardListHeaderComponent {
   @Output() filterBox = new EventEmitter<boolean>();
 
   saveStore = inject(SaveStore);
-  digimonCardStore = inject(BackroomsCardStore);
+  backroomCardStore = inject(BackroomsCardStore);
 
   collectionMode = this.saveStore.collectionMode;
 
   cardCount = computed(() => {
-    return this.digimonCardStore.filteredCards().length;
+    return this.backroomCardStore.filteredCards().length;
   });
 
   changeCollectionMode(collectionMode: boolean) {

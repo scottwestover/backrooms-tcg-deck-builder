@@ -124,11 +124,11 @@ import { BackroomsCardStore } from '../../../store/backrooms-card.store';
   ],
 })
 export class ExportDeckDialogComponent implements OnInit {
-  digimonCardStore = inject(BackroomsCardStore);
+  backroomCardStore = inject(BackroomsCardStore);
   dialogStore = inject(DialogStore);
 
   deck: IDeck = this.dialogStore.exportDeck().deck;
-  digimonCards: BackroomsCard[] = this.digimonCardStore.cards();
+  digimonCards: BackroomsCard[] = this.backroomCardStore.cards();
 
   exportList = ['TEXT', 'TTS', 'UNTAP', 'IMAGE'];
   exportType = 'TEXT';
@@ -147,7 +147,7 @@ export class ExportDeckDialogComponent implements OnInit {
   });
 
   updateDigimonCards = effect(() => {
-    this.digimonCards = this.digimonCardStore.cards();
+    this.digimonCards = this.backroomCardStore.cards();
   });
 
   ngOnInit() {
@@ -250,7 +250,7 @@ export class ExportDeckDialogComponent implements OnInit {
   private setExportTypeText(): void {
     this.deckText = '// Digimon DeckList\n\n';
     this.deck.cards.forEach((card) => {
-      const digimonCard = this.digimonCardStore.cardsMap().get(card.id);
+      const digimonCard = this.backroomCardStore.cardsMap().get(card.id);
       if (digimonCard) {
         if (this.normalOrder) {
           this.deckText += `${card.id.replace('ST0', 'ST')} ${digimonCard?.name
@@ -278,7 +278,7 @@ export class ExportDeckDialogComponent implements OnInit {
   private setExportTypeUNTAP(): void {
     this.deckText = '// Digimon DeckList\n\n';
     this.deck.cards.forEach((card) => {
-      const dc = this.digimonCardStore.cardsMap().get(card.id);
+      const dc = this.backroomCardStore.cardsMap().get(card.id);
       this.deckText += `${card.count} ${dc?.name
         .english} [DCG] (${card.id.replace('ST0', 'ST')})\n`;
     });
@@ -549,7 +549,7 @@ export class ExportDeckDialogComponent implements OnInit {
    * Sort the Deck (Eggs, Digimon, Tamer, Options)
    */
   private deckSort() {
-    const allCards = this.digimonCardStore.cards();
+    const allCards = this.backroomCardStore.cards();
     const mainDeckCards = mapToDeckCards(this.deck.cards, allCards);
     const sideDeckCards = mapToDeckCards(this.deck.sideDeck, allCards);
 

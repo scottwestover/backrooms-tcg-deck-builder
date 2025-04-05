@@ -126,7 +126,7 @@ export class ColorSpreadComponent implements OnInit, OnChanges {
 
   colorSpread = [0, 0, 0, 0, 0, 0, 0];
 
-  private digimonCardStore = inject(BackroomsCardStore);
+  private backroomCardStore = inject(BackroomsCardStore);
 
   ngOnInit(): void {
     this.getColorSpread();
@@ -143,7 +143,7 @@ export class ColorSpreadComponent implements OnInit, OnChanges {
 
     const cards = mapToDeckCards(
       this.deck.cards,
-      this.digimonCardStore.cards(),
+      this.backroomCardStore.cards(),
     );
     // const red = cards.filter((card) => card.color.split('/')[0] === 'Red');
     // const blue = cards.filter((card) => card.color.split('/')[0] === 'Blue');

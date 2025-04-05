@@ -16,17 +16,21 @@ import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { SelectButtonModule } from 'primeng/selectbutton';
 import { first } from 'rxjs';
-import { ColorList, IColor, IDeck, tagsList } from '../../../../models';
+import {
+  ColorList,
+  emptyDeck,
+  IColor,
+  IDeck,
+  tagsList,
+} from '../../../../models';
 import { ITag } from '../../../../models/interfaces/tag.interface';
 import { ColorMap } from '../../../../models/maps/color.map';
 import { deckIsValid } from '../../../functions/backrooms-card.functions';
 import { AuthService } from '../../../services/auth.service';
 import { BackroomsBackendService } from '../../../services/backrooms-backend.service';
 import { BackroomsCardStore } from '../../../store/backrooms-card.store';
-import { emptyDeck } from '../../../store/reducers/digimon.reducers';
 import { SaveStore } from '../../../store/save.store';
 import { WebsiteStore } from '../../../store/website.store';
-import { DeckActions } from './../../../store/digimon.actions';
 
 @Component({
   selector: 'backrooms-change-accessorie-dialog',
@@ -119,7 +123,7 @@ export class ChangeAccessorieDialogComponent implements OnInit, OnChanges {
   tags: ITag[] = [];
   color = { name: 'White', img: 'assets/images/decks/white.svg' };
 
-  private digimonCardStore = inject(BackroomsCardStore);
+  private backroomCardStore = inject(BackroomsCardStore);
   constructor(
     private confirmationService: ConfirmationService,
     private digimonCardService: BackroomsBackendService,
@@ -177,7 +181,7 @@ export class ChangeAccessorieDialogComponent implements OnInit, OnChanges {
       message: 'You are about to share the deck. Are you sure?',
       accept: () => {
         this.digimonCardService
-          .updateDeck(deck, this.auth.userData, this.digimonCardStore.cards())
+          .updateDeck(deck, this.auth.userData, this.backroomCardStore.cards())
           .pipe(first())
           .subscribe();
         this.messageService.add({
@@ -190,7 +194,7 @@ export class ChangeAccessorieDialogComponent implements OnInit, OnChanges {
   }
 
   deckIsValid(deck: IDeck): boolean {
-    const error = deckIsValid(deck, this.digimonCardStore.cards());
+    const error = deckIsValid(deck, this.backroomCardStore.cards());
     if (error !== '') {
       this.messageService.add({
         severity: 'error',

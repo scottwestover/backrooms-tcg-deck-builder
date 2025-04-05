@@ -152,7 +152,7 @@ export class DeckViewComponent {
 
   saveStore = inject(SaveStore);
   websiteStore = inject(WebsiteStore);
-  digimonCardStore = inject(BackroomsCardStore);
+  backroomCardStore = inject(BackroomsCardStore);
 
   displaySideDeck = this.saveStore.displaySideDeck;
 
@@ -178,7 +178,7 @@ export class DeckViewComponent {
     const iSideDeckCards: IDeckCard[] = [];
 
     this.deck().cards.forEach((card) => {
-      const foundCard = this.digimonCardStore
+      const foundCard = this.backroomCardStore
         .cards()
         .find((item) => compareIDs(item.id, card.id));
       if (foundCard) {
@@ -186,7 +186,7 @@ export class DeckViewComponent {
       }
     });
     (this.deck().sideDeck ?? []).forEach((card) => {
-      const foundCard = this.digimonCardStore
+      const foundCard = this.backroomCardStore
         .cards()
         .find((item) => compareIDs(item.id, card.id));
       if (foundCard) {
@@ -239,8 +239,11 @@ export class DeckViewComponent {
       count: card.count,
     }));
 
-    const tags = setTags(this.deck(), this.digimonCardStore.cards());
-    const selectedColor = setColors(this.deck(), this.digimonCardStore.cards());
+    const tags = setTags(this.deck(), this.backroomCardStore.cards());
+    const selectedColor = setColors(
+      this.deck(),
+      this.backroomCardStore.cards(),
+    );
 
     const deck = {
       ...this.deck(),
@@ -336,19 +339,25 @@ export class DeckViewComponent {
       if (card.drag === DRAG.Main) {
         this.websiteStore.removeCardFromDeck(card.card.id);
       }
-      this.websiteStore.addCardToSideDeck(card.card.id);
+      this.websiteStore.addCardToSideDeck(
+        card.card.id,
+        this.backroomCardStore.cardsMap(),
+      );
       return;
     }
 
     if (card.drag === DRAG.Side) {
       this.websiteStore.removeCardFromSideDeck(card.card.id);
     }
-    this.websiteStore.addCardToDeck(card.card.id);
+    this.websiteStore.addCardToDeck(
+      card.card.id,
+      this.backroomCardStore.cardsMap(),
+    );
   }
 
   setDraggedCard(card: IDeckCard, drag: DRAG) {
     const dragCard = {
-      card: this.digimonCardStore.cardsMap().get(card.id)!,
+      card: this.backroomCardStore.cardsMap().get(card.id)!,
       drag,
     };
     this.websiteStore.updateDraggedCard(dragCard);

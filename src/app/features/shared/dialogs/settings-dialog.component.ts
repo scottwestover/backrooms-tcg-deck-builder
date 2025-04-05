@@ -20,7 +20,6 @@ import { TabViewModule } from 'primeng/tabview';
 import { Subject } from 'rxjs';
 import {
   BackroomsCard,
-  DigimonCard,
   emptySettings,
   GroupedSets,
   ICountCard,
@@ -504,7 +503,7 @@ export class SettingsDialogComponent implements OnDestroy {
   setGoal: string[] = [];
   collectionCount = 1;
   aaCollectionCount = 1;
-  collectionFilterMax = 5;
+  collectionFilterMax = 30;
 
   foil = true;
   textured = true;
@@ -536,7 +535,7 @@ export class SettingsDialogComponent implements OnDestroy {
   displayImage = '';
   username = '';
 
-  private digimonCardStore = inject(BackroomsCardStore);
+  private backroomCardStore = inject(BackroomsCardStore);
   private onDestroy$ = new Subject();
 
   constructor(
@@ -584,7 +583,6 @@ export class SettingsDialogComponent implements OnDestroy {
         ...this.iSave.settings,
         collectionMinimum: this.collectionCount,
         aaCollectionMinimum: this.aaCollectionCount,
-
         showFoilCards: this.foil,
         showTexturedCards: this.textured,
         showPreRelease: this.preRelease,
@@ -595,7 +593,6 @@ export class SettingsDialogComponent implements OnDestroy {
         showReprintCards: this.reprint,
         showSpecialRareCards: this.specialRare,
         showRarePullCards: this.rarePull,
-
         sortDeckOrder: this.sortOrderFilter.value,
         showUserStats: this.userStats,
         deckDisplayTable: this.deckDisplayTable,
@@ -751,12 +748,12 @@ export class SettingsDialogComponent implements OnDestroy {
 
   private setupAllCards(): BackroomsCard[] {
     let setFiltered: BackroomsCard[] =
-      this.sets.length === 0 ? this.digimonCardStore.cards() : [];
+      this.sets.length === 0 ? this.backroomCardStore.cards() : [];
     this.sets.forEach((filter) => {
       setFiltered = [
         ...new Set([
           ...setFiltered,
-          ...this.digimonCardStore
+          ...this.backroomCardStore
             .cards()
             .filter((cards) => cards['id'].split('-')[0] === filter),
         ]),
@@ -812,7 +809,7 @@ export class SettingsDialogComponent implements OnDestroy {
 
     let collectionCardsForRarity: ICountCard[] = [];
     setFiltered.forEach((collectionCard) => {
-      const foundCard = this.digimonCardStore
+      const foundCard = this.backroomCardStore
         .cards()
         .find((card) => card.id === collectionCard.id);
 
@@ -831,7 +828,7 @@ export class SettingsDialogComponent implements OnDestroy {
 
     let collectionCardsForVersion: ICountCard[] = [];
     collectionCardsForRarity.forEach((collectionCard) => {
-      const foundCard = this.digimonCardStore
+      const foundCard = this.backroomCardStore
         .cards()
         .find((card) => card.id === collectionCard.id);
 
@@ -849,7 +846,7 @@ export class SettingsDialogComponent implements OnDestroy {
     const cardLine: number = +lineSplit[0] >>> 0;
     if (cardLine > 0) {
       if (
-        !this.digimonCardStore.cards().find((card) => card.id === lineSplit[1])
+        !this.backroomCardStore.cards().find((card) => card.id === lineSplit[1])
       ) {
         return null;
       }

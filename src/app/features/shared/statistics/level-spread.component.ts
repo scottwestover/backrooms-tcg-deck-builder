@@ -70,7 +70,7 @@ export class LevelSpreadComponent implements OnInit {
 
   levelSpread = [0, 0, 0, 0, 0, 0];
 
-  private digimonCardStore = inject(BackroomsCardStore);
+  private backroomCardStore = inject(BackroomsCardStore);
 
   ngOnInit(): void {
     this.getLevelSpread();
@@ -79,7 +79,7 @@ export class LevelSpreadComponent implements OnInit {
   getLevelSpread() {
     const cards = mapToDeckCards(
       this.deck.cards,
-      this.digimonCardStore.cards(),
+      this.backroomCardStore.cards(),
     );
     const digieggs = cards.filter((card) => card.cardType === 'Digi-Egg');
     // const lv3 = cards.filter((card) => card.cardLv === 'Lv.3');

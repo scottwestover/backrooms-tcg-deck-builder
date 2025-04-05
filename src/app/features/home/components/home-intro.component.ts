@@ -9,7 +9,7 @@ import { DividerModule } from 'primeng/divider';
       <img
         alt="Logo"
         class="cursor-pointer"
-        src="../../../assets/images/logo.webp" />
+        src="../../../assets/images/backrooms-tcg-logo.webp" />
     </div>
 
     <p-divider class="my-5"></p-divider>

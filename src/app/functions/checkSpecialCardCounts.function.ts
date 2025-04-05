@@ -1,6 +1,10 @@
-import { ICountCard } from '../../models';
+import { BackroomsCard, ICountCard } from '../../models';
 
-export function checkSpecialCardCounts(card: ICountCard): number {
+export function checkSpecialCardCounts(
+  card: ICountCard,
+  cardMap: Map<string, BackroomsCard>,
+): number {
+  console.log(card.id);
   if (
     card!.id.includes('BT6-085') ||
     card!.id.includes('EX2-046') ||

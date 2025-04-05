@@ -1,10 +1,9 @@
 import { NgClass, NgIf, NgOptimizedImage } from '@angular/common';
-import { Component, EventEmitter, inject, Output } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ConfirmPopupModule } from 'primeng/confirmpopup';
 import { DialogModule } from 'primeng/dialog';
 import { SidebarModule } from 'primeng/sidebar';
-import { DialogStore } from '../../../store/dialog.store';
 import { ChangelogDialogComponent } from '../dialogs/changelog-dialog.component';
 import { SettingsDialogComponent } from '../dialogs/settings-dialog.component';
 import { FilterButtonComponent } from '../filter/filter-button.component';
@@ -21,7 +20,7 @@ import { NavLinksComponent } from './nav-links.component';
         <img
           alt="Logo"
           class="mt-[0.25rem] cursor-pointer max-h-[2.5rem] md:max-h-[4rem]"
-          src="../../../../assets/images/DollFace.webp" />
+          src="../../../../assets/images/doll-face.webp" />
       </a>
 
       <i

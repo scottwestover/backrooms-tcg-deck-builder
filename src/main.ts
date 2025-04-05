@@ -34,27 +34,16 @@ import { ToastModule } from 'primeng/toast';
 import { TooltipModule } from 'primeng/tooltip';
 import { AppComponent } from './app/app.component';
 import { CollectionPageComponent } from './app/features/collection/collection-page.component';
-import { CommunityPageComponent } from './app/features/community/community-page.component';
-import { BlogPageComponent } from './app/features/community/components/blog-page.component';
 import { DeckbuilderPageComponent } from './app/features/deckbuilder/deckbuilder-page.component';
 import { DecksPageComponent } from './app/features/decks/decks-page.component';
 import { HomePageComponent } from './app/features/home/home-page.component';
 import { ProfilePageComponent } from './app/features/profile/profile-page.component';
-import { TestPageComponent } from './app/features/test/test-page.component';
 import { AuthService } from './app/services/auth.service';
 import { BackroomsBackendService } from './app/services/backrooms-backend.service';
 
 import { environment } from './environments/environment';
 
 const routes: Routes = [
-  // {
-  //   path: 'test',
-  //   component: TestPageComponent,
-  // },
-  // {
-  //   path: 'community',
-  //   component: CommunityPageComponent,
-  // },
   {
     path: 'decks',
     component: DecksPageComponent,
@@ -87,14 +76,6 @@ const routes: Routes = [
     path: 'collection/:userId',
     component: CollectionPageComponent,
   },
-  // {
-  //   path: 'community/:id',
-  //   component: BlogPageComponent,
-  // },
-  // {
-  //   path: 'community/new',
-  //   component: BlogPageComponent,
-  // },
   { path: '**', component: HomePageComponent },
 ];
 
@@ -122,9 +103,7 @@ bootstrapApplication(AppComponent, {
       ProgressSpinnerModule,
       TooltipModule,
     ),
-
     provideRouter(routes, withPreloading(PreloadAllModules)),
-
     ReactiveFormsModule,
     AuthService,
     BackroomsBackendService,
@@ -134,5 +113,4 @@ bootstrapApplication(AppComponent, {
     ConfirmationService,
     DatePipe,
   ],
-  // eslint-disable-next-line no-console
 }).catch((err) => console.error(err));

@@ -14,14 +14,7 @@ import { BackroomsCardStore } from 'src/app/store/backrooms-card.store';
 import { WebsiteStore } from 'src/app/store/website.store';
 import { replacements } from 'src/models/data/keyword-replacement.data';
 
-import {
-  BackroomsCard,
-  ColorMap,
-  DigimonCard,
-  ICountCard,
-  IDeck,
-} from '../../../../models';
-import { formatId, withoutJ } from '../../../functions';
+import { BackroomsCard, ColorMap, ICountCard, IDeck } from '../../../../models';
 import { DialogStore } from '../../../store/dialog.store';
 import { SaveStore } from '../../../store/save.store';
 
@@ -43,12 +36,12 @@ import { SaveStore } from '../../../store/save.store';
             id="Card-Rarity">
             {{ card.rarity }}
           </p>
-          <!-- <p
+          <p
             [ngStyle]="{ color }"
             class="text-black-outline-xs self-center font-bold"
             id="Card-Type">
             {{ card.cardType }}
-          </p> -->
+          </p>
           <!-- <div
             *ngIf="card.cardType === 'Digimon' || card.cardType === 'Digi-Egg'"
             [ngStyle]="{ backgroundColor }"
@@ -92,13 +85,7 @@ import { SaveStore } from '../../../store/save.store';
           id="Card-Name">
           {{ card.name.english }}
         </h1>
-        <button
-          (click)="openWiki()"
-          class="p-button-text"
-          icon="pi pi-question-circle"
-          pButton
-          pRipple
-          type="button"></button>
+
         <button class="ml-1" (click)="nextCard()">
           <i class="fa-solid fa-circle-arrow-right text-[#e2e4e6]"></i>
         </button>
@@ -109,7 +96,7 @@ import { SaveStore } from '../../../store/save.store';
           <img
             [backroomsImgFallback]="png"
             alt="{{ imageAlt }}"
-            defaultImage="assets/images/digimon-card-back.webp"
+            defaultImage="assets/images/card-back.webp"
             class="mx-auto my-5 max-w-[15rem] md:my-0 md:max-w-full" />
         </div>
         <div class="md:max-w-1/2 w-full self-center md:w-1/2 md:pl-2">
@@ -208,13 +195,6 @@ import { SaveStore } from '../../../store/save.store';
           </p>
           <div class="flex flex-row">
             <p class="font-white font-bold">{{ card.illustrator }}</p>
-            <button
-              (click)="openWikiIllustrator()"
-              class="p-button-text -mt-2"
-              icon="pi pi-question-circle"
-              pButton
-              pRipple
-              type="button"></button>
           </div>
         </div>
       </div>
@@ -238,7 +218,7 @@ export class ViewCardDialogComponent {
   saveStore = inject(SaveStore);
   dialogStore = inject(DialogStore);
   websiteStore = inject(WebsiteStore);
-  digimonCardStore = inject(BackroomsCardStore);
+  backroomCardStore = inject(BackroomsCardStore);
 
   card: BackroomsCard = this.dialogStore.viewCard().card;
   width?: string = this.dialogStore.viewCard().width;
@@ -261,7 +241,7 @@ export class ViewCardDialogComponent {
   loadCard = effect(() => {
     const collection = this.saveStore.collection();
     this.collectionCard = collection.find(
-      (colCard) => colCard.id === withoutJ(this.card.id),
+      (colCard) => colCard.id === this.card.id,
     )!;
 
     this.card = this.dialogStore.viewCard().card;
@@ -270,23 +250,12 @@ export class ViewCardDialogComponent {
 
   setupView() {
     // TODO
-    // this.color = this.colorMap.get(this.card.color)!;
-    // this.backgroundColor = this.color;
-    // this.version = this.getVersion(this.card.version)!;
-    // this.png = this.card.cardImage;
-    // this.imageAlt = this.card.cardNumber + ' ' + this.card.name.english;
-    // this.type = this.card?.cardType;
-  }
-
-  openWiki() {
-    const wikiLink =
-      'https://digimoncardgame.fandom.com/wiki/' + formatId(this.card.id);
-    window.open(wikiLink, '_blank');
-  }
-
-  openWikiIllustrator() {
-    const wikiLink = 'https://digimoncardgame.fandom.com/wiki/'; // + this.card.illustrator;
-    window.open(wikiLink, '_blank');
+    //this.color = this.colorMap.get(this.card.color)!;
+    //this.backgroundColor = this.color;
+    this.version = this.getVersion(this.card.version)!;
+    this.png = this.card.cardImage;
+    this.imageAlt = this.card.cardNumber + ' ' + this.card.name.english;
+    this.type = this.card.cardType;
   }
 
   inDeck(): boolean {
@@ -309,13 +278,13 @@ export class ViewCardDialogComponent {
   }
 
   previousCard() {
-    const id = this.digimonCardStore
+    const id = this.backroomCardStore
       .cards()
       .findIndex((card) => this.card.id === card.id);
     if (id === -1 || id === 0) {
       return;
     }
-    const newCard = this.digimonCardStore.cards()[id - 1];
+    const newCard = this.backroomCardStore.cards()[id - 1];
     if (!newCard) {
       return;
     }
@@ -324,13 +293,13 @@ export class ViewCardDialogComponent {
   }
 
   nextCard() {
-    const id = this.digimonCardStore
+    const id = this.backroomCardStore
       .cards()
       .findIndex((card) => this.card.id === card.id);
-    if (id === -1 || id === this.digimonCardStore.cards().length + 1) {
+    if (id === -1 || id === this.backroomCardStore.cards().length + 1) {
       return;
     }
-    const newCard = this.digimonCardStore.cards()[id + 1];
+    const newCard = this.backroomCardStore.cards()[id + 1];
     if (!newCard) {
       return;
     }

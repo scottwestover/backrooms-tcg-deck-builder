@@ -373,7 +373,3 @@ export function setDeckImage(
 export function itemsAsSelectItem(array: string[]): ISelectItem[] {
   return array.map((item) => ({ label: item, value: item }) as ISelectItem);
 }
-
-export function withoutJ(id: string): string {
-  return id.replace('-J', '');
-}

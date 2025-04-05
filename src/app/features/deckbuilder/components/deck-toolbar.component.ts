@@ -17,7 +17,7 @@ import { DialogModule } from 'primeng/dialog';
 import { TooltipModule } from 'primeng/tooltip';
 import { BehaviorSubject } from 'rxjs';
 import * as uuid from 'uuid';
-import { DigimonCard, IDeck, IDeckCard } from '../../../../models';
+import { BackroomsCard, IDeck, IDeckCard } from '../../../../models';
 import { mapToDeckCards } from '../../../functions';
 import { AuthService } from '../../../services/auth.service';
 import { DialogStore } from '../../../store/dialog.store';
@@ -126,13 +126,13 @@ export class DeckToolbarComponent {
 
   websiteStore = inject(WebsiteStore);
   dialogStore = inject(DialogStore);
-  digimonCardStore = inject(BackroomsCardStore);
+  backroomCardStore = inject(BackroomsCardStore);
 
   deck: Signal<IDeck> = this.websiteStore.deck;
   mainDeck: Signal<IDeckCard[]> = computed(() =>
     mapToDeckCards(
       this.websiteStore.deck().cards,
-      this.digimonCardStore.cards(),
+      this.backroomCardStore.cards(),
     ),
   );
 
@@ -141,9 +141,9 @@ export class DeckToolbarComponent {
   simulateDialog = false;
   checkPrice$ = new BehaviorSubject(false);
 
-  securityStack: DigimonCard[];
-  drawHand: DigimonCard[];
-  allDeckCards: DigimonCard[];
+  securityStack: BackroomsCard[];
+  drawHand: BackroomsCard[];
+  allDeckCards: BackroomsCard[];
 
   constructor(
     private confirmationService: ConfirmationService,
@@ -205,7 +205,7 @@ export class DeckToolbarComponent {
   mulligan() {
     this.allDeckCards = DeckToolbarComponent.shuffle(
       this.deck().cards.map((card) =>
-        this.digimonCardStore.cards().find((a) => a.id === card.id),
+        this.backroomCardStore.cards().find((a) => a.id === card.id),
       ),
     );
     this.allDeckCards = this.allDeckCards.filter(

@@ -360,7 +360,7 @@ export class DeckStatisticsComponent implements OnInit, OnDestroy {
 
   mostUsedCards: IDeckCard[] = [];
 
-  private digimonCardStore = inject(BackroomsCardStore);
+  private backroomCardStore = inject(BackroomsCardStore);
   private onDestroy$ = new Subject();
 
   ngOnInit() {
@@ -378,7 +378,7 @@ export class DeckStatisticsComponent implements OnInit, OnDestroy {
     this.loadingChange.emit(true);
     const cards = mapToDeckCards(
       this.decks.map((deck) => deck.cards).flat(1),
-      this.digimonCardStore.cards(),
+      this.backroomCardStore.cards(),
     );
 
     let checked: string[] = [];

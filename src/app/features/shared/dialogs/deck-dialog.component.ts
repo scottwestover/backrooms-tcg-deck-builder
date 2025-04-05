@@ -1,16 +1,5 @@
 import { NgFor, NgIf } from '@angular/common';
-import {
-  ChangeDetectorRef,
-  Component,
-  effect,
-  EventEmitter,
-  inject,
-  Input,
-  OnChanges,
-  OnInit,
-  Output,
-  SimpleChanges,
-} from '@angular/core';
+import { ChangeDetectorRef, Component, effect, inject } from '@angular/core';
 import {
   FormsModule,
   ReactiveFormsModule,

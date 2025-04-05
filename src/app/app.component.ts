@@ -75,7 +75,7 @@ import { WebsiteStore } from './store/website.store';
   ],
 })
 export class AppComponent {
-  digimonCardStore = inject(BackroomsCardStore);
+  backroomCardStore = inject(BackroomsCardStore);
   saveStore = inject(SaveStore);
   filterStore = inject(FilterStore);
   websiteStore = inject(WebsiteStore);
@@ -114,9 +114,8 @@ export class AppComponent {
         }
 
         if (this.cardSet !== this.saveStore.settings().cardSet) {
-          console.log('Set DigimonCard Set');
           this.cardSet = this.saveStore.settings().cardSet;
-          this.setDigimonCardSet();
+          this.setBackroomCardSet();
         }
       },
       { allowSignalWrites: true },
@@ -124,19 +123,19 @@ export class AppComponent {
 
     effect(
       () => {
-        const cards = this.digimonCardStore.cards();
+        const cards = this.backroomCardStore.cards();
 
         if (cards.length === 0) return;
 
         const filteredCards = filterCards(
-          this.digimonCardStore.cards(),
+          this.backroomCardStore.cards(),
           this.saveStore.save(),
           this.filterStore.filter(),
           this.websiteStore.sort(),
-          this.digimonCardStore.cardsMap(),
+          this.backroomCardStore.cardsMap(),
         );
 
-        this.digimonCardStore.updateFilteredCards(filteredCards);
+        this.backroomCardStore.updateFilteredCards(filteredCards);
       },
       { allowSignalWrites: true },
     );
@@ -356,12 +355,12 @@ export class AppComponent {
     this.filterStore.updateFilter(filter);
   }
 
-  private setDigimonCardSet(): void {
+  private setBackroomCardSet(): void {
     const cardSet = this.saveStore.settings().cardSet;
     if (cardSet === undefined) {
       return;
     }
 
-    this.digimonCardStore.updateCards();
+    this.backroomCardStore.updateCards();
   }
 }

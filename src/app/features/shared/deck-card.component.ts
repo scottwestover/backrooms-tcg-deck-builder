@@ -138,11 +138,17 @@ export class DeckCardComponent implements OnChanges, OnInit {
     }
 
     if (this.sideDeck) {
-      this.websiteStore.addCardToSideDeck(this.card.id);
+      this.websiteStore.addCardToSideDeck(
+        this.card.id,
+        this.backroomsCardStore.cardsMap(),
+      );
       return;
     }
 
-    this.websiteStore.addCardToDeck(this.card.id);
+    this.websiteStore.addCardToDeck(
+      this.card.id,
+      this.backroomsCardStore.cardsMap(),
+    );
   }
 
   reduceCardCount(event?: any): void {

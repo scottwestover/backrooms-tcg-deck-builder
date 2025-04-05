@@ -62,13 +62,13 @@ export class DeckStatsComponent {
   @Input() collectionView = false;
 
   websiteStore = inject(WebsiteStore);
-  digimonCardStore = inject(BackroomsCardStore);
+  backroomCardStore = inject(BackroomsCardStore);
 
   deck: Signal<IDeck> = this.websiteStore.deck;
   mainDeck: Signal<IDeckCard[]> = computed(() =>
     mapToDeckCards(
       this.websiteStore.deck().cards,
-      this.digimonCardStore.cards(),
+      this.backroomCardStore.cards(),
     ),
   );
 }

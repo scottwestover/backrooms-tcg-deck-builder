@@ -62,7 +62,7 @@ import { SaveStore } from '../../../store/save.store';
           <td>
             <div
               class="surface-card relative h-16 w-56 border border-black"
-              defaultImage="assets/images/digimon-card-back.webp"
+              defaultImage="assets/images/card-back.webp"
               [lazyLoad]="getCardImage(deck)"
               [ngStyle]="{
                 'background-repeat': 'no-repeat',
@@ -114,14 +114,14 @@ export class DecksTableComponent {
   @Output() onDeckClick = new EventEmitter<IDeck>();
 
   saveStore = inject(SaveStore);
-  digimonCardStore = inject(BackroomsCardStore);
+  backroomCardStore = inject(BackroomsCardStore);
 
   getCardImage(deck: IDeck): string {
     //If there are no cards in the deck set it to the Yokomon
     if (
       !deck.cards ||
       deck.cards.length === 0 ||
-      this.digimonCardStore.cards().length === 0
+      this.backroomCardStore.cards().length === 0
     ) {
       return '../../../assets/images/cards/eng/BT1-001.webp';
     }
@@ -129,11 +129,11 @@ export class DecksTableComponent {
     // If there is a ImageCardId set it
     if (deck.imageCardId) {
       return (
-        this.digimonCardStore.cardsMap().get(deck.imageCardId)?.cardImage ??
+        this.backroomCardStore.cardsMap().get(deck.imageCardId)?.cardImage ??
         '../../../assets/images/cards/eng/BT1-001.webp'
       );
     } else {
-      const deckImage = setDeckImage(deck, this.digimonCardStore.cards());
+      const deckImage = setDeckImage(deck, this.backroomCardStore.cards());
       this.saveStore.saveDeck({ ...deck, imageCardId: deckImage.id });
 
       return deckImage.cardImage;

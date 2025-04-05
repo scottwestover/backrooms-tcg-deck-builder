@@ -30,7 +30,7 @@ export class CollectionCircleComponent {
   changeDetection = inject(ChangeDetectorRef);
 
   saveStore = inject(SaveStore);
-  digimonCardStore = inject(BackroomsCardStore);
+  backroomCardStore = inject(BackroomsCardStore);
 
   data: any;
   chartOptions = {
@@ -50,7 +50,7 @@ export class CollectionCircleComponent {
     const settings = this.saveStore.settings();
     const collection = this.saveStore.collection();
 
-    let setCards = this.digimonCardStore
+    let setCards = this.backroomCardStore
       .cards()
       .filter(
         (card: BackroomsCard) =>

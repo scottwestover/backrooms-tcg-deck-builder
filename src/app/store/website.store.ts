@@ -1,42 +1,21 @@
-import { computed, inject } from '@angular/core';
+import { inject } from '@angular/core';
 import { tapResponse } from '@ngrx/operators';
-import {
-  patchState,
-  signalStore,
-  withComputed,
-  withMethods,
-  withState,
-} from '@ngrx/signals';
+import { patchState, signalStore, withMethods, withState } from '@ngrx/signals';
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
-import { ToastrService } from 'ngx-toastr';
+import { distinctUntilChanged, filter, first, pipe, switchMap } from 'rxjs';
 import {
-  catchError,
-  distinctUntilChanged,
-  filter,
-  first,
-  map,
-  of,
-  pipe,
-  switchMap,
-} from 'rxjs';
-import {
+  BackroomsCard,
   DRAG,
   dummyCard,
   emptyDeck,
-  emptyFilter,
   IBlog,
-  ICountCard,
   IDeck,
   IDraggedCard,
-  IFilter,
-  ISave,
-  ISettings,
   ISort,
 } from '../../models';
 import { emptySave } from '../../models/data/save.data';
 import { checkSpecialCardCounts } from '../functions';
 import { AuthService } from '../services/auth.service';
-import { ProductCM } from '../services/card-market.service';
 import { BackroomsBackendService } from '../services/backrooms-backend.service';
 
 type Website = {
@@ -47,7 +26,6 @@ type Website = {
   communityDeckSearch: string;
   communityDecks: IDeck[];
   blogs: IBlog[];
-  priceGuideCM: ProductCM[];
   draggedCard: IDraggedCard;
 };
 
@@ -65,7 +43,6 @@ const initialState: Website = {
   communityDeckSearch: '',
   communityDecks: [],
   blogs: [],
-  priceGuideCM: [],
   draggedCard: {
     card: JSON.parse(JSON.stringify(dummyCard)),
     drag: DRAG.Collection,
@@ -143,9 +120,6 @@ export const WebsiteStore = signalStore(
       updateBlogs(blogs: IBlog[]): void {
         patchState(store, (state) => ({ blogs }));
       },
-      updatePriceGuideCM(priceGuideCM: ProductCM[]): void {
-        patchState(store, (state) => ({ priceGuideCM }));
-      },
       updateDraggedCard(draggedCard: IDraggedCard): void {
         patchState(store, (state) => ({ draggedCard }));
       },
@@ -154,14 +128,16 @@ export const WebsiteStore = signalStore(
         patchState(store, (state) => ({ deck: { ...emptyDeck, id } }));
       },
 
-      addCardToDeck(cardToAdd: string): void {
+      addCardToDeck(
+        cardToAdd: string,
+        cardMap: Map<string, BackroomsCard>,
+      ): void {
         patchState(store, (state) => {
           const cards = state.deck.cards.map((card) => {
             if (card.id === cardToAdd) {
               card.count += 1;
             }
-
-            card.count = checkSpecialCardCounts(card);
+            card.count = checkSpecialCardCounts(card, cardMap);
             return card;
           });
 
@@ -187,14 +163,17 @@ export const WebsiteStore = signalStore(
         });
       },
 
-      addCardToSideDeck(cardToAdd: string): void {
+      addCardToSideDeck(
+        cardToAdd: string,
+        cardMap: Map<string, BackroomsCard>,
+      ): void {
         patchState(store, (state) => {
           const sideDeck = (state.deck.sideDeck ?? []).map((card) => {
             if (card.id === cardToAdd) {
               card.count += 1;
             }
 
-            card.count = checkSpecialCardCounts(card);
+            card.count = checkSpecialCardCounts(card, cardMap);
             return card;
           });
 

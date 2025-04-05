@@ -167,7 +167,7 @@ export class DecksPageComponent implements OnInit {
 
   loading2 = false;
 
-  private digimonCardStore = inject(BackroomsCardStore);
+  private backroomCardStore = inject(BackroomsCardStore);
 
   constructor(private changeDetection: ChangeDetectorRef) {
     this.websiteStore.loadCommunityDecks();
@@ -273,7 +273,7 @@ export class DecksPageComponent implements OnInit {
         ...deck,
         imageCardId:
           deck.imageCardId === 'BT1-001'
-            ? setDeckImage(deck, this.digimonCardStore.cards()).id
+            ? setDeckImage(deck, this.backroomCardStore.cards()).id
             : deck.imageCardId,
       }));
   }

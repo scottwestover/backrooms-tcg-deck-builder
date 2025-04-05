@@ -34,6 +34,17 @@ body {
   background-color: #17212f;
 }
 
+.p-dialog .p-dialog-content,
+.p-dropdown,
+.p-dropdown-panel,
+.p-multiselect-panel,
+.p-multiselect-item-group,
+.p-multiselect,
+.p-multiselect-token,
+.p-inputtext {
+  background-color: #0B0B0B !important;
+}
+
 .primary-background {
   background-color: #08528d;
 }

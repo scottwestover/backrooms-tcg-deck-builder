@@ -19,10 +19,9 @@ import { BackroomsCardStore } from '../../store/backrooms-card.store';
   template: `
     <div
       class="surface-card relative h-32 w-full cursor-pointer border border-black"
-      defaultImage="assets/images/digimon-card-back.webp"
+      defaultImage="assets/images/card-back.webp"
       [lazyLoad]="
-        (cardImageSubject$ | async) ??
-        '../../../assets/images/digimon-card-back.webp'
+        (cardImageSubject$ | async) ?? '../../../assets/images/card-back.webp'
       "
       [ngStyle]="{
         'background-repeat': 'no-repeat',
@@ -30,7 +29,7 @@ import { BackroomsCardStore } from '../../store/backrooms-card.store';
         'background-position-y': '25%'
       }">
       <div
-        [ngStyle]="{ background: colorMap.get(deck?.color?.name ?? '') }"
+        [ngStyle]="{ background: colorMap.get(deck.color.name) }"
         class="text-shadow-white-xs relative left-[-5px] top-[10px] w-24 border text-black border-black bg-opacity-80 text-center text-xs font-bold uppercase">
         <span class="mr-1">{{ getTags(deck) }}</span>
       </div>
@@ -89,7 +88,7 @@ export class DeckContainerComponent implements OnChanges {
   @Input() deck: IDeck | ITournamentDeck;
   @Input() mode = 'Basic';
   cardImageSubject$ = new BehaviorSubject<string>(
-    '../../../assets/images/digimon-card-back.webp',
+    '../../../assets/images/card-back.webp',
   );
 
   colorMap = ColorMap;
@@ -103,13 +102,13 @@ export class DeckContainerComponent implements OnChanges {
   }
 
   setCardImage() {
-    const digimonCardMap = this.backroomsCardStore.cardsMap();
+    const backroomsCardMap = this.backroomsCardStore.cardsMap();
     let imagePath = '';
     // If there is an ImageCardId set it
     if (this.deck.imageCardId) {
-      const imageCard = digimonCardMap.get(this.deck.imageCardId);
+      const imageCard = backroomsCardMap.get(this.deck.imageCardId);
       imagePath =
-        imageCard?.cardImage ?? '../../../assets/images/digimon-card-back.webp';
+        imageCard?.cardImage ?? '../../../assets/images/card-back.webp';
     } else if (this.deck.cards && this.deck.cards.length < 0) {
       // If there are cards in the deck, set it to the first card
       const imageCard = setDeckImage(

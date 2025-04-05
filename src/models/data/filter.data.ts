@@ -6,16 +6,16 @@ export const GroupedSets = [
     label: 'Standard',
     value: 'displays',
     items: [
-      { label: 'LL', value: 'LL' },
-      { label: 'CP', value: 'CP' },
+      { label: 'Lobby Levels', value: 'LL' },
+      { label: 'Car Park', value: 'CP' },
     ],
   },
   {
     label: 'Starter Decks',
     value: 'starter',
     items: [
-      { label: 'ST1', value: 'ST1' },
-      { label: 'ST2', value: 'ST2' },
+      { label: 'Doll Face', value: 'ST1' },
+      { label: 'Partygoer', value: 'ST2' },
     ],
   },
   {
@@ -121,22 +121,6 @@ export const RarityToColorMap: { [key: string]: string } = {
   VOID: 'Black',
   SHATTERED: 'Silver',
 };
-
-export const Forms: string[] = [
-  'In-Training',
-  'Rookie',
-  'Champion',
-  'Ultimate',
-  'Mega',
-  'Hybrid',
-  'Armor Form',
-  'D-Reaper',
-  'Appmon',
-  'Stnd./Appmon',
-  'Sup./Appmon',
-  'Ult./Appmon',
-  'God/Appmon',
-];
 
 export const Attributes: string[] = [
   'Data',

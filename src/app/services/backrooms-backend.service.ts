@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { filter, first, map, Observable } from 'rxjs';
+import { first, map, Observable } from 'rxjs';
 import {
   BackroomsCard,
   IColor,
@@ -18,8 +18,6 @@ import { IUserAndDecks } from '../../models';
 import { setDeckImage } from '../functions';
 
 const baseUrl = 'https://backend.digimoncard.app/api/';
-const baseUrl_inactiv = 'http://localhost:8080/api/';
-const baseUrl_inactiv2 = 'https://179.61.219.98:8090/preview/digimoncard.app/';
 
 @Injectable({
   providedIn: 'root',
@@ -169,7 +167,7 @@ export class BackroomsBackendService {
         newSave.settings.countMax =
           newSave.settings.countMax !== undefined
             ? newSave.settings.countMax
-            : 5;
+            : 30;
 
         newSave.settings.cardSet =
           newSave.settings.cardSet === 'Both'
@@ -226,7 +224,7 @@ export class BackroomsBackendService {
       newDeck = deck;
     }
 
-    if (!newDeck.imageCardId || newDeck.imageCardId === 'BT1-001') {
+    if (!newDeck.imageCardId || newDeck.imageCardId === 'LL-001') {
       newDeck.imageCardId = setDeckImage(newDeck, allCards).id;
     }
 

@@ -27,7 +27,7 @@ import {
 } from '../../../../models';
 import { ImgFallbackDirective } from '../../../directives/ImgFallback.directive';
 import { IntersectionListenerDirective } from '../../../directives/intersection-listener.directive';
-import { filterCards, withoutJ } from '../../../functions';
+import { filterCards } from '../../../functions';
 import { DialogStore } from '../../../store/dialog.store';
 import { BackroomsCardStore } from '../../../store/backrooms-card.store';
 import { SaveStore } from '../../../store/save.store';
@@ -126,7 +126,7 @@ export class PaginationCardListComponent {
   @Input() initialWidth = 10;
   @Input() inputCollection: ICountCard[] = [];
 
-  digimonCardStore = inject(BackroomsCardStore);
+  backroomCardStore = inject(BackroomsCardStore);
   websiteStore = inject(WebsiteStore);
   saveStore = inject(SaveStore);
   dialogStore = inject(DialogStore);
@@ -143,25 +143,25 @@ export class PaginationCardListComponent {
 
   perPage = 100;
   page = 1;
-  filteredCards = this.digimonCardStore.filteredCards;
+  filteredCards = this.backroomCardStore.filteredCards;
   showCards: BackroomsCard[] = [];
 
   onFilterChange = effect(
     () => {
       if (this.inputCollection.length === 0) return;
-      const cards = this.digimonCardStore.cards();
+      const cards = this.backroomCardStore.cards();
 
       if (cards.length === 0) return;
 
       const filteredCards = filterCards(
-        this.digimonCardStore.cards(),
+        this.backroomCardStore.cards(),
         { ...this.saveStore.save(), collection: this.inputCollection },
         this.filterStore.filter(),
         this.websiteStore.sort(),
-        this.digimonCardStore.cardsMap(),
+        this.backroomCardStore.cardsMap(),
       );
 
-      this.digimonCardStore.updateFilteredCards(filteredCards);
+      this.backroomCardStore.updateFilteredCards(filteredCards);
     },
     { allowSignalWrites: true },
   );
@@ -179,7 +179,7 @@ export class PaginationCardListComponent {
     });
 
     effect(() => {
-      const filteredCards = this.digimonCardStore.filteredCards();
+      const filteredCards = this.backroomCardStore.filteredCards();
       this.showCards = filteredCards.slice(0, this.perPage);
       this.page = 1;
     });
@@ -187,14 +187,10 @@ export class PaginationCardListComponent {
 
   getCount(cardId: string): number {
     if (this.inputCollection.length === 0) {
-      return (
-        this.collection().find((value) => value.id === withoutJ(cardId))
-          ?.count ?? 0
-      );
+      return this.collection().find((value) => value.id === cardId)?.count ?? 0;
     }
     return (
-      this.inputCollection.find((value) => value.id === withoutJ(cardId))
-        ?.count ?? 0
+      this.inputCollection.find((value) => value.id === cardId)?.count ?? 0
     );
   }
 

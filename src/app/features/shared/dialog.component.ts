@@ -5,7 +5,6 @@ import {
   inject,
 } from '@angular/core';
 import { DialogModule } from 'primeng/dialog';
-import { emptyDeck } from '../../../models';
 import { ChangelogDialogComponent } from './dialogs/changelog-dialog.component';
 import { DeckDialogComponent } from './dialogs/deck-dialog.component';
 import { ExportDeckDialogComponent } from './dialogs/export-deck-dialog.component';

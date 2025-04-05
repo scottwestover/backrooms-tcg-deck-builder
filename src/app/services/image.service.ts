@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { defer, Observable, of } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { catchError, switchMap } from 'rxjs/operators';
-import { addJBeforeWebp } from '../../assets/cardlists/BackroomCards';
 
 @Injectable()
 export class ImageService {
@@ -9,17 +8,10 @@ export class ImageService {
   public checkImagePath(imagePath: string): Observable<string> {
     return this.checkImagePathExists(imagePath).pipe(
       catchError((error) => {
-        return of('../../../assets/images/digimon-card-back.webp');
+        return of('../../../assets/images/card-back.webp');
       }),
       switchMap((doesImagePathExist) => {
-        if (
-          doesImagePathExist === '../../../assets/images/digimon-card-back.webp'
-        ) {
-          const newPath = addJBeforeWebp(imagePath);
-          return defer(() => this.checkImagePathExists(newPath));
-        } else {
-          return of(imagePath);
-        }
+        return of(imagePath);
       }),
     );
   }
@@ -33,7 +25,7 @@ export class ImageService {
         observer.complete();
       };
       img.onerror = () => {
-        observer.next('../../../assets/images/digimon-card-back.webp');
+        observer.next('../../../assets/images/card-back.webp');
         observer.complete();
       };
       img.src = imagePath;
