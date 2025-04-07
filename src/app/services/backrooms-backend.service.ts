@@ -1,127 +1,40 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { first, map, Observable } from 'rxjs';
-import {
-  BackroomsCard,
-  IColor,
-  ICountCard,
-  IDeck,
-  ISave,
-  ISettings,
-  ITournamentDeck,
-  IUser,
-} from 'src/models';
-import { CARDSET, IBlog, IBlogWithText, ITag } from '../../models';
-import { sortByReleaseOrder } from '../../models';
+import { inject, Injectable } from '@angular/core';
+import { Firestore, getDoc } from '@angular/fire/firestore';
+import { first, from, map, Observable, of } from 'rxjs';
+import { IColor, ICountCard, IDeck, ISave, ISaveFireStore } from 'src/models';
+import { CARDSET, ITag } from '../../models';
 import { emptySettings } from '../../models';
-import { IUserAndDecks } from '../../models';
-import { setDeckImage } from '../functions';
+import {
+  doc,
+  query,
+  setDoc,
+  where,
+  collection,
+  getDocs,
+} from 'firebase/firestore';
 
-const baseUrl = 'https://backend.digimoncard.app/api/';
+const baseUrl = 'https://backend.digimoncard2.app/api/';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BackroomsBackendService {
+  private firestore = inject(Firestore);
+
   constructor(private http: HttpClient) {}
 
-  getDecks(url: string = baseUrl): Observable<IDeck[]> {
-    return this.http.get<any[]>(url + 'decks').pipe(
-      map((decks) => {
-        return decks
-          .map((deck) => {
-            const cards: ICountCard[] = JSON.parse(deck.cards);
-            let sideDeck: ICountCard[];
-            if (deck.sideDeck) {
-              sideDeck = JSON.parse(
-                deck.sideDeck !== '' ? deck.sideDeck : '[]',
-              );
-            } else {
-              sideDeck = [];
-            }
-
-            const color: IColor = JSON.parse(deck.color);
-            const tags: ITag[] = JSON.parse(deck.tags);
-            const likes: string[] = deck.likes ? JSON.parse(deck.likes) : [];
-            return {
-              ...deck,
-              likes,
-              cards,
-              sideDeck,
-              color,
-              tags,
-            } as IDeck;
-          })
-          .sort(sortByReleaseOrder);
-      }),
-    );
-  }
-
-  getUserDecks(url: string = baseUrl): Observable<IUserAndDecks[]> {
-    return this.http.get<any[]>(url + 'users/decks').pipe(
-      map((array: any[]) => {
-        return array.filter((user) => user[1] !== '[]');
-      }),
-      map((array: any[]) => {
-        const userAndDecks: IUserAndDecks[] = [];
-        array.forEach((user) => {
-          let parsedDecks: any[] = JSON.parse(user[1]);
-          userAndDecks.push({ user: user[0], decks: parsedDecks });
+  getDecks(): Observable<IDeck[]> {
+    const deckRef = query(collection(this.firestore, 'decks'));
+    const decks: IDeck[] = [];
+    return from(
+      getDocs(deckRef).then((deckDocuments) => {
+        deckDocuments.forEach((deckDoc) => {
+          decks.push(deckDoc.data() as IDeck);
         });
-
-        return userAndDecks;
+        return decks;
       }),
     );
-  }
-
-  getTournamentDecks(url: string = baseUrl): Observable<ITournamentDeck[]> {
-    return this.http.get<any[]>(url + 'tournament-decks').pipe(
-      map((decks) => {
-        return decks.map((deck) => {
-          const cards: ICountCard = JSON.parse(deck.cards);
-          const sideDeck: ICountCard = JSON.parse(
-            deck.sideDeck !== '' ? deck.sideDeck : '[]',
-          );
-          const color: IColor = JSON.parse(deck.color);
-          const tags: ITag[] = JSON.parse(deck.tags);
-          const likes: string[] = deck.likes ? JSON.parse(deck.likes) : [];
-          return {
-            ...deck,
-            likes,
-            cards,
-            sideDeck,
-            color,
-            tags,
-          } as ITournamentDeck;
-        });
-      }),
-    );
-  }
-
-  getBlogEntries(url: string = baseUrl): Observable<IBlog[]> {
-    return this.http.get<IBlog[]>(url + 'blogs');
-  }
-
-  getSaves(url: string = baseUrl): Observable<ISave[]> {
-    return this.http.get<any[]>(url + 'users').pipe(
-      map((saves) => {
-        return saves.map((save) => {
-          const collection: ICountCard[] = JSON.parse(save.collection);
-          const decks: IDeck[] = JSON.parse(save.decks);
-          const settings: ISettings = JSON.parse(save.settings);
-          return {
-            ...save,
-            collection,
-            decks,
-            settings,
-          } as ISave;
-        });
-      }),
-    );
-  }
-
-  getBlogEntriesWithText(url: string = baseUrl): Observable<IBlogWithText[]> {
-    return this.http.get<IBlogWithText[]>(url + 'blogs-with-text');
   }
 
   getDeck(id: any): Observable<IDeck> {
@@ -146,121 +59,68 @@ export class BackroomsBackendService {
     );
   }
 
+  // deleteDeck(id: any): Observable<any> {
+  //   return this.http.delete(`${baseUrl}decks/${id}`);
+  // }
+
   getSave(id: any): Observable<ISave> {
-    return this.http.get<any>(`${baseUrl}users/${id}`).pipe(
-      map((save) => {
-        const collection: ICountCard[] = JSON.parse(save.collection);
-        const decks: IDeck[] = JSON.parse(save.decks);
-        const settings: ISettings = JSON.parse(save.settings);
-        const newSave = {
-          ...save,
-          collection,
-          decks,
-          settings,
-        } as ISave;
+    const docRef = doc(this.firestore, 'users', id);
+    return from(
+      getDoc(docRef).then((userDoc) => {
+        const userProfile = userDoc.data() as ISaveFireStore;
+        const userProfileCollection: ICountCard[] = JSON.parse(
+          userProfile.collection,
+        );
+        const deckRef = query(
+          collection(this.firestore, 'decks'),
+          where('userId', '==', id),
+        );
+        const decks: IDeck[] = [];
+        return getDocs(deckRef).then((deckDocuments) => {
+          deckDocuments.forEach((deckDoc) => {
+            decks.push(deckDoc.data() as IDeck);
+          });
 
-        newSave.settings.aaCollectionMinimum =
-          newSave.settings.aaCollectionMinimum !== undefined
-            ? newSave.settings.aaCollectionMinimum
-            : 1;
-
-        newSave.settings.countMax =
-          newSave.settings.countMax !== undefined
-            ? newSave.settings.countMax
-            : 30;
-
-        newSave.settings.cardSet =
-          newSave.settings.cardSet === 'Both'
-            ? 'English'
-            : newSave.settings.cardSet;
-
-        return newSave;
+          const newSave = {
+            ...userProfile,
+            collection: userProfileCollection,
+            decks,
+          } as ISave;
+          return newSave;
+        });
       }),
     );
   }
 
-  getBlogEntryWithText(id: any): Observable<IBlogWithText> {
-    return this.http.get<IBlogWithText>(`${baseUrl}blogs-with-text/${id}`).pipe(
-      map((blog) => {
-        const text = JSON.parse(blog.text);
-        return {
-          ...blog,
-          text,
-        } as IBlogWithText;
+  updateSave(save: ISave, lastUpdatedDeckId: string): Observable<any> {
+    const modifiedUserSaveData: ISaveFireStore = {
+      uid: save.uid as string,
+      displayName: save.displayName as string,
+      photoURL: save.photoURL,
+      version: save.version as number,
+      collection: JSON.stringify(save.collection),
+    };
+
+    const documentRef = doc(this.firestore, 'users', modifiedUserSaveData.uid);
+    return from(
+      setDoc(documentRef, modifiedUserSaveData).then(() => {
+        if (lastUpdatedDeckId !== '') {
+          const deck = save.decks.find((deck) => deck.id === lastUpdatedDeckId);
+          if (!deck) {
+            return;
+          }
+          deck.user = modifiedUserSaveData.displayName;
+          deck.userId = modifiedUserSaveData.uid;
+          const documentRefForDecks = doc(
+            this.firestore,
+            'decks',
+            this.createDeckDocId(modifiedUserSaveData.uid, lastUpdatedDeckId),
+          );
+          console.log(documentRefForDecks.id, deck);
+          setDoc(documentRefForDecks, deck);
+        }
       }),
     );
-  }
-
-  createDeck(data: IDeck): Observable<any> {
-    return this.http.post(baseUrl + 'decks', data);
-  }
-
-  createTournamentDeck(data: ITournamentDeck): Observable<any> {
-    return this.http.post(baseUrl + 'tournament-decks', data);
-  }
-
-  createBlog(data: IBlog): Observable<any> {
-    return this.http.post(baseUrl + 'blogs', data);
-  }
-
-  createBlogWithText(data: IBlogWithText): Observable<any> {
-    return this.http.post(baseUrl + 'blogs-with-text', data);
-  }
-
-  updateDeck(
-    deck: IDeck,
-    user: IUser | null = null,
-    allCards: BackroomsCard[],
-  ): Observable<any> {
-    let newDeck: any;
-    if (user) {
-      newDeck = {
-        ...deck,
-        user: user.displayName ?? 'Unknown',
-        userId: user.uid ?? 'Unknown',
-        date: new Date(),
-      };
-    } else {
-      newDeck = deck;
-    }
-
-    if (!newDeck.imageCardId || newDeck.imageCardId === 'LL-001') {
-      newDeck.imageCardId = setDeckImage(newDeck, allCards).id;
-    }
-
-    return this.http.put(`${baseUrl}decks/${deck.id}`, newDeck);
-  }
-
-  updateTournamentDeck(deck: ITournamentDeck): Observable<any> {
-    return this.http.put(`${baseUrl}tournament-decks/${deck.id}`, deck);
-  }
-
-  updateSave(save: ISave): Observable<any> {
-    return this.http.put(`${baseUrl}users/${save.uid}`, save);
-  }
-
-  updateBlog(blog: IBlog): Observable<any> {
-    return this.http.put(`${baseUrl}blogs/${blog.uid}`, blog);
-  }
-
-  updateBlogWithText(blog: IBlogWithText): Observable<any> {
-    return this.http.put(`${baseUrl}blogs-with-text/${blog.uid}`, blog);
-  }
-
-  deleteDeck(id: any): Observable<any> {
-    return this.http.delete(`${baseUrl}decks/${id}`);
-  }
-
-  deleteTournamentDeck(id: any): Observable<any> {
-    return this.http.delete(`${baseUrl}tournament-decks/${id}`);
-  }
-
-  deleteBlogEntry(id: any): Observable<any> {
-    return this.http.delete(`${baseUrl}blogs/${id}`);
-  }
-
-  deleteBlogEntryWithText(id: any): Observable<any> {
-    return this.http.delete(`${baseUrl}blogs-with-text/${id}`);
   }
 
   checkSaveValidity(save: any, user?: any): ISave {
@@ -353,8 +213,12 @@ export class BackroomsBackendService {
     }
 
     if (changedSave && user?.uid) {
-      this.updateSave(save).pipe(first()).subscribe();
+      this.updateSave(save, '').pipe(first()).subscribe();
     }
     return save;
+  }
+
+  private createDeckDocId(userId: string, deckId: string): string {
+    return `${deckId}::${userId}`;
   }
 }

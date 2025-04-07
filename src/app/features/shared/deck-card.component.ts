@@ -137,14 +137,6 @@ export class DeckCardComponent implements OnChanges, OnInit {
       event.stopPropagation();
     }
 
-    if (this.sideDeck) {
-      this.websiteStore.addCardToSideDeck(
-        this.card.id,
-        this.backroomsCardStore.cardsMap(),
-      );
-      return;
-    }
-
     this.websiteStore.addCardToDeck(
       this.card.id,
       this.backroomsCardStore.cardsMap(),
@@ -155,11 +147,6 @@ export class DeckCardComponent implements OnChanges, OnInit {
     if (event) {
       event.preventDefault();
       event.stopPropagation();
-    }
-
-    if (this.sideDeck) {
-      this.websiteStore.removeCardFromSideDeck(this.card.id);
-      return;
     }
 
     this.websiteStore.removeCardFromDeck(this.card.id);

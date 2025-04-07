@@ -17,6 +17,7 @@ import { first } from 'rxjs';
 import {
   DeckColorMap,
   DRAG,
+  emptySettings,
   IDeck,
   IDeckCard,
   IDraggedCard,
@@ -146,7 +147,7 @@ export class DeckViewComponent {
   @Output() onMainDeck = new EventEmitter<IDeckCard[]>();
   @Output() hideStats = new EventEmitter<boolean>();
 
-  digimonBackendService = inject(BackroomsBackendService);
+  backroomsBackendService = inject(BackroomsBackendService);
   confirmationService = inject(ConfirmationService);
   messageService = inject(MessageService);
 
@@ -183,14 +184,6 @@ export class DeckViewComponent {
         .find((item) => compareIDs(item.id, card.id));
       if (foundCard) {
         iDeckCards.push({ ...foundCard, count: card.count });
-      }
-    });
-    (this.deck().sideDeck ?? []).forEach((card) => {
-      const foundCard = this.backroomCardStore
-        .cards()
-        .find((item) => compareIDs(item.id, card.id));
-      if (foundCard) {
-        iSideDeckCards.push({ ...foundCard, count: card.count });
       }
     });
 
@@ -273,11 +266,8 @@ export class DeckViewComponent {
     return count;
   }
 
-  /**
-   * Sort the Deck (Eggs, Digimon, Tamer, Options)
-   */
   deckSort() {
-    const useColorSort = this.saveStore.settings().sortDeckOrder === 'Color';
+    const useColorSort = emptySettings.sortDeckOrder === 'Color';
 
     if (useColorSort) {
       this.mainDeck = colorSort(this.mainDeck);
@@ -335,20 +325,6 @@ export class DeckViewComponent {
   }
 
   drop(card: IDraggedCard, area: string) {
-    if (area === 'Side') {
-      if (card.drag === DRAG.Main) {
-        this.websiteStore.removeCardFromDeck(card.card.id);
-      }
-      this.websiteStore.addCardToSideDeck(
-        card.card.id,
-        this.backroomCardStore.cardsMap(),
-      );
-      return;
-    }
-
-    if (card.drag === DRAG.Side) {
-      this.websiteStore.removeCardFromSideDeck(card.card.id);
-    }
     this.websiteStore.addCardToDeck(
       card.card.id,
       this.backroomCardStore.cardsMap(),

@@ -23,7 +23,7 @@ import { InputTextModule } from 'primeng/inputtext';
             type="text" />
         </span>
       </div>
-      <p-multiSelect
+      <!-- <p-multiSelect
         [formControl]="tagFilter"
         [options]="tags"
         [showToggleAll]="false"
@@ -32,7 +32,7 @@ import { InputTextModule } from 'primeng/inputtext';
         scrollHeight="250px"
         class="mx-auto max-w-[250px]"
         styleClass="h-[34px] text-sm max-w-[250px]">
-      </p-multiSelect>
+      </p-multiSelect> -->
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,

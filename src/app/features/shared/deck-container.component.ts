@@ -29,7 +29,7 @@ import { BackroomsCardStore } from '../../store/backrooms-card.store';
         'background-position-y': '25%'
       }">
       <div
-        [ngStyle]="{ background: colorMap.get(deck.color.name) }"
+        [ngStyle]="{ background: colorMap.get('Yellow') }"
         class="text-shadow-white-xs relative left-[-5px] top-[10px] w-24 border text-black border-black bg-opacity-80 text-center text-xs font-bold uppercase">
         <span class="mr-1">{{ getTags(deck) }}</span>
       </div>
@@ -129,9 +129,7 @@ export class DeckContainerComponent implements OnChanges {
   }
 
   isIllegal(): boolean {
-    return this.deck.tags
-      ? !!this.deck.tags.find((tag) => tag.name === 'Illegal')
-      : false;
+    return false;
   }
 
   placementString(placement: number): string {
@@ -146,9 +144,6 @@ export class DeckContainerComponent implements OnChanges {
   }
 
   getTags(deck: IDeck | ITournamentDeck) {
-    if (deck.tags && deck.tags.length > 0) {
-      return deck!.tags[0] ? deck!.tags[0].name : '';
-    }
     return '';
   }
 }

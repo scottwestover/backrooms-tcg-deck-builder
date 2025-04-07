@@ -2,11 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	<url>
 		<loc>https://digimoncard.app/</loc>
-        <changefreq>weekly</changefreq>
+    <changefreq>weekly</changefreq>
 	</url>
   <url>
 		<loc>https://digimoncard.app/deckbuilder/</loc>
-        <changefreq>weekly</changefreq>
+    <changefreq>weekly</changefreq>
 	</url>
   <url>
     <loc>https://digimoncard.app/collection/</loc>
@@ -14,6 +14,6 @@
   </url>
   <url>
 		<loc>https://digimoncard.app/user/</loc>
-        <changefreq>weekly</changefreq>
+    <changefreq>weekly</changefreq>
 	</url>
 </urlset>

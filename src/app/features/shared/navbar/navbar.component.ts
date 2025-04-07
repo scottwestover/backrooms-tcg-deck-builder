@@ -5,7 +5,6 @@ import { ConfirmPopupModule } from 'primeng/confirmpopup';
 import { DialogModule } from 'primeng/dialog';
 import { SidebarModule } from 'primeng/sidebar';
 import { ChangelogDialogComponent } from '../dialogs/changelog-dialog.component';
-import { SettingsDialogComponent } from '../dialogs/settings-dialog.component';
 import { FilterButtonComponent } from '../filter/filter-button.component';
 import { NavLinksComponent } from './nav-links.component';
 
@@ -40,7 +39,6 @@ import { NavLinksComponent } from './nav-links.component';
     FontAwesomeModule,
     ConfirmPopupModule,
     DialogModule,
-    SettingsDialogComponent,
     ChangelogDialogComponent,
     NgOptimizedImage,
     NavLinksComponent,

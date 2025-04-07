@@ -10,17 +10,28 @@ import {
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
 import { ToastrService } from 'ngx-toastr';
 import { distinctUntilChanged, first, pipe, switchMap } from 'rxjs';
-import { emptySave, ICountCard, IDeck, ISave, ISettings } from '../../models';
+import {
+  emptySave,
+  emptySettings,
+  ICountCard,
+  IDeck,
+  ISave,
+} from '../../models';
 import { AuthService } from '../services/auth.service';
+import { COLLECTION_MIN } from '../config';
 
 type Save = {
   save: ISave;
   loadedSave: boolean;
+  collectionMode: boolean;
+  lastUpdatedDeckId: string;
 };
 
 const initialState: Save = {
   save: emptySave,
   loadedSave: false,
+  collectionMode: false,
+  lastUpdatedDeckId: '',
 };
 
 export const SaveStore = signalStore(
@@ -28,11 +39,11 @@ export const SaveStore = signalStore(
   withState(initialState),
 
   withComputed(({ save }) => ({
-    settings: computed(() => save.settings()),
-    collectionMode: computed(() => save.settings().collectionMode),
-    collectionMinimum: computed(() => save.settings().collectionMinimum),
-    aaCollectionMinimum: computed(() => save.settings().aaCollectionMinimum),
-    displaySideDeck: computed(() => save.settings().displaySideDeck),
+    settings: computed(() => emptySettings),
+    //collectionMode: computed(() => /*save.settings().collectionMode*/ false),
+    collectionMinimum: computed(() => COLLECTION_MIN),
+    aaCollectionMinimum: computed(() => COLLECTION_MIN),
+    displaySideDeck: computed(() => /*save.settings().displaySideDeck*/ false),
     collection: computed(() => save.collection()),
     decks: computed(() => save.decks()),
   })),
@@ -52,10 +63,10 @@ export const SaveStore = signalStore(
               tapResponse({
                 next: (save) => {
                   // TODO
-                  // toastrService.info(
-                  //   'Your save was loaded successfully!',
-                  //   'Welcome back!',
-                  // );
+                  toastrService.info(
+                    'Your save was loaded successfully!',
+                    'Welcome back!',
+                  );
 
                   patchState(store, {
                     save: {
@@ -70,7 +81,9 @@ export const SaveStore = signalStore(
                     'Save Loading Error!',
                   );
                 },
-                finalize: () => patchState(store, { loadedSave: true }),
+                finalize: () => {
+                  patchState(store, { loadedSave: true });
+                },
               }),
             );
           }),
@@ -80,9 +93,14 @@ export const SaveStore = signalStore(
       updateSave(save: ISave): void {
         patchState(store, (state) => ({ save }));
       },
-      updateSettings(settings: ISettings): void {
-        patchState(store, (state) => ({ save: { ...state.save, settings } }));
+      updateCollectionMode(collectionMode: boolean): void {
+        patchState(store, (state) => ({
+          collectionMode,
+        }));
       },
+      // updateSettings(settings: ISettings): void {
+      //   patchState(store, (state) => ({ save: { ...state.save, settings } }));
+      // },
       updateCollection(collection: ICountCard[]): void {
         patchState(store, (state) => ({ save: { ...state.save, collection } }));
       },
@@ -121,7 +139,10 @@ export const SaveStore = signalStore(
         patchState(store, (state) => {
           // If there are no decks, just add the deck to the array
           if (!state.save.decks) {
-            return { save: { ...state.save, decks: [deck] } };
+            return {
+              save: { ...state.save, decks: [deck] },
+              lastUpdatedDeckId: deck.id,
+            };
           }
 
           // If you have a deck with the same ID overwrite it
@@ -133,12 +154,19 @@ export const SaveStore = signalStore(
               (value) => value.id !== deck.id,
             );
             const decks: IDeck[] = [...new Set([...allButFoundDeck, deck])];
-            return { save: { ...state.save, decks } };
+            return {
+              save: { ...state.save, decks },
+              lastUpdatedDeckId: deck.id,
+            };
           }
 
           // Add the deck to the decks
           return {
-            save: { ...state.save, decks: [...state.save.decks, deck] },
+            save: {
+              ...state.save,
+              decks: [...state.save.decks, deck],
+            },
+            lastUpdatedDeckId: deck.id,
           };
         });
       },
@@ -152,7 +180,13 @@ export const SaveStore = signalStore(
             return value;
           });
 
-          return { save: { ...state.save, decks: [...new Set(decks)] } };
+          return {
+            save: {
+              ...state.save,
+              decks: [...new Set(decks)],
+            },
+            lastUpdatedDeckId: deck.id,
+          };
         });
       },
       deleteDeck(deck: IDeck): void {
@@ -161,7 +195,7 @@ export const SaveStore = signalStore(
           const decks = [
             ...new Set(state.save.decks.filter((item) => item.id !== deck.id)),
           ];
-          return { save: { ...state.save, decks } };
+          return { save: { ...state.save, decks }, lastUpdatedDeckId: deck.id };
         });
       },
     }),

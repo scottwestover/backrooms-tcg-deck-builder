@@ -11,7 +11,6 @@ import { AuthService } from '../../../services/auth.service';
 import { DialogStore } from '../../../store/dialog.store';
 import { SaveStore } from '../../../store/save.store';
 import { ChangelogDialogComponent } from '../dialogs/changelog-dialog.component';
-import { SettingsDialogComponent } from '../dialogs/settings-dialog.component';
 import { FilterButtonComponent } from '../filter/filter-button.component';
 
 @Component({
@@ -67,7 +66,7 @@ import { FilterButtonComponent } from '../filter/filter-button.component';
         </button>
       </li>
 
-      <!-- <li
+      <li
         class="flex flex-col items-center group cursor-pointer"
         [ngClass]="getNavigationBorder('/user')"
         (click)="router.navigateByUrl('/user')">
@@ -79,9 +78,9 @@ import { FilterButtonComponent } from '../filter/filter-button.component';
           class="p-2 group-hover:text-[#FFD54F]">
           Profile
         </button>
-      </li> -->
+      </li>
 
-      <!-- <li
+      <li
         class="flex flex-col items-center group cursor-pointer"
         [ngClass]="getNavigationBorder('/decks')"
         (click)="router.navigateByUrl('/decks')">
@@ -94,10 +93,8 @@ import { FilterButtonComponent } from '../filter/filter-button.component';
           Decks
         </button>
       </li>
-      -->
     </ul>
 
-    <!--
     <div
       [ngClass]="{
         'max-lg:ml-auto flex-row lg:flex-col': !sidebar,
@@ -115,11 +112,11 @@ import { FilterButtonComponent } from '../filter/filter-button.component';
             class='min-w-auto mx-auto primary-background h-12 w-12 overflow-hidden rounded-full text-[#e2e4e6] group-hover:bg-[#FFD54F]"'>
             <img
               *ngIf="user"
-              alt="{{ this.user?.displayName }}"
-              src="{{ this.user?.photoURL }}" />
+              alt="{{ this.user.displayName }}"
+              src="{{ this.user.photoURL }}" />
           </div>
           <span class="text-[#e2e4e6] text-xs">{{
-            this.user?.displayName
+            this.user.displayName
           }}</span>
         </ng-container>
         <ng-template #userIcon>
@@ -132,7 +129,7 @@ import { FilterButtonComponent } from '../filter/filter-button.component';
           >
         </ng-template>
       </button>
-
+      <!--
       <i
         [ngClass]="{
           'max-lg:mr-5': !sidebar
@@ -187,6 +184,7 @@ import { FilterButtonComponent } from '../filter/filter-button.component';
         </div>
       </div>
     </div> -->
+    </div>
   `,
   standalone: true,
   imports: [
@@ -196,7 +194,6 @@ import { FilterButtonComponent } from '../filter/filter-button.component';
     FontAwesomeModule,
     ConfirmPopupModule,
     DialogModule,
-    SettingsDialogComponent,
     ChangelogDialogComponent,
     NgOptimizedImage,
     ButtonModule,

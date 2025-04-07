@@ -8,6 +8,8 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAnalyticsModule } from '@angular/fire/compat/analytics';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
   bootstrapApplication,
@@ -48,14 +50,14 @@ const routes: Routes = [
     path: 'decks',
     component: DecksPageComponent,
   },
-  // {
-  //   path: 'user',
-  //   component: ProfilePageComponent,
-  // },
-  // {
-  //   path: 'user/:id',
-  //   component: ProfilePageComponent,
-  // },
+  {
+    path: 'user',
+    component: ProfilePageComponent,
+  },
+  {
+    path: 'user/:id',
+    component: ProfilePageComponent,
+  },
   {
     path: 'deckbuilder/user/:userId/deck/:deckId',
     component: DeckbuilderPageComponent,
@@ -102,6 +104,8 @@ bootstrapApplication(AppComponent, {
       BlockUIModule,
       ProgressSpinnerModule,
       TooltipModule,
+      provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
+      provideFirestore(() => getFirestore()),
     ),
     provideRouter(routes, withPreloading(PreloadAllModules)),
     ReactiveFormsModule,

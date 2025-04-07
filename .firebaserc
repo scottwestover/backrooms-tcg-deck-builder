@@ -1,6 +1,6 @@
 {
   "projects": {
-    "default": "digimon-card-collector"
+    "default": "backrooms-tcg"
   },
   "targets": {
     "digimon-card-collector": {

@@ -11,7 +11,6 @@ import { IDeck, IDeckCard } from '../../../../models';
 import { mapToDeckCards } from '../../../functions';
 import { BackroomsCardStore } from '../../../store/backrooms-card.store';
 import { WebsiteStore } from '../../../store/website.store';
-import { ChartContainersComponent } from '../../shared/statistics/chart-containers.component';
 import { ColorSpreadComponent } from '../../shared/statistics/color-spread.component';
 import { DdtoSpreadComponent } from '../../shared/statistics/ddto-spread.component';
 
@@ -22,22 +21,14 @@ import { DdtoSpreadComponent } from '../../shared/statistics/ddto-spread.compone
     <div
       *ngIf="showStats"
       class="fixed bottom-0 z-[102] flex h-28 w-full flex-row"
-      [ngClass]="{ 'lg:w-[350px]': collectionView }">
+      [ngClass]="{ 'lg:w-[250px]': collectionView }">
       <div
         [ngClass]="{ 'w-full': collectionView, 'border-l-2': !collectionView }"
         class="surface-card flex flex-row border-r-2 border-t-2 border-white bg-opacity-25 lg:mx-auto">
         <backrooms-ddto-spread
-          *ngIf="!collectionView"
           [deck]="deck()"
           [container]="true"
           class="ml-auto hidden border-r border-slate-200 px-5 lg:block"></backrooms-ddto-spread>
-
-        <backrooms-chart-containers
-          [deck]="mainDeck()"
-          class="max-w-[40rem]"
-          [ngClass]="{
-            'lg:ml-3 lg:mr-auto': collectionView
-          }"></backrooms-chart-containers>
 
         <backrooms-color-spread
           *ngIf="!collectionView"
@@ -52,7 +43,6 @@ import { DdtoSpreadComponent } from '../../shared/statistics/ddto-spread.compone
     NgIf,
     NgClass,
     DdtoSpreadComponent,
-    ChartContainersComponent,
     ColorSpreadComponent,
     AsyncPipe,
   ],

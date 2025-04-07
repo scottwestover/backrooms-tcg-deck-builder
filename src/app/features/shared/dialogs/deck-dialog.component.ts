@@ -31,11 +31,11 @@ import { BackroomsCardStore } from '../../../store/backrooms-card.store';
 import { SaveStore } from '../../../store/save.store';
 import { WebsiteStore } from '../../../store/website.store';
 import { DeckCardComponent } from '../deck-card.component';
-import { ChartContainersComponent } from '../statistics/chart-containers.component';
 import { ColorSpreadComponent } from '../statistics/color-spread.component';
 import { DdtoSpreadComponent } from '../statistics/ddto-spread.component';
+import { DOMAIN } from 'src/app/config';
 
-export interface DigimonCardImage {
+export interface BackroomsCardImage {
   name: string;
   value: string;
 }
@@ -58,10 +58,6 @@ export interface DigimonCardImage {
           [deck]="deck"
           [container]="true"
           class="ml-auto hidden border-r border-slate-200 px-5 lg:block"></backrooms-ddto-spread>
-
-        <backrooms-chart-containers
-          [deck]="mainDeck"
-          class="mx-auto max-w-[40rem]"></backrooms-chart-containers>
 
         <backrooms-color-spread
           [deck]="deck"
@@ -87,15 +83,6 @@ export interface DigimonCardImage {
         <div class="col-span-2">
           {{ deck.user }}
         </div>
-
-        <label>Tags</label>
-        <div class="col-span-2 flex flex-row align-middle">
-          <div
-            *ngFor="let tag of deck.tags"
-            class="surface-ground mr-0.5 h-8 border border-black px-1.5 text-xs font-bold leading-[35px]">
-            {{ tag.name }}
-          </div>
-        </div>
       </div>
       <ng-template #edit [formGroup]="deckFormGroup">
         <div class="mx-auto my-1 grid grid-cols-3 gap-y-1">
@@ -120,14 +107,6 @@ export interface DigimonCardImage {
             placeholder="Description:"
             class="col-span-2 h-[66px] w-full overflow-hidden"
             pInputTextarea></textarea>
-          <label>Tags</label>
-          <div class="col-span-2 flex flex-row align-middle">
-            <div
-              *ngFor="let tag of deck.tags"
-              class="surface-ground mr-0.5 h-8 border border-black px-1.5 text-xs font-bold leading-[35px]">
-              {{ tag.name }}
-            </div>
-          </div>
         </div>
       </ng-template>
 
@@ -198,13 +177,6 @@ export interface DigimonCardImage {
             class="p-button-sm lg:p-button p-button-outlined"
             type="button"
             label="Get Link"></button>
-          <button
-            *ngIf="isAdmin"
-            (click)="deleteDeck($event)"
-            pButton
-            class="p-button-sm lg:p-button p-button-outlined"
-            type="button"
-            label="Delete"></button>
         </div>
       </ng-template>
     </div>
@@ -223,7 +195,6 @@ export interface DigimonCardImage {
     NgFor,
     DeckCardComponent,
     DdtoSpreadComponent,
-    ChartContainersComponent,
     ColorSpreadComponent,
     NgIf,
     TooltipModule,
@@ -243,7 +214,7 @@ export class DeckDialogComponent {
   saveStore = inject(SaveStore);
   websiteStore = inject(WebsiteStore);
   dialogStore = inject(DialogStore);
-  digimonCardStore = inject(BackroomsCardStore);
+  backroomsCardStore = inject(BackroomsCardStore);
 
   deck: IDeck | ITournamentDeck = emptyDeck;
   editable = true;
@@ -252,21 +223,19 @@ export class DeckDialogComponent {
     title: new UntypedFormControl(''),
     description: new UntypedFormControl(''),
     cardImage: new UntypedFormControl({
-      name: 'BT1-001 - Yokomon',
-      value: 'BT1-001',
+      name: 'LL-001 - Hallway',
+      value: 'LL-001',
     }),
   });
 
-  cardImageOptions: DigimonCardImage[] = [];
+  cardImageOptions: BackroomsCardImage[] = [];
 
   mainDeck: IDeckCard[] = [];
-
-  isAdmin = false;
 
   constructor(
     private authService: AuthService,
     private router: Router,
-    private digimonBackendService: BackroomsBackendService,
+    // private backroomsBackendService: BackroomsBackendService,
     private confirmationService: ConfirmationService,
     private messageService: MessageService,
   ) {
@@ -276,7 +245,7 @@ export class DeckDialogComponent {
 
       this.mainDeck = mapToDeckCards(
         this.deck.cards,
-        this.digimonCardStore.cards(),
+        this.backroomsCardStore.cards(),
       );
 
       this.deckFormGroup = new UntypedFormGroup({
@@ -291,10 +260,6 @@ export class DeckDialogComponent {
 
       this.changeDetection.detectChanges();
     });
-
-    this.isAdmin =
-      this.authService.userData?.uid === 'S3rWXPtCYRN8vSrxY3qE6aeewy43' ||
-      this.authService.userData?.uid === 'loBLZPOIL0ZlDzt6A1rgDiTomTw2';
   }
 
   openDeck(event: Event) {
@@ -309,17 +274,17 @@ export class DeckDialogComponent {
       }
       this.dialogStore.showDeckDialog(false);
     } else {
-      this.confirmationService.confirm({
-        target: event.target ?? undefined,
-        message: 'You are about to open this deck. Are you sure?',
-        accept: () => {
-          this.websiteStore.updateDeck(this.deck);
-          this.router.navigateByUrl(
-            '/deckbuilder/user/' + this.deck.userId + '/deck/' + this.deck.id,
-          );
-          this.dialogStore.showDeckDialog(false);
-        },
-      });
+      // this.confirmationService.confirm({
+      //   target: event.target ?? undefined,
+      //   message: 'You are about to open this deck. Are you sure?',
+      //   accept: () => {
+      //     this.websiteStore.updateDeck(this.deck);
+      //     this.router.navigateByUrl(
+      //       '/deckbuilder/user/' + this.deck.userId + '/deck/' + this.deck.id,
+      //     );
+      //     this.dialogStore.showDeckDialog(false);
+      //   },
+      // });
     }
   }
 
@@ -340,23 +305,23 @@ export class DeckDialogComponent {
         },
       });
     } else {
-      this.confirmationService.confirm({
-        target: event.target ?? undefined,
-        key: 'Delete',
-        message: 'You are about to permanently delete this deck. Are you sure?',
-        accept: () => {
-          this.digimonBackendService
-            .deleteDeck(this.deck.id)
-            .pipe(first())
-            .subscribe();
-          this.messageService.add({
-            severity: 'success',
-            summary: 'Deck deleted!',
-            detail: 'Deck was deleted successfully!',
-          });
-          this.dialogStore.showDeckDialog(false);
-        },
-      });
+      // this.confirmationService.confirm({
+      //   target: event.target ?? undefined,
+      //   key: 'Delete',
+      //   message: 'You are about to permanently delete this deck. Are you sure?',
+      //   accept: () => {
+      //     this.backroomsBackendService
+      //       .deleteDeck(this.deck.id)
+      //       .pipe(first())
+      //       .subscribe();
+      //     this.messageService.add({
+      //       severity: 'success',
+      //       summary: 'Deck deleted!',
+      //       detail: 'Deck was deleted successfully!',
+      //     });
+      //     this.dialogStore.showDeckDialog(false);
+      //   },
+      // });
     }
   }
 
@@ -380,7 +345,7 @@ export class DeckDialogComponent {
     this.dialogStore.updateExportDeckDialog({ show: true, deck: this.deck });
   }
 
-  createImageOptions(): DigimonCardImage[] {
+  createImageOptions(): BackroomsCardImage[] {
     return (
       this.mainDeck.map((card) => ({
         name: `${card.id} - ${card.name.english}`,
@@ -396,8 +361,8 @@ export class DeckDialogComponent {
     selBox.style.top = '0';
     selBox.style.opacity = '0';
     selBox.value = this.editable
-      ? `https://digimoncard.app/deckbuilder/user/${this.authService.userData?.uid}/deck/${this.deck.id}`
-      : `https://digimoncard.app/deckbuilder/${this.deck.id}`;
+      ? `${DOMAIN}/deckbuilder/user/${this.authService.userData?.uid}/deck/${this.deck.id}`
+      : `${DOMAIN}/deckbuilder/${this.deck.id}`;
     document.body.appendChild(selBox);
     selBox.focus();
     selBox.select();
@@ -428,19 +393,22 @@ export class DeckDialogComponent {
     this.dialogStore.showDeckDialog(false);
   }
 
-  private getCardImage(imageCardId: string): DigimonCardImage {
+  private getCardImage(imageCardId: string): BackroomsCardImage {
     if (!this.deck.cards || this.deck.cards.length === 0) {
       return { name: 'BT1-001 - Yokomon', value: 'BT1-001' };
     }
 
-    let foundCard = this.digimonCardStore.cardsMap().get(imageCardId);
+    let foundCard = this.backroomsCardStore.cardsMap().get(imageCardId);
     if (foundCard) {
       return {
         name: `${foundCard!.id} - ${foundCard!.name}`,
         value: foundCard!.id,
       };
     } else {
-      const imageCard = setDeckImage(this.deck, this.digimonCardStore.cards());
+      const imageCard = setDeckImage(
+        this.deck,
+        this.backroomsCardStore.cards(),
+      );
       return {
         name: `${imageCard!.id} - ${imageCard!.name}`,
         value: imageCard!.id,

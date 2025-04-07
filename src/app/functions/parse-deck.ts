@@ -5,7 +5,7 @@ import {
   IDeck,
   IDeckCard,
 } from '../../models';
-import { compareIDs, setColors, setTags } from './backrooms-card.functions';
+import { compareIDs } from './backrooms-card.functions';
 
 export function stringToDeck(
   deckList: string,
@@ -15,13 +15,11 @@ export function stringToDeck(
 
   let deck: IDeck = parseDeck(result, allCards);
   if (deck.cards.length > 0) {
-    setDeckProperties(deck, allCards);
     return deck;
   }
 
   let deckTTS: IDeck = parseTTSDeck(deckList, allCards);
   if (deckTTS.cards.length > 0) {
-    setDeckProperties(deck, allCards);
     return deckTTS;
   }
 
@@ -130,11 +128,6 @@ function findNumber(array: string[]): number {
     }
   });
   return count;
-}
-
-function setDeckProperties(deck: IDeck, allCards: BackroomsCard[]) {
-  deck.tags = setTags(deck, allCards);
-  deck.color = setColors(deck, allCards);
 }
 
 function findCardById(

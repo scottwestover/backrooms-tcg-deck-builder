@@ -11,7 +11,13 @@ import {
 } from '@angular/core';
 import { DialogModule } from 'primeng/dialog';
 import { PaginatorModule } from 'primeng/paginator';
-import { emptyDeck, ICountCard, IDeck, IUser } from '../../../../models';
+import {
+  emptyDeck,
+  emptySettings,
+  ICountCard,
+  IDeck,
+  IUser,
+} from '../../../../models';
 import { DialogStore } from '../../../store/dialog.store';
 import { SaveStore } from '../../../store/save.store';
 import { DeckContainerComponent } from '../../shared/deck-container.component';
@@ -83,7 +89,7 @@ export class DecksComponent implements OnInit, OnChanges {
 
   deck: IDeck = JSON.parse(JSON.stringify(emptyDeck));
 
-  displayTables = this.saveStore.settings().deckDisplayTable;
+  displayTables = emptySettings.deckDisplayTable;
 
   ngOnInit() {
     if (!this.decks) {

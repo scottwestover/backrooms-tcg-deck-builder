@@ -75,7 +75,7 @@ import { DeckViewComponent } from './components/deck-view.component';
 })
 export class DeckbuilderPageComponent implements OnInit {
   route = inject(ActivatedRoute);
-  digimonBackendService = inject(BackroomsBackendService);
+  backroomsBackendService = inject(BackroomsBackendService);
   authService = inject(AuthService);
   meta = inject(Meta);
   title = inject(Title);
@@ -92,10 +92,10 @@ export class DeckbuilderPageComponent implements OnInit {
     switchMap((params) => {
       if (params['userId'] && params['deckId']) {
         this.deckId = params['deckId'];
-        return this.digimonBackendService.getSave(params['userId']);
+        return this.backroomsBackendService.getSave(params['userId']);
       } else if (params['id']) {
         this.deckId = params['id'];
-        return this.digimonBackendService.getDeck(params['id']).pipe(
+        return this.backroomsBackendService.getDeck(params['id']).pipe(
           map((deck) => {
             return { ...emptySave, decks: [deck] };
           }),
@@ -155,13 +155,13 @@ export class DeckbuilderPageComponent implements OnInit {
       {
         name: 'description',
         content:
-          'Build tournament winning decks with the best deck builder for the Digimon TCG and share them with the community or your friends.',
+          'Build winning decks with the best deck builder for the Backrooms TCG and share them with the community or your friends.',
       },
-      { name: 'author', content: 'TakaOtaku' },
+      { name: 'author', content: 'scottwestover' },
       {
         name: 'keywords',
         content:
-          'Digimon, decks, deck builder, tournament, TCG, community, friends, share',
+          'Backrooms, decks, deck builder, TCG, community, friends, share',
       },
     ]);
   }

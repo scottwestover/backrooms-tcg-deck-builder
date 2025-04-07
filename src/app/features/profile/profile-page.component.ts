@@ -21,7 +21,7 @@ import {
   takeUntil,
   tap,
 } from 'rxjs';
-import { IDeck, ISave } from '../../../models';
+import { emptySettings, IDeck, ISave } from '../../../models';
 import { AuthService } from '../../services/auth.service';
 import { BackroomsBackendService } from '../../services/backrooms-backend.service';
 import { SaveStore } from '../../store/save.store';
@@ -70,7 +70,7 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
   save$: Observable<ISave | null>;
   decks: IDeck[];
   filteredDecks: IDeck[];
-  showUserStats = this.saveStore.settings().showUserStats;
+  showUserStats = emptySettings.showUserStats;
 
   searchFilter = new UntypedFormControl('');
   tagFilter = new UntypedFormControl([]);
@@ -83,7 +83,7 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
     private location: Location,
     private route: ActivatedRoute,
     public authService: AuthService,
-    private digimonBackendService: BackroomsBackendService,
+    private backroomsBackendService: BackroomsBackendService,
     private meta: Meta,
     private title: Title,
   ) {
@@ -103,7 +103,7 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
         tap(() => this.changeURL()),
         switchMap(() => {
           this.editable = true;
-          return this.digimonBackendService.getSave(
+          return this.backroomsBackendService.getSave(
             this.authService.userData!.uid,
           );
         }),
@@ -116,7 +116,7 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
           return !!params['id'];
         }),
         switchMap((params) =>
-          this.digimonBackendService.getSave(params['id']).pipe(first()),
+          this.backroomsBackendService.getSave(params['id']).pipe(first()),
         ),
         tap((save) => {
           this.editable = save.uid === this.authService.userData?.uid;
@@ -176,7 +176,7 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
         content:
           'See your Collection and Decks in one view. Share them with your friends, for easy insights in your decks and trading.',
       },
-      { name: 'author', content: 'TakaOtaku' },
+      { name: 'author', content: 'scottwestover' },
       {
         name: 'keywords',
         content: 'Collection, Decks, Share, insights, trading',
@@ -196,19 +196,15 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
         deck.cards.filter((card) =>
           card.id.toLocaleLowerCase().includes(search),
         ).length > 0;
-      const colorInText =
-        deck.color?.name.toLocaleLowerCase().includes(search) ?? false;
 
-      return titleInText || descriptionInText || cardsInText || colorInText;
+      return titleInText || descriptionInText || cardsInText;
     });
   }
 
   private applyTagFilter(): IDeck[] {
     return this.decks.filter((deck) => {
       let isTrue = false;
-      deck.tags?.forEach((tag) => {
-        isTrue = this.tagFilter.value.includes(tag.name);
-      });
+
       return isTrue;
     });
   }

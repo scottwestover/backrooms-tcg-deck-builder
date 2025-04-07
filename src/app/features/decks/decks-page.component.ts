@@ -26,7 +26,6 @@ import { SaveStore } from '../../store/save.store';
 import { WebsiteStore } from '../../store/website.store';
 import { DeckContainerComponent } from '../shared/deck-container.component';
 import { DeckDialogComponent } from '../shared/dialogs/deck-dialog.component';
-import { DeckSubmissionComponent } from '../shared/dialogs/deck-submission.component';
 import { PageComponent } from '../shared/page.component';
 import { DeckStatisticsComponent } from './components/deck-statistics.component';
 import { DecksFilterComponent } from './components/decks-filter.component';
@@ -46,16 +45,16 @@ import { DecksFilterComponent } from './components/decks-filter.component';
           </h1>
 
           <div class="md:ml-auto">
-            <p-button
+            <!-- <p-button
               size="small"
               class="p-button-outlined mr-1"
               icon="pi pi-search"
               type="button"
               pTooltip="Filter the Decks for Decks possible with your cards"
               label="Possible Decks"
-              (click)="applyCollectionFilter()"></p-button>
+              (click)="applyCollectionFilter()"></p-button> -->
 
-            <p-button
+            <!-- <p-button
               size="small"
               class="p-button-outlined"
               icon="pi pi-chart-line"
@@ -63,7 +62,7 @@ import { DecksFilterComponent } from './components/decks-filter.component';
               label="Statistics"
               (click)="
                 deckStatsDialog = true; updateStatistics.next(true)
-              "></p-button>
+              "></p-button> -->
           </div>
         </div>
 
@@ -125,7 +124,6 @@ import { DecksFilterComponent } from './components/decks-filter.component';
     PaginatorModule,
     DialogModule,
     DeckDialogComponent,
-    DeckSubmissionComponent,
     DeckStatisticsComponent,
     NgIf,
     AsyncPipe,
@@ -229,33 +227,33 @@ export class DecksPageComponent implements OnInit {
     this.setDecksToShow(event.first, (slice ?? this.rows) * (event.page + 1));
   }
 
-  applyCollectionFilter() {
-    this.loading2 = true;
+  // applyCollectionFilter() {
+  //   this.loading2 = true;
 
-    const collectionCounts: { [cardId: string]: number } = {};
+  //   const collectionCounts: { [cardId: string]: number } = {};
 
-    // Populate the collectionCounts map
-    this.collection.forEach((card) => {
-      const cardId = card.id.split('_', 1)[0];
-      collectionCounts[cardId] = (collectionCounts[cardId] || 0) + card.count;
-    });
+  //   // Populate the collectionCounts map
+  //   this.collection.forEach((card) => {
+  //     const cardId = card.id.split('_', 1)[0];
+  //     collectionCounts[cardId] = (collectionCounts[cardId] || 0) + card.count;
+  //   });
 
-    this.filteredDecks = this.filteredDecks.filter((deck) => {
-      return deck.cards.every((cardNeededForDeck) => {
-        const totalCount =
-          collectionCounts[cardNeededForDeck.id.split('_', 1)[0]] || 0;
-        return totalCount >= cardNeededForDeck.count;
-      });
-    });
-    this.setDecksToShow(0, this.rows);
+  //   this.filteredDecks = this.filteredDecks.filter((deck) => {
+  //     return deck.cards.every((cardNeededForDeck) => {
+  //       const totalCount =
+  //         collectionCounts[cardNeededForDeck.id.split('_', 1)[0]] || 0;
+  //       return totalCount >= cardNeededForDeck.count;
+  //     });
+  //   });
+  //   this.setDecksToShow(0, this.rows);
 
-    this.toastrService.success(
-      'Filtered for Decks possible with your cards',
-      'Success',
-    );
+  //   this.toastrService.success(
+  //     'Filtered for Decks possible with your cards',
+  //     'Success',
+  //   );
 
-    this.loading2 = false;
-  }
+  //   this.loading2 = false;
+  // }
 
   filterChanges() {
     this.filteredDecks = this.decks;
@@ -285,12 +283,12 @@ export class DecksPageComponent implements OnInit {
       {
         name: 'description',
         content:
-          'Meta decks, fun decks, tournament decks and many more, find new decks for every set.',
+          'Meta decks, fun decks, and many more, find new decks for every set.',
       },
-      { name: 'author', content: 'TakaOtaku' },
+      { name: 'author', content: 'scottwestover' },
       {
         name: 'keywords',
-        content: 'Meta, decks, tournament, fun',
+        content: 'Meta, decks, fun',
       },
     ]);
   }
@@ -312,16 +310,8 @@ export class DecksPageComponent implements OnInit {
         deck.cards.filter((card) =>
           card.id.toLocaleLowerCase().includes(search),
         ).length > 0;
-      const colorInText =
-        deck.color?.name.toLocaleLowerCase().includes(search) ?? false;
 
-      return (
-        titleInText ||
-        descriptionInText ||
-        userInText ||
-        cardsInText ||
-        colorInText
-      );
+      return titleInText || descriptionInText || userInText || cardsInText;
     });
   }
 
@@ -329,8 +319,6 @@ export class DecksPageComponent implements OnInit {
     if (!tagValues || tagValues.length === 0) {
       return this.filteredDecks;
     }
-    return this.filteredDecks.filter((deck) =>
-      deck.tags.some((tag) => tagValues.includes(tag.name)),
-    );
+    return this.filteredDecks;
   }
 }

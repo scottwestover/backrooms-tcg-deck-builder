@@ -23,6 +23,7 @@ import { BackroomsCardStore } from './store/backrooms-card.store';
 import { FilterStore } from './store/filter.store';
 import { SaveStore } from './store/save.store';
 import { WebsiteStore } from './store/website.store';
+import { LOCAL_STORAGE_KEY } from './config';
 
 @Component({
   selector: 'backrooms-root',
@@ -102,17 +103,17 @@ export class AppComponent {
           this.saveStore.save().uid !== '' || this.saveStore.loadedSave(),
         );
 
-        if (!this.saveStore.loadedSave()) return;
+        if (!this.saveStore.loadedSave()) {
+          return;
+        }
 
         console.log('Update Save in the Database');
         this.updateDatabase();
-
         if (this.settings !== this.saveStore.settings()) {
           console.log('Change Advanced Settings');
           this.settings = this.saveStore.settings();
           this.setAdvancedSettings();
         }
-
         if (this.cardSet !== this.saveStore.settings().cardSet) {
           this.cardSet = this.saveStore.settings().cardSet;
           this.setBackroomCardSet();
@@ -154,11 +155,11 @@ export class AppComponent {
     const save = this.saveStore.save();
     if (this.authService.isLoggedIn) {
       this.backendService
-        .updateSave(save)
+        .updateSave(save, this.saveStore.lastUpdatedDeckId())
         .pipe(first())
         .subscribe(() => {});
     } else {
-      localStorage.setItem('backrooms-Card-Collector', JSON.stringify(save));
+      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(save));
     }
   }
 

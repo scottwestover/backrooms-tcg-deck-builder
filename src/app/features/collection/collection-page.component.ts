@@ -33,14 +33,14 @@ export class CollectionPageComponent {
   meta = inject(Meta);
   title = inject(Title);
 
-  private digimonBackendService = inject(BackroomsBackendService);
+  private backroomsBackendService = inject(BackroomsBackendService);
   private route = inject(ActivatedRoute);
 
   // Check the URL if another Save should be loaded
   checkUrl$ = this.route.params.pipe(
     switchMap((params) => {
       if (params['userId']) {
-        return this.digimonBackendService.getSave(params['userId']);
+        return this.backroomsBackendService.getSave(params['userId']);
       } else {
         return of(emptySave);
       }

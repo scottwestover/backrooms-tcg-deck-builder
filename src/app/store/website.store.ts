@@ -8,14 +8,11 @@ import {
   DRAG,
   dummyCard,
   emptyDeck,
-  IBlog,
   IDeck,
   IDraggedCard,
   ISort,
 } from '../../models';
-import { emptySave } from '../../models/data/save.data';
 import { checkSpecialCardCounts } from '../functions';
-import { AuthService } from '../services/auth.service';
 import { BackroomsBackendService } from '../services/backrooms-backend.service';
 
 type Website = {
@@ -25,7 +22,6 @@ type Website = {
   sort: ISort;
   communityDeckSearch: string;
   communityDecks: IDeck[];
-  blogs: IBlog[];
   draggedCard: IDraggedCard;
 };
 
@@ -42,7 +38,6 @@ const initialState: Website = {
   },
   communityDeckSearch: '',
   communityDecks: [],
-  blogs: [],
   draggedCard: {
     card: JSON.parse(JSON.stringify(dummyCard)),
     drag: DRAG.Collection,
@@ -54,34 +49,17 @@ export const WebsiteStore = signalStore(
   withState(initialState),
 
   withMethods(
-    (store, digimonBackendService = inject(BackroomsBackendService)) => ({
+    (store, backroomsBackendService = inject(BackroomsBackendService)) => ({
       loadCommunityDecks: rxMethod<void>(
         pipe(
           first(),
           distinctUntilChanged(),
           switchMap(() => {
-            return digimonBackendService.getDecks().pipe(
+            return backroomsBackendService.getDecks().pipe(
               filter((decks) => decks !== null),
               tapResponse({
                 next: (communityDecks) =>
                   patchState(store, (state) => ({ communityDecks })),
-                error: () => {},
-                finalize: () => {},
-              }),
-            );
-          }),
-        ),
-      ),
-
-      loadBlogs: rxMethod<void>(
-        pipe(
-          first(),
-          distinctUntilChanged(),
-          switchMap(() => {
-            return digimonBackendService.getBlogEntries().pipe(
-              filter((blogs) => blogs !== null),
-              tapResponse({
-                next: (blogs) => patchState(store, (state) => ({ blogs })),
                 error: () => {},
                 finalize: () => {},
               }),
@@ -116,9 +94,6 @@ export const WebsiteStore = signalStore(
       },
       updateCommunityDecks(communityDecks: IDeck[]): void {
         patchState(store, (state) => ({ communityDecks }));
-      },
-      updateBlogs(blogs: IBlog[]): void {
-        patchState(store, (state) => ({ blogs }));
       },
       updateDraggedCard(draggedCard: IDraggedCard): void {
         patchState(store, (state) => ({ draggedCard }));
@@ -160,42 +135,6 @@ export const WebsiteStore = signalStore(
             .filter((card) => card.count > 0);
 
           return { deck: { ...state.deck, cards } };
-        });
-      },
-
-      addCardToSideDeck(
-        cardToAdd: string,
-        cardMap: Map<string, BackroomsCard>,
-      ): void {
-        patchState(store, (state) => {
-          const sideDeck = (state.deck.sideDeck ?? []).map((card) => {
-            if (card.id === cardToAdd) {
-              card.count += 1;
-            }
-
-            card.count = checkSpecialCardCounts(card, cardMap);
-            return card;
-          });
-
-          if (!sideDeck.find((card) => card.id === cardToAdd)) {
-            sideDeck.push({ id: cardToAdd, count: 1 });
-          }
-
-          return { deck: { ...state.deck, sideDeck } };
-        });
-      },
-      removeCardFromSideDeck(cardToRemove: string): void {
-        patchState(store, (state) => {
-          const sideDeck = (state.deck.sideDeck ?? [])
-            .map((card) => {
-              if (card.id === cardToRemove) {
-                card.count -= 1;
-              }
-              return card;
-            })
-            .filter((card) => card.count > 0);
-
-          return { deck: { ...state.deck, sideDeck } };
         });
       },
     }),

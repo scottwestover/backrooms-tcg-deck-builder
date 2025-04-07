@@ -1,4 +1,3 @@
-export * from './admins.data';
 export * from './color.data';
 export * from './countries.data';
 export * from './filter.data';

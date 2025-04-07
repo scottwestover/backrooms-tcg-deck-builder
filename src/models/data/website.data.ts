@@ -29,14 +29,10 @@ export const emptyDeck: IDeck = {
   title: '',
   description: '',
   date: new Date().toString(),
-  color: { name: 'White', img: 'assets/images/decks/white.svg' },
   cards: [],
-  sideDeck: [],
-  tags: [],
   user: '',
   userId: '',
-  imageCardId: 'BT1-001',
-  likes: [],
+  imageCardId: 'LL-001',
 };
 
 export const emptyFilter = {

@@ -188,7 +188,7 @@ export class FilterSideBoxComponent implements OnInit, OnDestroy {
     { allowSignalWrites: true },
   );
 
-  collectionCountMax = computed(() => this.saveStore.settings().countMax ?? 30);
+  collectionCountMax = computed(() => 30);
   private onDestroy$ = new Subject();
 
   ngOnInit(): void {

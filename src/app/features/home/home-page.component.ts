@@ -30,13 +30,13 @@ export class HomePageComponent {
       {
         name: 'description',
         content:
-          'BackroomsTcg.App is a website to to keep track of your Backrooms card collection, build great decks and keep you posted about the result of any major events.',
+          'backrooms-tcg.web.app is a website to to keep track of your Backrooms card collection, build great decks and keep you posted about the result of any major events.',
       },
-      { name: 'author', content: 'TakaOtaku' },
+      { name: 'author', content: 'scottwestover' },
       {
         name: 'keywords',
         content:
-          'Digimon, decks, deck builder, collection,  tournament, TCG, community, friends, share',
+          'Backrooms, decks, deck builder, collection, TCG, community, friends, share',
       },
     ]);
   }

@@ -82,7 +82,8 @@ export class PaginationCardListHeaderComponent {
   });
 
   changeCollectionMode(collectionMode: boolean) {
-    const settings = this.saveStore.settings();
-    this.saveStore.updateSettings({ ...settings, collectionMode });
+    // const settings = this.saveStore.settings();
+    // this.saveStore.updateSettings({ ...settings, collectionMode });
+    this.saveStore.updateCollectionMode(collectionMode);
   }
 }

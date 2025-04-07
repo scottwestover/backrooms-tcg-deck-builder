@@ -28,7 +28,7 @@ import { NgIf } from '@angular/common';
           </div>
         </div>
 
-        <div class="hidden sm:flex flex-row justify-center">
+        <!-- <div class="hidden sm:flex flex-row justify-center">
           <div class="flex flex-col">
             <backrooms-collection-circle
               [type]="'BT'"
@@ -53,7 +53,7 @@ import { NgIf } from '@angular/common';
               class="mx-2"></backrooms-collection-circle>
             <label class="text-center">P</label>
           </div>
-        </div>
+        </div> -->
 
         <p-carousel
           class="sm:hidden"

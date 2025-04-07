@@ -104,7 +104,7 @@ import { BackroomsCardStore } from '../../../store/backrooms-card.store';
 
       <div class="my-1 w-full border border-slate-200 p-1">
         <h1 class="mb-2 w-full text-xl font-extrabold text-[#e2e4e6]">
-          Digimon Cards
+          Backrooms Cards
         </h1>
         <div class="overflow-x-auto sm:-mx-6 lg:-mx-8 lg:overflow-x-hidden">
           <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
@@ -147,7 +147,7 @@ import { BackroomsCardStore } from '../../../store/backrooms-card.store';
                 <tbody>
                   <tr
                     *ngFor="
-                      let card of filter(mostUsedCards, 'Digimon')
+                      let card of filter(mostUsedCards, 'Backrooms')
                         | slice: 0 : 50;
                       let i = index
                     "

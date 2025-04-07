@@ -203,10 +203,6 @@ export class PaginationCardListComponent {
   }
 
   drop(card: IDraggedCard, dragCard: IDraggedCard) {
-    if (dragCard.drag === DRAG.Side) {
-      this.websiteStore.removeCardFromSideDeck(card.card.id);
-      return;
-    }
     this.websiteStore.removeCardFromDeck(card.card.id);
   }
 

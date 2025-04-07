@@ -117,20 +117,20 @@ export class DecksTableComponent {
   backroomCardStore = inject(BackroomsCardStore);
 
   getCardImage(deck: IDeck): string {
-    //If there are no cards in the deck set it to the Yokomon
+    //If there are no cards in the deck set it to the Hallway
     if (
       !deck.cards ||
       deck.cards.length === 0 ||
       this.backroomCardStore.cards().length === 0
     ) {
-      return '../../../assets/images/cards/eng/BT1-001.webp';
+      return '../../../assets/images/cards/lobby-level/LL-001.webp';
     }
 
     // If there is a ImageCardId set it
     if (deck.imageCardId) {
       return (
         this.backroomCardStore.cardsMap().get(deck.imageCardId)?.cardImage ??
-        '../../../assets/images/cards/eng/BT1-001.webp'
+        '../../../assets/images/cards/lobby-level/LL-001.webp'
       );
     } else {
       const deckImage = setDeckImage(deck, this.backroomCardStore.cards());
@@ -141,9 +141,6 @@ export class DecksTableComponent {
   }
 
   decksWithColor(color: string) {
-    return this.decks.filter((deck) => {
-      if (!deck || !deck.color || !deck.color.name) return false;
-      return deck.color.name === color;
-    }).length;
+    return 0;
   }
 }

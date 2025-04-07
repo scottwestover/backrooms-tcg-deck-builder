@@ -47,7 +47,7 @@ import { ChartModule } from 'primeng/chart';
 })
 export class CollectionStatsDialogComponent implements OnInit, OnChanges {
   @Input() show: boolean = false;
-  @Input() digimonCards: BackroomsCard[];
+  @Input() backroomCards: BackroomsCard[];
   @Input() collection: ICountCard[];
 
   @Output() onClose = new EventEmitter<boolean>();
@@ -116,7 +116,7 @@ export class CollectionStatsDialogComponent implements OnInit, OnChanges {
 
   private getBoosterCards(type: string): number[] {
     //const allCards = this.filterLanguageAllCards();
-    const set = this.digimonCards.filter((card) =>
+    const set = this.backroomCards.filter((card) =>
       card.cardNumber.includes(type),
     );
 

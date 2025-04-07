@@ -4,7 +4,8 @@ export function checkSpecialCardCounts(
   card: ICountCard,
   cardMap: Map<string, BackroomsCard>,
 ): number {
-  console.log(card.id);
+  // console.log(cardMap.get(card.id));
+  return card.count;
   if (
     card!.id.includes('BT6-085') ||
     card!.id.includes('EX2-046') ||

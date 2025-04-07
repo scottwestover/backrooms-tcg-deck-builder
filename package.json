@@ -1,6 +1,6 @@
 {
-  "name": "digimon-card-game-collector",
-  "version": "1.0.0",
+  "name": "backrooms-tcg-deck-builder",
+  "version": "0.0.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --c development",
