@@ -24,7 +24,7 @@ import { DdtoSpreadComponent } from '../../shared/statistics/ddto-spread.compone
       [ngClass]="{ 'lg:w-[250px]': collectionView }">
       <div
         [ngClass]="{ 'w-full': collectionView, 'border-l-2': !collectionView }"
-        class="surface-card flex flex-row border-r-2 border-t-2 border-white bg-opacity-25 lg:mx-auto">
+        class="surface-card-custom flex flex-row border-r-2 border-t-2 border-white bg-opacity-25 lg:mx-auto">
         <backrooms-ddto-spread
           [deck]="deck()"
           [container]="true"
