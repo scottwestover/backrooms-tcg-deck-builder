@@ -2,15 +2,15 @@ import { NgClass, NgIf, NgStyle } from '@angular/common';
 import { Component, inject, Input } from '@angular/core';
 import { LazyLoadImageModule } from 'ng-lazyload-image';
 import { ImgFallbackDirective } from 'src/app/directives/ImgFallback.directive';
-import { DigimonCard, dummyCard } from '../../../models';
+import { BackroomsCard, dummyCard } from '../../../models';
 import { SaveStore } from '../../store/save.store';
 
 @Component({
-  selector: 'digimon-card-image',
+  selector: 'backrooms-card-image',
   template: `
     <div class="absolute top-1 z-10 grid w-full grid-cols-5 gap-0">
       <div></div>
-      @if (
+      <!-- @if (
         card.version.includes('Foil') ||
         card.version.includes('Alternative') ||
         card.version.includes('Textured')
@@ -40,13 +40,12 @@ import { SaveStore } from '../../store/save.store';
           "
           alt="Stamped-Banner"
           class="col-span-3 w-full" />
-      }
+      } -->
     </div>
 
     <img
-      [digimonImgFallback]="card.cardImage"
+      [backroomsImgFallback]="card.cardImage"
       [ngClass]="{ grayscale: setGrayScale() }"
-      [ngStyle]="{ border: cardBorder, 'border-radius': cardRadius }"
       alt="{{ card.cardNumber + ' ' + card.name }}"
       class="m-auto aspect-auto" />
   `,
@@ -55,7 +54,7 @@ import { SaveStore } from '../../store/save.store';
   imports: [NgIf, LazyLoadImageModule, NgClass, NgStyle, ImgFallbackDirective],
 })
 export class CardImageComponent {
-  @Input() card: DigimonCard = JSON.parse(JSON.stringify(dummyCard));
+  @Input() card: BackroomsCard = JSON.parse(JSON.stringify(dummyCard));
   @Input() count = 0;
 
   saveStore = inject(SaveStore);

@@ -3,25 +3,11 @@ import { Component, effect, inject } from '@angular/core';
 import { FilterStore } from '../../../store/filter.store';
 
 @Component({
-  selector: 'digimon-color-filter',
+  selector: 'backrooms-color-filter',
   template: `
     <div class="mb-3">
       <h1 class="mb-2 text-center text-xs font-bold text-[#e2e4e6]">Color:</h1>
       <div class="inline-flex w-full justify-center">
-        <button
-          (click)="changeColor('Red', colorFilter)"
-          [ngClass]="{
-            'border-selected': colorFilter.includes('Red'),
-            'border-unselected': !colorFilter.includes('Red')
-          }"
-          class="Red mr-1 h-7 w-7 rounded-full"></button>
-        <button
-          (click)="changeColor('Blue', colorFilter)"
-          [ngClass]="{
-            'border-selected': colorFilter.includes('Blue'),
-            'border-unselected': !colorFilter.includes('Blue')
-          }"
-          class="Blue mr-1 h-7 w-7 rounded-full"></button>
         <button
           (click)="changeColor('Yellow', colorFilter)"
           [ngClass]="{
@@ -37,12 +23,12 @@ import { FilterStore } from '../../../store/filter.store';
           }"
           class="Green mr-1 h-7 w-7 rounded-full"></button>
         <button
-          (click)="changeColor('Black', colorFilter)"
+          (click)="changeColor('Red', colorFilter)"
           [ngClass]="{
-            'border-selected': colorFilter.includes('Black'),
-            'border-unselected': !colorFilter.includes('Black')
+            'border-selected': colorFilter.includes('Red'),
+            'border-unselected': !colorFilter.includes('Red')
           }"
-          class="Black mr-1 h-7 w-7 rounded-full"></button>
+          class="Red mr-1 h-7 w-7 rounded-full"></button>
         <button
           (click)="changeColor('Purple', colorFilter)"
           [ngClass]="{
@@ -58,12 +44,19 @@ import { FilterStore } from '../../../store/filter.store';
           }"
           class="White mr-1 h-7 w-7 rounded-full"></button>
         <button
-          (click)="changeColor('Multi', colorFilter)"
+          (click)="changeColor('Black', colorFilter)"
           [ngClass]="{
-            'border-selected': colorFilter.includes('Multi'),
-            'border-unselected': !colorFilter.includes('Multi')
+            'border-selected': colorFilter.includes('Black'),
+            'border-unselected': !colorFilter.includes('Black')
           }"
-          class="Multi h-7 w-7 rounded-full"></button>
+          class="Black mr-1 h-7 w-7 rounded-full"></button>
+        <button
+          (click)="changeColor('Silver', colorFilter)"
+          [ngClass]="{
+            'border-selected': colorFilter.includes('Silver'),
+            'border-unselected': !colorFilter.includes('Silver')
+          }"
+          class="Silver mr-1 h-7 w-7 rounded-full"></button>
       </div>
     </div>
   `,

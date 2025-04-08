@@ -6,7 +6,7 @@ import { debounceTime, distinctUntilChanged } from 'rxjs';
 import { FilterStore } from '../../../store/filter.store';
 
 @Component({
-  selector: 'digimon-search',
+  selector: 'backrooms-search',
   template: `
     <span
       [ngStyle]="{ display: 'inline-flex' }"

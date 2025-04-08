@@ -9,7 +9,7 @@ import { MultiSelectModule } from 'primeng/multiselect';
 import { InputTextModule } from 'primeng/inputtext';
 
 @Component({
-  selector: 'digimon-deck-filter',
+  selector: 'backrooms-deck-filter',
   template: `
     <div class="mx-auto flex flex-row">
       <div class="flex w-full flex-col sm:pr-2">
@@ -19,11 +19,11 @@ import { InputTextModule } from 'primeng/inputtext';
             [formControl]="searchFilter"
             class="text-xs w-full"
             pInputText
-            placeholder="Search (Title, Description, Card-Ids, Color)"
+            placeholder="Search (Title, Description, Card-Ids)"
             type="text" />
         </span>
       </div>
-      <p-multiSelect
+      <!-- <p-multiSelect
         [formControl]="tagFilter"
         [options]="tags"
         [showToggleAll]="false"
@@ -32,7 +32,7 @@ import { InputTextModule } from 'primeng/inputtext';
         scrollHeight="250px"
         class="mx-auto max-w-[250px]"
         styleClass="h-[34px] text-sm max-w-[250px]">
-      </p-multiSelect>
+      </p-multiSelect> -->
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,

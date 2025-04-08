@@ -1,0 +1,2320 @@
+[
+  {
+    "id": "LL-001",
+    "name": {
+      "english": "Hallway"
+    },
+    "rarity": "COMMON",
+    "types": [
+      "ROOM"
+    ],
+    "ccs": {
+      "type": "PP",
+      "value": "3"
+    },
+    "navigationPoints": "2",
+    "sanityPoints": "3",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-001.webp",
+    "illustrator": "vignesh652",
+    "cardNumber": "1001",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Room"
+  },
+  {
+    "id": "LL-002",
+    "name": {
+      "english": "Corner"
+    },
+    "rarity": "COMMON",
+    "types": [
+      "ROOM"
+    ],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-002.webp",
+    "illustrator": "-",
+    "cardNumber": "1002",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Room"
+  },
+  {
+    "id": "LL-003",
+    "name": {
+      "english": "Dark Hall"
+    },
+    "rarity": "COMMON",
+    "types": [
+      "ROOM"
+    ],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-003.webp",
+    "illustrator": "-",
+    "cardNumber": "1003",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Room"
+  },
+  {
+    "id": "LL-004",
+    "name": {
+      "english": "Dead End"
+    },
+    "rarity": "COMMON",
+    "types": [
+      "ROOM"
+    ],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-004.webp",
+    "illustrator": "-",
+    "cardNumber": "1004",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Room"
+  },
+  {
+    "id": "LL-005",
+    "name": {
+      "english": "Destroyed Hall"
+    },
+    "rarity": "UNCOMMON",
+    "types": [
+      "ROOM"
+    ],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-005.webp",
+    "illustrator": "-",
+    "cardNumber": "1005",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Room"
+  },
+  {
+    "id": "LL-006",
+    "name": {
+      "english": "Lecture Hall"
+    },
+    "rarity": "UNCOMMON",
+    "types": [
+      "ROOM"
+    ],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-006.webp",
+    "illustrator": "-",
+    "cardNumber": "1006",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Room"
+  },
+  {
+    "id": "LL-007",
+    "name": {
+      "english": "Punctured Hall"
+    },
+    "rarity": "RARE",
+    "types": [
+      "ROOM"
+    ],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-007.webp",
+    "illustrator": "-",
+    "cardNumber": "1007",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Room"
+  },
+  {
+    "id": "LL-008",
+    "name": {
+      "english": "Poisoned Hall"
+    },
+    "rarity": "RARE",
+    "types": [
+      "ROOM"
+    ],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-008.webp",
+    "illustrator": "-",
+    "cardNumber": "1008",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Room"
+  },
+  {
+    "id": "LL-009",
+    "name": {
+      "english": "Bright Hall"
+    },
+    "rarity": "RARE",
+    "types": [
+      "ROOM"
+    ],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-009.webp",
+    "illustrator": "-",
+    "cardNumber": "1009",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Room"
+  },
+  {
+    "id": "LL-010",
+    "name": {
+      "english": "False Wall"
+    },
+    "rarity": "HYPER",
+    "types": [
+      "ROOM"
+    ],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-010.webp",
+    "illustrator": "-",
+    "cardNumber": "1010",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Room"
+  },
+  {
+    "id": "LL-011",
+    "name": {
+      "english": "Death Moth Jelly"
+    },
+    "rarity": "COMMON",
+    "types": [
+      "ITEM", "EDIBLE", "CONCEAL"
+    ],
+    "ccs": {
+      "type": "-",
+      "value": "0"
+    },
+    "navigationPoints": "-",
+    "sanityPoints": "3",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-011.webp",
+    "illustrator": "-",
+    "cardNumber": "1011",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Item"
+  },
+  {
+    "id": "LL-012",
+    "name": {
+      "english": "Almond Water"
+    },
+    "rarity": "COMMON",
+    "types": [
+      "ITEM", "EDIBLE", "CONCEAL"
+    ],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-012.webp",
+    "illustrator": "-",
+    "cardNumber": "1012",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Item"
+  },
+  {
+    "id": "LL-013",
+    "name": {
+      "english": "Snooze Shrooms"
+    },
+    "rarity": "COMMON",
+    "types": [
+      "ITEM", "CONCEAL"
+    ],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-013.webp",
+    "illustrator": "-",
+    "cardNumber": "1013",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Item"
+  },
+  {
+    "id": "LL-014",
+    "name": {
+      "english": "Boom Shrooms"
+    },
+    "rarity": "UNCOMMON",
+    "types": [
+      "ITEM", "CONCEAL"
+    ],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-014.webp",
+    "illustrator": "-",
+    "cardNumber": "1014",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Item"
+  },
+  {
+    "id": "LL-015",
+    "name": {
+      "english": "Shock Shrooms"
+    },
+    "rarity": "UNCOMMON",
+    "types": [
+      "ITEM"
+    ],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-015.webp",
+    "illustrator": "-",
+    "cardNumber": "1015",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Item"
+  },
+  {
+    "id": "LL-016",
+    "name": {
+      "english": "Death Shrooms"
+    },
+    "rarity": "RARE",
+    "types": [
+      "ITEM"
+    ],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-016.webp",
+    "illustrator": "-",
+    "cardNumber": "1016",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Item"
+  },
+  {
+    "id": "LL-017",
+    "name": {
+      "english": "Gas Mask"
+    },
+    "rarity": "UNCOMMON",
+    "types": [
+      "ITEM"
+    ],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-017.webp",
+    "illustrator": "-",
+    "cardNumber": "1017",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Item"
+  },
+  {
+    "id": "LL-018",
+    "name": {
+      "english": "Electric Tennis Ball"
+    },
+    "rarity": "COMMON",
+    "types": [
+      "ITEM"
+    ],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-018.webp",
+    "illustrator": "-",
+    "cardNumber": "1018",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Item"
+  },
+  {
+    "id": "LL-019",
+    "name": {
+      "english": "Shrink Drink"
+    },
+    "rarity": "UNCOMMON",
+    "types": [
+      "ITEM"
+    ],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-019.webp",
+    "illustrator": "-",
+    "cardNumber": "1019",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Item"
+  },
+  {
+    "id": "LL-020",
+    "name": {
+      "english": "Master Goggles"
+    },
+    "rarity": "RARE",
+    "types": [
+      "ITEM"
+    ],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-020.webp",
+    "illustrator": "-",
+    "cardNumber": "1020",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Item"
+  },
+  {
+    "id": "LL-021",
+    "name": {
+      "english": "Memory Fluid"
+    },
+    "rarity": "UNCOMMON",
+    "types": [
+      "ITEM"
+    ],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-021.webp",
+    "illustrator": "-",
+    "cardNumber": "1021",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Item"
+  },
+  {
+    "id": "LL-022",
+    "name": {
+      "english": "B.S.C.O.S. Device"
+    },
+    "rarity": "HYPER",
+    "types": [
+      "ITEM"
+    ],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-022.webp",
+    "illustrator": "-",
+    "cardNumber": "1022",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Item"
+  },
+  {
+    "id": "LL-023",
+    "name": {
+      "english": "Liquid Pain"
+    },
+    "rarity": "COMMON",
+    "types": [
+      "ITEM"
+    ],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-023.webp",
+    "illustrator": "-",
+    "cardNumber": "1023",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Item"
+  },
+  {
+    "id": "LL-024",
+    "name": {
+      "english": "Jar O'Bright"
+    },
+    "rarity": "UNCOMMON",
+    "types": [
+      "ITEM"
+    ],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-024.webp",
+    "illustrator": "-",
+    "cardNumber": "1024",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Item"
+  },
+  {
+    "id": "LL-025",
+    "name": {
+      "english": "Gold Tape"
+    },
+    "rarity": "HYPER",
+    "types": [
+      "ITEM"
+    ],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-025.webp",
+    "illustrator": "-",
+    "cardNumber": "1025",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Item"
+  },
+  {
+    "id": "LL-026",
+    "name": {
+      "english": "Smiler"
+    },
+    "rarity": "COMMON",
+    "types": [
+      "UNFRIENDLY", "GEM"
+    ],
+    "ccs": {
+      "type": "DIH",
+      "value": "1"
+    },
+    "navigationPoints": "0",
+    "sanityPoints": "-4",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-026.webp",
+    "illustrator": "-",
+    "cardNumber": "1026",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "LL-027",
+    "name": {
+      "english": "Frowner"
+    },
+    "rarity": "UNCOMMON",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-027.webp",
+    "illustrator": "-",
+    "cardNumber": "1027",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "LL-028",
+    "name": {
+      "english": "Blusher"
+    },
+    "rarity": "UNCOMMON",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-028.webp",
+    "illustrator": "-",
+    "cardNumber": "1028",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "LL-029",
+    "name": {
+      "english": "Laughter"
+    },
+    "rarity": "RARE",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-029.webp",
+    "illustrator": "-",
+    "cardNumber": "1029",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "LL-030",
+    "name": {
+      "english": "Lost Agent"
+    },
+    "rarity": "COMMON",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-030.webp",
+    "illustrator": "-",
+    "cardNumber": "1030",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "LL-031",
+    "name": {
+      "english": "Doll Face"
+    },
+    "rarity": "UNCOMMON",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-031.webp",
+    "illustrator": "-",
+    "cardNumber": "1031",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "LL-032",
+    "name": {
+      "english": "Hound"
+    },
+    "rarity": "RARE",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-032.webp",
+    "illustrator": "-",
+    "cardNumber": "1032",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "LL-033",
+    "name": {
+      "english": "Ancient Hound"
+    },
+    "rarity": "HYPER",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-033.webp",
+    "illustrator": "-",
+    "cardNumber": "1033",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "LL-034",
+    "name": {
+      "english": "Partygoer"
+    },
+    "rarity": "UNCOMMON",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-034.webp",
+    "illustrator": "-",
+    "cardNumber": "1034",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "LL-035",
+    "name": {
+      "english": "Strangler"
+    },
+    "rarity": "RARE",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-035.webp",
+    "illustrator": "-",
+    "cardNumber": "1035",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "LL-036",
+    "name": {
+      "english": "Ancient Strangler"
+    },
+    "rarity": "HYPER",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-036.webp",
+    "illustrator": "-",
+    "cardNumber": "1036",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "LL-037",
+    "name": {
+      "english": "Paper Snakes"
+    },
+    "rarity": "COMMON",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-037.webp",
+    "illustrator": "-",
+    "cardNumber": "1037",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "LL-038",
+    "name": {
+      "english": "Monitor"
+    },
+    "rarity": "UNCOMMON",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-038.webp",
+    "illustrator": "-",
+    "cardNumber": "1038",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "LL-039",
+    "name": {
+      "english": "Faceling"
+    },
+    "rarity": "COMMON",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-039.webp",
+    "illustrator": "-",
+    "cardNumber": "1039",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "LL-040",
+    "name": {
+      "english": "Ancient Faceling"
+    },
+    "rarity": "HYPER",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-040.webp",
+    "illustrator": "-",
+    "cardNumber": "1040",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "LL-041",
+    "name": {
+      "english": "Scarlett Knight"
+    },
+    "rarity": "RARE",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-041.webp",
+    "illustrator": "-",
+    "cardNumber": "1041",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "LL-042",
+    "name": {
+      "english": "Tsuchigumo"
+    },
+    "rarity": "RARE",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-042.webp",
+    "illustrator": "-",
+    "cardNumber": "1042",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "LL-043",
+    "name": {
+      "english": "Grawlix"
+    },
+    "rarity": "HYPER",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-043.webp",
+    "illustrator": "-",
+    "cardNumber": "1043",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "LL-044",
+    "name": {
+      "english": "Baktéria"
+    },
+    "rarity": "RARE",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-044.webp",
+    "illustrator": "-",
+    "cardNumber": "1044",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "LL-045",
+    "name": {
+      "english": "The Conductor"
+    },
+    "rarity": "RARE",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-045.webp",
+    "illustrator": "-",
+    "cardNumber": "1045",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "LL-046",
+    "name": {
+      "english": "Ancient Conductor"
+    },
+    "rarity": "HYPER",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-046.webp",
+    "illustrator": "-",
+    "cardNumber": "1046",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "LL-047",
+    "name": {
+      "english": "Death Moth"
+    },
+    "rarity": "COMMON",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-047.webp",
+    "illustrator": "-",
+    "cardNumber": "1047",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "LL-048",
+    "name": {
+      "english": "Aiden"
+    },
+    "rarity": "UNCOMMON",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-048.webp",
+    "illustrator": "-",
+    "cardNumber": "1048",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "LL-049",
+    "name": {
+      "english": "Arch Raven"
+    },
+    "rarity": "UNCOMMON",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-049.webp",
+    "illustrator": "-",
+    "cardNumber": "1049",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "LL-050",
+    "name": {
+      "english": "Mr.Freeman"
+    },
+    "rarity": "HYPER",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-050.webp",
+    "illustrator": "-",
+    "cardNumber": "1050",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "LL-051",
+    "name": {
+      "english": "Partypooper"
+    },
+    "rarity": "RARE",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-051.webp",
+    "illustrator": "-",
+    "cardNumber": "1051",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "LL-052",
+    "name": {
+      "english": "Lady Lindy"
+    },
+    "rarity": "HYPER",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-052.webp",
+    "illustrator": "-",
+    "cardNumber": "1052",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "LL-053",
+    "name": {
+      "english": "Cosmonaut Tomac"
+    },
+    "rarity": "RARE",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-053.webp",
+    "illustrator": "-",
+    "cardNumber": "1053",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "LL-054",
+    "name": {
+      "english": "The Clocksmith"
+    },
+    "rarity": "RARE",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-054.webp",
+    "illustrator": "-",
+    "cardNumber": "1054",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "LL-055",
+    "name": {
+      "english": "Crimson Knight"
+    },
+    "rarity": "HYPER",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-055.webp",
+    "illustrator": "-",
+    "cardNumber": "1055",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "LL-056",
+    "name": {
+      "english": "Cloak Coat"
+    },
+    "rarity": "UNCOMMON",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-056.webp",
+    "illustrator": "-",
+    "cardNumber": "1056",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Item"
+  },
+  {
+    "id": "LL-057",
+    "name": {
+      "english": "Liquid Silence"
+    },
+    "rarity": "HYPER",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-057.webp",
+    "illustrator": "-",
+    "cardNumber": "1057",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Item"
+  },
+  {
+    "id": "LL-058",
+    "name": {
+      "english": "Flash Sphere"
+    },
+    "rarity": "UNCOMMON",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-058.webp",
+    "illustrator": "-",
+    "cardNumber": "1058",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Item"
+  },
+  {
+    "id": "LL-059",
+    "name": {
+      "english": "Mirror Piece"
+    },
+    "rarity": "RARE",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-059.webp",
+    "illustrator": "-",
+    "cardNumber": "1059",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Item"
+  },
+  {
+    "id": "LL-060",
+    "name": {
+      "english": "Dumb Gum"
+    },
+    "rarity": "RARE",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-060.webp",
+    "illustrator": "-",
+    "cardNumber": "1060",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Item"
+  },
+  {
+    "id": "LL-061",
+    "name": {
+      "english": "Scarabacks"
+    },
+    "rarity": "RARE",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-061.webp",
+    "illustrator": "-",
+    "cardNumber": "1061",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Item"
+  },
+  {
+    "id": "LL-062",
+    "name": {
+      "english": "Jar O'Dark"
+    },
+    "rarity": "RARE",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-062.webp",
+    "illustrator": "-",
+    "cardNumber": "1062",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Item"
+  },
+  {
+    "id": "LL-063",
+    "name": {
+      "english": "Skip Rock"
+    },
+    "rarity": "HYPER",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-063.webp",
+    "illustrator": "-",
+    "cardNumber": "1063",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Item"
+  },
+  {
+    "id": "LL-064",
+    "name": {
+      "english": "Hopper Device"
+    },
+    "rarity": "HYPER",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-064.webp",
+    "illustrator": "-",
+    "cardNumber": "1064",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Item"
+  },
+  {
+    "id": "LL-065",
+    "name": {
+      "english": "Golden Stairs"
+    },
+    "rarity": "COMMON",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-065.webp",
+    "illustrator": "-",
+    "cardNumber": "1065",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Outcome"
+  },
+  {
+    "id": "LL-066",
+    "name": {
+      "english": "???"
+    },
+    "rarity": "COMMON",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-066.webp",
+    "illustrator": "-",
+    "cardNumber": "1066",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Outcome"
+  },
+  {
+    "id": "LL-067",
+    "name": {
+      "english": "Greener Pastures"
+    },
+    "rarity": "PURE",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-067.webp",
+    "illustrator": "-",
+    "cardNumber": "1067",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Outcome"
+  },
+  {
+    "id": "LL-068",
+    "name": {
+      "english": "The Void"
+    },
+    "rarity": "COMMON",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-068.webp",
+    "illustrator": "-",
+    "cardNumber": "1068",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Outcome"
+  },
+  {
+    "id": "LL-069",
+    "name": {
+      "english": "The Void"
+    },
+    "rarity": "PURE",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-069.webp",
+    "illustrator": "-",
+    "cardNumber": "1069",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Outcome"
+  },
+  {
+    "id": "LL-070",
+    "name": {
+      "english": "Car Park Portal"
+    },
+    "rarity": "RARE",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-070.webp",
+    "illustrator": "-",
+    "cardNumber": "1070",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Outcome"
+  },
+  {
+    "id": "LL-071",
+    "name": {
+      "english": "Aquazone Portal"
+    },
+    "rarity": "RARE",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-071.webp",
+    "illustrator": "-",
+    "cardNumber": "1071",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Outcome"
+  },
+  {
+    "id": "LL-072",
+    "name": {
+      "english": "Smiler"
+    },
+    "rarity": "PURE",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-072.webp",
+    "illustrator": "-",
+    "cardNumber": "1072",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "LL-073",
+    "name": {
+      "english": "Faceling"
+    },
+    "rarity": "PURE",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-073.webp",
+    "illustrator": "-",
+    "cardNumber": "1073",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "LL-074",
+    "name": {
+      "english": "Grawlix"
+    },
+    "rarity": "PURE",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-074.webp",
+    "illustrator": "-",
+    "cardNumber": "1074",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "LL-075",
+    "name": {
+      "english": "Laughter"
+    },
+    "rarity": "PURE",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-075.webp",
+    "illustrator": "-",
+    "cardNumber": "1075",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "LL-076",
+    "name": {
+      "english": "Lost Agent"
+    },
+    "rarity": "PURE",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-076.webp",
+    "illustrator": "-",
+    "cardNumber": "1076",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "LL-077",
+    "name": {
+      "english": "Ancient Faceling"
+    },
+    "rarity": "HYPER",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-077.webp",
+    "illustrator": "-",
+    "cardNumber": "1077",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "LL-078",
+    "name": {
+      "english": "Ancient Hound"
+    },
+    "rarity": "HYPER",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-078.webp",
+    "illustrator": "-",
+    "cardNumber": "1078",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "LL-079",
+    "name": {
+      "english": "Ancient Strangler"
+    },
+    "rarity": "HYPER",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-079.webp",
+    "illustrator": "-",
+    "cardNumber": "1079",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "LL-080",
+    "name": {
+      "english": "Ancient Conductor"
+    },
+    "rarity": "PURE",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-080.webp",
+    "illustrator": "-",
+    "cardNumber": "1080",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "LL-081",
+    "name": {
+      "english": "Partygoer"
+    },
+    "rarity": "HYPER",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-081.webp",
+    "illustrator": "-",
+    "cardNumber": "1081",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "LL-082",
+    "name": {
+      "english": "Partypooper"
+    },
+    "rarity": "PURE",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-082.webp",
+    "illustrator": "-",
+    "cardNumber": "1082",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "LL-083",
+    "name": {
+      "english": "Cosmonaut Tomac"
+    },
+    "rarity": "PURE",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-083.webp",
+    "illustrator": "-",
+    "cardNumber": "1083",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "LL-084",
+    "name": {
+      "english": "Lady Lindy"
+    },
+    "rarity": "PURE",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-084.webp",
+    "illustrator": "-",
+    "cardNumber": "1084",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "LL-085",
+    "name": {
+      "english": "Hound"
+    },
+    "rarity": "HYPER",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-085.webp",
+    "illustrator": "-",
+    "cardNumber": "1085",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "LL-086",
+    "name": {
+      "english": "Strangler"
+    },
+    "rarity": "HYPER",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-086.webp",
+    "illustrator": "-",
+    "cardNumber": "1086",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "LL-087",
+    "name": {
+      "english": "Faceling"
+    },
+    "rarity": "HYPER",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-087.webp",
+    "illustrator": "-",
+    "cardNumber": "1087",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "LL-088",
+    "name": {
+      "english": "The Conductor"
+    },
+    "rarity": "PURE",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-088.webp",
+    "illustrator": "-",
+    "cardNumber": "1088",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "LL-089",
+    "name": {
+      "english": "Grawlix"
+    },
+    "rarity": "HYPER",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-089.webp",
+    "illustrator": "-",
+    "cardNumber": "1089",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "LL-090",
+    "name": {
+      "english": "Baktéria"
+    },
+    "rarity": "PURE",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-090.webp",
+    "illustrator": "-",
+    "cardNumber": "1090",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "LL-091",
+    "name": {
+      "english": "Aiden"
+    },
+    "rarity": "HYPER",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-091.webp",
+    "illustrator": "-",
+    "cardNumber": "1091",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "LL-092",
+    "name": {
+      "english": "Lost Agent"
+    },
+    "rarity": "HYPER",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-092.webp",
+    "illustrator": "-",
+    "cardNumber": "1092",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "LL-093",
+    "name": {
+      "english": "The Clocksmith"
+    },
+    "rarity": "HYPER",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-093.webp",
+    "illustrator": "-",
+    "cardNumber": "1093",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "LL-094",
+    "name": {
+      "english": "Scarlett Knight"
+    },
+    "rarity": "PURE",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-094.webp",
+    "illustrator": "-",
+    "cardNumber": "1094",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "LL-095",
+    "name": {
+      "english": "The Void"
+    },
+    "rarity": "HYPER",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-095.webp",
+    "illustrator": "-",
+    "cardNumber": "1095",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Outcome"
+  },
+  {
+    "id": "LL-096",
+    "name": {
+      "english": "Golden Stairs"
+    },
+    "rarity": "HYPER",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-096.webp",
+    "illustrator": "-",
+    "cardNumber": "1096",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Outcome"
+  },
+  {
+    "id": "LL-097",
+    "name": {
+      "english": "Mr.Freeman"
+    },
+    "rarity": "PURE",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-097.webp",
+    "illustrator": "-",
+    "cardNumber": "1097",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "LL-098",
+    "name": {
+      "english": "Crimson Knight"
+    },
+    "rarity": "PURE",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-098.webp",
+    "illustrator": "-",
+    "cardNumber": "1098",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "LL-099",
+    "name": {
+      "english": "Painite Wall"
+    },
+    "rarity": "VOID",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-099.webp",
+    "illustrator": "-",
+    "cardNumber": "1099",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Room"
+  },
+  {
+    "id": "LL-100",
+    "name": {
+      "english": "Death Moth \"D\""
+    },
+    "rarity": "VOID",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-100.webp",
+    "illustrator": "-",
+    "cardNumber": "1100",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "LL-101",
+    "name": {
+      "english": "Alia The Wanderer"
+    },
+    "rarity": "VOID",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-101.webp",
+    "illustrator": "-",
+    "cardNumber": "1101",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "LL-102",
+    "name": {
+      "english": "The Conductor"
+    },
+    "rarity": "VOID",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-102.webp",
+    "illustrator": "-",
+    "cardNumber": "1102",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "LL-103",
+    "name": {
+      "english": "Gamemaster"
+    },
+    "rarity": "SHATTERED",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/lobby-level/LL-103.webp",
+    "illustrator": "-",
+    "cardNumber": "1103",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  }
+]

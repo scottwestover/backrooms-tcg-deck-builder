@@ -1,12 +1,12 @@
 {
   "projects": {
-    "default": "digimon-card-collector"
+    "default": "backrooms-tcg-deckbuilder"
   },
   "targets": {
-    "digimon-card-collector": {
+    "backrooms-tcg-deckbuilder": {
       "hosting": {
-        "digimon-card-game-collector": [
-          "digimon-card-collector"
+        "backrooms-tcg-deckbuilder": [
+          "backrooms-tcg-deckbuilder"
         ]
       }
     }

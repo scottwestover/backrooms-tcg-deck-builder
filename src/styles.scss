@@ -2,7 +2,7 @@
 @import "tailwindcss/components" layer(tailwindcss);
 @import "tailwindcss/utilities" layer(tailwindcss);
 
-@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/themes/lara-light-amber/theme.css";
 @import "primeng/resources/primeng.css";
 
 @import 'scrollbar';
@@ -32,6 +32,18 @@ body {
 
 .bg {
   background-color: #17212f;
+}
+
+.p-dialog .p-dialog-content,
+.p-dropdown,
+.p-dropdown-panel,
+.p-multiselect-panel,
+.p-multiselect-item-group,
+.p-multiselect,
+.p-multiselect-token,
+.p-inputtext,
+.p-sidebar {
+  background-color: #0B0B0B !important;
 }
 
 .primary-background {
@@ -112,6 +124,10 @@ body {
 
 .Blue {
   background: #19a0e3;
+}
+
+.Silver {
+  background: silver;
 }
 
 .Yellow {
@@ -243,4 +259,14 @@ p-dialog::ng-deep {
 
 .background-darker {
   background-color: color-mix(in srgb, var(--surface-ground) 50%, black);
+}
+
+.main-root2 {
+  background-image: linear-gradient(to right, rgba(0,0,0, 0.2) 0 100%), url( '/assets/images/bg.svg' );
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.external_link {
+  color: #FFD54F;
 }

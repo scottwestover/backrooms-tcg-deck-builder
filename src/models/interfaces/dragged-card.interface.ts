@@ -1,7 +1,7 @@
 import { DRAG } from '../enums';
-import { DigimonCard } from './digimon-card.interface';
+import { BackroomsCard } from './backroom-card.interface';
 
 export interface IDraggedCard {
-  card: DigimonCard;
+  card: BackroomsCard;
   drag: DRAG;
 }

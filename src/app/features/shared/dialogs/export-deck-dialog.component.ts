@@ -5,13 +5,13 @@ import { saveAs } from 'file-saver';
 import { ButtonModule } from 'primeng/button';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { SelectButtonModule } from 'primeng/selectbutton';
-import { ColorsWithoutMulti, DigimonCard, ICountCard, IDeck, IDeckCard } from '../../../../models';
-import { compareIDs, formatId, levelSort, mapToDeckCards, sortColors, sortID } from '../../../functions';
+import { BackroomsCard, Colors, IDeck } from '../../../../models';
+import { compareIDs, levelSort, mapToDeckCards } from '../../../functions';
 import { DialogStore } from '../../../store/dialog.store';
-import { DigimonCardStore } from '../../../store/digimon-card.store';
+import { BackroomsCardStore } from '../../../store/backrooms-card.store';
 
 @Component({
-  selector: 'digimon-export-deck-dialog',
+  selector: 'backrooms-export-deck-dialog',
   template: `
     <p-selectButton
       [options]="exportList"
@@ -45,7 +45,7 @@ import { DigimonCardStore } from '../../../store/digimon-card.store';
         width="7440"
         height="6240"
         class="hidden"></canvas>
-      <p-selectButton
+      <!-- <p-selectButton
         class="Colors mt-3"
         [options]="colors"
         [(ngModel)]="selectedColor"
@@ -59,7 +59,7 @@ import { DigimonCardStore } from '../../../store/digimon-card.store';
               'pi-times': !colorChecked(color)
             }"></i>
         </ng-template>
-      </p-selectButton>
+      </p-selectButton> -->
     </div>
 
     <div class="mt-5 flex w-full justify-end">
@@ -83,13 +83,7 @@ import { DigimonCardStore } from '../../../store/digimon-card.store';
         styleClass="p-button-sm">
         Generate Image
       </p-button>
-      <p-button
-        *ngIf="exportType === 'IMAGE'"
-        (click)="downloadImageTTS()"
-        class="ml-5"
-        styleClass="p-button-sm">
-        Download Deck (TTS)
-      </p-button>
+
       <p-button
         *ngIf="exportType === 'IMAGE'"
         (click)="downloadImage()"
@@ -111,18 +105,18 @@ import { DigimonCardStore } from '../../../store/digimon-card.store';
   ],
 })
 export class ExportDeckDialogComponent implements OnInit {
-  digimonCardStore = inject(DigimonCardStore);
+  backroomCardStore = inject(BackroomsCardStore);
   dialogStore = inject(DialogStore);
 
   deck: IDeck = this.dialogStore.exportDeck().deck;
-  digimonCards: DigimonCard[] = this.digimonCardStore.cards();
+  backroomCards: BackroomsCard[] = this.backroomCardStore.cards();
 
-  exportList = ['TEXT', 'TTS', 'UNTAP', 'IMAGE'];
+  exportList = ['TEXT', 'IMAGE'];
   exportType = 'TEXT';
   deckText = '';
 
-  colors = ColorsWithoutMulti;
-  selectedColor = 'Red';
+  colors = Colors;
+  selectedColor = 'Yellow';
 
   normalOrder = true;
 
@@ -133,8 +127,8 @@ export class ExportDeckDialogComponent implements OnInit {
     this.exportType = 'TEXT';
   });
 
-  updateDigimonCards = effect(() => {
-    this.digimonCards = this.digimonCardStore.cards();
+  updatebackroomCards = effect(() => {
+    this.backroomCards = this.backroomCardStore.cards();
   });
 
   ngOnInit() {
@@ -173,12 +167,6 @@ export class ExportDeckDialogComponent implements OnInit {
       case 'TEXT':
         this.setExportTypeText();
         break;
-      case 'TTS':
-        this.setExportTypeTTS();
-        break;
-      case 'UNTAP':
-        this.setExportTypeUNTAP();
-        break;
       case 'IMAGE':
         this.setExportTypeIMAGE();
         break;
@@ -196,17 +184,6 @@ export class ExportDeckDialogComponent implements OnInit {
       document.getElementById('HDCanvas')! as HTMLCanvasElement,
     );
     this.generateTTS(document.getElementById('TTS')! as HTMLCanvasElement);
-  }
-
-  downloadImageTTS() {
-    const canvas = document.getElementById('TTS')! as HTMLCanvasElement;
-    const img = canvas
-      .toDataURL('image/jpg', 0.7)
-      .replace('image/jpg', 'image/octet-stream');
-    const link = document.createElement('a');
-    link.download = 'deck.png';
-    link.href = img;
-    link.click();
   }
 
   downloadImage() {
@@ -235,39 +212,18 @@ export class ExportDeckDialogComponent implements OnInit {
   }
 
   private setExportTypeText(): void {
-    this.deckText = '// Digimon DeckList\n\n';
+    this.deckText = '// Backrooms TCG DeckList\n\n';
     this.deck.cards.forEach((card) => {
-      const digimonCard = this.digimonCardStore.cardsMap().get(card.id);
-      if (digimonCard) {
+      const backroomCard = this.backroomCardStore.cardsMap().get(card.id);
+      if (backroomCard) {
         if (this.normalOrder) {
-          this.deckText += `${card.id.replace('ST0', 'ST')} ${digimonCard?.name
+          this.deckText += `${card.id.replace('ST0', 'ST')} ${backroomCard?.name
             .english} ${card.count}\n`;
         } else {
-          this.deckText += `${card.count} ${digimonCard?.name
+          this.deckText += `${card.count} ${backroomCard?.name
             .english} ${card.id.replace('ST0', 'ST')}\n`;
         }
       }
-    });
-  }
-
-  private setExportTypeTTS(): void {
-    this.deckText = '["Exported from https://digimoncard.app",';
-    const cards = mapToDeckCards(this.deck.cards, this.digimonCards);
-    cards.forEach((card) => {
-      for (let i = 0; i < card.count; i++) {
-        this.deckText += `"${formatId(card.cardNumber)}",`;
-      }
-    });
-    this.deckText = this.deckText.substring(0, this.deckText.length - 1);
-    this.deckText += ']';
-  }
-
-  private setExportTypeUNTAP(): void {
-    this.deckText = '// Digimon DeckList\n\n';
-    this.deck.cards.forEach((card) => {
-      const dc = this.digimonCardStore.cardsMap().get(card.id);
-      this.deckText += `${card.count} ${dc?.name
-        .english} [DCG] (${card.id.replace('ST0', 'ST')})\n`;
     });
   }
 
@@ -331,13 +287,7 @@ export class ExportDeckDialogComponent implements OnInit {
     };
 
     const BackgroundMap = new Map<string, string>([
-      ['Red', 'assets/images/image-export/bg-share_red.jpg'],
-      ['Blue', 'assets/images/image-export/bg-share_blue.jpg'],
-      ['Yellow', 'assets/images/image-export/bg-share_yellow.jpg'],
-      ['Green', 'assets/images/image-export/bg-share_green.jpg'],
-      ['Black', 'assets/images/image-export/bg-share_black.jpg'],
-      ['Purple', 'assets/images/image-export/bg-share_purple.jpg'],
-      ['White', 'assets/images/image-export/bg-share_white.jpg'],
+      ['Yellow', 'assets/images/image-export/bg.svg'],
     ]);
 
     background({
@@ -365,7 +315,7 @@ export class ExportDeckDialogComponent implements OnInit {
     let cardsInCurrentRow = 1;
     const cardsPerRow = 9;
     this.deck.cards.forEach((card) => {
-      const fullCard = this.digimonCards.find((search: DigimonCard) =>
+      const fullCard = this.backroomCards.find((search: BackroomsCard) =>
         compareIDs(card.id, search.id),
       );
       imgs.push({
@@ -446,7 +396,7 @@ export class ExportDeckDialogComponent implements OnInit {
     };
 
     background({
-      uri: 'assets/images/image-export/TTS.jpg',
+      uri: 'assets/images/image-export/bg.svg',
       x: 0,
       y: 0,
       sw: 7440,
@@ -463,7 +413,7 @@ export class ExportDeckDialogComponent implements OnInit {
     let cardsInCurrentRow = 1;
     const cardsPerRow = 10;
     this.deck.cards.forEach((card) => {
-      const fullCard = this.digimonCards.find((search: DigimonCard) =>
+      const fullCard = this.backroomCards.find((search: BackroomsCard) =>
         compareIDs(card.id, search.id),
       );
       for (let i = 1; i <= card.count; i++) {
@@ -532,23 +482,13 @@ export class ExportDeckDialogComponent implements OnInit {
     });
   }
 
-  /**
-   * Sort the Deck (Eggs, Digimon, Tamer, Options)
-   */
   private deckSort() {
-    const allCards = this.digimonCardStore.cards();
+    const allCards = this.backroomCardStore.cards();
     const mainDeckCards = mapToDeckCards(this.deck.cards, allCards);
-    const sideDeckCards = mapToDeckCards(this.deck.sideDeck, allCards);
 
-    this.deck.cards = levelSort(mainDeckCards)
-      .map((card) => ({
-        id: card.id,
-        count: card.count,
-      }));
-    this.deck.sideDeck = levelSort(sideDeckCards)
-      .map((card) => ({
-        id: card.id,
-        count: card.count,
-      }));
+    this.deck.cards = levelSort(mainDeckCards).map((card) => ({
+      id: card.id,
+      count: card.count,
+    }));
   }
 }

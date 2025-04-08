@@ -1,5 +1,5 @@
 import { patchState, signalStore, withMethods, withState } from '@ngrx/signals';
-import { DigimonCard, dummyCard, emptyDeck, IDeck } from '../../models';
+import { BackroomsCard, dummyCard, emptyDeck, IDeck } from '../../models';
 
 interface DeckDialog {
   show: boolean;
@@ -14,7 +14,7 @@ interface ExportDeckDialog {
 
 interface ViewCardDialog {
   show: boolean;
-  card: DigimonCard;
+  card: BackroomsCard;
   width: string;
 }
 
@@ -65,7 +65,6 @@ export const DialogStore = signalStore(
     updateDeckDialog(deck: DeckDialog): void {
       patchState(store, (state) => ({ deck }));
     },
-
     showViewCardDialog(show: boolean): void {
       patchState(store, (state) => ({ viewCard: { ...state.viewCard, show } }));
     },

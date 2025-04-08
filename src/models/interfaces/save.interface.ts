@@ -9,5 +9,12 @@ export interface ISave {
   version?: number;
   collection: ICountCard[];
   decks: IDeck[];
-  settings: ISettings;
+}
+
+export interface ISaveFireStore {
+  uid: string;
+  displayName: string;
+  photoURL?: string;
+  version: number;
+  collection: string;
 }

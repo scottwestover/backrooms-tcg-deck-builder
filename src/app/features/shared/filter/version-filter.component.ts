@@ -5,14 +5,14 @@ import { FilterStore } from '../../../store/filter.store';
 import { MultiButtonsComponent } from '../multi-buttons.component';
 
 @Component({
-  selector: 'digimon-version-filter',
+  selector: 'backrooms-version-filter',
   template: `
-    <digimon-multi-buttons
+    <backrooms-multi-buttons
       (clickEvent)="changeVersion($event, versionFilter)"
       [buttonArray]="versionButtons"
       [value]="versionFilter"
       [perRow]="3"
-      title="Version"></digimon-multi-buttons>
+      title="Version"></backrooms-multi-buttons>
   `,
   standalone: true,
   imports: [NgIf, MultiButtonsComponent, AsyncPipe],
@@ -25,7 +25,6 @@ export class VersionFilterComponent {
 
   filterChange = effect(() => {
     this.versionFilter = this.filterStore.versionFilter();
-    console.log(this.versionFilter);
   });
 
   changeVersion(version: string, versionFilter: string[]) {

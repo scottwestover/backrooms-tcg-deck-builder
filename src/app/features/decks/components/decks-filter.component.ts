@@ -11,7 +11,7 @@ import { StyleClassModule } from 'primeng/styleclass';
 import { TAGS } from '../../../../models';
 
 @Component({
-  selector: 'digimon-decks-filter',
+  selector: 'backrooms-decks-filter',
   template: `
     <div
       [formGroup]="form"
@@ -22,10 +22,10 @@ import { TAGS } from '../../../../models';
           formControlName="searchFilter"
           class="w-full text-xs"
           pInputText
-          placeholder="Search (Title, Description, User, Card-Ids, Color)"
+          placeholder="Search (Title, Description, User, Card-Ids)"
           type="text" />
       </span>
-      <p-multiSelect
+      <!-- <p-multiSelect
         formControlName="tagFilter"
         [options]="tags"
         [showToggleAll]="false"
@@ -34,7 +34,7 @@ import { TAGS } from '../../../../models';
         scrollHeight="250px"
         class="col-span-3 sm:col-span-2 sm:mx-auto sm:my-1 w-full max-w-[250px]"
         styleClass="w-full h-[34px] text-sm max-w-[250px]">
-      </p-multiSelect>
+      </p-multiSelect> -->
       <button
         (click)="applyFilter.emit(true)"
         class="col-span-2 sm:col-span-1 min-w-auto primary-background my-auto ml-2 h-8 sm:w-32 rounded p-2 text-xs font-semibold text-[#e2e4e6]">

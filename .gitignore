@@ -48,3 +48,5 @@ Thumbs.db
 .runtimeconfig.json
 
 venv library root
+
+src/environments/env.prd.ts

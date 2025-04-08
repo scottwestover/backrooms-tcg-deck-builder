@@ -11,12 +11,12 @@ import { LazyLoadImageModule } from 'ng-lazyload-image';
 import { SharedModule } from 'primeng/api';
 import { TableModule } from 'primeng/table';
 import { IDeck } from '../../../../models';
-import { setDeckImage } from '../../../functions/digimon-card.functions';
-import { DigimonCardStore } from '../../../store/digimon-card.store';
+import { setDeckImage } from '../../../functions/backrooms-card.functions';
+import { BackroomsCardStore } from '../../../store/backrooms-card.store';
 import { SaveStore } from '../../../store/save.store';
 
 @Component({
-  selector: 'digimon-decks-table',
+  selector: 'backrooms-decks-table',
   template: `
     <p-table
       [value]="decks"
@@ -62,7 +62,7 @@ import { SaveStore } from '../../../store/save.store';
           <td>
             <div
               class="surface-card relative h-16 w-56 border border-black"
-              defaultImage="assets/images/digimon-card-back.webp"
+              defaultImage="assets/images/card-back.webp"
               [lazyLoad]="getCardImage(deck)"
               [ngStyle]="{
                 'background-repeat': 'no-repeat',
@@ -114,26 +114,26 @@ export class DecksTableComponent {
   @Output() onDeckClick = new EventEmitter<IDeck>();
 
   saveStore = inject(SaveStore);
-  digimonCardStore = inject(DigimonCardStore);
+  backroomCardStore = inject(BackroomsCardStore);
 
   getCardImage(deck: IDeck): string {
-    //If there are no cards in the deck set it to the Yokomon
+    //If there are no cards in the deck set it to the Hallway
     if (
       !deck.cards ||
       deck.cards.length === 0 ||
-      this.digimonCardStore.cards().length === 0
+      this.backroomCardStore.cards().length === 0
     ) {
-      return '../../../assets/images/cards/eng/BT1-001.webp';
+      return '../../../assets/images/cards/lobby-level/LL-001.webp';
     }
 
     // If there is a ImageCardId set it
     if (deck.imageCardId) {
       return (
-        this.digimonCardStore.cardsMap().get(deck.imageCardId)?.cardImage ??
-        '../../../assets/images/cards/eng/BT1-001.webp'
+        this.backroomCardStore.cardsMap().get(deck.imageCardId)?.cardImage ??
+        '../../../assets/images/cards/lobby-level/LL-001.webp'
       );
     } else {
-      const deckImage = setDeckImage(deck, this.digimonCardStore.cards());
+      const deckImage = setDeckImage(deck, this.backroomCardStore.cards());
       this.saveStore.saveDeck({ ...deck, imageCardId: deckImage.id });
 
       return deckImage.cardImage;
@@ -141,9 +141,6 @@ export class DecksTableComponent {
   }
 
   decksWithColor(color: string) {
-    return this.decks.filter((deck) => {
-      if (!deck || !deck.color || !deck.color.name) return false;
-      return deck.color.name === color;
-    }).length;
+    return 0;
   }
 }

@@ -5,16 +5,14 @@ import {
   inject,
 } from '@angular/core';
 import { DialogModule } from 'primeng/dialog';
-import { emptyDeck } from '../../../models';
 import { ChangelogDialogComponent } from './dialogs/changelog-dialog.component';
 import { DeckDialogComponent } from './dialogs/deck-dialog.component';
 import { ExportDeckDialogComponent } from './dialogs/export-deck-dialog.component';
-import { SettingsDialogComponent } from './dialogs/settings-dialog.component';
 import { ViewCardDialogComponent } from './dialogs/view-card-dialog.component';
 import { DialogStore } from '../../store/dialog.store';
 
 @Component({
-  selector: 'digimon-dialog',
+  selector: 'backrooms-dialog',
   template: `
     <p-dialog
       header="Deck Details"
@@ -25,7 +23,7 @@ import { DialogStore } from '../../store/dialog.store';
       [resizable]="false"
       styleClass="w-full h-full max-w-6xl min-h-[500px]"
       [baseZIndex]="10000">
-      <digimon-deck-dialog></digimon-deck-dialog>
+      <backrooms-deck-dialog></backrooms-deck-dialog>
     </p-dialog>
 
     <p-dialog
@@ -37,7 +35,7 @@ import { DialogStore } from '../../store/dialog.store';
       [resizable]="false"
       styleClass="w-full h-full max-w-6xl min-h-[500px]"
       [baseZIndex]="10000">
-      <digimon-export-deck-dialog></digimon-export-deck-dialog>
+      <backrooms-export-deck-dialog></backrooms-export-deck-dialog>
     </p-dialog>
 
     <p-dialog
@@ -49,7 +47,6 @@ import { DialogStore } from '../../store/dialog.store';
       [resizable]="false"
       header="Settings"
       styleClass="background-darker surface-ground w-full h-full max-w-6xl min-h-[500px]">
-      <digimon-settings-dialog></digimon-settings-dialog>
     </p-dialog>
 
     <p-dialog
@@ -60,7 +57,7 @@ import { DialogStore } from '../../store/dialog.store';
       [dismissableMask]="true"
       [resizable]="false"
       styleClass="overflow-x-hidden">
-      <digimon-view-card-dialog></digimon-view-card-dialog>
+      <backrooms-view-card-dialog></backrooms-view-card-dialog>
     </p-dialog>
 
     <p-dialog
@@ -71,7 +68,7 @@ import { DialogStore } from '../../store/dialog.store';
       [dismissableMask]="true"
       [resizable]="false"
       styleClass="background-darker surface-ground w-full h-full max-w-6xl min-h-[500px]">
-      <digimon-changelog-dialog></digimon-changelog-dialog>
+      <backrooms-changelog-dialog></backrooms-changelog-dialog>
     </p-dialog>
   `,
   standalone: true,
@@ -79,11 +76,10 @@ import { DialogStore } from '../../store/dialog.store';
   imports: [
     DialogModule,
     ChangelogDialogComponent,
-    SettingsDialogComponent,
     ViewCardDialogComponent,
     ExportDeckDialogComponent,
-    DeckDialogComponent
-  ]
+    DeckDialogComponent,
+  ],
 })
 export class DialogComponent {
   dialogStore = inject(DialogStore);

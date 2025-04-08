@@ -43,7 +43,7 @@
           "error",
           {
             "type": "attribute",
-            "prefix": "digimon",
+            "prefix": "backrooms",
             "style": "camelCase"
           }
         ],
@@ -51,7 +51,7 @@
           "error",
           {
             "type": "element",
-            "prefix": "digimon",
+            "prefix": "backrooms",
             "style": "kebab-case"
           }
         ],

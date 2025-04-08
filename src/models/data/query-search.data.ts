@@ -1,12 +1,16 @@
 import {
-  Attributes, Blocks, CardTypes,
+  Attributes,
+  Blocks,
+  CardTypes,
   Colors,
-  Forms,
   Illustrators,
-  Keywords, Rarity,
-  Restrictions, Sets,
+  Keywords,
+  Rarity,
+  Restrictions,
+  Sets,
   SpecialRequirements,
-  Types, Versions
+  Types,
+  Versions,
 } from './filter.data';
 
 export const FilterTypes = [
@@ -47,7 +51,6 @@ export const filterTypeMap = new Map<string, string[]>([
   ['Version', Versions],
   ['Block', Blocks],
   ['Keyword', Keywords],
-  ['Form', Forms],
   ['Attribute', Attributes],
   ['Type', Types],
   ['Special Requirement', SpecialRequirements],

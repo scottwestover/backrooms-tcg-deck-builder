@@ -17,18 +17,17 @@ import { DialogModule } from 'primeng/dialog';
 import { TooltipModule } from 'primeng/tooltip';
 import { BehaviorSubject } from 'rxjs';
 import * as uuid from 'uuid';
-import { DigimonCard, IDeck, IDeckCard } from '../../../../models';
+import { BackroomsCard, IDeck, IDeckCard } from '../../../../models';
 import { mapToDeckCards } from '../../../functions';
 import { AuthService } from '../../../services/auth.service';
 import { DialogStore } from '../../../store/dialog.store';
-import { DigimonCardStore } from '../../../store/digimon-card.store';
+import { BackroomsCardStore } from '../../../store/backrooms-card.store';
 import { WebsiteStore } from '../../../store/website.store';
 import { ExportDeckDialogComponent } from '../../shared/dialogs/export-deck-dialog.component';
 import { ImportDeckDialogComponent } from '../../shared/dialogs/import-deck-dialog.component';
-import { PriceCheckDialogComponent } from './price-check-dialog.component';
 
 @Component({
-  selector: 'digimon-deck-toolbar',
+  selector: 'backrooms-deck-toolbar',
   template: `
     <div
       class="toolbar ml-3 mr-3 flex w-[100%-3rem] flex-row justify-evenly border-b-2 border-slate-600 md:grid-cols-12">
@@ -84,69 +83,7 @@ import { PriceCheckDialogComponent } from './price-check-dialog.component';
         pButton
         pTooltip="Click to hide/show deck statistics!"
         tooltipPosition="top"></button>
-
-      <button
-        (click)="simulate()"
-        class="p-button-outlined h-[30px] w-full"
-        icon="pi pi-refresh"
-        iconPos="left"
-        pButton
-        pTooltip="Click to simulate your draw hand and the security stack!"
-        tooltipPosition="top"></button>
-
-      <button
-        (click)="checkPrice()"
-        class="p-button-outlined h-[30px] w-full cursor-pointer"
-        icon="pi pi-dollar"
-        iconPos="left"
-        pButton></button>
     </div>
-
-    <p-dialog
-      header="Price Check"
-      [(visible)]="priceCheckDialog"
-      [modal]="true"
-      [dismissableMask]="true"
-      [resizable]="false"
-      styleClass="w-[100%] min-w-[250px] sm:min-w-[500px] sm:w-[700px] min-h-[500px]"
-      [baseZIndex]="10000">
-      <digimon-price-check-dialog
-        [checkPrice]="checkPrice$"></digimon-price-check-dialog>
-    </p-dialog>
-
-    <p-dialog
-      header="Simulate Security/Draw"
-      [(visible)]="simulateDialog"
-      [modal]="true"
-      [dismissableMask]="true"
-      [resizable]="false"
-      styleClass="w-[100%] min-w-[250px] sm:min-w-[500px] sm:w-[700px] min-h-[500px]"
-      [baseZIndex]="10000">
-      <!-- Security Stack -->
-      <h1 class="text-center text-2xl font-bold">Security Stack</h1>
-      <div class="mt-5 flex flex-row">
-        <div
-          *ngFor="let secCard of securityStack"
-          class="cards-in-a-row-5 mr-1">
-          <img
-            [src]="secCard.cardImage"
-            [alt]="secCard.id + ' - ' + secCard.name" />
-        </div>
-      </div>
-
-      <h1 class="text-center text-2xl font-bold">Draw Hand</h1>
-      <div class="mt-5 flex flex-row">
-        <div *ngFor="let drawCard of drawHand" class="cards-in-a-row-5 mr-1">
-          <img
-            [src]="drawCard.cardImage"
-            [alt]="drawCard.id + ' - ' + drawCard.name" />
-        </div>
-      </div>
-
-      <div class="mt-5 flex w-full justify-end">
-        <button pButton (click)="mulligan()">Mulligan</button>
-      </div>
-    </p-dialog>
 
     <p-dialog
       header="Import Deck"
@@ -156,8 +93,8 @@ import { PriceCheckDialogComponent } from './price-check-dialog.component';
       [modal]="true"
       [dismissableMask]="true"
       [resizable]="false">
-      <digimon-import-deck-dialog
-        (onClose)="importDeckDialog = false"></digimon-import-deck-dialog>
+      <backrooms-import-deck-dialog
+        (onClose)="importDeckDialog = false"></backrooms-import-deck-dialog>
     </p-dialog>
 
     <p-confirmDialog
@@ -173,7 +110,6 @@ import { PriceCheckDialogComponent } from './price-check-dialog.component';
     TooltipModule,
     NgClass,
     DialogModule,
-    PriceCheckDialogComponent,
     NgFor,
     ExportDeckDialogComponent,
     ImportDeckDialogComponent,
@@ -190,13 +126,13 @@ export class DeckToolbarComponent {
 
   websiteStore = inject(WebsiteStore);
   dialogStore = inject(DialogStore);
-  digimonCardStore = inject(DigimonCardStore);
+  backroomCardStore = inject(BackroomsCardStore);
 
   deck: Signal<IDeck> = this.websiteStore.deck;
   mainDeck: Signal<IDeckCard[]> = computed(() =>
     mapToDeckCards(
       this.websiteStore.deck().cards,
-      this.digimonCardStore.cards(),
+      this.backroomCardStore.cards(),
     ),
   );
 
@@ -205,9 +141,9 @@ export class DeckToolbarComponent {
   simulateDialog = false;
   checkPrice$ = new BehaviorSubject(false);
 
-  securityStack: DigimonCard[];
-  drawHand: DigimonCard[];
-  allDeckCards: DigimonCard[];
+  securityStack: BackroomsCard[];
+  drawHand: BackroomsCard[];
+  allDeckCards: BackroomsCard[];
 
   constructor(
     private confirmationService: ConfirmationService,
@@ -269,7 +205,7 @@ export class DeckToolbarComponent {
   mulligan() {
     this.allDeckCards = DeckToolbarComponent.shuffle(
       this.deck().cards.map((card) =>
-        this.digimonCardStore.cards().find((a) => a.id === card.id),
+        this.backroomCardStore.cards().find((a) => a.id === card.id),
       ),
     );
     this.allDeckCards = this.allDeckCards.filter(

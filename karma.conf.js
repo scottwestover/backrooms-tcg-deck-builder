@@ -25,7 +25,7 @@ module.exports = function (config) {
       suppressAll: true // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, './coverage/digimon-card-game-collector'),
+      dir: require('path').join(__dirname, './coverage/backrooms-tcg-deck-builder'),
       subdir: '.',
       reporters: [
         { type: 'html' },

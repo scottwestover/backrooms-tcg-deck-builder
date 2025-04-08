@@ -7,11 +7,11 @@ import {
   Output,
 } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
-import { DigimonCard, ICountCard } from '../../../../models';
+import { BackroomsCard, ICountCard } from '../../../../models';
 import { ChartModule } from 'primeng/chart';
 
 @Component({
-  selector: 'digimon-collection-stats-dialog',
+  selector: 'backrooms-collection-stats-dialog',
   template: `<!--div [formGroup]="languageForm">
   <p-checkbox class="ml-2" formControlName="english" label="English" name="language"></p-checkbox>
   <p-checkbox class="ml-2" formControlName="japanese" label="Japanese" name="language"></p-checkbox>
@@ -47,7 +47,7 @@ import { ChartModule } from 'primeng/chart';
 })
 export class CollectionStatsDialogComponent implements OnInit, OnChanges {
   @Input() show: boolean = false;
-  @Input() digimonCards: DigimonCard[];
+  @Input() backroomCards: BackroomsCard[];
   @Input() collection: ICountCard[];
 
   @Output() onClose = new EventEmitter<boolean>();
@@ -116,7 +116,7 @@ export class CollectionStatsDialogComponent implements OnInit, OnChanges {
 
   private getBoosterCards(type: string): number[] {
     //const allCards = this.filterLanguageAllCards();
-    const set = this.digimonCards.filter((card) =>
+    const set = this.backroomCards.filter((card) =>
       card.cardNumber.includes(type),
     );
 
@@ -125,19 +125,4 @@ export class CollectionStatsDialogComponent implements OnInit, OnChanges {
 
     return [have.length, set.length - have.length];
   }
-
-  /*  private filterLanguageAllCards(): DigimonCard[] {
-      let array = [];
-      if(this.languageForm.get('english')?.value) {
-        array = [...new Set(this.digimonCards.filter((card) => card.))];
-      }
-      if(this.languageForm.get('english')?.value) {
-
-      }
-      return array;
-    }
-
-    private filterLanguageCollection(): ICountCard[] {
-      return;
-    }*/
 }

@@ -1,5 +1,12 @@
 import { AsyncPipe, NgFor, NgIf } from '@angular/common';
-import { ChangeDetectorRef, Component, effect, HostListener, inject, OnInit } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  effect,
+  HostListener,
+  inject,
+  OnInit,
+} from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { Meta, Title } from '@angular/platform-browser';
 import { ToastrService } from 'ngx-toastr';
@@ -14,24 +21,23 @@ import { Subject } from 'rxjs';
 import { emptyDeck, ICountCard, IDeck, ITournamentDeck } from '../../../models';
 import { setDeckImage } from '../../functions';
 import { DialogStore } from '../../store/dialog.store';
-import { DigimonCardStore } from '../../store/digimon-card.store';
+import { BackroomsCardStore } from '../../store/backrooms-card.store';
 import { SaveStore } from '../../store/save.store';
 import { WebsiteStore } from '../../store/website.store';
 import { DeckContainerComponent } from '../shared/deck-container.component';
 import { DeckDialogComponent } from '../shared/dialogs/deck-dialog.component';
-import { DeckSubmissionComponent } from '../shared/dialogs/deck-submission.component';
 import { PageComponent } from '../shared/page.component';
 import { DeckStatisticsComponent } from './components/deck-statistics.component';
 import { DecksFilterComponent } from './components/decks-filter.component';
-import { TierlistComponent } from './components/tierlist.component';
 
 @Component({
-  selector: 'digimon-decks-page',
+  selector: 'backrooms-decks-page',
   template: `
-    <digimon-page #page>
-      <p-blockUI [blocked]="loading2" [target]="page">
+    <backrooms-page #page>
+      <!-- <p-blockUI [blocked]="loading2" [target]="page">
         <p-progressSpinner class="mx-auto"></p-progressSpinner>
-      </p-blockUI>
+      </p-blockUI> -->
+
       <div class="mx-auto self-baseline px-5 w-full max-w-7xl">
         <div class="lg:px-auto flex px-1 flex-col md:flex-row items-baseline">
           <h1
@@ -40,16 +46,16 @@ import { TierlistComponent } from './components/tierlist.component';
           </h1>
 
           <div class="md:ml-auto">
-            <p-button
+            <!-- <p-button
               size="small"
               class="p-button-outlined mr-1"
               icon="pi pi-search"
               type="button"
               pTooltip="Filter the Decks for Decks possible with your cards"
               label="Possible Decks"
-              (click)="applyCollectionFilter()"></p-button>
+              (click)="applyCollectionFilter()"></p-button> -->
 
-            <p-button
+            <!-- <p-button
               size="small"
               class="p-button-outlined"
               icon="pi pi-chart-line"
@@ -57,28 +63,28 @@ import { TierlistComponent } from './components/tierlist.component';
               label="Statistics"
               (click)="
                 deckStatsDialog = true; updateStatistics.next(true)
-              "></p-button>
+              "></p-button> -->
           </div>
         </div>
 
-        <digimon-decks-filter
+        <backrooms-decks-filter
           [form]="form"
-          (applyFilter)="filterChanges()"></digimon-decks-filter>
+          (applyFilter)="filterChanges()"></backrooms-decks-filter>
 
         <div
           *ngIf="decksToShow.length > 0; else loading"
           class="grid gap-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          <digimon-deck-container
+          <backrooms-deck-container
             class="mx-auto min-w-[280px] max-w-[285px]"
             *ngFor="let deck of decksToShow"
             (click)="showDeckDetails(deck)"
             (contextmenu)="showDeckDetails(deck)"
-            [deck]="deck"></digimon-deck-container>
+            [deck]="deck"></backrooms-deck-container>
         </div>
 
         <ng-template #loading>
           <div class="flex w-full">
-            <p-progressSpinner class="mx-auto"></p-progressSpinner>
+            <!-- <p-progressSpinner class="mx-auto"></p-progressSpinner> -->
           </div>
         </ng-template>
 
@@ -93,10 +99,8 @@ import { TierlistComponent } from './components/tierlist.component';
           styleClass="surface-ground p-0 mx-auto"></p-paginator>
 
         <p-divider></p-divider>
-
-        <digimon-tierlist></digimon-tierlist>
       </div>
-    </digimon-page>
+    </backrooms-page>
 
     <p-dialog
       header="Deck Statistics for the filtered decks"
@@ -106,10 +110,10 @@ import { TierlistComponent } from './components/tierlist.component';
       [resizable]="false"
       styleClass="w-full h-full max-w-6xl min-h-[500px]"
       [baseZIndex]="10000">
-      <digimon-deck-statistics
+      <backrooms-deck-statistics
         [decks]="filteredDecks"
         [updateCards]="updateStatistics"
-        [(loading)]="loading2"></digimon-deck-statistics>
+        [(loading)]="loading2"></backrooms-deck-statistics>
     </p-dialog>
   `,
   standalone: true,
@@ -121,12 +125,10 @@ import { TierlistComponent } from './components/tierlist.component';
     PaginatorModule,
     DialogModule,
     DeckDialogComponent,
-    DeckSubmissionComponent,
     DeckStatisticsComponent,
     NgIf,
     AsyncPipe,
     ProgressSpinnerModule,
-    TierlistComponent,
     DividerModule,
     PageComponent,
     TooltipModule,
@@ -164,7 +166,7 @@ export class DecksPageComponent implements OnInit {
 
   loading2 = false;
 
-  private digimonCardStore = inject(DigimonCardStore);
+  private backroomCardStore = inject(BackroomsCardStore);
 
   constructor(private changeDetection: ChangeDetectorRef) {
     this.websiteStore.loadCommunityDecks();
@@ -226,33 +228,33 @@ export class DecksPageComponent implements OnInit {
     this.setDecksToShow(event.first, (slice ?? this.rows) * (event.page + 1));
   }
 
-  applyCollectionFilter() {
-    this.loading2 = true;
+  // applyCollectionFilter() {
+  //   this.loading2 = true;
 
-    const collectionCounts: { [cardId: string]: number } = {};
+  //   const collectionCounts: { [cardId: string]: number } = {};
 
-    // Populate the collectionCounts map
-    this.collection.forEach((card) => {
-      const cardId = card.id.split('_', 1)[0];
-      collectionCounts[cardId] = (collectionCounts[cardId] || 0) + card.count;
-    });
+  //   // Populate the collectionCounts map
+  //   this.collection.forEach((card) => {
+  //     const cardId = card.id.split('_', 1)[0];
+  //     collectionCounts[cardId] = (collectionCounts[cardId] || 0) + card.count;
+  //   });
 
-    this.filteredDecks = this.filteredDecks.filter((deck) => {
-      return deck.cards.every((cardNeededForDeck) => {
-        const totalCount =
-          collectionCounts[cardNeededForDeck.id.split('_', 1)[0]] || 0;
-        return totalCount >= cardNeededForDeck.count;
-      });
-    });
-    this.setDecksToShow(0, this.rows);
+  //   this.filteredDecks = this.filteredDecks.filter((deck) => {
+  //     return deck.cards.every((cardNeededForDeck) => {
+  //       const totalCount =
+  //         collectionCounts[cardNeededForDeck.id.split('_', 1)[0]] || 0;
+  //       return totalCount >= cardNeededForDeck.count;
+  //     });
+  //   });
+  //   this.setDecksToShow(0, this.rows);
 
-    this.toastrService.success(
-      'Filtered for Decks possible with your cards',
-      'Success',
-    );
+  //   this.toastrService.success(
+  //     'Filtered for Decks possible with your cards',
+  //     'Success',
+  //   );
 
-    this.loading2 = false;
-  }
+  //   this.loading2 = false;
+  // }
 
   filterChanges() {
     this.filteredDecks = this.decks;
@@ -270,24 +272,24 @@ export class DecksPageComponent implements OnInit {
         ...deck,
         imageCardId:
           deck.imageCardId === 'BT1-001'
-            ? setDeckImage(deck, this.digimonCardStore.cards()).id
+            ? setDeckImage(deck, this.backroomCardStore.cards()).id
             : deck.imageCardId,
       }));
   }
 
   private makeGoogleFriendly() {
-    this.title.setTitle('Digimon Card Game - Community');
+    this.title.setTitle('Backrooms DB - Community');
 
     this.meta.addTags([
       {
         name: 'description',
         content:
-          'Meta decks, fun decks, tournament decks and many more, find new decks for every set.',
+          'Meta decks, fun decks, and many more, find new decks for every set.',
       },
-      { name: 'author', content: 'TakaOtaku' },
+      { name: 'author', content: 'scottwestover' },
       {
         name: 'keywords',
-        content: 'Meta, decks, tournament, fun',
+        content: 'Meta, decks, fun',
       },
     ]);
   }
@@ -309,16 +311,8 @@ export class DecksPageComponent implements OnInit {
         deck.cards.filter((card) =>
           card.id.toLocaleLowerCase().includes(search),
         ).length > 0;
-      const colorInText =
-        deck.color?.name.toLocaleLowerCase().includes(search) ?? false;
 
-      return (
-        titleInText ||
-        descriptionInText ||
-        userInText ||
-        cardsInText ||
-        colorInText
-      );
+      return titleInText || descriptionInText || userInText || cardsInText;
     });
   }
 
@@ -326,8 +320,6 @@ export class DecksPageComponent implements OnInit {
     if (!tagValues || tagValues.length === 0) {
       return this.filteredDecks;
     }
-    return this.filteredDecks.filter((deck) =>
-      deck.tags.some((tag) => tagValues.includes(tag.name)),
-    );
+    return this.filteredDecks;
   }
 }

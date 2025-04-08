@@ -1,50 +1,27 @@
 import * as uuid from 'uuid';
-import { DigimonCard, IDeck } from '../interfaces';
+import { BackroomsCard, IDeck } from '../interfaces';
 
-export const dummyCard: DigimonCard = {
-  aceEffect: '-',
-  attribute: '-',
-  block: ['00'],
-  burstDigivolve: '-',
-  cardImage: 'assets/images/cards/BT1-001.webp',
-  cardLv: 'Lv.2',
-  cardNumber: 'BT1-001',
-  cardType: 'Digi-Egg',
-  color: 'Red',
-  linkDP: '-',
-  linkRequirement: '-',
-  linkEffect: '-',
-  rule: '-',
-  digiXros: '-',
-  digivolveCondition: [],
-  digivolveEffect:
-    "[When Attacking] When you attack an opponent's Digimon, this Digimon gets +1000 DP for the turn.",
-  dnaDigivolve: '-',
-  dp: '-',
-  effect: '-',
-  form: 'In-Training',
-  id: 'BT1-001',
-  illustrator: 'TANIMESO',
+export const dummyCard: BackroomsCard = {
+  id: 'LL-001',
   name: {
-    english: 'Yokomon',
-    japanese: '\u30d4\u30e7\u30b3\u30e2\u30f3',
-    korean: '\uc5b4\ub2c8\ubaac',
-    simplifiedChinese: '\u6bd4\u9ad8\u517d',
-    traditionalChinese: '\u6bd4\u9ad8\u7378',
+    english: 'Hallway',
   },
-  notes: 'BT-01: Booster New Evolution',
-  playCost: '-',
-  rarity: 'R',
-  restrictions: {
-    chinese: 'Unrestricted',
-    english: 'Unrestricted',
-    japanese: 'Unrestricted',
-    korean: 'Unrestricted',
+  rarity: 'COMMON',
+  types: ['ROOM'],
+  ccs: {
+    type: 'PP',
+    value: '3',
   },
-  securityEffect: '-',
-  specialDigivolve: '-',
-  type: 'Digimon',
+  navigationPoints: '2',
+  sanityPoints: '3',
+  attackDamage: '',
+  health: '',
+  cardImage: 'assets/images/cards/lobby-level/LL-001.webp',
+  illustrator: 'vignesh652',
+  cardNumber: '1001',
+  notes: '-',
   version: 'Normal',
+  cardType: 'Room',
 };
 
 export const emptyDeck: IDeck = {
@@ -52,23 +29,18 @@ export const emptyDeck: IDeck = {
   title: '',
   description: '',
   date: new Date().toString(),
-  color: { name: 'White', img: 'assets/images/decks/white.svg' },
   cards: [],
-  sideDeck: [],
-  tags: [],
   user: '',
   userId: '',
-  imageCardId: 'BT1-001',
-  likes: [],
+  imageCardId: 'LL-001',
 };
 
 export const emptyFilter = {
   searchFilter: '',
   setFilter: [],
-  cardCountFilter: [0, 5],
+  cardCountFilter: [0, 30],
   levelFilter: [2, 7],
   playCostFilter: [0, 20],
-  digivolutionFilter: [0, 7],
   dpFilter: [1, 17],
   rarityFilter: [],
   versionFilter: [],
@@ -83,5 +55,4 @@ export const emptyFilter = {
   blockFilter: [],
   restrictionsFilter: [],
   sourceFilter: [],
-  presetFilter: [],
 };

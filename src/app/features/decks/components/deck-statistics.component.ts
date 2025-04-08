@@ -14,11 +14,11 @@ import { IDeck, IDeckCard } from '../../../../models';
 import {
   getCountFromDeckCards,
   mapToDeckCards,
-} from '../../../functions/digimon-card.functions';
-import { DigimonCardStore } from '../../../store/digimon-card.store';
+} from '../../../functions/backrooms-card.functions';
+import { BackroomsCardStore } from '../../../store/backrooms-card.store';
 
 @Component({
-  selector: 'digimon-deck-statistics',
+  selector: 'backrooms-deck-statistics',
   template: `
     <div class="flex flex-col overflow-hidden">
       <div class="my-1 w-full border border-slate-200 p-1">
@@ -104,7 +104,7 @@ import { DigimonCardStore } from '../../../store/digimon-card.store';
 
       <div class="my-1 w-full border border-slate-200 p-1">
         <h1 class="mb-2 w-full text-xl font-extrabold text-[#e2e4e6]">
-          Digimon Cards
+          Backrooms Cards
         </h1>
         <div class="overflow-x-auto sm:-mx-6 lg:-mx-8 lg:overflow-x-hidden">
           <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
@@ -147,7 +147,7 @@ import { DigimonCardStore } from '../../../store/digimon-card.store';
                 <tbody>
                   <tr
                     *ngFor="
-                      let card of filter(mostUsedCards, 'Digimon')
+                      let card of filter(mostUsedCards, 'Backrooms')
                         | slice: 0 : 50;
                       let i = index
                     "
@@ -360,7 +360,7 @@ export class DeckStatisticsComponent implements OnInit, OnDestroy {
 
   mostUsedCards: IDeckCard[] = [];
 
-  private digimonCardStore = inject(DigimonCardStore);
+  private backroomCardStore = inject(BackroomsCardStore);
   private onDestroy$ = new Subject();
 
   ngOnInit() {
@@ -378,7 +378,7 @@ export class DeckStatisticsComponent implements OnInit, OnDestroy {
     this.loadingChange.emit(true);
     const cards = mapToDeckCards(
       this.decks.map((deck) => deck.cards).flat(1),
-      this.digimonCardStore.cards(),
+      this.backroomCardStore.cards(),
     );
 
     let checked: string[] = [];
@@ -425,6 +425,8 @@ export class DeckStatisticsComponent implements OnInit, OnDestroy {
   }
 
   filter(cards: IDeckCard[], search: string): IDeckCard[] {
-    return cards.filter((card) => card.cardType === search);
+    // TODO
+    return cards;
+    // return cards.filter((card) => card.cardType === search);
   }
 }

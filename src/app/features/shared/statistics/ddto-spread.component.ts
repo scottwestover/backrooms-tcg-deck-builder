@@ -6,72 +6,75 @@ import {
   OnInit,
   SimpleChanges,
 } from '@angular/core';
-import { DigimonCard, IDeck } from '../../../../models';
+import { IDeck, IDeckCard } from '../../../../models';
 import {
   getCountFromDeckCards,
   mapToDeckCards,
-} from '../../../functions/digimon-card.functions';
-import { DigimonCardStore } from '../../../store/digimon-card.store';
+} from '../../../functions/backrooms-card.functions';
+import { BackroomsCardStore } from '../../../store/backrooms-card.store';
 import { SingleContainerComponent } from '../single-container.component';
 import { NgIf, NgStyle } from '@angular/common';
 
 @Component({
-  selector: 'digimon-ddto-spread',
+  selector: 'backrooms-ddto-spread',
   template: `
     <div *ngIf="!container" class="no-gap grid h-full w-full grid-cols-4">
       <div
         class="h-full w-full text-center"
         [ngStyle]="{
-          background: linearGradientEgg()
+          background: linearGradient(ddto[0], 'Entity')
         }">
         <span class="text-black-outline-xs">{{ ddto[0] }}</span>
       </div>
       <div
         class="h-full w-full text-center"
         [ngStyle]="{
-          background: linearGradient(ddto[1])
+          background: linearGradient(ddto[1], 'Item')
         }">
         <span class="text-black-outline-xs">{{ ddto[1] }}</span>
       </div>
       <div
         class="h-full w-full text-center"
         [ngStyle]="{
-          background: linearGradient(ddto[2])
+          background: linearGradient(ddto[2], 'Room')
         }">
         <span class="text-black-outline-xs">{{ ddto[2] }}</span>
       </div>
       <div
         class="h-full w-full text-center"
         [ngStyle]="{
-          background: linearGradient(ddto[3])
+          background: linearGradient(ddto[3], 'Outcome')
         }">
         <span class="text-black-outline-xs">{{ ddto[3] }}</span>
       </div>
 
-      <h3 class="h-1/2 text-center text-xs">Egg</h3>
-      <h3 class="h-1/2 text-center text-xs">Digimon</h3>
-      <h3 class="h-1/2 text-center text-xs">Tamer</h3>
-      <h3 class="h-1/2 text-center text-xs">Option</h3>
+      <h3 class="h-1/2 text-center text-xs">Entity</h3>
+      <h3 class="h-1/2 text-center text-xs">Item</h3>
+      <h3 class="h-1/2 text-center text-xs">Room</h3>
+      <h3 class="h-1/2 text-center text-xs">Outcome</h3>
     </div>
 
     <div *ngIf="container" class="flex w-full flex-row">
-      <digimon-single-container
-        label="Egg"
+      <backrooms-single-container
+        label="Entity"
         [value]="ddto[0]"
-        percent="20"
-        class="w-12"></digimon-single-container>
-      <digimon-single-container
-        label="Digimon"
+        percent="10"
+        class="w-12"></backrooms-single-container>
+      <backrooms-single-container
+        label="Item"
         [value]="ddto[1]"
-        class="w-14"></digimon-single-container>
-      <digimon-single-container
-        label="Tamer"
+        percent="10"
+        class="w-14"></backrooms-single-container>
+      <backrooms-single-container
+        label="Room"
         [value]="ddto[2]"
-        class="w-12"></digimon-single-container>
-      <digimon-single-container
-        label="Option"
+        percent="3.33"
+        class="w-12"></backrooms-single-container>
+      <backrooms-single-container
+        label="Outcome"
         [value]="ddto[3]"
-        class="w-12"></digimon-single-container>
+        percent="50"
+        class="w-12"></backrooms-single-container>
     </div>
   `,
   standalone: true,
@@ -83,7 +86,7 @@ export class DdtoSpreadComponent implements OnInit, OnChanges {
 
   ddto = [0, 0, 0, 0];
 
-  private digimonCardStore = inject(DigimonCardStore);
+  private backroomCardStore = inject(BackroomsCardStore);
 
   ngOnInit(): void {
     this.getDDTO();
@@ -99,26 +102,31 @@ export class DdtoSpreadComponent implements OnInit, OnChanges {
     }
     const cards = mapToDeckCards(
       this.deck.cards,
-      this.digimonCardStore.cards(),
+      this.backroomCardStore.cards(),
     );
-    const digieggs = cards.filter((card) => card.cardType === 'Digi-Egg');
-    const digimon = cards.filter((card) => card.cardType === 'Digimon');
-    const tamer = cards.filter((card) => card.cardType === 'Tamer');
-    const options = cards.filter((card) => card.cardType === 'Option');
+    const entities: IDeckCard[] = cards.filter(
+      (card) => card.cardType === 'Entity',
+    );
+    const items: IDeckCard[] = cards.filter((card) => card.cardType === 'Item');
+    const rooms: IDeckCard[] = cards.filter((card) => card.cardType === 'Room');
+    const outcomes: IDeckCard[] = cards.filter(
+      (card) => card.cardType === 'Outcome',
+    );
 
-    this.ddto[0] = getCountFromDeckCards(digieggs);
-    this.ddto[1] = getCountFromDeckCards(digimon);
-    this.ddto[2] = getCountFromDeckCards(tamer);
-    this.ddto[3] = getCountFromDeckCards(options);
+    this.ddto[0] = getCountFromDeckCards(entities);
+    this.ddto[1] = getCountFromDeckCards(items);
+    this.ddto[2] = getCountFromDeckCards(rooms);
+    this.ddto[3] = getCountFromDeckCards(outcomes);
   }
 
-  linearGradientEgg(): string {
-    const eggPercent = this.ddto[0] !== 0 ? (1 - this.ddto[0] / 5) * 100 : 0;
-    return `linear-gradient(to bottom, transparent ${eggPercent}%, #08528d 0%)`;
-  }
-
-  linearGradient(value: number): string {
-    const percent = value !== 0 ? (1 - value / 50) * 100 : 0;
+  linearGradient(value: number, cardType: string): string {
+    let maxValue = 10;
+    if (cardType === 'Room') {
+      maxValue = 30;
+    } else if (cardType === 'Outcome') {
+      maxValue = 2;
+    }
+    const percent = value !== 0 ? (1 - value / maxValue) * 100 : 0;
     return `linear-gradient(to bottom, transparent ${percent}%, #08528d 0%)`;
   }
 }

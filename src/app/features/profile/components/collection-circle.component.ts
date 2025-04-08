@@ -7,12 +7,12 @@ import {
   Input,
 } from '@angular/core';
 import { ChartModule } from 'primeng/chart';
-import { DigimonCard } from '../../../../models';
-import { DigimonCardStore } from '../../../store/digimon-card.store';
+import { BackroomsCard } from '../../../../models';
+import { BackroomsCardStore } from '../../../store/backrooms-card.store';
 import { SaveStore } from '../../../store/save.store';
 
 @Component({
-  selector: 'digimon-collection-circle',
+  selector: 'backrooms-collection-circle',
   template: `
     <p-chart
       type="doughnut"
@@ -30,7 +30,7 @@ export class CollectionCircleComponent {
   changeDetection = inject(ChangeDetectorRef);
 
   saveStore = inject(SaveStore);
-  digimonCardStore = inject(DigimonCardStore);
+  backroomCardStore = inject(BackroomsCardStore);
 
   data: any;
   chartOptions = {
@@ -50,29 +50,29 @@ export class CollectionCircleComponent {
     const settings = this.saveStore.settings();
     const collection = this.saveStore.collection();
 
-    let setCards = this.digimonCardStore
+    let setCards = this.backroomCardStore
       .cards()
       .filter(
-        (card: DigimonCard) =>
+        (card: BackroomsCard) =>
           card.id.includes('-') && card.id.includes(this.type),
       );
 
     // Remove AA cards from being counted for the circle
     if (settings.aaCollectionMinimum === 0) {
       setCards = setCards.filter(
-        (card: DigimonCard) => card.version === 'Normal',
+        (card: BackroomsCard) => card.version === 'Normal',
       );
     }
 
     // Filter our cards that are collected from the settings
     if (settings.collectionSets.length > 0) {
-      setCards = setCards.filter((card: DigimonCard) => {
+      setCards = setCards.filter((card: BackroomsCard) => {
         const cardSet = card.id.split('-')[0];
         return settings.collectionSets.includes(cardSet);
       });
     }
 
-    const setCardsCollected = setCards.filter((card: DigimonCard) =>
+    const setCardsCollected = setCards.filter((card: BackroomsCard) =>
       collection.find((colCard) => {
         if (colCard.id !== card.id) {
           return;
@@ -137,18 +137,26 @@ export class CollectionCircleComponent {
     this.changeDetection.detectChanges();
   });
 
-  getColorCardArray(cards: DigimonCard[]): number[] {
-    const red = cards.filter((card) => card.color.startsWith('Red')).length;
-    const blue = cards.filter((card) => card.color.startsWith('Blue')).length;
-    const yellow = cards.filter((card) =>
-      card.color.startsWith('Yellow'),
-    ).length;
-    const green = cards.filter((card) => card.color.startsWith('Green')).length;
-    const black = cards.filter((card) => card.color.startsWith('Black')).length;
-    const purple = cards.filter((card) =>
-      card.color.startsWith('Purple'),
-    ).length;
-    const white = cards.filter((card) => card.color.startsWith('White')).length;
+  getColorCardArray(cards: BackroomsCard[]): number[] {
+    // const red = cards.filter((card) => card.color.startsWith('Red')).length;
+    // const blue = cards.filter((card) => card.color.startsWith('Blue')).length;
+    // const yellow = cards.filter((card) =>
+    //   card.color.startsWith('Yellow'),
+    // ).length;
+    // const green = cards.filter((card) => card.color.startsWith('Green')).length;
+    // const black = cards.filter((card) => card.color.startsWith('Black')).length;
+    // const purple = cards.filter((card) =>
+    //   card.color.startsWith('Purple'),
+    // ).length;
+    // const white = cards.filter((card) => card.color.startsWith('White')).length;
+
+    const red = 0;
+    const blue = 0;
+    const yellow = 0;
+    const green = 0;
+    const white = 0;
+    const black = 0;
+    const purple = 0;
 
     return [red, blue, yellow, green, black, purple, white];
   }

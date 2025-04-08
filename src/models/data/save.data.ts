@@ -7,7 +7,6 @@ export const emptySettings: ISettings = {
   collectionSets: [],
   collectionMinimum: 1,
   aaCollectionMinimum: 1,
-
   showFoilCards: true,
   showTexturedCards: true,
   showPreRelease: true,
@@ -18,24 +17,19 @@ export const emptySettings: ISettings = {
   showReprintCards: false,
   showSpecialRareCards: false,
   showRarePullCards: false,
-
   sortDeckOrder: 'Level',
-
   showUserStats: true,
-
   deckDisplayTable: false,
   displaySideDeck: true,
-
   fullscreenFilter: true,
-  countMax: 5,
+  countMax: 30,
 };
 
 export const emptySave: ISave = {
   uid: '',
   photoURL: '',
   displayName: '',
-  version: 4.0,
+  version: 1.0,
   collection: [],
   decks: [],
-  settings: emptySettings,
 };

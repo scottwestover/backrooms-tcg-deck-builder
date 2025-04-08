@@ -9,21 +9,21 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/TakaOtaku/Digimon-Card-App">
-    <img src="src/assets/images/logo.png" alt="Logo" height="80">
+  <a href="https://github.com/scottwestover/backrooms-tcg-deck-builder">
+    <img src="src/assets/images/backrooms-tcg-logo.webp" alt="Logo" height="80">
   </a>
 
-<h3 align="center">Digimon Card App</h3>
+<h3 align="center">Backrooms TCG Deck Builder</h3>
 
   <p align="center">
-    Website for tracking your Digimon Card Game Collection, creating new Decks and sharing those with the community.
+    Website for tracking your Backrooms TCG Collection, creating new Decks and sharing those with the community.
     <br />
     <br />
-    <a href="https://digimoncard.app">View the Site</a>
+    <a href="https://backrooms-tcg-deckbuilder.web.app">View the Site</a>
     ·
-    <a href="https://github.com/TakaOtaku/Digimon-Card-App/issues">Report Bug</a>
+    <a href="https://github.com/scottwestover/backrooms-tcg-deck-builder/issues">Report Bug</a>
     ·
-    <a href="https://github.com/TakaOtaku/Digimon-Card-App/issues">Request Feature</a>
+    <a href="https://github.com/scottwestover/backrooms-tcg-deck-builder/issues">Request Feature</a>
   </p>
 </div>
 
@@ -60,15 +60,9 @@
 
 Welcome to the Github-Repository of the website https://digimoncard.app
 
-If you want to contribute please make a Pull-Request, I will then review it and approve or disapprove of the Pull-Request.
-
-If you find bugs or want some feature implemented, please write an Issue-Ticket for me.
+For any bugs or feature requests, please open a new issue in the repository. If you are interested in helping contribute to the project, please open a pull request.
 
 Thank you for helping the website!
-
-If you do like the site, please help me maintain the server-costs and donate a bit, everything counts.
-<br>
-[PayPal Donation, Thank you!](https://www.paypal.com/donate/?hosted_button_id=DHQVT7GQ72J98)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -95,7 +89,7 @@ To get a local copy up and running follow these simple example steps.
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/TakaOtaku/Digimon-Card-App.git
+   git clone https://github.com/scottwestover/backrooms-tcg-deck-builder.git
    ```
 2. Install NPM packages
    ```sh
@@ -129,9 +123,9 @@ Don't forget to give the project a star! Thanks again!
 <!-- CONTACT -->
 ## Contact
 
-TakaOtaku - [@Discord](TakaOtaku#8538)
+Scott - [@Discord](galemius#0322)
 
-Project Link: [https://github.com/TakaOtaku/Digimon-Card-App](https://github.com/TakaOtaku/Digimon-Card-App)
+Project Link: [https://github.com/scottwestover/backrooms-tcg-deck-builder](https://github.com/scottwestover/backrooms-tcg-deck-builder)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -140,27 +134,6 @@ Project Link: [https://github.com/TakaOtaku/Digimon-Card-App](https://github.com
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-* Tari for testing the website to the bone and filling hundreds of bug-reports
-* Credits for the Pre-Release Cards go to <a target="_blank" href="https://digimoncardgame.fandom.com/">https://digimoncardgame.fandom.com/</a> and all the wonderful people who maintain it!
-* Please support the official releases! Akiyoshi Hongo, Bandai, and Toei Animation respectively own Digimon images, copyrights and trademarks.</span>
-
+This repo is based on the Digimon Card App repo found here: <a target="_blank" href="https://github.com/TakaOtaku/Digimon-Card-App">https://github.com/TakaOtaku/Digimon-Card-App</a>.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
-
-
-
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/TakaOtaku/Digimon-Card-App.svg?style=for-the-badge
-[contributors-url]: https://github.com/TakaOtaku/Digimon-Card-App/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/TakaOtaku/Digimon-Card-App.svg?style=for-the-badge
-[forks-url]: https://github.com/TakaOtaku/Digimon-Card-App/network/members
-[stars-shield]: https://img.shields.io/github/stars/TakaOtaku/Digimon-Card-App.svg?style=for-the-badge
-[stars-url]: https://github.com/TakaOtaku/Digimon-Card-App/stargazers
-[issues-shield]: https://img.shields.io/github/issues/TakaOtaku/Digimon-Card-App.svg?style=for-the-badge
-[issues-url]: https://github.com/TakaOtaku/Digimon-Card-App/issues
-[license-shield]: https://img.shields.io/github/license/TakaOtaku/Digimon-Card-App.svg?style=for-the-badge
-[license-url]: https://github.com/TakaOtaku/Digimon-Card-App/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/christian-bayer-987b76193
-[product-screenshot]: images/screenshot.png

@@ -4,12 +4,12 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
-  selector: 'digimon-home-page',
+  selector: 'backrooms-home-page',
   template: `
-    <digimon-page>
-      <digimon-home-intro
-        class="p-5 max-w-sm sm:max-w-md md:max-w-4xl h-[calc(100vh-3.5rem)] md:h-[calc(100vh-5rem)] lg:h-screen"></digimon-home-intro>
-    </digimon-page>
+    <backrooms-page>
+      <backrooms-home-intro
+        class="p-5 max-w-sm sm:max-w-md md:max-w-4xl h-[calc(100vh-3.5rem)] md:h-[calc(100vh-5rem)] lg:h-screen"></backrooms-home-intro>
+    </backrooms-page>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
@@ -24,19 +24,19 @@ export class HomePageComponent {
   }
 
   private makeGoogleFriendly() {
-    this.title.setTitle('Digimon Card Game - Home');
+    this.title.setTitle('Backrooms DB - Home');
 
     this.meta.addTags([
       {
         name: 'description',
         content:
-          'Digimoncard.App is a website to to keep track of your Digimon card collection, build great decks and keep you posted about the result of any major events.',
+          'backrooms-tcg-deckbuilder.web.app is a website to to keep track of your Backrooms card collection, build great decks and keep you posted about the result of any major events.',
       },
-      { name: 'author', content: 'TakaOtaku' },
+      { name: 'author', content: 'scottwestover' },
       {
         name: 'keywords',
         content:
-          'Digimon, decks, deck builder, collection,  tournament, TCG, community, friends, share',
+          'Backrooms, decks, deck builder, collection, TCG, community, friends, share',
       },
     ]);
   }

@@ -5,11 +5,11 @@ import firebase from 'firebase/compat';
 import { MessageService } from 'primeng/api';
 import { catchError, first, Observable, of, retry, Subject } from 'rxjs';
 import { ISave, IUser } from '../../models';
-import { emptySave, emptySettings } from '../../models';
-import { SaveStore } from '../store/save.store';
-import { DigimonBackendService } from './digimon-backend.service';
+import { emptySave } from '../../models';
+import { BackroomsBackendService } from './backrooms-backend.service';
 import UserCredential = firebase.auth.UserCredential;
 import User = firebase.User;
+import { LOCAL_STORAGE_KEY } from '../config';
 
 @Injectable({
   providedIn: 'root',
@@ -20,7 +20,7 @@ export class AuthService {
 
   constructor(
     public afAuth: AngularFireAuth,
-    private digimonBackendService: DigimonBackendService,
+    private backroomsBackendService: BackroomsBackendService,
     private messageService: MessageService,
   ) {}
 
@@ -78,7 +78,8 @@ export class AuthService {
       this.userData = null;
       this.authChange.next(true);
 
-      const string = localStorage.getItem('Digimon-Card-Collector');
+      const string = localStorage.getItem(LOCAL_STORAGE_KEY);
+      console.log(string);
       const save = JSON.parse(
         string ??
           '{version: 1, collection:[], decks: [], settings: {cardSize: 50, collectionMode: false, collectionMode: false, collectionMinimum: 1,' +
@@ -87,6 +88,7 @@ export class AuthService {
             '  showAACards: true,' +
             '  sortDeckOrder: "Level"}}',
       );
+      console.log(save);
       saveStore.updateSave(save);
     });
   }
@@ -104,7 +106,7 @@ export class AuthService {
             version: 1,
             collection: [],
             decks: [],
-            settings: emptySettings,
+            //settings: emptySettings,
           },
         }
       : {
@@ -133,14 +135,14 @@ export class AuthService {
         version: 1,
         collection: [],
         decks: [],
-        settings: emptySettings,
+        //settings: emptySettings,
       },
     );
 
     this.userData = userData;
 
-    this.digimonBackendService
-      .updateSave(this.userData.save)
+    this.backroomsBackendService
+      .updateSave(this.userData.save, '')
       .pipe(first())
       .subscribe();
 
@@ -150,8 +152,8 @@ export class AuthService {
   SetUserData(user: User | null, saveStore: any) {
     if (!user) return;
     // eslint-disable-next-line no-console
-    console.log('User-ID: ', user.uid);
-    this.digimonBackendService
+    console.log('User-ID: ', user.uid, user);
+    this.backroomsBackendService
       .getSave(user.uid)
       .pipe(
         first(),
@@ -180,28 +182,28 @@ export class AuthService {
       return this.loadLocalStorageSave();
     }
 
-    return this.digimonBackendService
+    return this.backroomsBackendService
       .getSave(this.userData!.uid)
       .pipe(retry(5));
   }
 
   // Check local storage for a backup save, if there is none create a new save
   private loadLocalStorageSave(): Observable<ISave> {
-    const localStorageItem = localStorage.getItem('Digimon-Card-Collector');
+    const localStorageItem = localStorage.getItem(LOCAL_STORAGE_KEY);
     let localStorageSave: ISave | null = localStorageItem
       ? JSON.parse(localStorageItem)
       : null;
 
     if (localStorageSave) {
       localStorageSave =
-        this.digimonBackendService.checkSaveValidity(localStorageSave);
+        this.backroomsBackendService.checkSaveValidity(localStorageSave);
       return of(localStorageSave);
     }
     return of(emptySave);
   }
 
   private getLocalStorageSave(): ISave {
-    const localStorageItem = localStorage.getItem('Digimon-Card-Collector');
+    const localStorageItem = localStorage.getItem(LOCAL_STORAGE_KEY);
     let localStorageSave: ISave | null = localStorageItem
       ? JSON.parse(localStorageItem)
       : null;

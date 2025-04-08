@@ -5,12 +5,12 @@ import { MessageService } from 'primeng/api';
 import { ButtonModule } from 'primeng/button';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { IDeck } from '../../../../models';
-import { setColors, setTags, stringToDeck } from '../../../functions';
-import { DigimonCardStore } from '../../../store/digimon-card.store';
+import { stringToDeck } from '../../../functions';
+import { BackroomsCardStore } from '../../../store/backrooms-card.store';
 import { WebsiteStore } from '../../../store/website.store';
 
 @Component({
-  selector: 'digimon-import-deck-dialog',
+  selector: 'backrooms-import-deck-dialog',
   template: `
     <div>
       <div>
@@ -70,7 +70,7 @@ export class ImportDeckDialogComponent {
 
   deckText = '';
 
-  private digimonCardStore = inject(DigimonCardStore);
+  private backroomCardStore = inject(BackroomsCardStore);
 
   constructor(private messageService: MessageService) {}
 
@@ -85,12 +85,10 @@ export class ImportDeckDialogComponent {
     fileReader.readAsText(input.files[0]);
   }
 
-  // eslint-disable-next-line max-len
-  // ["Exported from https://digimoncard.dev","BT5-001","BT5-001","BT5-001","BT9-001","BT9-001","BT8-058","BT8-058","BT8-058","BT8-058","BT9-059","BT9-059","BT9-059","BT9-059","BT8-009","BT8-009","BT8-009","BT8-009","BT9-008","BT9-008","BT8-064","BT8-064","BT8-064","BT8-064","P-076","P-076","P-076","P-076","BT8-011","BT8-011","BT8-011","BT8-067","BT8-067","BT8-067","BT9-065","BT9-065","EX1-008","EX1-008","BT8-084","BT8-084","BT2-112","BT8-070","BT8-070","BT8-070","BT9-068","BT9-068","BT9-112","BT5-086","BT9-090","BT9-090","BT8-086","BT8-086","BT5-092","BT5-092","BT6-106","BT6-106"]
   importDeck(currentDeck: IDeck) {
     if (this.deckText === '') return;
     let deck: IDeck | null = { ...currentDeck };
-    const newDeck = stringToDeck(this.deckText, this.digimonCardStore.cards());
+    const newDeck = stringToDeck(this.deckText, this.backroomCardStore.cards());
 
     if (!newDeck || newDeck.cards?.length === 0) {
       this.messageService.add({
@@ -102,9 +100,6 @@ export class ImportDeckDialogComponent {
     }
 
     deck.cards = newDeck.cards;
-
-    deck.tags = setTags(deck, this.digimonCardStore.cards());
-    deck.color = setColors(deck, this.digimonCardStore.cards());
 
     this.websiteStore.updateDeck(deck);
     this.onClose.emit(true);

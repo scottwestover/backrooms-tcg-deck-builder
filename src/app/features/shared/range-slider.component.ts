@@ -14,7 +14,7 @@ import { NgxSliderModule } from 'ngx-slider-v2';
 import { Subject, takeUntil } from 'rxjs';
 
 @Component({
-  selector: 'digimon-range-slider',
+  selector: 'backrooms-range-slider',
   template: `
     <div class="custom-slider flex flex-row px-3">
       <ngx-slider

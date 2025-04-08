@@ -8,6 +8,8 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAnalyticsModule } from '@angular/fire/compat/analytics';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
   bootstrapApplication,
@@ -34,35 +36,19 @@ import { ToastModule } from 'primeng/toast';
 import { TooltipModule } from 'primeng/tooltip';
 import { AppComponent } from './app/app.component';
 import { CollectionPageComponent } from './app/features/collection/collection-page.component';
-import { CommunityPageComponent } from './app/features/community/community-page.component';
-import { BlogPageComponent } from './app/features/community/components/blog-page.component';
 import { DeckbuilderPageComponent } from './app/features/deckbuilder/deckbuilder-page.component';
 import { DecksPageComponent } from './app/features/decks/decks-page.component';
 import { HomePageComponent } from './app/features/home/home-page.component';
-import { ProductsComponent } from './app/features/products/products.component.ts';
 import { ProfilePageComponent } from './app/features/profile/profile-page.component';
-import { TestPageComponent } from './app/features/test/test-page.component';
 import { AuthService } from './app/services/auth.service';
-import { DigimonBackendService } from './app/services/digimon-backend.service';
+import { BackroomsBackendService } from './app/services/backrooms-backend.service';
 
 import { environment } from './environments/environment';
 
 const routes: Routes = [
   {
-    path: 'test',
-    component: TestPageComponent,
-  },
-  {
-    path: 'community',
-    component: CommunityPageComponent,
-  },
-  {
     path: 'decks',
     component: DecksPageComponent,
-  },
-  {
-    path: 'products',
-    component: ProductsComponent,
   },
   {
     path: 'user',
@@ -92,14 +78,6 @@ const routes: Routes = [
     path: 'collection/:userId',
     component: CollectionPageComponent,
   },
-  {
-    path: 'community/:id',
-    component: BlogPageComponent,
-  },
-  {
-    path: 'community/new',
-    component: BlogPageComponent,
-  },
   { path: '**', component: HomePageComponent },
 ];
 
@@ -126,18 +104,17 @@ bootstrapApplication(AppComponent, {
       BlockUIModule,
       ProgressSpinnerModule,
       TooltipModule,
+      provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
+      provideFirestore(() => getFirestore()),
     ),
-
     provideRouter(routes, withPreloading(PreloadAllModules)),
-
     ReactiveFormsModule,
     AuthService,
-    DigimonBackendService,
+    BackroomsBackendService,
     provideHttpClient(withInterceptorsFromDi()),
     provideAnimations(),
     MessageService,
     ConfirmationService,
     DatePipe,
   ],
-  // eslint-disable-next-line no-console
 }).catch((err) => console.error(err));

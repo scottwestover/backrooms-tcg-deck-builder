@@ -1,35 +1,25 @@
 import { AsyncPipe, NgClass, NgIf } from '@angular/common';
-import {
-  ChangeDetectorRef,
-  Component, computed,
-  effect,
-  EventEmitter,
-  inject,
-  Input,
-  OnDestroy,
-  OnInit,
-  Output
-} from '@angular/core';
+import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { DialogModule } from 'primeng/dialog';
 import { DragDropModule } from 'primeng/dragdrop';
-import { DigimonCard, DRAG, dummyCard } from '../../../models';
-import { withoutJ } from '../../functions';
+import { BackroomsCard, DRAG, dummyCard } from '../../../models';
 import { SaveStore } from '../../store/save.store';
 import { WebsiteStore } from '../../store/website.store';
 import { CardImageComponent } from './card-image.component';
+import { BackroomsCardStore } from 'src/app/store/backrooms-card.store';
 
 @Component({
-  selector: 'digimon-full-card',
+  selector: 'backrooms-full-card',
   template: `
     <div
       [pDraggable]="'toDeck'"
       (onDragStart)="setDraggedCard(card)"
       class="relative inline-flex w-full transition-transform hover:scale-105">
       <div (click)="click()" (contextmenu)="rightclick()">
-        <digimon-card-image
+        <backrooms-card-image
           [card]="card"
-          [count]="count"></digimon-card-image>
+          [count]="count"></backrooms-card-image>
       </div>
 
       <ng-container>
@@ -40,15 +30,9 @@ import { CardImageComponent } from './card-image.component';
             'bottom-1': !collectionMode(),
             ' bottom-10': collectionMode()
           }">
-          {{ getCountInDeck(this.card.id) }}<span class="pr-1 text-sky-700">/</span
-          >{{
-            card.cardNumber === 'BT6-085' ||
-            card.cardNumber === 'EX2-046' ||
-            card.cardNumber === 'BT11-061'
-              ? 50
-              : 4
-          }}
-        </span>
+          <span class="pr-1 text-sky-700">x</span
+          >{{ getCountInDeck(this.card.id) }}</span
+        >
       </ng-container>
 
       <div
@@ -90,7 +74,7 @@ import { CardImageComponent } from './card-image.component';
   ],
 })
 export class FullCardComponent {
-  @Input() card: DigimonCard = JSON.parse(JSON.stringify(dummyCard));
+  @Input() card: BackroomsCard = JSON.parse(JSON.stringify(dummyCard));
   @Input() count: number;
 
   @Input() width?: string;
@@ -102,17 +86,19 @@ export class FullCardComponent {
 
   @Input() onlyView!: boolean;
 
-  @Output() viewCard = new EventEmitter<DigimonCard>();
+  @Output() viewCard = new EventEmitter<BackroomsCard>();
 
   websiteStore = inject(WebsiteStore);
+  backroomsCardStore = inject(BackroomsCardStore);
   saveStore = inject(SaveStore);
 
   collectionMode = this.saveStore.collectionMode;
 
   getCountInDeck(cardId: string) {
-      return this.websiteStore
-        .deck()
-        .cards.find((value) => value.id === withoutJ(cardId))?.count ?? 0;
+    return (
+      this.websiteStore.deck().cards.find((value) => value.id === cardId)
+        ?.count ?? 0
+    );
   }
 
   addCardToDeck() {
@@ -120,7 +106,10 @@ export class FullCardComponent {
       this.viewCard.emit(this.card);
       return;
     }
-    this.websiteStore.addCardToDeck(this.card.id);
+    this.websiteStore.addCardToDeck(
+      this.card.id,
+      this.backroomsCardStore.cardsMap(),
+    );
   }
 
   showCardDetails() {
@@ -132,14 +121,14 @@ export class FullCardComponent {
       return;
     }
     const count = event.target.value;
-    const newId = withoutJ(id);
+    const newId = id;
 
     this.saveStore.updateCard(newId, count);
   }
 
   increaseCardCount(id: string) {
     const count = ++this.count;
-    const newId = withoutJ(id);
+    const newId = id;
     this.saveStore.updateCard(newId, count);
   }
 
@@ -148,12 +137,12 @@ export class FullCardComponent {
       return;
     }
     const count = --this.count;
-    const newId = withoutJ(id);
+    const newId = id;
 
     this.saveStore.updateCard(newId, count);
   }
 
-  setDraggedCard(card: DigimonCard) {
+  setDraggedCard(card: BackroomsCard) {
     this.websiteStore.updateDraggedCard({ card: card, drag: DRAG.Collection });
   }
 

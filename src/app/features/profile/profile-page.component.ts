@@ -21,9 +21,9 @@ import {
   takeUntil,
   tap,
 } from 'rxjs';
-import { IDeck, ISave } from '../../../models';
+import { emptySettings, IDeck, ISave } from '../../../models';
 import { AuthService } from '../../services/auth.service';
-import { DigimonBackendService } from '../../services/digimon-backend.service';
+import { BackroomsBackendService } from '../../services/backrooms-backend.service';
 import { SaveStore } from '../../store/save.store';
 import { PageComponent } from '../shared/page.component';
 import { DeckFilterComponent } from './components/deck-filter.component';
@@ -31,27 +31,27 @@ import { DecksComponent } from './components/decks.component';
 import { UserStatsComponent } from './components/user-stats.component';
 
 @Component({
-  selector: 'digimon-profile-page',
+  selector: 'backrooms-profile-page',
   template: `
-    <digimon-page *ngIf="save$ | async as save">
+    <backrooms-page *ngIf="save$ | async as save">
       <div
         class="flex flex-col self-baseline px-5 max-w-sm sm:max-w-3xl md:max-w-5xl lg:max-w-6xl xl:max-w-7xl mx-auto">
-        <digimon-user-stats
+        <backrooms-user-stats
           *ngIf="showUserStats"
           [save]="save"
-          class="mx-auto my-1 w-[calc(100%-3rem)] sm:w-full"></digimon-user-stats>
+          class="mx-auto my-1 w-[calc(100%-3rem)] sm:w-full"></backrooms-user-stats>
 
-        <digimon-deck-filter
+        <backrooms-deck-filter
           [searchFilter]="searchFilter"
           [tagFilter]="tagFilter"
-          class="mx-auto w-[calc(100%-3rem)] sm:w-full"></digimon-deck-filter>
+          class="mx-auto w-[calc(100%-3rem)] sm:w-full"></backrooms-deck-filter>
 
-        <digimon-decks
+        <backrooms-decks
           class="mx-auto mt-1 w-full"
           [editable]="editable"
-          [decks]="filteredDecks"></digimon-decks>
+          [decks]="filteredDecks"></backrooms-decks>
       </div>
-    </digimon-page>
+    </backrooms-page>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
@@ -70,7 +70,7 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
   save$: Observable<ISave | null>;
   decks: IDeck[];
   filteredDecks: IDeck[];
-  showUserStats = this.saveStore.settings().showUserStats;
+  showUserStats = emptySettings.showUserStats;
 
   searchFilter = new UntypedFormControl('');
   tagFilter = new UntypedFormControl([]);
@@ -83,7 +83,7 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
     private location: Location,
     private route: ActivatedRoute,
     public authService: AuthService,
-    private digimonBackendService: DigimonBackendService,
+    private backroomsBackendService: BackroomsBackendService,
     private meta: Meta,
     private title: Title,
   ) {
@@ -103,7 +103,7 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
         tap(() => this.changeURL()),
         switchMap(() => {
           this.editable = true;
-          return this.digimonBackendService.getSave(
+          return this.backroomsBackendService.getSave(
             this.authService.userData!.uid,
           );
         }),
@@ -116,7 +116,7 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
           return !!params['id'];
         }),
         switchMap((params) =>
-          this.digimonBackendService.getSave(params['id']).pipe(first()),
+          this.backroomsBackendService.getSave(params['id']).pipe(first()),
         ),
         tap((save) => {
           this.editable = save.uid === this.authService.userData?.uid;
@@ -168,7 +168,7 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
   }
 
   private makeGoogleFriendly() {
-    this.title.setTitle('Digimon Card Game - Profil');
+    this.title.setTitle('Backrooms DB - Profile');
 
     this.meta.addTags([
       {
@@ -176,7 +176,7 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
         content:
           'See your Collection and Decks in one view. Share them with your friends, for easy insights in your decks and trading.',
       },
-      { name: 'author', content: 'TakaOtaku' },
+      { name: 'author', content: 'scottwestover' },
       {
         name: 'keywords',
         content: 'Collection, Decks, Share, insights, trading',
@@ -196,19 +196,15 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
         deck.cards.filter((card) =>
           card.id.toLocaleLowerCase().includes(search),
         ).length > 0;
-      const colorInText =
-        deck.color?.name.toLocaleLowerCase().includes(search) ?? false;
 
-      return titleInText || descriptionInText || cardsInText || colorInText;
+      return titleInText || descriptionInText || cardsInText;
     });
   }
 
   private applyTagFilter(): IDeck[] {
     return this.decks.filter((deck) => {
       let isTrue = false;
-      deck.tags?.forEach((tag) => {
-        isTrue = this.tagFilter.value.includes(tag.name);
-      });
+
       return isTrue;
     });
   }

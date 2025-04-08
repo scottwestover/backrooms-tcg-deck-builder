@@ -19,7 +19,7 @@ import { DragDropModule } from 'primeng/dragdrop';
 import { SidebarModule } from 'primeng/sidebar';
 import { SkeletonModule } from 'primeng/skeleton';
 import {
-  DigimonCard,
+  BackroomsCard,
   DRAG,
   dummyCard,
   ICountCard,
@@ -27,9 +27,9 @@ import {
 } from '../../../../models';
 import { ImgFallbackDirective } from '../../../directives/ImgFallback.directive';
 import { IntersectionListenerDirective } from '../../../directives/intersection-listener.directive';
-import { filterCards, withoutJ } from '../../../functions';
+import { filterCards } from '../../../functions';
 import { DialogStore } from '../../../store/dialog.store';
-import { DigimonCardStore } from '../../../store/digimon-card.store';
+import { BackroomsCardStore } from '../../../store/backrooms-card.store';
 import { SaveStore } from '../../../store/save.store';
 import { WebsiteStore } from '../../../store/website.store';
 import { ViewCardDialogComponent } from '../../shared/dialogs/view-card-dialog.component';
@@ -40,18 +40,18 @@ import { SearchComponent } from './search.component';
 import { FilterStore } from '../../../store/filter.store';
 
 @Component({
-  selector: 'digimon-pagination-card-list',
+  selector: 'backrooms-pagination-card-list',
   template: `
     <div class="flex flex-col w-full">
-      <digimon-pagination-card-list-header
+      <backrooms-pagination-card-list-header
         [filterButton]="!filterBoxEnabled"
         (filterBox)="filterBox = $event"
         [widthForm]="widthForm"
         [viewOnly]="
           inputCollection.length > 0
-        "></digimon-pagination-card-list-header>
+        "></backrooms-pagination-card-list-header>
 
-      <digimon-search></digimon-search>
+      <backrooms-search></backrooms-search>
 
       <div
         [pDroppable]="['fromDeck', 'fromSide']"
@@ -59,7 +59,7 @@ import { FilterStore } from '../../../store/filter.store';
         class="h-[calc(100vh-8.5rem)] md:h-[calc(100vh-10rem)] lg:h-[calc(100vh-5rem)] flex flex-wrap w-full content-start justify-start overflow-y-scroll">
         @for (card of showCards; track $index) {
           @defer (on viewport) {
-            <digimon-full-card
+            <backrooms-full-card
               [style]="{ width: widthForm.value + 'rem' }"
               class="m-0.5 md:m-1 flex items-center justify-center self-start"
               [card]="card"
@@ -67,10 +67,10 @@ import { FilterStore } from '../../../store/filter.store';
               [deckBuilder]="true"
               [collectionOnly]="collectionOnly"
               [onlyView]="inputCollection.length > 0"
-              (viewCard)="viewCard($event)"></digimon-full-card>
+              (viewCard)="viewCard($event)"></backrooms-full-card>
             <div
               *ngIf="$index + 1 === showCards.length"
-              (digimonIntersectionListener)="loadItems()"
+              (backroomsIntersectionListener)="loadItems()"
               class="sm:m-0.5 md:m-1"></div>
           } @placeholder {
             <p-skeleton
@@ -88,15 +88,15 @@ import { FilterStore } from '../../../store/filter.store';
       </div>
     </div>
 
-    <digimon-filter-side-box
+    <backrooms-filter-side-box
       *ngIf="filterBoxEnabled"
-      class="hidden xl:flex"></digimon-filter-side-box>
+      class="hidden xl:flex"></backrooms-filter-side-box>
 
     <p-sidebar
       [(visible)]="filterBox"
       position="right"
       styleClass="w-[20rem] md:w-[24rem] overflow-x-hidden overflow-y-auto p-0">
-      <digimon-filter-side-box></digimon-filter-side-box>
+      <backrooms-filter-side-box></backrooms-filter-side-box>
     </p-sidebar>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -123,10 +123,10 @@ import { FilterStore } from '../../../store/filter.store';
 })
 export class PaginationCardListComponent {
   @Input() collectionOnly: boolean = false;
-  @Input() initialWidth = 5.6;
+  @Input() initialWidth = 10;
   @Input() inputCollection: ICountCard[] = [];
 
-  digimonCardStore = inject(DigimonCardStore);
+  backroomCardStore = inject(BackroomsCardStore);
   websiteStore = inject(WebsiteStore);
   saveStore = inject(SaveStore);
   dialogStore = inject(DialogStore);
@@ -143,26 +143,25 @@ export class PaginationCardListComponent {
 
   perPage = 100;
   page = 1;
-  filteredCards = this.digimonCardStore.filteredCards;
-  showCards: DigimonCard[] = [];
+  filteredCards = this.backroomCardStore.filteredCards;
+  showCards: BackroomsCard[] = [];
 
   onFilterChange = effect(
     () => {
       if (this.inputCollection.length === 0) return;
-      console.log('Filter changed');
-      const cards = this.digimonCardStore.cards();
+      const cards = this.backroomCardStore.cards();
 
       if (cards.length === 0) return;
 
       const filteredCards = filterCards(
-        this.digimonCardStore.cards(),
+        this.backroomCardStore.cards(),
         { ...this.saveStore.save(), collection: this.inputCollection },
         this.filterStore.filter(),
         this.websiteStore.sort(),
-        this.digimonCardStore.cardsMap(),
+        this.backroomCardStore.cardsMap(),
       );
 
-      this.digimonCardStore.updateFilteredCards(filteredCards);
+      this.backroomCardStore.updateFilteredCards(filteredCards);
     },
     { allowSignalWrites: true },
   );
@@ -180,8 +179,7 @@ export class PaginationCardListComponent {
     });
 
     effect(() => {
-      console.log('Filtered Cards changed');
-      const filteredCards = this.digimonCardStore.filteredCards();
+      const filteredCards = this.backroomCardStore.filteredCards();
       this.showCards = filteredCards.slice(0, this.perPage);
       this.page = 1;
     });
@@ -189,18 +187,14 @@ export class PaginationCardListComponent {
 
   getCount(cardId: string): number {
     if (this.inputCollection.length === 0) {
-      return (
-        this.collection().find((value) => value.id === withoutJ(cardId))
-          ?.count ?? 0
-      );
+      return this.collection().find((value) => value.id === cardId)?.count ?? 0;
     }
     return (
-      this.inputCollection.find((value) => value.id === withoutJ(cardId))
-        ?.count ?? 0
+      this.inputCollection.find((value) => value.id === cardId)?.count ?? 0
     );
   }
 
-  viewCard(card: DigimonCard) {
+  viewCard(card: BackroomsCard) {
     this.dialogStore.updateViewCardDialog({
       show: true,
       card,
@@ -209,10 +203,6 @@ export class PaginationCardListComponent {
   }
 
   drop(card: IDraggedCard, dragCard: IDraggedCard) {
-    if (dragCard.drag === DRAG.Side) {
-      this.websiteStore.removeCardFromSideDeck(card.card.id);
-      return;
-    }
     this.websiteStore.removeCardFromDeck(card.card.id);
   }
 

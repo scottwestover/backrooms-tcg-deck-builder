@@ -17,6 +17,7 @@ import { first } from 'rxjs';
 import {
   DeckColorMap,
   DRAG,
+  emptySettings,
   IDeck,
   IDeckCard,
   IDraggedCard,
@@ -29,8 +30,8 @@ import {
   setColors,
   setTags,
 } from '../../../functions';
-import { DigimonBackendService } from '../../../services/digimon-backend.service';
-import { DigimonCardStore } from '../../../store/digimon-card.store';
+import { BackroomsBackendService } from '../../../services/backrooms-backend.service';
+import { BackroomsCardStore } from '../../../store/backrooms-card.store';
 import { SaveStore } from '../../../store/save.store';
 import { WebsiteStore } from '../../../store/website.store';
 import { DeckCardComponent } from '../../shared/deck-card.component';
@@ -38,21 +39,37 @@ import { DeckMetadataComponent } from './deck-metadata.component';
 import { DeckToolbarComponent } from './deck-toolbar.component';
 
 @Component({
-  selector: 'digimon-deck-view',
+  selector: 'backrooms-deck-view',
   template: `
     <div class="mx-auto mb-2 max-w-[760px]">
-      <digimon-deck-metadata></digimon-deck-metadata>
+      <backrooms-deck-metadata></backrooms-deck-metadata>
 
-      <digimon-deck-toolbar
+      <backrooms-deck-toolbar
         [missingCards]="missingCards"
         (missingCardsChange)="missingCards = $event"
         (save)="saveDeck($event)"
-        (hideStats)="hideStats.emit(true)"></digimon-deck-toolbar>
+        (hideStats)="hideStats.emit(true)"></backrooms-deck-toolbar>
     </div>
 
     <p-confirmPopup></p-confirmPopup>
 
     <ng-container>
+      <div
+        class="mx-auto grid w-full grid-cols-4 md:grid-cols-6"
+        [ngClass]="{
+          'lg:grid-cols-8': !collectionView
+        }">
+        <backrooms-deck-card
+          *ngFor="let card of mainDeck"
+          pDraggable="fromDeck"
+          (onDragStart)="setDraggedCard(card, DRAG.Main)"
+          (removeCard)="removeCard(card)"
+          [cardHave]="getCardHave(card)"
+          [card]="card"
+          [missingCards]="missingCards"></backrooms-deck-card>
+      </div>
+
+      <!--
       <p-accordion class="mx-auto" [multiple]="true" [activeIndex]="[0, 1]">
         <p-accordionTab
           [pDroppable]="['toDeck', 'fromSide']"
@@ -74,24 +91,25 @@ import { DeckToolbarComponent } from './deck-toolbar.component';
             [ngClass]="{
               'lg:grid-cols-8': !collectionView
             }">
-            <digimon-deck-card
+            <backrooms-deck-card
               *ngFor="let card of mainDeck"
               pDraggable="fromDeck"
               (onDragStart)="setDraggedCard(card, DRAG.Main)"
               (removeCard)="removeCard(card)"
               [cardHave]="getCardHave(card)"
               [card]="card"
-              [missingCards]="missingCards"></digimon-deck-card>
+              [missingCards]="missingCards"></backrooms-deck-card>
           </div>
         </p-accordionTab>
-        <p-accordionTab
+
+     <p-accordionTab
           *ngIf="displaySideDeck()"
           [pDroppable]="['toDeck', 'fromDeck']"
           [(selected)]="sideExpanded"
           (onDrop)="drop(draggedCard(), 'Side')"
           [header]="'Side-Deck (' + getCardCount(sideDeck, 'All') + ')'">
           <div class="grid w-full grid-cols-4 md:grid-cols-6">
-            <digimon-deck-card
+            <backrooms-deck-card
               *ngFor="let card of sideDeck"
               pDraggable="fromSide"
               (onDragStart)="setDraggedCard(card, DRAG.Side)"
@@ -99,10 +117,10 @@ import { DeckToolbarComponent } from './deck-toolbar.component';
               [cardHave]="getCardHave(card)"
               [sideDeck]="true"
               [card]="card"
-              [missingCards]="missingCards"></digimon-deck-card>
+              [missingCards]="missingCards"></backrooms-deck-card>
           </div>
         </p-accordionTab>
-      </p-accordion>
+      </p-accordion> -->
     </ng-container>
   `,
   styleUrls: ['./deck-view.component.scss'],
@@ -129,20 +147,20 @@ export class DeckViewComponent {
   @Output() onMainDeck = new EventEmitter<IDeckCard[]>();
   @Output() hideStats = new EventEmitter<boolean>();
 
-  digimonBackendService = inject(DigimonBackendService);
+  backroomsBackendService = inject(BackroomsBackendService);
   confirmationService = inject(ConfirmationService);
   messageService = inject(MessageService);
 
   saveStore = inject(SaveStore);
   websiteStore = inject(WebsiteStore);
-  digimonCardStore = inject(DigimonCardStore);
+  backroomCardStore = inject(BackroomsCardStore);
 
   displaySideDeck = this.saveStore.displaySideDeck;
 
   mainDeck: IDeckCard[] = [];
   mainExpanded = true;
   sideDeck: IDeckCard[] = [];
-  sideExpanded = false;
+  sideExpanded = true;
 
   draggedCard = this.websiteStore.draggedCard;
 
@@ -161,19 +179,11 @@ export class DeckViewComponent {
     const iSideDeckCards: IDeckCard[] = [];
 
     this.deck().cards.forEach((card) => {
-      const foundCard = this.digimonCardStore
+      const foundCard = this.backroomCardStore
         .cards()
         .find((item) => compareIDs(item.id, card.id));
       if (foundCard) {
         iDeckCards.push({ ...foundCard, count: card.count });
-      }
-    });
-    (this.deck().sideDeck ?? []).forEach((card) => {
-      const foundCard = this.digimonCardStore
-        .cards()
-        .find((item) => compareIDs(item.id, card.id));
-      if (foundCard) {
-        iSideDeckCards.push({ ...foundCard, count: card.count });
       }
     });
 
@@ -222,8 +232,11 @@ export class DeckViewComponent {
       count: card.count,
     }));
 
-    const tags = setTags(this.deck(), this.digimonCardStore.cards());
-    const selectedColor = setColors(this.deck(), this.digimonCardStore.cards());
+    const tags = setTags(this.deck(), this.backroomCardStore.cards());
+    const selectedColor = setColors(
+      this.deck(),
+      this.backroomCardStore.cards(),
+    );
 
     const deck = {
       ...this.deck(),
@@ -253,11 +266,8 @@ export class DeckViewComponent {
     return count;
   }
 
-  /**
-   * Sort the Deck (Eggs, Digimon, Tamer, Options)
-   */
   deckSort() {
-    const useColorSort = this.saveStore.settings().sortDeckOrder === 'Color';
+    const useColorSort = emptySettings.sortDeckOrder === 'Color';
 
     if (useColorSort) {
       this.mainDeck = colorSort(this.mainDeck);
@@ -282,9 +292,9 @@ export class DeckViewComponent {
     let count = 0;
     if (which === 'Egg') {
       deck.forEach((card) => {
-        if (card.cardType === 'Digi-Egg') {
-          count += card.count;
-        }
+        // if (card.cardType === 'Digi-Egg') {
+        //   count += card.count;
+        // }
       });
     } else if (which === 'All') {
       deck.forEach((card) => {
@@ -292,9 +302,9 @@ export class DeckViewComponent {
       });
     } else {
       deck.forEach((card) => {
-        if (card.cardType !== 'Digi-Egg') {
-          count += card.count;
-        }
+        // if (card.cardType !== 'Digi-Egg') {
+        //   count += card.count;
+        // }
       });
     }
 
@@ -315,23 +325,15 @@ export class DeckViewComponent {
   }
 
   drop(card: IDraggedCard, area: string) {
-    if (area === 'Side') {
-      if (card.drag === DRAG.Main) {
-        this.websiteStore.removeCardFromDeck(card.card.id);
-      }
-      this.websiteStore.addCardToSideDeck(card.card.id);
-      return;
-    }
-
-    if (card.drag === DRAG.Side) {
-      this.websiteStore.removeCardFromSideDeck(card.card.id);
-    }
-    this.websiteStore.addCardToDeck(card.card.id);
+    this.websiteStore.addCardToDeck(
+      card.card.id,
+      this.backroomCardStore.cardsMap(),
+    );
   }
 
   setDraggedCard(card: IDeckCard, drag: DRAG) {
     const dragCard = {
-      card: this.digimonCardStore.cardsMap().get(card.id)!,
+      card: this.backroomCardStore.cardsMap().get(card.id)!,
       drag,
     };
     this.websiteStore.updateDraggedCard(dragCard);

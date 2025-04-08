@@ -1,34 +1,32 @@
 import {
-  DigimonCard,
+  BackroomsCard,
   emptyDeck,
   ICountCard,
   IDeck,
   IDeckCard,
 } from '../../models';
-import { compareIDs, setColors, setTags } from './digimon-card.functions';
+import { compareIDs } from './backrooms-card.functions';
 
 export function stringToDeck(
   deckList: string,
-  allCards: DigimonCard[],
+  allCards: BackroomsCard[],
 ): IDeck | null {
   let result: string[] = deckList.split('\n');
 
   let deck: IDeck = parseDeck(result, allCards);
   if (deck.cards.length > 0) {
-    setDeckProperties(deck, allCards);
     return deck;
   }
 
   let deckTTS: IDeck = parseTTSDeck(deckList, allCards);
   if (deckTTS.cards.length > 0) {
-    setDeckProperties(deck, allCards);
     return deckTTS;
   }
 
   return null;
 }
 
-function parseTTSDeck(deckList: string, allCards: DigimonCard[]): IDeck {
+function parseTTSDeck(deckList: string, allCards: BackroomsCard[]): IDeck {
   const deck: IDeck = { ...JSON.parse(JSON.stringify(emptyDeck)) };
 
   let deckJson: string[] = [];
@@ -47,7 +45,7 @@ function parseTTSDeck(deckList: string, allCards: DigimonCard[]): IDeck {
   return deck;
 }
 
-function parseDeck(textArray: string[], allCards: DigimonCard[]): IDeck {
+function parseDeck(textArray: string[], allCards: BackroomsCard[]): IDeck {
   const deck: IDeck = { ...JSON.parse(JSON.stringify(emptyDeck)) };
 
   textArray.forEach((line) => {
@@ -73,7 +71,7 @@ function isValidNumberPNumber(str: string): boolean {
   return false;
 }
 
-function parseLine(line: string, allCards: DigimonCard[]): IDeckCard | null {
+function parseLine(line: string, allCards: BackroomsCard[]): IDeckCard | null {
   let lineSplit: string[] = line.replace(/  +/g, ' ').split(' '); // Split the line by spaces and remove extra spaces
   const cardLine: boolean = /\d/.test(line); // Check if the line contains a number
 
@@ -132,15 +130,10 @@ function findNumber(array: string[]): number {
   return count;
 }
 
-function setDeckProperties(deck: IDeck, allCards: DigimonCard[]) {
-  deck.tags = setTags(deck, allCards);
-  deck.color = setColors(deck, allCards);
-}
-
 function findCardById(
   cardId: string,
-  allCards: DigimonCard[],
-): DigimonCard | undefined {
+  allCards: BackroomsCard[],
+): BackroomsCard | undefined {
   return allCards.find((card) => compareIDs(card.id, cardId));
 }
 

@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { NgStyle } from '@angular/common';
 
 @Component({
-  selector: 'digimon-single-container',
+  selector: 'backrooms-single-container',
   template: `
     <div class="m-0.5 h-full">
       <p class="text-center text-[#e2e4e6]">
