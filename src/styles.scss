@@ -58,12 +58,21 @@ body {
   background-color: #0B0B0B !important;
 }
 
+.p-tooltip div {
+  background-color: #121212 !important;
+  border: 1px solid white;
+}
+
 .p-slider {
   background-color: #ffffff !important;
 }
 
 .surface-card-custom {
   background-color: #121212 !important;
+}
+
+.primary-background-custom .p-button-icon{
+  color: #ffd619 !important;
 }
 
 .primary-background {
