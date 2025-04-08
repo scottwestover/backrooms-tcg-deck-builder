@@ -43,8 +43,13 @@ body {
 .p-multiselect-token,
 .p-inputtext,
 .p-sidebar,
-.p-dialog-header {
+.p-dialog-header,
+.p-slider-handle {
   background-color: #0B0B0B !important;
+}
+
+.p-slider {
+  background-color: #ffffff !important;
 }
 
 .surface-card-custom {
