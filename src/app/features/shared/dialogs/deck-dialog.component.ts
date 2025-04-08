@@ -53,7 +53,7 @@ export interface BackroomsCardImage {
       </div>
 
       <div
-        class="surface-card mx-auto my-1 flex max-h-[200px] w-full flex-row border border-white">
+        class="surface-card-custom mx-auto my-1 flex max-h-[200px] w-full flex-row border border-white">
         <backrooms-ddto-spread
           [deck]="deck"
           [container]="true"
@@ -123,7 +123,7 @@ export interface BackroomsCardImage {
         <button
           (click)="openDeck($event)"
           pButton
-          class="p-button-sm lg:p-button p-button-outlined"
+          class="p-button-sm lg:p-button p-button-outlined border-white"
           type="button"
           label="Open"></button>
         <button

@@ -34,6 +34,14 @@ body {
   background-color: #17212f;
 }
 
+.p-button.p-button-outlined {
+  color: white !important;
+}
+
+.p-button.p-button-outlined:hover {
+  color: #ffd619 !important;
+}
+
 .p-dialog .p-dialog-content,
 .p-dropdown,
 .p-dropdown-panel,
