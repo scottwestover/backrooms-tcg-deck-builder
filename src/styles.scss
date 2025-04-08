@@ -41,7 +41,8 @@ body {
 .p-multiselect-item-group,
 .p-multiselect,
 .p-multiselect-token,
-.p-inputtext {
+.p-inputtext,
+.p-sidebar {
   background-color: #0B0B0B !important;
 }
 
@@ -266,9 +267,6 @@ p-dialog::ng-deep {
   background-size: cover;
 }
 
-
-@media (min-width: 1280px) {
-  .slider-auto {
-    margin-left: auto;
-  }
+.external_link {
+  color: #FFD54F;
 }

@@ -19,7 +19,7 @@
     Website for tracking your Backrooms TCG Collection, creating new Decks and sharing those with the community.
     <br />
     <br />
-    <a href="https://backrooms-tcg.web.app">View the Site</a>
+    <a href="https://backrooms-tcg-deckbuilder.web.app">View the Site</a>
     ·
     <a href="https://github.com/scottwestover/backrooms-tcg-deck-builder/issues">Report Bug</a>
     ·

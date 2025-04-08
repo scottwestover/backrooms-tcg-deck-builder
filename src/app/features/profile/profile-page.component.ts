@@ -168,7 +168,7 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
   }
 
   private makeGoogleFriendly() {
-    this.title.setTitle('Backrooms TCG - Profile');
+    this.title.setTitle('Backrooms DB - Profile');
 
     this.meta.addTags([
       {

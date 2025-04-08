@@ -12,7 +12,6 @@ import { RippleModule } from 'primeng/ripple';
 import { ImgFallbackDirective } from 'src/app/directives/ImgFallback.directive';
 import { BackroomsCardStore } from 'src/app/store/backrooms-card.store';
 import { WebsiteStore } from 'src/app/store/website.store';
-import { replacements } from 'src/models/data/keyword-replacement.data';
 
 import { BackroomsCard, ColorMap, ICountCard, IDeck } from '../../../../models';
 import { DialogStore } from '../../../store/dialog.store';
@@ -305,17 +304,6 @@ export class ViewCardDialogComponent {
     }
     this.card = newCard;
     this.setupView();
-  }
-
-  replaceWithImageTags(effect: string): string {
-    let replacedText = effect;
-    for (const [pattern, imageTag] of replacements) {
-      replacedText = replacedText.replace(
-        pattern,
-        `<img class="inline h-4" src="assets/images/keywords/${imageTag}.webp"/>`,
-      );
-    }
-    return replacedText;
   }
 
   closeViewCard() {

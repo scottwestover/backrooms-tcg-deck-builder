@@ -74,10 +74,17 @@ import { DividerModule } from 'primeng/divider';
 
       <p>
         Reach out through
-        <a href="https://discord.gg/nzy3HdweTF" target="_target">Discord</a> or
+        <a
+          href="https://discord.gg/nzy3HdweTF"
+          target="_target"
+          class="external_link"
+          >Discord</a
+        >
+        or
         <a
           href="https://github.com/scottwestover/backrooms-tcg-deck-builder/issues"
           target="_blank"
+          class="external_link"
           >GitHub</a
         >
       </p>

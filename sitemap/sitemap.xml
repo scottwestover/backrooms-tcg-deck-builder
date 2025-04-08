@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	<url>
-		<loc>https://backrooms-tcg.web.app/</loc>
+		<loc>https://backrooms-tcg-deckbuilder.web.app/</loc>
     <changefreq>weekly</changefreq>
 	</url>
   <url>
-		<loc>https://backrooms-tcg.web.app/deckbuilder/</loc>
+		<loc>https://backrooms-tcg-deckbuilder.web.app/deckbuilder/</loc>
     <changefreq>weekly</changefreq>
 	</url>
   <url>
-    <loc>https://backrooms-tcg.web.app/collection/</loc>
+    <loc>https://backrooms-tcg-deckbuilder.web.app/collection/</loc>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-		<loc>https://backrooms-tcg.web.app/user/</loc>
+		<loc>https://backrooms-tcg-deckbuilder.web.app/user/</loc>
     <changefreq>weekly</changefreq>
 	</url>
   <url>
-		<loc>https://backrooms-tcg.web.app/decks/</loc>
+		<loc>https://backrooms-tcg-deckbuilder.web.app/decks/</loc>
     <changefreq>weekly</changefreq>
 	</url>
 </urlset>

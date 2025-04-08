@@ -149,7 +149,7 @@ export class DeckbuilderPageComponent implements OnInit {
   }
 
   private makeGoogleFriendly() {
-    this.title.setTitle('Backrooms TCG - Deck Builder');
+    this.title.setTitle('Backrooms DB - Deck Builder');
 
     this.meta.addTags([
       {

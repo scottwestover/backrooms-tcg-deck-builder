@@ -278,7 +278,7 @@ export class DecksPageComponent implements OnInit {
   }
 
   private makeGoogleFriendly() {
-    this.title.setTitle('Backrooms TCG - Community');
+    this.title.setTitle('Backrooms DB - Community');
 
     this.meta.addTags([
       {

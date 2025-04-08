@@ -24,13 +24,13 @@ export class HomePageComponent {
   }
 
   private makeGoogleFriendly() {
-    this.title.setTitle('Backrooms TCG - Home');
+    this.title.setTitle('Backrooms DB - Home');
 
     this.meta.addTags([
       {
         name: 'description',
         content:
-          'backrooms-tcg.web.app is a website to to keep track of your Backrooms card collection, build great decks and keep you posted about the result of any major events.',
+          'backrooms-tcg-deckbuilder.web.app is a website to to keep track of your Backrooms card collection, build great decks and keep you posted about the result of any major events.',
       },
       { name: 'author', content: 'scottwestover' },
       {
