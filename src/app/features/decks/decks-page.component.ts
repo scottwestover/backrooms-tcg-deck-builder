@@ -73,7 +73,7 @@ import { DecksFilterComponent } from './components/decks-filter.component';
 
         <div
           *ngIf="decksToShow.length > 0; else loading"
-          class="grid gap-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          class="grid gap-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mb-2">
           <backrooms-deck-container
             class="mx-auto min-w-[280px] max-w-[285px]"
             *ngFor="let deck of decksToShow"
@@ -98,7 +98,7 @@ import { DecksFilterComponent } from './components/decks-filter.component';
           [totalRecords]="filteredDecks.length"
           styleClass="surface-ground p-0 mx-auto"></p-paginator>
 
-        <p-divider></p-divider>
+        <!-- <p-divider></p-divider> -->
       </div>
     </backrooms-page>
 

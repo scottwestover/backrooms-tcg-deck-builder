@@ -37,7 +37,7 @@ import { TAGS } from '../../../../models';
       </p-multiSelect> -->
       <button
         (click)="applyFilter.emit(true)"
-        class="col-span-2 sm:col-span-1 min-w-auto primary-background my-auto ml-2 h-8 sm:w-32 rounded p-2 text-xs font-semibold text-[#e2e4e6]">
+        class="col-span-2 sm:col-span-1 min-w-auto border-2 border-white my-auto ml-2 h-8 sm:w-32 rounded p-2 text-xs font-semibold text-[#e2e4e6]">
         Filter
       </button>
     </div>
