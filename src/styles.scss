@@ -42,7 +42,8 @@ body {
 .p-multiselect,
 .p-multiselect-token,
 .p-inputtext,
-.p-sidebar {
+.p-sidebar,
+.p-dialog-header {
   background-color: #0B0B0B !important;
 }
 
@@ -175,7 +176,7 @@ body {
   );
 }
 
-digimon-multi-select {
+backrooms-multi-select {
   ::ng-deep .p-multiselect {
     max-width: 10rem;
   }
