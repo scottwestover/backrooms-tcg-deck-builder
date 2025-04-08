@@ -98,7 +98,7 @@ export class AppComponent {
 
     effect(
       () => {
-        console.log('Save changed', this.saveStore.save());
+        console.debug('Save changed');
         this.saveLoaded.set(
           this.saveStore.save().uid !== '' || this.saveStore.loadedSave(),
         );
@@ -107,10 +107,10 @@ export class AppComponent {
           return;
         }
 
-        console.log('Update Save in the Database');
+        console.debug('Update Save in the Database');
         this.updateDatabase();
         if (this.settings !== this.saveStore.settings()) {
-          console.log('Change Advanced Settings');
+          console.debug('Change Advanced Settings');
           this.settings = this.saveStore.settings();
           this.setAdvancedSettings();
         }

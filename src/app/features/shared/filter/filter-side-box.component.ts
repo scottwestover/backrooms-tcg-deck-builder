@@ -117,10 +117,8 @@ export class FilterSideBoxComponent implements OnInit, OnDestroy {
   sourceFilter = new UntypedFormControl([]);
   levelFilter = new UntypedFormControl([]);
   playCostFilter = new UntypedFormControl([]);
-  digivolutionFilter = new UntypedFormControl([]);
   dpFilter = new UntypedFormControl([]);
   cardCountFilter = new UntypedFormControl([]);
-  presetFilter = new UntypedFormControl([]);
   filterFormGroup: UntypedFormGroup = new UntypedFormGroup({
     keywordFilter: this.keywordFilter,
     attributeFilter: this.attributeFilter,
@@ -131,10 +129,8 @@ export class FilterSideBoxComponent implements OnInit, OnDestroy {
     sourceFilter: this.sourceFilter,
     levelFilter: this.levelFilter,
     playCostFilter: this.playCostFilter,
-    digivolutionFilter: this.digivolutionFilter,
     dpFilter: this.dpFilter,
     cardCountFilter: this.cardCountFilter,
-    presetFilter: this.presetFilter,
   });
   keywords = itemsAsSelectItem(Keywords);
   attributes = itemsAsSelectItem(Attributes);
@@ -153,9 +149,6 @@ export class FilterSideBoxComponent implements OnInit, OnDestroy {
 
       this.levelFilter.setValue(filter.levelFilter, { emitEvent: false });
       this.playCostFilter.setValue(filter.playCostFilter, {
-        emitEvent: false,
-      });
-      this.digivolutionFilter.setValue(filter.digivolutionFilter, {
         emitEvent: false,
       });
       this.dpFilter.setValue(filter.dpFilter, { emitEvent: false });
@@ -179,9 +172,6 @@ export class FilterSideBoxComponent implements OnInit, OnDestroy {
         emitEvent: false,
       });
       this.sourceFilter.setValue(filter.sourceFilter, {
-        emitEvent: false,
-      });
-      this.presetFilter.setValue(filter.presetFilter, {
         emitEvent: false,
       });
     },

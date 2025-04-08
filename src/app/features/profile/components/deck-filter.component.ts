@@ -19,7 +19,7 @@ import { InputTextModule } from 'primeng/inputtext';
             [formControl]="searchFilter"
             class="text-xs w-full"
             pInputText
-            placeholder="Search (Title, Description, Card-Ids, Color)"
+            placeholder="Search (Title, Description, Card-Ids)"
             type="text" />
         </span>
       </div>

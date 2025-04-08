@@ -274,17 +274,17 @@ export class DeckDialogComponent {
       }
       this.dialogStore.showDeckDialog(false);
     } else {
-      // this.confirmationService.confirm({
-      //   target: event.target ?? undefined,
-      //   message: 'You are about to open this deck. Are you sure?',
-      //   accept: () => {
-      //     this.websiteStore.updateDeck(this.deck);
-      //     this.router.navigateByUrl(
-      //       '/deckbuilder/user/' + this.deck.userId + '/deck/' + this.deck.id,
-      //     );
-      //     this.dialogStore.showDeckDialog(false);
-      //   },
-      // });
+      this.confirmationService.confirm({
+        target: event.target ?? undefined,
+        message: 'You are about to open this deck. Are you sure?',
+        accept: () => {
+          this.websiteStore.updateDeck(this.deck);
+          this.router.navigateByUrl(
+            '/deckbuilder/user/' + this.deck.userId + '/deck/' + this.deck.id,
+          );
+          this.dialogStore.showDeckDialog(false);
+        },
+      });
     }
   }
 
@@ -395,13 +395,13 @@ export class DeckDialogComponent {
 
   private getCardImage(imageCardId: string): BackroomsCardImage {
     if (!this.deck.cards || this.deck.cards.length === 0) {
-      return { name: 'BT1-001 - Yokomon', value: 'BT1-001' };
+      return { name: 'LL-001 - Hallway', value: 'LL-001' };
     }
 
     let foundCard = this.backroomsCardStore.cardsMap().get(imageCardId);
     if (foundCard) {
       return {
-        name: `${foundCard!.id} - ${foundCard!.name}`,
+        name: `${foundCard!.id} - ${foundCard!.name.english}`,
         value: foundCard!.id,
       };
     } else {
@@ -410,7 +410,7 @@ export class DeckDialogComponent {
         this.backroomsCardStore.cards(),
       );
       return {
-        name: `${imageCard!.id} - ${imageCard!.name}`,
+        name: `${imageCard!.id} - ${imageCard!.name.english}`,
         value: imageCard!.id,
       };
     }

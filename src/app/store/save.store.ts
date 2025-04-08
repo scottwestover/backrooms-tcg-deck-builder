@@ -63,10 +63,10 @@ export const SaveStore = signalStore(
               tapResponse({
                 next: (save) => {
                   // TODO
-                  toastrService.info(
-                    'Your save was loaded successfully!',
-                    'Welcome back!',
-                  );
+                  // toastrService.info(
+                  //   'Your save was loaded successfully!',
+                  //   'Welcome back!',
+                  // );
 
                   patchState(store, {
                     save: {

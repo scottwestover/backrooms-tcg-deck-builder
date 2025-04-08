@@ -72,7 +72,15 @@ import { DividerModule } from 'primeng/divider';
         future of this archive.
       </p>
 
-      <p>Reach out through Discord or GitHub here: [TODO]</p>
+      <p>
+        Reach out through
+        <a href="https://discord.gg/nzy3HdweTF" target="_target">Discord</a> or
+        <a
+          href="https://github.com/scottwestover/backrooms-tcg-deck-builder/issues"
+          target="_blank"
+          >GitHub</a
+        >
+      </p>
     </h2>
 
     <p-divider class="my-5"></p-divider>

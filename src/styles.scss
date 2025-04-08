@@ -265,3 +265,10 @@ p-dialog::ng-deep {
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+
+@media (min-width: 1280px) {
+  .slider-auto {
+    margin-left: auto;
+  }
+}

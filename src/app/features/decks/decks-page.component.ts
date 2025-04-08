@@ -34,9 +34,10 @@ import { DecksFilterComponent } from './components/decks-filter.component';
   selector: 'backrooms-decks-page',
   template: `
     <backrooms-page #page>
-      <p-blockUI [blocked]="loading2" [target]="page">
+      <!-- <p-blockUI [blocked]="loading2" [target]="page">
         <p-progressSpinner class="mx-auto"></p-progressSpinner>
-      </p-blockUI>
+      </p-blockUI> -->
+
       <div class="mx-auto self-baseline px-5 w-full max-w-7xl">
         <div class="lg:px-auto flex px-1 flex-col md:flex-row items-baseline">
           <h1
@@ -83,7 +84,7 @@ import { DecksFilterComponent } from './components/decks-filter.component';
 
         <ng-template #loading>
           <div class="flex w-full">
-            <p-progressSpinner class="mx-auto"></p-progressSpinner>
+            <!-- <p-progressSpinner class="mx-auto"></p-progressSpinner> -->
           </div>
         </ng-template>
 

@@ -22,7 +22,7 @@ import { TAGS } from '../../../../models';
           formControlName="searchFilter"
           class="w-full text-xs"
           pInputText
-          placeholder="Search (Title, Description, User, Card-Ids, Color)"
+          placeholder="Search (Title, Description, User, Card-Ids)"
           type="text" />
       </span>
       <!-- <p-multiSelect

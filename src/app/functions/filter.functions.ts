@@ -134,18 +134,7 @@ export function filterCards(
       removeCards.push(card);
       return;
     }
-    if (applyRangeFilter(card, filter.digivolutionFilter, 'digivolution')) {
-      removeCards.push(card);
-      return;
-    }
     if (applyRangeFilter(card, filter.dpFilter, 'dp')) {
-      removeCards.push(card);
-      return;
-    }
-    if (
-      filter.presetFilter.length > 0 &&
-      applyPresetFilter(card, filter.presetFilter)
-    ) {
       removeCards.push(card);
       return;
     }
@@ -400,51 +389,44 @@ function applyRangeFilter(
     return false;
 }
 
-function applyPresetFilter(card: BackroomsCard, filter: string[]): boolean {
-  let inPreset = true;
-  for (const preset of filter) {
-    if (preset === 'Ultimate Cup 2023') {
-      if (UltimateCup2023.includes(card.id)) return false;
-    }
-    if (preset === 'Ultimate Cup 2024') {
-      if (UltimateCup2024.includes(card.id)) return false;
-    }
-  }
-  return inPreset;
-}
-
 function applySortOrder(
   cards: BackroomsCard[],
   sort: ISort,
   collection: ICountCard[],
 ): BackroomsCard[] {
   const returnArray = [...new Set([...cards])];
-  if (sort.sortBy.element === 'playCost' || sort.sortBy.element === 'dp') {
-    return sort.ascOrder
-      ? returnArray.sort(dynamicSortNumber(sort.sortBy.element))
-      : returnArray.sort(dynamicSortNumber(`-${sort.sortBy.element}`));
-  } else if (sort.sortBy.element === 'count') {
-    return sort.ascOrder
-      ? returnArray.sort((a, b) => {
-          const countA =
-            collection.find((card) => card.id === a.id)?.count ?? 0;
-          const countB =
-            collection.find((card) => card.id === b.id)?.count ?? 0;
-          return countA - countB;
-        })
-      : returnArray.sort((a, b) => {
-          const countA =
-            collection.find((card) => card.id === a.id)?.count ?? 0;
-          const countB =
-            collection.find((card) => card.id === b.id)?.count ?? 0;
-          return countB - countA;
-        });
-  }
+  // if (sort.sortBy.element === 'playCost' || sort.sortBy.element === 'dp') {
+  //   return sort.ascOrder
+  //     ? returnArray.sort(dynamicSortNumber(sort.sortBy.element))
+  //     : returnArray.sort(dynamicSortNumber(`-${sort.sortBy.element}`));
+  // } else if (sort.sortBy.element === 'count') {
+  //   return sort.ascOrder
+  //     ? returnArray.sort((a, b) => {
+  //         const countA =
+  //           collection.find((card) => card.id === a.id)?.count ?? 0;
+  //         const countB =
+  //           collection.find((card) => card.id === b.id)?.count ?? 0;
+  //         return countA - countB;
+  //       })
+  //     : returnArray.sort((a, b) => {
+  //         const countA =
+  //           collection.find((card) => card.id === a.id)?.count ?? 0;
+  //         const countB =
+  //           collection.find((card) => card.id === b.id)?.count ?? 0;
+  //         return countB - countA;
+  //       });
+  // }
 
   if (sort.sortBy.element === 'id') {
     return sort.ascOrder
     ? returnArray.sort(dynamicSort('cardNumber'))
     : returnArray.sort(dynamicSort('-cardNumber'));
+  }
+
+  if (sort.sortBy.element === 'name') {
+    return sort.ascOrder
+    ? returnArray.sort(dynamicSort('name', 'english'))
+    : returnArray.sort(dynamicSort('-name', 'english'));
   }
 
   return sort.ascOrder
@@ -454,19 +436,29 @@ function applySortOrder(
 
 //endregion
 
-export function dynamicSort(property: string): any {
+export function dynamicSort(property: string, subProperty?: string): any {
   let sortOrder = 1;
   if (property[0] === '-') {
     sortOrder = -1;
     property = property.substr(1);
   }
   return function (a: any, b: any) {
-    let result = a[property]
+    let result;
+    if (subProperty) {
+      result = a[property][subProperty]
       .toLowerCase()
-      .localeCompare(b[property].toLowerCase(), undefined, {
+      .localeCompare(b[property][subProperty].toLowerCase(), undefined, {
         numeric: true,
         sensitivity: 'base',
       });
+    } else {
+      result = a[property]
+        .toLowerCase()
+        .localeCompare(b[property].toLowerCase(), undefined, {
+          numeric: true,
+          sensitivity: 'base',
+        });
+    }
     return result * sortOrder;
   };
 }

@@ -28,11 +28,11 @@ import { BackroomsCardStore } from '../../store/backrooms-card.store';
         'background-position': 'center',
         'background-position-y': '25%'
       }">
-      <div
+      <!-- <div
         [ngStyle]="{ background: colorMap.get('Yellow') }"
         class="text-shadow-white-xs relative left-[-5px] top-[10px] w-24 border text-black border-black bg-opacity-80 text-center text-xs font-bold uppercase">
         <span class="mr-1">{{ getTags(deck) }}</span>
-      </div>
+      </div> -->
 
       <div *ngIf="isIllegal()" class="absolute right-[35px] top-[5px]">
         <span class="text-shadow text-4xl text-[#ef4444]">!</span>

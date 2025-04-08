@@ -41,7 +41,6 @@ export const emptyFilter = {
   cardCountFilter: [0, 30],
   levelFilter: [2, 7],
   playCostFilter: [0, 20],
-  digivolutionFilter: [0, 7],
   dpFilter: [1, 17],
   rarityFilter: [],
   versionFilter: [],
@@ -56,5 +55,4 @@ export const emptyFilter = {
   blockFilter: [],
   restrictionsFilter: [],
   sourceFilter: [],
-  presetFilter: [],
 };

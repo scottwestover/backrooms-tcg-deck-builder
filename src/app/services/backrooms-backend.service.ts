@@ -116,7 +116,6 @@ export class BackroomsBackendService {
             'decks',
             this.createDeckDocId(modifiedUserSaveData.uid, lastUpdatedDeckId),
           );
-          console.log(documentRefForDecks.id, deck);
           setDoc(documentRefForDecks, deck);
         }
       }),

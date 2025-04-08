@@ -4,7 +4,6 @@ export interface IFilter {
   cardCountFilter: number[];
   levelFilter: number[];
   playCostFilter: number[];
-  digivolutionFilter: number[];
   dpFilter: number[];
   rarityFilter: string[];
   versionFilter: string[];
@@ -19,5 +18,4 @@ export interface IFilter {
   cardTypeFilter: string[];
   restrictionsFilter: string[];
   sourceFilter: string[];
-  presetFilter: string[];
 }
