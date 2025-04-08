@@ -30,7 +30,7 @@ export interface MultiButtons {
             'rounded-l-sm': i === 0,
             'rounded-r-sm': i === buttonArray.length - 1
           }"
-          class="min-w-auto h-8  border border-slate-100 p-0.5 py-2 text-xs font-semibold text-[#e2e4e6]">
+          class="min-w-auto h-8 border border-slate-100 p-0.5 py-2 text-xs font-semibold text-[#e2e4e6]">
           {{ button.name }}
         </button>
       </div>
