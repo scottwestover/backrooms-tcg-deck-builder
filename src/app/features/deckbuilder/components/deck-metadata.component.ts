@@ -24,14 +24,7 @@ import { WebsiteStore } from '../../../store/website.store';
   selector: 'backrooms-deck-metadata',
   template: `
     <div class="mb-1 inline-flex w-full px-3">
-      <div class="ml-auto mt-2 flex w-1/2 pr-2">
-        <p-chip
-          class="ml-auto"
-          *ngFor="let tag of tags()"
-          label="{{ tag.name }}"></p-chip>
-      </div>
-
-      <div class="mt-2 w-1/2 pl-1">
+      <div class="mt-2 w-full">
         <input
           [ngModel]="this.obscenity.transform(this.title())"
           (ngModelChange)="updateTitle($event)"
@@ -42,8 +35,8 @@ import { WebsiteStore } from '../../../store/website.store';
       </div>
     </div>
 
-    <div class="mx-3.5 inline-flex w-full">
-      <span class="mr-2 w-full">
+    <div class="mb-1 inline-flex w-full px-3">
+      <span class="mt-2 w-full">
         <textarea
           [ngModel]="this.obscenity.transform(this.description())"
           (ngModelChange)="updateDescription($event)"
