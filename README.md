@@ -58,7 +58,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-Welcome to the Github-Repository of the website https://digimoncard.app
+Welcome to the Github-Repository of the website https://backrooms-tcg-deckbuilder.web.app/.
 
 For any bugs or feature requests, please open a new issue in the repository. If you are interested in helping contribute to the project, please open a pull request.
 
