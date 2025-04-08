@@ -42,7 +42,7 @@ import { BackroomsCardStore } from '../../../store/backrooms-card.store';
           class="mx-2 mt-2 flex flex-row justify-center absolute right-2">
           <button
             (click)="filterBox.emit(true)"
-            class="flex flex-row sm:justify-center min-w-auto primary-background h-8 w-8 sm:w-24 rounded p-2 text-xs font-semibold text-[#e2e4e6]">
+            class="flex flex-row sm:justify-center min-w-auto border-2 border-white h-8 w-8 sm:w-24 rounded p-2 text-xs font-semibold text-[#e2e4e6]">
             <i class="pi pi-filter-fill mr-3"></i>
             <span class="hidden sm:block">Filter</span>
           </button>
