@@ -7,6 +7,7 @@ import {
 } from '@angular/common';
 import {
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   effect,
   inject,
@@ -150,7 +151,6 @@ export class PaginationCardListComponent {
     () => {
       if (this.inputCollection.length === 0) return;
       const cards = this.backroomCardStore.cards();
-
       if (cards.length === 0) return;
 
       const filteredCards = filterCards(
@@ -166,7 +166,7 @@ export class PaginationCardListComponent {
     { allowSignalWrites: true },
   );
 
-  constructor() {
+  constructor(private changeDetectorRef: ChangeDetectorRef) {
     effect(() => {
       const settings = this.saveStore.settings();
       if (
@@ -182,6 +182,7 @@ export class PaginationCardListComponent {
       const filteredCards = this.backroomCardStore.filteredCards();
       this.showCards = filteredCards.slice(0, this.perPage);
       this.page = 1;
+      this.changeDetectorRef.detectChanges();
     });
   }
 

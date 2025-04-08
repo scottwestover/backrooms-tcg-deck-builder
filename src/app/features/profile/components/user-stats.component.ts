@@ -55,7 +55,7 @@ import { NgIf } from '@angular/common';
           </div>
         </div> -->
 
-        <p-carousel
+        <!--<p-carousel
           class="sm:hidden"
           [value]="collectionCircles"
           [numVisible]="1"
@@ -68,7 +68,7 @@ import { NgIf } from '@angular/common';
               {{ circle.label }}
             </div>
           </ng-template>
-        </p-carousel>
+        </p-carousel>-->
       </div>
 
       <div class="flex flex-col sm:flex-row w-full">

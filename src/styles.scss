@@ -53,9 +53,16 @@ body {
 .p-sidebar,
 .p-dialog-header,
 .p-slider-handle,
-.surface-ground,
+.surface-ground {
+  background-color: #0B0B0B !important;
+}
+
 .p-checkbox-box {
   background-color: #0B0B0B !important;
+}
+.p-checkbox-box.p-highlight {
+  border-color: #FFD54F !important;
+  background: #FFD54F !important;
 }
 
 .p-tooltip div {
@@ -330,7 +337,7 @@ input[type="checkbox"]::before {
   height: 0.65em;
   transform: scale(0);
   transition: 120ms transform ease-in-out;
-  box-shadow: inset 1em 1em var(--form-control-color);
+  box-shadow: inset 1em 1em #fff;
   /* Windows High Contrast Mode */
   background-color: CanvasText;
   transform-origin: bottom left;
@@ -346,18 +353,12 @@ input[type="checkbox"]:checked::before {
 //   outline-offset: max(2px, 0.15em);
 // }
 
-:root {
-  --form-control-disabled: #959495;
-}
-
 input[type="checkbox"]:disabled {
-  --form-control-color: var(--form-control-disabled);
-
-  color: var(--form-control-disabled);
+  color: #fff;
   cursor: not-allowed;
 }
 
 .form-control--disabled {
-  color: var(--form-control-disabled);
+  color: #fff;
   cursor: not-allowed;
 }

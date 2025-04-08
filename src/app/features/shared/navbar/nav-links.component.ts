@@ -227,6 +227,7 @@ export class NavLinksComponent implements OnInit, OnDestroy {
         this.route = event.url;
       }
     });
+    this.route = this.router.url;
   }
 
   ngOnDestroy() {
@@ -249,7 +250,7 @@ export class NavLinksComponent implements OnInit, OnDestroy {
         'border-l-[3px] border-white': deckOpenOrDeckbuilder && this.sidebar,
         'border-b-[3px] lg:border-b-0 lg:border-l-[3px] border-white':
           deckOpenOrDeckbuilder && !this.sidebar,
-        'text-[#FFD54F]': deckOpenOrDeckbuilder,
+        'text-[#ffd54f]': deckOpenOrDeckbuilder,
         'text-[#e2e4e6]': !deckOpenOrDeckbuilder,
       };
     } else if (route === '/user') {
@@ -262,7 +263,7 @@ export class NavLinksComponent implements OnInit, OnDestroy {
           this.route.includes(route) &&
           !this.route.includes('deckbuilder') &&
           !this.sidebar,
-        'text-[#FFD54F]':
+        'text-[#ffd54f]':
           this.route.includes(route) && !this.route.includes('deckbuilder'),
         'text-[#e2e4e6]': !this.route.includes(route),
       };
@@ -271,7 +272,7 @@ export class NavLinksComponent implements OnInit, OnDestroy {
       'border-l-[3px] border-white': this.route === route && this.sidebar,
       'border-b-[3px] lg:border-b-0 lg:border-l-[3px] border-white':
         this.route === route && !this.sidebar,
-      'text-[#FFD54F]': this.route === route,
+      'text-[#ffd54f]': this.route === route,
       'text-[#e2e4e6]': this.route !== route,
     };
   }

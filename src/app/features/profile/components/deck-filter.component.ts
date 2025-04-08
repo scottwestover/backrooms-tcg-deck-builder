@@ -23,16 +23,6 @@ import { InputTextModule } from 'primeng/inputtext';
             type="text" />
         </span>
       </div>
-      <!-- <p-multiSelect
-        [formControl]="tagFilter"
-        [options]="tags"
-        [showToggleAll]="false"
-        placeholder="Select a Tag"
-        display="chip"
-        scrollHeight="250px"
-        class="mx-auto max-w-[250px]"
-        styleClass="h-[34px] text-sm max-w-[250px]">
-      </p-multiSelect> -->
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,

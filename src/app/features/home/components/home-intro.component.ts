@@ -92,7 +92,7 @@ import { DividerModule } from 'primeng/divider';
 
     <p-divider class="my-5"></p-divider>
     <h2
-      class="mt-1 text-center text-[#e2e4e6] text-sm sm:text-base spacer spacer-top">
+      class="mt-1 text-center text-[#e2e4e6] text-sm sm:text-base spacer spacer-top pb-2">
       <p>
         The information presented on this site about Backrooms TCG, both literal
         and graphical, is copyrighted by BACKROOMS TCG LLC. This website is not
