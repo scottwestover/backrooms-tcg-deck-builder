@@ -18,31 +18,7 @@ export function stringToDeck(
     return deck;
   }
 
-  let deckTTS: IDeck = parseTTSDeck(deckList, allCards);
-  if (deckTTS.cards.length > 0) {
-    return deckTTS;
-  }
-
   return null;
-}
-
-function parseTTSDeck(deckList: string, allCards: BackroomsCard[]): IDeck {
-  const deck: IDeck = { ...JSON.parse(JSON.stringify(emptyDeck)) };
-
-  let deckJson: string[] = [];
-  try {
-    deckJson = JSON.parse(deckList);
-  } catch (e) {
-    return deck;
-  }
-
-  deckJson.forEach((entry) => {
-    const foundCard = findCardById(entry, allCards);
-    if (foundCard) {
-      incrementCardCount(deck.cards, foundCard.id);
-    }
-  });
-  return deck;
 }
 
 function parseDeck(textArray: string[], allCards: BackroomsCard[]): IDeck {

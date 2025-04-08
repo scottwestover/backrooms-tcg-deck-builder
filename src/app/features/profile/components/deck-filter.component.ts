@@ -12,7 +12,7 @@ import { InputTextModule } from 'primeng/inputtext';
   selector: 'backrooms-deck-filter',
   template: `
     <div class="mx-auto flex flex-row">
-      <div class="flex w-full flex-col sm:pr-2">
+      <div class="flex w-full flex-col">
         <span class="p-input-icon-left w-full">
           <i class="pi pi-search h-3"></i>
           <input
@@ -23,16 +23,6 @@ import { InputTextModule } from 'primeng/inputtext';
             type="text" />
         </span>
       </div>
-      <!-- <p-multiSelect
-        [formControl]="tagFilter"
-        [options]="tags"
-        [showToggleAll]="false"
-        placeholder="Select a Tag"
-        display="chip"
-        scrollHeight="250px"
-        class="mx-auto max-w-[250px]"
-        styleClass="h-[34px] text-sm max-w-[250px]">
-      </p-multiSelect> -->
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,

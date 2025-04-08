@@ -399,23 +399,24 @@ function applySortOrder(
   //   return sort.ascOrder
   //     ? returnArray.sort(dynamicSortNumber(sort.sortBy.element))
   //     : returnArray.sort(dynamicSortNumber(`-${sort.sortBy.element}`));
-  // } else if (sort.sortBy.element === 'count') {
-  //   return sort.ascOrder
-  //     ? returnArray.sort((a, b) => {
-  //         const countA =
-  //           collection.find((card) => card.id === a.id)?.count ?? 0;
-  //         const countB =
-  //           collection.find((card) => card.id === b.id)?.count ?? 0;
-  //         return countA - countB;
-  //       })
-  //     : returnArray.sort((a, b) => {
-  //         const countA =
-  //           collection.find((card) => card.id === a.id)?.count ?? 0;
-  //         const countB =
-  //           collection.find((card) => card.id === b.id)?.count ?? 0;
-  //         return countB - countA;
-  //       });
-  // }
+  //} else
+  if (sort.sortBy.element === 'count') {
+    return sort.ascOrder
+      ? returnArray.sort((a, b) => {
+          const countA =
+            collection.find((card) => card.id === a.id)?.count ?? 0;
+          const countB =
+            collection.find((card) => card.id === b.id)?.count ?? 0;
+          return countA - countB;
+        })
+      : returnArray.sort((a, b) => {
+          const countA =
+            collection.find((card) => card.id === a.id)?.count ?? 0;
+          const countB =
+            collection.find((card) => card.id === b.id)?.count ?? 0;
+          return countB - countA;
+        });
+  }
 
   if (sort.sortBy.element === 'id') {
     return sort.ascOrder

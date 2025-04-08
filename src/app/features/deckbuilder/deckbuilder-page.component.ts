@@ -42,7 +42,7 @@ import { DeckViewComponent } from './components/deck-view.component';
           class="border-l max-h-full border-slate-200 flex flex-row  h-[calc(100vh-3.5rem)] md:h-[calc(100vh-5rem)] lg:h-screen"></backrooms-pagination-card-list>
 
         <button
-          class="surface-card w-6 border-l border-slate-200"
+          class="surface-card-custom w-6 border-l border-slate-200"
           (click)="changeView()">
           <span
             class="w-full h-[calc(100%-4rem)] md:h-[calc(100%-5.5rem)] lg:h-[calc(100%-0.5rem)] rotate-180 text-center font-bold text-[#e2e4e6]"

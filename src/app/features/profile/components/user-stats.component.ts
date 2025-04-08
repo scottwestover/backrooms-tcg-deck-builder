@@ -55,7 +55,7 @@ import { NgIf } from '@angular/common';
           </div>
         </div> -->
 
-        <p-carousel
+        <!--<p-carousel
           class="sm:hidden"
           [value]="collectionCircles"
           [numVisible]="1"
@@ -68,27 +68,17 @@ import { NgIf } from '@angular/common';
               {{ circle.label }}
             </div>
           </ng-template>
-        </p-carousel>
+        </p-carousel>-->
       </div>
 
       <div class="flex flex-col sm:flex-row w-full">
         <button
           (click)="openCollection()"
-          class="surface-ground hover:primary-background text-shadow border flex-grow border-black p-2 font-bold text-[#e2e4e6]">
+          class="surface-ground hover:primary-background text-shadow border flex-grow border-[#304562] p-2 font-bold text-[#e2e4e6] mt-2">
           View Collection
         </button>
       </div>
     </div>
-
-    <p-dialog
-      header="Price Check"
-      [(visible)]="priceCheckDialog"
-      styleClass="w-[100%] min-w-[250px] sm:min-w-[500px] sm:w-[900px] lg:w-[1024px] 2xl:w-[1536px] min-h-[500px]"
-      [baseZIndex]="10000"
-      [modal]="true"
-      [dismissableMask]="true"
-      [resizable]="false">
-    </p-dialog>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
@@ -111,7 +101,6 @@ export class UserStatsComponent {
   ];
 
   private router = inject(Router);
-  priceCheckDialog = false;
 
   openCollection() {
     this.router.navigateByUrl('/collection/' + this.save.uid);

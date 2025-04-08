@@ -46,8 +46,8 @@ import { DecksTableComponent } from './decks-table.component';
           [showJumpToPageDropdown]="true"
           [showPageLinks]="false"
           [totalRecords]="decks.length"
-          class="surface-card mx-auto h-8"
-          styleClass="surface-card p-0"></p-paginator>
+          class="surface-card-custom mx-auto h-8"
+          styleClass="surface-card-custom p-0"></p-paginator>
       </div>
     </div>
 

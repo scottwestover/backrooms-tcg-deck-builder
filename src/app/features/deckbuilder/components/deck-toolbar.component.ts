@@ -33,8 +33,8 @@ import { ImportDeckDialogComponent } from '../../shared/dialogs/import-deck-dial
       class="toolbar ml-3 mr-3 flex w-[100%-3rem] flex-row justify-evenly border-b-2 border-slate-600 md:grid-cols-12">
       <button
         (click)="missingCardsChange.emit(!missingCards)"
-        [ngClass]="{ 'primary-background': missingCards }"
         class="p-button-outlined h-[30px] w-full"
+        [ngClass]="{ 'primary-background-custom': missingCards }"
         icon="pi pi-times"
         iconPos="left"
         pButton
@@ -55,6 +55,7 @@ import { ImportDeckDialogComponent } from '../../shared/dialogs/import-deck-dial
         class="p-button-outlined h-[30px] w-full"
         icon="pi pi-save"
         iconPos="left"
+        pTooltip="Click to save your Deck!"
         pButton></button>
 
       <button

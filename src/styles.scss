@@ -34,6 +34,14 @@ body {
   background-color: #17212f;
 }
 
+.p-button.p-button-outlined {
+  color: white !important;
+}
+
+.p-button.p-button-outlined:hover {
+  color: #ffd619 !important;
+}
+
 .p-dialog .p-dialog-content,
 .p-dropdown,
 .p-dropdown-panel,
@@ -42,8 +50,41 @@ body {
 .p-multiselect,
 .p-multiselect-token,
 .p-inputtext,
-.p-sidebar {
+.p-sidebar,
+.p-dialog-header,
+.p-slider-handle,
+.surface-ground {
   background-color: #0B0B0B !important;
+}
+
+.p-checkbox-box {
+  background-color: #0B0B0B !important;
+}
+.p-checkbox-box.p-highlight {
+  border-color: #FFD54F !important;
+  background: #FFD54F !important;
+}
+
+.p-tooltip div {
+  background-color: #121212 !important;
+  border: 1px solid white;
+}
+
+.p-slider {
+  background-color: #ffffff !important;
+}
+
+.surface-card-custom {
+  background-color: #121212 !important;
+}
+
+.primary-background-custom .p-button-icon {
+  color: #ffd619 !important;
+}
+
+.primary-background-collection  {
+  background-color: #121212;
+  border: 1px solid white;
 }
 
 .primary-background {
@@ -175,7 +216,7 @@ body {
   );
 }
 
-digimon-multi-select {
+backrooms-multi-select {
   ::ng-deep .p-multiselect {
     max-width: 10rem;
   }
@@ -269,4 +310,55 @@ p-dialog::ng-deep {
 
 .external_link {
   color: #FFD54F;
+}
+
+input[type="checkbox"] {
+  /* Add if not using autoprefixer */
+  -webkit-appearance: none;
+  appearance: none;
+  /* For iOS < 15 to remove gradient background */
+  background-color: #0B0B0B;
+  /* Not removed via appearance */
+  margin: 0;
+  font: inherit;
+  color: currentColor;
+  width: 1.10em;
+  height: 1.10em;
+  border: 0.15em solid currentColor;
+  border-radius: 0.15em;
+  transform: translateY(-0.075em);
+  display: grid;
+  place-content: center;
+}
+
+input[type="checkbox"]::before {
+  content: "";
+  width: 0.65em;
+  height: 0.65em;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1em 1em #fff;
+  /* Windows High Contrast Mode */
+  background-color: CanvasText;
+  transform-origin: bottom left;
+  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+}
+
+input[type="checkbox"]:checked::before {
+  transform: scale(1);
+}
+
+// input[type="checkbox"]:focus {
+//   outline: max(2px, 0.15em) solid currentColor;
+//   outline-offset: max(2px, 0.15em);
+// }
+
+input[type="checkbox"]:disabled {
+  color: #fff;
+  cursor: not-allowed;
+}
+
+.form-control--disabled {
+  color: #fff;
+  cursor: not-allowed;
 }

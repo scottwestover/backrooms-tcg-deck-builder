@@ -16,7 +16,7 @@ import { WebsiteStore } from '../../../store/website.store';
       <div>
         <p>
           Copy your deck in the text area and press import or press the "Import
-          Text-File"-Button to import a file.
+          Text-File" Button to import a file.
         </p>
         <textarea
           pInputTextarea
@@ -62,11 +62,14 @@ export class ImportDeckDialogComponent {
     '\n' +
     ' Format:\n' +
     '   Qty Name Id\n' +
-    '   TTS Format\n' +
     "   The order of the values doesn't matter\n" +
     '   Name is optional. Qty(quantity) must be positive\n' +
     '   Each card can only be declared once\n' +
-    '   Import will always pick the regular art card"';
+    '   Import will always pick the regular art card.\n' +
+    '\n' +
+    ' Example:\n' +
+    '   4 Hallway LL-001\n' +
+    '   3 LL-002';
 
   deckText = '';
 
@@ -89,7 +92,7 @@ export class ImportDeckDialogComponent {
     if (this.deckText === '') return;
     let deck: IDeck | null = { ...currentDeck };
     const newDeck = stringToDeck(this.deckText, this.backroomCardStore.cards());
-
+    console.log(newDeck);
     if (!newDeck || newDeck.cards?.length === 0) {
       this.messageService.add({
         severity: 'warn',
