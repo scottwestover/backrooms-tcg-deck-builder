@@ -55,6 +55,7 @@ import { ImportDeckDialogComponent } from '../../shared/dialogs/import-deck-dial
         class="p-button-outlined h-[30px] w-full"
         icon="pi pi-save"
         iconPos="left"
+        pTooltip="Click to save your Deck!"
         pButton></button>
 
       <button
