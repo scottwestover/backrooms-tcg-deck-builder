@@ -123,9 +123,11 @@ Don't forget to give the project a star! Thanks again!
 <!-- CONTACT -->
 ## Contact
 
-Scott - [@Discord](galemius#0322)
+Scott - Discord Username: galemius#0322
 
 Project Link: [https://github.com/scottwestover/backrooms-tcg-deck-builder](https://github.com/scottwestover/backrooms-tcg-deck-builder)
+
+YouTube: <a href="https://www.youtube.com/@swestover" target="_blank">https://www.youtube.com/@swestover</a>
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
