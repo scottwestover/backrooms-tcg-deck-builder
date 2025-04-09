@@ -91,10 +91,10 @@ export class DeckbuilderPageComponent implements OnInit {
     ),
     switchMap((params) => {
       if (params['userId'] && params['deckId']) {
-        this.deckId = params['deckId'];
+        this.deckId = params['deckId'].split('::')[0];
         return this.backroomsBackendService.getSave(params['userId']);
       } else if (params['id']) {
-        this.deckId = params['id'];
+        this.deckId = params['id'].split('::')[0];
         return this.backroomsBackendService.getDeck(params['id']).pipe(
           map((deck) => {
             return { ...emptySave, decks: [deck] };

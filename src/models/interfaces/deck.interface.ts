@@ -10,4 +10,9 @@ export interface IDeck {
   userId: string;
   imageCardId: string;
   photoUrl?: string;
+  docId: string;
+}
+
+export interface IDeckFireStore extends IDeck {
+  docId: string;
 }

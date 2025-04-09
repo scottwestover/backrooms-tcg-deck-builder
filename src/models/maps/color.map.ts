@@ -50,16 +50,6 @@ export const ColorMap = new Map<string, string>([
   ['Purple/White', '#6555a2'],
 ]);
 
-export const DeckColorMap = new Map<string, any>([
-  ['Red', { name: 'Red', img: 'assets/images/decks/red.svg' }],
-  ['Blue', { name: 'Blue', img: 'assets/images/decks/blue.svg' }],
-  ['Yellow', { name: 'Yellow', img: 'assets/images/decks/yellow.svg' }],
-  ['Green', { name: 'Green', img: 'assets/images/decks/green.svg' }],
-  ['Black', { name: 'Black', img: 'assets/images/decks/black.svg' }],
-  ['Purple', { name: 'Purple', img: 'assets/images/decks/purple.svg' }],
-  ['White', { name: 'White', img: 'assets/images/decks/white.svg' }],
-]);
-
 export const ColorOrderMap = new Map<string, number>([
   ['Red', 0],
   ['Red/Blue', 1],

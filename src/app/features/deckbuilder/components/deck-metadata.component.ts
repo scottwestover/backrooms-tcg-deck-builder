@@ -2,15 +2,9 @@ import {
   ChangeDetectionStrategy,
   Component,
   computed,
-  EventEmitter,
   inject,
-  Input,
-  OnChanges,
-  Output,
-  SimpleChanges,
 } from '@angular/core';
-import { ColorList, IColor, ITag } from '../../../../models';
-import { setColors, setTags } from '../../../functions';
+import { ColorList } from '../../../../models';
 import { ObscenityPipe } from '../../../pipes/obscenity.pipe';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { InputTextModule } from 'primeng/inputtext';
@@ -64,12 +58,6 @@ export class DeckMetadataComponent {
 
   title = computed(() => this.websiteStore.deck().title);
   description = computed(() => this.websiteStore.deck().description);
-  tags = computed(() =>
-    setTags(this.websiteStore.deck(), this.backroomCardStore.cards()),
-  );
-  selectedColor = computed(() =>
-    setColors(this.websiteStore.deck(), this.backroomCardStore.cards()),
-  );
 
   colors = ColorList;
   obscenity = new ObscenityPipe();

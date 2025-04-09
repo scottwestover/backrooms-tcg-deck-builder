@@ -15,7 +15,6 @@ import { ConfirmPopupModule } from 'primeng/confirmpopup';
 import { DragDropModule } from 'primeng/dragdrop';
 import { first } from 'rxjs';
 import {
-  DeckColorMap,
   DRAG,
   emptySettings,
   IDeck,
@@ -23,13 +22,7 @@ import {
   IDraggedCard,
   ISave,
 } from '../../../../models';
-import {
-  colorSort,
-  compareIDs,
-  levelSort,
-  setColors,
-  setTags,
-} from '../../../functions';
+import { colorSort, compareIDs, levelSort } from '../../../functions';
 import { BackroomsBackendService } from '../../../services/backrooms-backend.service';
 import { BackroomsCardStore } from '../../../store/backrooms-card.store';
 import { SaveStore } from '../../../store/save.store';
@@ -232,16 +225,8 @@ export class DeckViewComponent {
       count: card.count,
     }));
 
-    const tags = setTags(this.deck(), this.backroomCardStore.cards());
-    const selectedColor = setColors(
-      this.deck(),
-      this.backroomCardStore.cards(),
-    );
-
     const deck = {
       ...this.deck(),
-      tags,
-      color: DeckColorMap.get(selectedColor.name),
       cards,
       sideDeck,
     };

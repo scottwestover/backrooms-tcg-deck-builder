@@ -33,6 +33,7 @@ export const emptyDeck: IDeck = {
   user: '',
   userId: '',
   imageCardId: 'LL-001',
+  docId: '',
 };
 
 export const emptyFilter = {

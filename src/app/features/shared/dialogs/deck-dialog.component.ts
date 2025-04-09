@@ -14,7 +14,6 @@ import { DropdownModule } from 'primeng/dropdown';
 import { InputTextModule } from 'primeng/inputtext';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { TooltipModule } from 'primeng/tooltip';
-import { first } from 'rxjs';
 import * as uuid from 'uuid';
 
 import {
@@ -361,8 +360,10 @@ export class DeckDialogComponent {
     selBox.style.top = '0';
     selBox.style.opacity = '0';
     selBox.value = this.editable
-      ? `${DOMAIN}/deckbuilder/user/${this.authService.userData?.uid}/deck/${this.deck.id}`
-      : `${DOMAIN}/deckbuilder/${this.deck.id}`;
+      ? `${DOMAIN}/deckbuilder/user/${this.authService.userData?.uid}/deck/${
+          this.deck.docId || this.deck.id
+        }`
+      : `${DOMAIN}/deckbuilder/${this.deck.docId || this.deck.id}`;
     document.body.appendChild(selBox);
     selBox.focus();
     selBox.select();

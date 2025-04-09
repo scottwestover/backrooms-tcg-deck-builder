@@ -1,9 +1,16 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Firestore, getDoc } from '@angular/fire/firestore';
-import { first, from, map, Observable, of } from 'rxjs';
-import { IColor, ICountCard, IDeck, ISave, ISaveFireStore } from 'src/models';
-import { CARDSET, ITag } from '../../models';
+import { first, from, Observable, of } from 'rxjs';
+import {
+  IColor,
+  ICountCard,
+  IDeck,
+  IDeckFireStore,
+  ISave,
+  ISaveFireStore,
+} from 'src/models';
+import { CARDSET } from '../../models';
 import { emptySettings } from '../../models';
 import {
   doc,
@@ -13,8 +20,6 @@ import {
   collection,
   getDocs,
 } from 'firebase/firestore';
-
-const baseUrl = 'https://backend.digimoncard2.app/api/';
 
 @Injectable({
   providedIn: 'root',
@@ -38,23 +43,11 @@ export class BackroomsBackendService {
   }
 
   getDeck(id: any): Observable<IDeck> {
-    return this.http.get<any>(`${baseUrl}decks/${id}`).pipe(
-      map((deck) => {
-        const cards: ICountCard = JSON.parse(deck.cards);
-        const sideDeck: ICountCard = JSON.parse(
-          deck.sideDeck !== '' ? deck.sideDeck : '[]',
-        );
-        const color: IColor = JSON.parse(deck.color);
-        const tags: ITag[] = JSON.parse(deck.tags);
-        const likes: string[] = deck.likes ? JSON.parse(deck.likes) : [];
-        return {
-          ...deck,
-          likes,
-          cards,
-          sideDeck,
-          color,
-          tags,
-        } as IDeck;
+    const docRef = doc(this.firestore, 'decks', id);
+    return from(
+      getDoc(docRef).then((deck) => {
+        console.log(deck.data());
+        return deck.data() as IDeck;
       }),
     );
   }
@@ -109,14 +102,15 @@ export class BackroomsBackendService {
           if (!deck) {
             return;
           }
+          const docId = this.createDeckDocId(
+            modifiedUserSaveData.uid,
+            lastUpdatedDeckId,
+          );
           deck.user = modifiedUserSaveData.displayName;
           deck.userId = modifiedUserSaveData.uid;
-          const documentRefForDecks = doc(
-            this.firestore,
-            'decks',
-            this.createDeckDocId(modifiedUserSaveData.uid, lastUpdatedDeckId),
-          );
-          setDoc(documentRefForDecks, deck);
+          const modifiedDeck: IDeckFireStore = { ...deck, docId };
+          const documentRefForDecks = doc(this.firestore, 'decks', docId);
+          setDoc(documentRefForDecks, modifiedDeck);
         }
       }),
     );

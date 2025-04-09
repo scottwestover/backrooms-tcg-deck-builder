@@ -10,25 +10,7 @@ import {
   tagsList,
 } from '../../models';
 import { ReleaseOrder } from '../../models/data/release-order.data';
-import { ColorOrderMap, DeckColorMap } from '../../models/maps/color.map';
-import { sortID } from './filter.functions';
-
-export function setTags(deck: IDeck, allCards: BackroomsCard[]) {
-  let tags = [];
-
-  tags = setNewestSet(deck.cards);
-
-  if (bannedCardsIncluded(deck.cards, allCards)) {
-    tags.push({ name: 'Illegal', color: 'Primary' });
-  }
-
-  if (tooManyRestrictedCardsIncluded(deck.cards, allCards)) {
-    if (!tags.find((tag) => tag.name === 'Illegal')) {
-      tags.push({ name: 'Illegal', color: 'Primary' });
-    }
-  }
-  return tags;
-}
+import { ColorOrderMap } from '../../models/maps/color.map';
 
 export function setNewestSet(cards: ICountCard[]): ITag[] {
   const releaseOrder = ReleaseOrder;
@@ -91,42 +73,6 @@ export function tooManyRestrictedCardsIncluded(
     }*/
   });
   return restricted;
-}
-
-export function setColors(deck: IDeck, allCards: BackroomsCard[]) {
-  if (deck.cards.length === 0) {
-    return ['White', { name: 'White', img: 'assets/images/decks/white.svg' }];
-  }
-
-  const cards: IDeckCard[] = mapToDeckCards(deck.cards, allCards);
-
-  if (!cards) {
-    return ['White', { name: 'White', img: 'assets/images/decks/white.svg' }];
-  }
-
-  const colorArray = [
-    { name: 'Red', count: 0 },
-    { name: 'Blue', count: 0 },
-    { name: 'Yellow', count: 0 },
-    { name: 'Green', count: 0 },
-    { name: 'Black', count: 0 },
-    { name: 'Purple', count: 0 },
-    { name: 'White', count: 0 },
-  ];
-
-  cards.forEach((card) => {
-    colorArray.forEach((color, index) => {
-      // if (card.color && card.color.includes(color.name)) {
-      //   colorArray[index].count += card.count;
-      // }
-      colorArray[index].count += card.count;
-    });
-  });
-
-  const highest = colorArray.reduce((prev, current) =>
-    prev.count > current.count ? prev : current,
-  );
-  return DeckColorMap.get(highest.name);
 }
 
 export function compareIDs(idA: string, idB: string): boolean {
