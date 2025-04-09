@@ -245,6 +245,7 @@ export class NavLinksComponent implements OnInit, OnDestroy {
     if (route === '/deckbuilder') {
       const deckOpenOrDeckbuilder =
         this.route === '/deckbuilder' ||
+        this.route.includes('/deckbuilder/') ||
         (this.route.includes('/deck/') && this.route.includes('/user/'));
       return {
         'border-l-[3px] border-white': deckOpenOrDeckbuilder && this.sidebar,

@@ -46,7 +46,6 @@ export class BackroomsBackendService {
     const docRef = doc(this.firestore, 'decks', id);
     return from(
       getDoc(docRef).then((deck) => {
-        console.log(deck.data());
         return deck.data() as IDeck;
       }),
     );
