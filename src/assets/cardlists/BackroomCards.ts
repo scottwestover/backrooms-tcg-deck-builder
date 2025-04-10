@@ -1,13 +1,18 @@
 import { BackroomsCard } from '../../models';
 import LobbyLevelCardsJson from './lobby-level-cards.json';
 import CardParkCardsJson from './car-park-cards.json';
+import PromoCardsJson from './promo-cards.json';
 
 export function setupCardJson(): BackroomsCard[] {
   return setupJsonENG();
 }
 
 function setupJsonENG(): BackroomsCard[] {
-  const cards: BackroomsCard[] = [...LobbyLevelCardsJson, ...CardParkCardsJson];
+  const cards: BackroomsCard[] = [
+    ...LobbyLevelCardsJson,
+    ...CardParkCardsJson,
+    ...PromoCardsJson,
+  ];
   return cards;
 }
 

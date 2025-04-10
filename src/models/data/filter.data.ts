@@ -21,7 +21,7 @@ export const GroupedSets = [
   {
     label: 'Other',
     value: 'other',
-    items: [{ label: 'Promo', value: 'Promo' }],
+    items: [{ label: 'Promo', value: 'P' }],
   },
 ];
 
