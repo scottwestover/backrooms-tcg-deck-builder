@@ -2,9 +2,9 @@
   {
     "id": "P-001",
     "name": {
-      "english": "TODO"
+      "english": "no clip or treat"
     },
-    "rarity": "HYPER",
+    "rarity": "PURE",
     "types": [],
     "ccs": {
       "type": "",
@@ -16,17 +16,17 @@
     "health": "",
     "cardImage": "assets/images/cards/promo/P-001.webp",
     "illustrator": "-",
-    "cardNumber": "1001",
+    "cardNumber": "99001",
     "notes": "-",
     "version": "Normal",
-    "cardType": "Entity"
+    "cardType": "Room"
   },
   {
     "id": "P-002",
     "name": {
-      "english": "TODO"
+      "english": "The Conductor"
     },
-    "rarity": "HYPER",
+    "rarity": "PURE",
     "types": [],
     "ccs": {
       "type": "",
@@ -38,7 +38,7 @@
     "health": "",
     "cardImage": "assets/images/cards/promo/P-002.webp",
     "illustrator": "-",
-    "cardNumber": "1002",
+    "cardNumber": "99002",
     "notes": "-",
     "version": "Normal",
     "cardType": "Entity"
@@ -46,9 +46,9 @@
   {
     "id": "P-003",
     "name": {
-      "english": "TODO"
+      "english": "Happy Holidays"
     },
-    "rarity": "HYPER",
+    "rarity": "PURE",
     "types": [],
     "ccs": {
       "type": "",
@@ -60,7 +60,7 @@
     "health": "",
     "cardImage": "assets/images/cards/promo/P-003.webp",
     "illustrator": "-",
-    "cardNumber": "1003",
+    "cardNumber": "99003",
     "notes": "-",
     "version": "Normal",
     "cardType": "Entity"
@@ -68,9 +68,9 @@
   {
     "id": "P-004",
     "name": {
-      "english": "TODO"
+      "english": "Shadow Dealer"
     },
-    "rarity": "HYPER",
+    "rarity": "PURE",
     "types": [],
     "ccs": {
       "type": "",
@@ -82,7 +82,7 @@
     "health": "",
     "cardImage": "assets/images/cards/promo/P-004.webp",
     "illustrator": "-",
-    "cardNumber": "1004",
+    "cardNumber": "99004",
     "notes": "-",
     "version": "Normal",
     "cardType": "Entity"
@@ -90,9 +90,9 @@
   {
     "id": "P-005",
     "name": {
-      "english": "TODO"
+      "english": "Scarlett of Hearts"
     },
-    "rarity": "HYPER",
+    "rarity": "PURE",
     "types": [],
     "ccs": {
       "type": "",
@@ -104,7 +104,7 @@
     "health": "",
     "cardImage": "assets/images/cards/promo/P-005.webp",
     "illustrator": "-",
-    "cardNumber": "1005",
+    "cardNumber": "99005",
     "notes": "-",
     "version": "Normal",
     "cardType": "Entity"
@@ -112,9 +112,9 @@
   {
     "id": "P-006",
     "name": {
-      "english": "TODO"
+      "english": "Crimson"
     },
-    "rarity": "HYPER",
+    "rarity": "VOID",
     "types": [],
     "ccs": {
       "type": "",
@@ -126,7 +126,7 @@
     "health": "",
     "cardImage": "assets/images/cards/promo/P-006.webp",
     "illustrator": "-",
-    "cardNumber": "1006",
+    "cardNumber": "99006",
     "notes": "-",
     "version": "Normal",
     "cardType": "Entity"
@@ -134,9 +134,9 @@
   {
     "id": "P-007",
     "name": {
-      "english": "TODO"
+      "english": "Hemlock"
     },
-    "rarity": "HYPER",
+    "rarity": "VOID",
     "types": [],
     "ccs": {
       "type": "",
@@ -148,7 +148,7 @@
     "health": "",
     "cardImage": "assets/images/cards/promo/P-007.webp",
     "illustrator": "-",
-    "cardNumber": "1007",
+    "cardNumber": "99007",
     "notes": "-",
     "version": "Normal",
     "cardType": "Entity"
@@ -156,7 +156,7 @@
   {
     "id": "P-008",
     "name": {
-      "english": "TODO"
+      "english": "Sighton"
     },
     "rarity": "HYPER",
     "types": [],
@@ -170,7 +170,7 @@
     "health": "",
     "cardImage": "assets/images/cards/promo/P-008.webp",
     "illustrator": "-",
-    "cardNumber": "1008",
+    "cardNumber": "99008",
     "notes": "-",
     "version": "Normal",
     "cardType": "Entity"
@@ -178,7 +178,7 @@
   {
     "id": "P-009",
     "name": {
-      "english": "TODO"
+      "english": "Lindy's Memento"
     },
     "rarity": "HYPER",
     "types": [],
@@ -192,17 +192,17 @@
     "health": "",
     "cardImage": "assets/images/cards/promo/P-009.webp",
     "illustrator": "-",
-    "cardNumber": "1009",
+    "cardNumber": "99009",
     "notes": "-",
     "version": "Normal",
-    "cardType": "Entity"
+    "cardType": "Item"
   },
   {
     "id": "P-010",
     "name": {
-      "english": "TODO"
+      "english": "The Pitfalls"
     },
-    "rarity": "HYPER",
+    "rarity": "RARE",
     "types": [],
     "ccs": {
       "type": "",
@@ -214,17 +214,17 @@
     "health": "",
     "cardImage": "assets/images/cards/promo/P-010.webp",
     "illustrator": "-",
-    "cardNumber": "1010",
+    "cardNumber": "99010",
     "notes": "-",
     "version": "Normal",
-    "cardType": "Entity"
+    "cardType": "ROOM"
   },
   {
     "id": "P-011",
     "name": {
-      "english": "TODO"
+      "english": "Moth's Nest"
     },
-    "rarity": "HYPER",
+    "rarity": "RARE",
     "types": [],
     "ccs": {
       "type": "",
@@ -236,7 +236,7 @@
     "health": "",
     "cardImage": "assets/images/cards/promo/P-011.webp",
     "illustrator": "-",
-    "cardNumber": "1011",
+    "cardNumber": "99011",
     "notes": "-",
     "version": "Normal",
     "cardType": "Entity"
@@ -244,9 +244,9 @@
   {
     "id": "P-012",
     "name": {
-      "english": "TODO"
+      "english": "Imitatus Dux"
     },
-    "rarity": "HYPER",
+    "rarity": "COMMON",
     "types": [],
     "ccs": {
       "type": "",
@@ -258,7 +258,7 @@
     "health": "",
     "cardImage": "assets/images/cards/promo/P-012.webp",
     "illustrator": "-",
-    "cardNumber": "1012",
+    "cardNumber": "99012",
     "notes": "-",
     "version": "Normal",
     "cardType": "Entity"
@@ -266,9 +266,9 @@
   {
     "id": "P-013",
     "name": {
-      "english": "TODO"
+      "english": "Doll Face's Jack O'Lantern"
     },
-    "rarity": "HYPER",
+    "rarity": "RARE",
     "types": [],
     "ccs": {
       "type": "",
@@ -280,17 +280,17 @@
     "health": "",
     "cardImage": "assets/images/cards/promo/P-013.webp",
     "illustrator": "-",
-    "cardNumber": "1013",
+    "cardNumber": "99013",
     "notes": "-",
     "version": "Normal",
-    "cardType": "Entity"
+    "cardType": "Item"
   },
   {
     "id": "P-014",
     "name": {
-      "english": "TODO"
+      "english": "Feast Room"
     },
-    "rarity": "HYPER",
+    "rarity": "RARE",
     "types": [],
     "ccs": {
       "type": "",
@@ -302,17 +302,17 @@
     "health": "",
     "cardImage": "assets/images/cards/promo/P-014.webp",
     "illustrator": "-",
-    "cardNumber": "1014",
+    "cardNumber": "99014",
     "notes": "-",
     "version": "Normal",
-    "cardType": "Entity"
+    "cardType": "Room"
   },
   {
     "id": "P-015",
     "name": {
-      "english": "TODO"
+      "english": "Holiday Harmonizers"
     },
-    "rarity": "HYPER",
+    "rarity": "RARE",
     "types": [],
     "ccs": {
       "type": "",
@@ -324,7 +324,7 @@
     "health": "",
     "cardImage": "assets/images/cards/promo/P-015.webp",
     "illustrator": "-",
-    "cardNumber": "1015",
+    "cardNumber": "99015",
     "notes": "-",
     "version": "Normal",
     "cardType": "Entity"
@@ -332,7 +332,7 @@
   {
     "id": "P-016",
     "name": {
-      "english": "TODO"
+      "english": "Las Doce Uvas de la Suerte"
     },
     "rarity": "HYPER",
     "types": [],
@@ -346,15 +346,15 @@
     "health": "",
     "cardImage": "assets/images/cards/promo/P-016.webp",
     "illustrator": "-",
-    "cardNumber": "1016",
+    "cardNumber": "99016",
     "notes": "-",
     "version": "Normal",
-    "cardType": "Entity"
+    "cardType": "Item"
   },
   {
     "id": "P-017",
     "name": {
-      "english": "TODO"
+      "english": "Ancient Blusher"
     },
     "rarity": "HYPER",
     "types": [],
@@ -368,7 +368,7 @@
     "health": "",
     "cardImage": "assets/images/cards/promo/P-017.webp",
     "illustrator": "-",
-    "cardNumber": "1017",
+    "cardNumber": "99017",
     "notes": "-",
     "version": "Normal",
     "cardType": "Entity"
@@ -376,7 +376,7 @@
   {
     "id": "P-018",
     "name": {
-      "english": "TODO"
+      "english": "ElectroFest Ballon"
     },
     "rarity": "HYPER",
     "types": [],
@@ -390,17 +390,17 @@
     "health": "",
     "cardImage": "assets/images/cards/promo/P-018.webp",
     "illustrator": "-",
-    "cardNumber": "1018",
+    "cardNumber": "99018",
     "notes": "-",
     "version": "Normal",
-    "cardType": "Entity"
+    "cardType": "Item"
   },
   {
     "id": "P-019",
     "name": {
-      "english": "TODO"
+      "english": "Martha"
     },
-    "rarity": "HYPER",
+    "rarity": "PURE",
     "types": [],
     "ccs": {
       "type": "",
@@ -412,7 +412,7 @@
     "health": "",
     "cardImage": "assets/images/cards/promo/P-019.webp",
     "illustrator": "-",
-    "cardNumber": "1019",
+    "cardNumber": "99019",
     "notes": "-",
     "version": "Normal",
     "cardType": "Entity"
@@ -420,9 +420,9 @@
   {
     "id": "P-020",
     "name": {
-      "english": "TODO"
+      "english": "Telepathically Hawkshaw"
     },
-    "rarity": "HYPER",
+    "rarity": "PURE",
     "types": [],
     "ccs": {
       "type": "",
@@ -432,9 +432,9 @@
     "sanityPoints": "",
     "attackDamage": "",
     "health": "",
-    "cardImage": "assets/images/cards/promo/P-020.webp",
+    "cardImage": "assets/images/cards/promo/P-0210.webp",
     "illustrator": "-",
-    "cardNumber": "1020",
+    "cardNumber": "99020",
     "notes": "-",
     "version": "Normal",
     "cardType": "Entity"
@@ -442,9 +442,9 @@
   {
     "id": "P-021",
     "name": {
-      "english": "TODO"
+      "english": "Egress Feathergiest"
     },
-    "rarity": "HYPER",
+    "rarity": "PURE",
     "types": [],
     "ccs": {
       "type": "",
@@ -456,7 +456,7 @@
     "health": "",
     "cardImage": "assets/images/cards/promo/P-021.webp",
     "illustrator": "-",
-    "cardNumber": "1021",
+    "cardNumber": "99021",
     "notes": "-",
     "version": "Normal",
     "cardType": "Entity"
@@ -464,7 +464,7 @@
   {
     "id": "P-022",
     "name": {
-      "english": "TODO"
+      "english": "Parasitic Tennis Ball"
     },
     "rarity": "HYPER",
     "types": [],
@@ -478,17 +478,17 @@
     "health": "",
     "cardImage": "assets/images/cards/promo/P-022.webp",
     "illustrator": "-",
-    "cardNumber": "1022",
+    "cardNumber": "99022",
     "notes": "-",
     "version": "Normal",
-    "cardType": "Entity"
+    "cardType": "Item"
   },
   {
     "id": "P-023",
     "name": {
-      "english": "TODO"
+      "english": "Ritual Hallway"
     },
-    "rarity": "HYPER",
+    "rarity": "VOID",
     "types": [],
     "ccs": {
       "type": "",
@@ -500,17 +500,17 @@
     "health": "",
     "cardImage": "assets/images/cards/promo/P-023.webp",
     "illustrator": "-",
-    "cardNumber": "1023",
+    "cardNumber": "99023",
     "notes": "-",
     "version": "Normal",
-    "cardType": "Entity"
+    "cardType": "Room"
   },
   {
     "id": "P-024",
     "name": {
-      "english": "TODO"
+      "english": "Surveillance"
     },
-    "rarity": "HYPER",
+    "rarity": "PURE",
     "types": [],
     "ccs": {
       "type": "",
@@ -522,7 +522,7 @@
     "health": "",
     "cardImage": "assets/images/cards/promo/P-024.webp",
     "illustrator": "-",
-    "cardNumber": "1024",
+    "cardNumber": "99024",
     "notes": "-",
     "version": "Normal",
     "cardType": "Entity"
@@ -530,7 +530,7 @@
   {
     "id": "P-025",
     "name": {
-      "english": "TODO"
+      "english": "Doll Face Off-Road"
     },
     "rarity": "HYPER",
     "types": [],
@@ -544,7 +544,7 @@
     "health": "",
     "cardImage": "assets/images/cards/promo/P-025.webp",
     "illustrator": "-",
-    "cardNumber": "1025",
+    "cardNumber": "99025",
     "notes": "-",
     "version": "Normal",
     "cardType": "Entity"
@@ -552,7 +552,7 @@
   {
     "id": "P-026",
     "name": {
-      "english": "TODO"
+      "english": "Car Park Portal*b"
     },
     "rarity": "HYPER",
     "types": [],
@@ -566,7 +566,7 @@
     "health": "",
     "cardImage": "assets/images/cards/promo/P-026.webp",
     "illustrator": "-",
-    "cardNumber": "1026",
+    "cardNumber": "99026",
     "notes": "-",
     "version": "Normal",
     "cardType": "Entity"
@@ -574,9 +574,9 @@
   {
     "id": "P-027",
     "name": {
-      "english": "TODO"
+      "english": "Paradox Watch"
     },
-    "rarity": "HYPER",
+    "rarity": "VOID",
     "types": [],
     "ccs": {
       "type": "",
@@ -588,7 +588,7 @@
     "health": "",
     "cardImage": "assets/images/cards/promo/P-027.webp",
     "illustrator": "-",
-    "cardNumber": "1027",
+    "cardNumber": "99027",
     "notes": "-",
     "version": "Normal",
     "cardType": "Entity"
@@ -596,9 +596,9 @@
   {
     "id": "P-028",
     "name": {
-      "english": "TODO"
+      "english": "Gamma Golem"
     },
-    "rarity": "HYPER",
+    "rarity": "RARE",
     "types": [],
     "ccs": {
       "type": "",
@@ -610,7 +610,7 @@
     "health": "",
     "cardImage": "assets/images/cards/promo/P-028.webp",
     "illustrator": "-",
-    "cardNumber": "1028",
+    "cardNumber": "99028",
     "notes": "-",
     "version": "Normal",
     "cardType": "Entity"
@@ -618,9 +618,9 @@
   {
     "id": "P-029",
     "name": {
-      "english": "TODO"
+      "english": "The dominion"
     },
-    "rarity": "HYPER",
+    "rarity": "PURE",
     "types": [],
     "ccs": {
       "type": "",
@@ -632,7 +632,7 @@
     "health": "",
     "cardImage": "assets/images/cards/promo/P-029.webp",
     "illustrator": "-",
-    "cardNumber": "1029",
+    "cardNumber": "99029",
     "notes": "-",
     "version": "Normal",
     "cardType": "Entity"
@@ -640,9 +640,9 @@
   {
     "id": "P-030",
     "name": {
-      "english": "TODO"
+      "english": "Rest Area"
     },
-    "rarity": "HYPER",
+    "rarity": "VOID",
     "types": [],
     "ccs": {
       "type": "",
@@ -654,7 +654,7 @@
     "health": "",
     "cardImage": "assets/images/cards/promo/P-030.webp",
     "illustrator": "-",
-    "cardNumber": "1030",
+    "cardNumber": "99030",
     "notes": "-",
     "version": "Normal",
     "cardType": "Entity"
@@ -662,9 +662,9 @@
   {
     "id": "P-031",
     "name": {
-      "english": "TODO"
+      "english": "Fuzzy Dice"
     },
-    "rarity": "HYPER",
+    "rarity": "VOID",
     "types": [],
     "ccs": {
       "type": "",
@@ -676,9 +676,9 @@
     "health": "",
     "cardImage": "assets/images/cards/promo/P-031.webp",
     "illustrator": "-",
-    "cardNumber": "1031",
+    "cardNumber": "99031",
     "notes": "-",
     "version": "Normal",
-    "cardType": "Entity"
+    "cardType": "Item"
   }
 ]

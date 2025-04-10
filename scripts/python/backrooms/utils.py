@@ -117,14 +117,15 @@ example: instead of lost_levels, we can do car park like so, 'car_park', 'CP', a
 def create_cards_json():
   card_image_dir = './data/images/'
   # update 'lost_levels' with the folder of the set we are parsing files for
-  file_list = os.listdir(card_image_dir + 'lost_levels')
+  file_list = os.listdir(card_image_dir + 'promo')
   cards = []
   for file_name in file_list:
     card_id = file_name[3] + file_name[4] + file_name[5]
     # update the template below to use the correct set identifier and set id
     # LL - Lost Levels, id = 1
     # CP - Car Park, id = 2
-    card = create_card_template_json('LL', '1', card_id)
+    # P - Promo, id = 3
+    card = create_card_template_json('P', '1', card_id)
     cards.append(card)
   sorted_cards = sorted(cards, key=lambda x: x['cardNumber'])
   with open('./data/cards.json', 'w') as file:
