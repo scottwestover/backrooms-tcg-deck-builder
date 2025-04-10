@@ -107,7 +107,7 @@
     "cardNumber": "99005",
     "notes": "-",
     "version": "Normal",
-    "cardType": "Entity"
+    "cardType": "Item"
   },
   {
     "id": "P-006",
@@ -432,7 +432,7 @@
     "sanityPoints": "",
     "attackDamage": "",
     "health": "",
-    "cardImage": "assets/images/cards/promo/P-0210.webp",
+    "cardImage": "assets/images/cards/promo/P-020.webp",
     "illustrator": "-",
     "cardNumber": "99020",
     "notes": "-",
@@ -569,7 +569,7 @@
     "cardNumber": "99026",
     "notes": "-",
     "version": "Normal",
-    "cardType": "Entity"
+    "cardType": "Outcome"
   },
   {
     "id": "P-027",
@@ -618,9 +618,9 @@
   {
     "id": "P-029",
     "name": {
-      "english": "The dominion"
+      "english": "The Dominion"
     },
-    "rarity": "PURE",
+    "rarity": "SHATTERED",
     "types": [],
     "ccs": {
       "type": "",
@@ -664,7 +664,7 @@
     "name": {
       "english": "Fuzzy Dice"
     },
-    "rarity": "VOID",
+    "rarity": "RARE",
     "types": [],
     "ccs": {
       "type": "",
