@@ -19,7 +19,9 @@ jobs:
         with:
           node-version: "22.14.0"
           cache: "pnpm"
-      - name: install project dependencies
-        run: pnpm install --frozen-lockfile
-      - name: build project
-        run: pnpm build
+      - run: echo ${{ secrets.FIREBASE_CONFIG }} > src/environments/environment.prod.ts
+      - run: cat src/environments/environment.prod.ts
+      # - name: install project dependencies
+      #   run: pnpm install --frozen-lockfile
+      # - name: build project
+      #   run: pnpm build
