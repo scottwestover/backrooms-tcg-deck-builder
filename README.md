@@ -139,3 +139,12 @@ YouTube: <a href="https://www.youtube.com/@swestover" target="_blank">https://ww
 This repo is based on the Digimon Card App repo found here: <a target="_blank" href="https://github.com/TakaOtaku/Digimon-Card-App">https://github.com/TakaOtaku/Digimon-Card-App</a>.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
+
+
+## Deployment
+
+To deploy the latest changes:
+
+1. build the project: `pnpm build`
+2. update `src/environments/environment.prod.ts` with the service account json for the firebase project
+3. run `pnpm deploy:host` to use the firebase cli to deploy directly to firebase
