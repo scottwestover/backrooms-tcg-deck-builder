@@ -680,5 +680,27 @@
     "notes": "-",
     "version": "Normal",
     "cardType": "Item"
+  },
+  {
+    "id": "P-032",
+    "name": {
+      "english": "Chicane"
+    },
+    "rarity": "UNCOMMON",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/promo/P-032.webp",
+    "illustrator": "-",
+    "cardNumber": "99032",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Outcome"
   }
 ]

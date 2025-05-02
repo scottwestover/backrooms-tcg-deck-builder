@@ -19,8 +19,12 @@ jobs:
         with:
           node-version: "22.14.0"
           cache: "pnpm"
-      - run: echo ${{ secrets.FIREBASE_CONFIG }} > src/environments/environment.prod.ts
-      - run: cat src/environments/environment.prod.ts
+      - name: Configure prod config file
+        run: |
+          python -c "import os; file = open('src/environments/environment.prod.ts', 'w'); file.write(os.environ['FIREBASE_CONFIG']); file.close()"
+        shell: bash
+        env:
+          FIREBASE_CONFIG : ${{secrets.FIREBASE_CONFIG}}
       - name: install project dependencies
         run: pnpm install --frozen-lockfile
       - name: build project
