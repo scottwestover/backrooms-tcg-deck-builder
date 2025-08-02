@@ -50,3 +50,6 @@ Thumbs.db
 venv library root
 
 src/environments/env.prd.ts
+
+# Sentry Config File
+.sentryclirc
