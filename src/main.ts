@@ -1,9 +1,15 @@
+import * as Sentry from '@sentry/angular';
 import { DatePipe } from '@angular/common';
 import {
   provideHttpClient,
   withInterceptorsFromDi,
 } from '@angular/common/http';
-import { enableProdMode, importProvidersFrom } from '@angular/core';
+import {
+  APP_INITIALIZER,
+  enableProdMode,
+  ErrorHandler,
+  importProvidersFrom,
+} from '@angular/core';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAnalyticsModule } from '@angular/fire/compat/analytics';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
@@ -20,6 +26,7 @@ import { provideAnimations } from '@angular/platform-browser/animations';
 import {
   PreloadAllModules,
   provideRouter,
+  Router,
   Routes,
   withPreloading,
 } from '@angular/router';
@@ -83,6 +90,12 @@ const routes: Routes = [
 
 if (environment.production) {
   enableProdMode();
+  if (environment.sentryConfig && environment.sentryConfig.dsn !== '') {
+    Sentry.init({
+      dsn: environment.sentryConfig.dsn,
+      sendDefaultPii: true,
+    });
+  }
 }
 
 bootstrapApplication(AppComponent, {
@@ -116,5 +129,21 @@ bootstrapApplication(AppComponent, {
     MessageService,
     ConfirmationService,
     DatePipe,
+    {
+      provide: ErrorHandler,
+      useValue: Sentry.createErrorHandler({
+        showDialog: true,
+      }),
+    },
+    {
+      provide: Sentry.TraceService,
+      deps: [Router],
+    },
+    {
+      provide: APP_INITIALIZER,
+      useFactory: () => () => {},
+      deps: [Sentry.TraceService],
+      multi: true,
+    },
   ],
 }).catch((err) => console.error(err));

@@ -38,6 +38,7 @@
     "@ngrx/signals": "17.1.0",
     "@ngrx/store": "17.0.1",
     "@ngrx/store-devtools": "17.0.1",
+    "@sentry/angular": "10.0.0",
     "@types/chart.js": "2.9.41",
     "badwords-list": "1.0.0",
     "chart.js": "3.7.1",
