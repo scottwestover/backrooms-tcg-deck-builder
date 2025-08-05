@@ -9,4 +9,7 @@ export const environment = {
     appId: '1:270408846436:web:1ecbead723ef49487c6371',
     measurementId: 'G-EDPDSPD6K9',
   },
+  sentryConfig: {
+    dsn: '',
+  },
 };

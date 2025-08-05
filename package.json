@@ -10,7 +10,8 @@
     "test": "ng test",
     "lint": "ng lint --fix",
     "format": "npx prettier src/**/*.{js,jsx,ts,tsx,html,css,scss} --write",
-    "deploy:host": "npx firebase deploy --only hosting"
+    "deploy:host": "npx firebase deploy --only hosting",
+    "sentry:sourcemaps": "sentry-cli sourcemaps inject --org devshareacademy --project backroomstcg-deckbuilder ./dist && sentry-cli sourcemaps upload --org devshareacademy --project backroomstcg-deckbuilder ./dist"
   },
   "private": true,
   "dependencies": {
@@ -38,6 +39,8 @@
     "@ngrx/signals": "17.1.0",
     "@ngrx/store": "17.0.1",
     "@ngrx/store-devtools": "17.0.1",
+    "@sentry/angular": "10.0.0",
+    "@sentry/cli": "^2.50.2",
     "@types/chart.js": "2.9.41",
     "badwords-list": "1.0.0",
     "chart.js": "3.7.1",

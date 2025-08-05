@@ -9,4 +9,7 @@ export const environment = {
     appId: '',
     measurementId: '',
   },
+  sentryConfig: {
+    dsn: '',
+  },
 };
