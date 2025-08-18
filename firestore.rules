@@ -20,10 +20,8 @@ service cloud.firestore {
     
     match /decks/{deckId} {
       allow read: if true;
-    }
-    
-    match /decks/{deckId} {
-      allow write: if request.auth != null && request.auth.uid == resource.data.userId && request.resource.id.matches(".*::"+request.auth.uid) == true;
+      allow update: if request.auth != null && request.auth.uid == resource.data.userId && request.resource.id.matches(".*::"+request.auth.uid) == true;
+      allow delete: if request.auth != null && request.auth.uid == resource.data.userId && resource.id.matches(".*::"+request.auth.uid) == true;
     }
   }
 }

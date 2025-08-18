@@ -99,7 +99,7 @@ To get a local copy up and running follow these simple example steps.
    ```sh
    npm run start
    ```
-4. See the site served on https://localhost:4200
+4. See the site served on http://localhost:4200/
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 

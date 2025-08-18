@@ -5,6 +5,7 @@ import {
   EventEmitter,
   inject,
   Input,
+  OnDestroy,
   Output,
   Signal,
 } from '@angular/core';
@@ -134,7 +135,7 @@ import { DeckToolbarComponent } from './deck-toolbar.component';
   ],
   providers: [MessageService],
 })
-export class DeckViewComponent {
+export class DeckViewComponent implements OnDestroy {
   @Input() collectionView: boolean;
 
   @Output() onMainDeck = new EventEmitter<IDeckCard[]>();
@@ -200,6 +201,7 @@ export class DeckViewComponent {
         'You are about to save all changes and overwrite everything changed. Are you sure?',
       accept: () => {
         this.onMainDeck.pipe(first()).subscribe(() => {
+          //this.mapToDeck();
           this.saveStore.importDeck(this.deck());
           this.messageService.add({
             severity: 'success',
@@ -322,5 +324,9 @@ export class DeckViewComponent {
       drag,
     };
     this.websiteStore.updateDraggedCard(dragCard);
+  }
+
+  ngOnDestroy(): void {
+    this.confirmationService.close();
   }
 }

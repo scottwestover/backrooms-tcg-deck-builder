@@ -106,7 +106,6 @@ export class DeckbuilderPageComponent implements OnInit {
     }),
     tap((save) => {
       if (save.decks.length === 0) return;
-
       const foundDeck = save.decks.find((deck) => deck.id === this.deckId);
       if (!foundDeck) return;
 
