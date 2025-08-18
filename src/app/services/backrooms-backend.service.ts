@@ -19,6 +19,8 @@ import {
   where,
   collection,
   getDocs,
+  limit,
+  deleteDoc,
 } from 'firebase/firestore';
 
 @Injectable({
@@ -99,17 +101,31 @@ export class BackroomsBackendService {
         if (lastUpdatedDeckId !== '') {
           const deck = save.decks.find((deck) => deck.id === lastUpdatedDeckId);
           if (!deck) {
-            return;
+            // if deck was not found, attempt to find this deck and delete the record from firestore
+            const deckRef = query(
+              collection(this.firestore, 'decks'),
+              where('userId', '==', save.uid),
+              where('id', '==', lastUpdatedDeckId),
+              limit(1),
+            );
+            getDocs(deckRef).then((deckDocuments) => {
+              // now cleanup those decks that were deleted for this user
+              deckDocuments.forEach(async (deckDoc) => {
+                await deleteDoc(deckDoc.ref);
+              });
+              return;
+            });
+          } else {
+            const docId = this.createDeckDocId(
+              modifiedUserSaveData.uid,
+              lastUpdatedDeckId,
+            );
+            deck.user = modifiedUserSaveData.displayName;
+            deck.userId = modifiedUserSaveData.uid;
+            const modifiedDeck: IDeckFireStore = { ...deck, docId };
+            const documentRefForDecks = doc(this.firestore, 'decks', docId);
+            setDoc(documentRefForDecks, modifiedDeck);
           }
-          const docId = this.createDeckDocId(
-            modifiedUserSaveData.uid,
-            lastUpdatedDeckId,
-          );
-          deck.user = modifiedUserSaveData.displayName;
-          deck.userId = modifiedUserSaveData.uid;
-          const modifiedDeck: IDeckFireStore = { ...deck, docId };
-          const documentRefForDecks = doc(this.firestore, 'decks', docId);
-          setDoc(documentRefForDecks, modifiedDeck);
         }
       }),
     );

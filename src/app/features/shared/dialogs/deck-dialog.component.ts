@@ -277,10 +277,34 @@ export class DeckDialogComponent {
         target: event.target ?? undefined,
         message: 'You are about to open this deck. Are you sure?',
         accept: () => {
-          this.websiteStore.updateDeck(this.deck);
-          this.router.navigateByUrl(
-            '/deckbuilder/user/' + this.deck.userId + '/deck/' + this.deck.id,
+          console.log(
+            this.authService.isLoggedIn,
+            this.authService.userData?.uid,
+            this.deck.userId,
           );
+
+          // if user is logged in, and this is their deck, we can navigate to that user
+          if (
+            this.authService.isLoggedIn &&
+            this.authService.userData?.uid === this.deck.userId
+          ) {
+            this.websiteStore.updateDeck(this.deck);
+            this.router.navigateByUrl(
+              '/deckbuilder/user/' + this.deck.userId + '/deck/' + this.deck.id,
+            );
+          } else {
+            // otherwise, default to the deckbuilder view since we need to create a new deck for this user
+            // so update the deckId to be dynamic, and then save
+            this.websiteStore.updateDeck({
+              ...this.deck,
+              id: uuid.v4(),
+              date: new Date().toString(),
+            });
+            this.router.navigateByUrl('/deckbuilder');
+          }
+          // this.router.navigateByUrl(
+          //   '/deckbuilder/user/' + this.deck.userId + '/deck/' + this.deck.id,
+          // );
           this.dialogStore.showDeckDialog(false);
         },
       });
