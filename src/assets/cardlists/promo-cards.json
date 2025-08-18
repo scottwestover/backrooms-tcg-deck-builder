@@ -702,5 +702,71 @@
     "notes": "-",
     "version": "Normal",
     "cardType": "Outcome"
+  },
+  {
+    "id": "P-033",
+    "name": {
+      "english": "C.C.B.B"
+    },
+    "rarity": "RARE",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/promo/P-033.webp",
+    "illustrator": "-",
+    "cardNumber": "99033",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+    {
+    "id": "P-034",
+    "name": {
+      "english": "Ferdinand"
+    },
+    "rarity": "VOID",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/promo/P-034.webp",
+    "illustrator": "-",
+    "cardNumber": "99034",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+    {
+    "id": "P-035",
+    "name": {
+      "english": "Overdrive Marion"
+    },
+    "rarity": "HYPER",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/promo/P-035.webp",
+    "illustrator": "-",
+    "cardNumber": "99035",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
   }
 ]
