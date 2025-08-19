@@ -31,7 +31,7 @@ import {
   withPreloading,
 } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { provideStoreDevtools } from '@ngrx/store-devtools';
+// import { provideStoreDevtools } from '@ngrx/store-devtools';
 import 'hammerjs';
 import { ToastrModule } from 'ngx-toastr';
 import { ConfirmationService, MessageService } from 'primeng/api';
