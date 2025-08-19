@@ -383,11 +383,14 @@ export class DeckDialogComponent {
     selBox.style.left = '0';
     selBox.style.top = '0';
     selBox.style.opacity = '0';
-    selBox.value = this.editable
-      ? `${DOMAIN}/deckbuilder/user/${this.authService.userData?.uid}/deck/${
-          this.deck.docId || this.deck.id
-        }`
-      : `${DOMAIN}/deckbuilder/${this.deck.docId || this.deck.id}`;
+    // GH-35 copy link includes userId, which breaks if others try to view this users deck
+    // selBox.value = this.editable
+    //   ? `${DOMAIN}/deckbuilder/user/${this.authService.userData?.uid}/deck/${
+    //       this.deck.docId || this.deck.id
+    //     }`
+    //   : `${DOMAIN}/deckbuilder/${this.deck.docId || this.deck.id}`;
+
+    selBox.value = `${DOMAIN}/deckbuilder/${this.deck.docId || this.deck.id}`;
     document.body.appendChild(selBox);
     selBox.focus();
     selBox.select();
