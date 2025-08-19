@@ -9,6 +9,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - No changes.
 
+## [0.0.6] - 2025-08-19
+
+### Fixed
+
+- Fixed bug with copy link that is generated when you attempt to copy the link for a deck from your profile page. The new link will only use the deckId instead of the generated userId and deckId combination [e56cb27](https://github.com/scottwestover/backrooms-tcg-deck-builder/pull/36/commits/e56cb27349acdb847609cec5ed901843f93e1a07).
+
 ## [0.0.5] - 2025-08-18
 
 ### Added
