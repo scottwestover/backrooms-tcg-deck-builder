@@ -103,6 +103,10 @@ To get a local copy up and running follow these simple example steps.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
+#### Development Firebase/Firestore Testing
+
+In order to connect to the development environment locally, the `localhost` domain needs to be whitelisted in the Firebase project for the authentication. If this is not done, then the app will fail when attempting to login as a user.
+
 <!-- CONTRIBUTING -->
 ## Contributing
 
