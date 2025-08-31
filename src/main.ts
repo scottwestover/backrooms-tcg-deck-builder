@@ -9,12 +9,17 @@ import {
   enableProdMode,
   ErrorHandler,
   importProvidersFrom,
+  isDevMode,
 } from '@angular/core';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAnalyticsModule } from '@angular/fire/compat/analytics';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
-import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+import {
+  provideFirestore,
+  getFirestore,
+  enableIndexedDbPersistence,
+} from '@angular/fire/firestore';
 import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
@@ -49,8 +54,8 @@ import { HomePageComponent } from './app/features/home/home-page.component';
 import { ProfilePageComponent } from './app/features/profile/profile-page.component';
 import { AuthService } from './app/services/auth.service';
 import { BackroomsBackendService } from './app/services/backrooms-backend.service';
-
 import { environment } from './environments/environment';
+import { provideServiceWorker } from '@angular/service-worker';
 
 const routes: Routes = [
   {
@@ -118,7 +123,11 @@ bootstrapApplication(AppComponent, {
       ProgressSpinnerModule,
       TooltipModule,
       provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
-      provideFirestore(() => getFirestore()),
+      provideFirestore(() => {
+        const firestore = getFirestore();
+        enableIndexedDbPersistence(firestore);
+        return firestore;
+      }),
     ),
     provideRouter(routes, withPreloading(PreloadAllModules)),
     ReactiveFormsModule,
@@ -145,5 +154,9 @@ bootstrapApplication(AppComponent, {
       deps: [Sentry.TraceService],
       multi: true,
     },
+    provideServiceWorker('ngsw-worker.js', {
+      enabled: !isDevMode(),
+      registrationStrategy: 'registerWhenStable:30000',
+    }),
   ],
 }).catch((err) => console.error(err));
