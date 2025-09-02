@@ -19,8 +19,10 @@ import {
   provideFirestore,
   getFirestore,
   enableIndexedDbPersistence,
+  initializeFirestore,
+  persistentLocalCache,
 } from '@angular/fire/firestore';
-import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
+import { provideFirebaseApp, initializeApp, getApp } from '@angular/fire/app';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
   bootstrapApplication,
@@ -125,25 +127,11 @@ bootstrapApplication(AppComponent, {
       TooltipModule,
       provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
       provideFirestore(() => {
-        const firestore = getFirestore();
-        enableIndexedDbPersistence(firestore).catch((err) => {
-          if (err.code == 'failed-precondition') {
-            // Multiple tabs open, persistence can only be enabled
-            // in one tab at a time.
-            // ...
-            console.warn(
-              'failed-precondition, multiple tabs open, persistence can only be enabled in one tab at a time.',
-            );
-          } else if (err.code == 'unimplemented') {
-            // The current browser does not support all of the
-            // features required to enable persistence
-            // ...
-            console.warn(
-              'unimplemented, The current browser does not support all of the features required to enable persistence',
-            );
-          }
+        return initializeFirestore(getApp(), {
+          localCache: persistentLocalCache({
+            tabManager: persistentMultipleTabManager(),
+          }),
         });
-        return firestore;
       }),
     ),
     provideRouter(routes, withPreloading(PreloadAllModules)),
