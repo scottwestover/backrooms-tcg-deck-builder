@@ -56,6 +56,7 @@ import { AuthService } from './app/services/auth.service';
 import { BackroomsBackendService } from './app/services/backrooms-backend.service';
 import { environment } from './environments/environment';
 import { provideServiceWorker } from '@angular/service-worker';
+import { persistentMultipleTabManager } from 'firebase/firestore';
 
 const routes: Routes = [
   {
@@ -125,7 +126,23 @@ bootstrapApplication(AppComponent, {
       provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
       provideFirestore(() => {
         const firestore = getFirestore();
-        enableIndexedDbPersistence(firestore);
+        enableIndexedDbPersistence(firestore).catch((err) => {
+          if (err.code == 'failed-precondition') {
+            // Multiple tabs open, persistence can only be enabled
+            // in one tab at a time.
+            // ...
+            console.warn(
+              'failed-precondition, multiple tabs open, persistence can only be enabled in one tab at a time.',
+            );
+          } else if (err.code == 'unimplemented') {
+            // The current browser does not support all of the
+            // features required to enable persistence
+            // ...
+            console.warn(
+              'unimplemented, The current browser does not support all of the features required to enable persistence',
+            );
+          }
+        });
         return firestore;
       }),
     ),
