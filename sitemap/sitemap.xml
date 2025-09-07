@@ -20,4 +20,8 @@
 		<loc>https://backrooms-tcg-deckbuilder.web.app/decks/</loc>
     <changefreq>weekly</changefreq>
 	</url>
+  <url>
+		<loc>https://backrooms-tcg-deckbuilder.web.app/how-to/</loc>
+    <changefreq>weekly</changefreq>
+	</url>
 </urlset>

@@ -51,6 +51,7 @@ import { TooltipModule } from 'primeng/tooltip';
 import { AppComponent } from './app/app.component';
 import { CollectionPageComponent } from './app/features/collection/collection-page.component';
 import { DeckbuilderPageComponent } from './app/features/deckbuilder/deckbuilder-page.component';
+import { HelpPageComponent } from './app/features/help/help-page.component';
 import { DecksPageComponent } from './app/features/decks/decks-page.component';
 import { HomePageComponent } from './app/features/home/home-page.component';
 import { ProfilePageComponent } from './app/features/profile/profile-page.component';
@@ -92,6 +93,10 @@ const routes: Routes = [
   {
     path: 'collection/:userId',
     component: CollectionPageComponent,
+  },
+  {
+    path: 'help',
+    component: HelpPageComponent,
   },
   { path: '**', component: HomePageComponent },
 ];

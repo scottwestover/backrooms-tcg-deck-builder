@@ -363,3 +363,35 @@ input[type="checkbox"]:disabled {
   color: #fff;
   cursor: not-allowed;
 }
+
+/* How To Accordion Styles */
+.how-to-accordion .p-accordion-tab .p-accordion-header-link {
+  background: #0B0B0B !important;
+  color: #e2e4e6 !important;
+  border: 1px solid #2c3e50 !important;
+}
+
+.how-to-accordion .p-accordion-tab:not(.p-disabled) .p-accordion-header:hover .p-accordion-header-link {
+  background: #FFD54F !important;
+  color: #0B0B0B !important;
+}
+
+.how-to-accordion .p-accordion-tab.p-accordion-tab-active .p-accordion-header .p-accordion-header-link {
+  background: #0B0B0B !important;
+  color: #FFD54F !important;
+}
+
+.how-to-accordion .p-accordion-content {
+  background: #0B0B0B !important;
+  color: #e2e4e6 !important;
+}
+
+.responsive-image {
+  max-width: 800px;
+  height: auto;
+  max-height: 400px;
+}
+
+.how-to-content {
+  margin-bottom: 1rem;
+}
