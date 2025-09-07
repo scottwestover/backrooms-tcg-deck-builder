@@ -9,6 +9,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - No changes.
 
+## [0.0.7] - 2025-09-01
+
+### Fixed
+
+- Fixed styling on light mode themed pages [eb4cdd5](https://github.com/scottwestover/backrooms-tcg-deck-builder/commit/eb4cdd525e28282dbff563066de376655b8eb8c0).
+- Fixed local caching of app assets [3c984f9](https://github.com/scottwestover/backrooms-tcg-deck-builder/commit/3c984f915e11d487b9fa3f38bcde992980dc9664).
+
+### Added
+
+- Support for PWA (progressive web app) [a8f5b6d](https://github.com/scottwestover/backrooms-tcg-deck-builder/commit/a8f5b6dffe90324fea7552a6b20ced3fe45e5993).
+
 ## [0.0.6] - 2025-08-19
 
 ### Fixed
