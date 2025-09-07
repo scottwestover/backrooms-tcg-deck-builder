@@ -9,6 +9,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - No changes.
 
+## [0.0.8] - 2025-09-07
+
+### Added
+
+- Added new "Help" page with guides on how to create a deck and share a deck with other users [6296a34](https://github.com/scottwestover/backrooms-tcg-deck-builder/commit/6296a34328933b6d3113ad2808a9fe92103aff3c).
+
+### Changed
+
+- Updated style on home page to take full width [6296a34](https://github.com/scottwestover/backrooms-tcg-deck-builder/commit/6296a34328933b6d3113ad2808a9fe92103aff3c).
+
 ## [0.0.7] - 2025-09-01
 
 ### Fixed

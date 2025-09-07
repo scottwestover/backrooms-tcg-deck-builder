@@ -1,21 +1,21 @@
 import { PageComponent } from '../shared/page.component';
-import { HomeIntroComponent } from './components/home-intro.component';
+import { HelpIntroComponent } from './components/help-intro.component';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
-  selector: 'backrooms-home-page',
+  selector: 'backrooms-help-page',
   template: `
     <backrooms-page>
-      <backrooms-home-intro
-        class="p-5 mx-auto self-baseline w-full max-w-7xl h-[calc(100vh-3.5rem)] md:h-[calc(100vh-5rem)] lg:h-screen"></backrooms-home-intro>
+      <backrooms-help-intro
+        class="p-5 mx-auto self-baseline w-full max-w-7xl h-[calc(100vh-3.5rem)] md:h-[calc(100vh-5rem)] lg:h-screen"></backrooms-help-intro>
     </backrooms-page>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [HomeIntroComponent, PageComponent],
+  imports: [HelpIntroComponent, PageComponent],
 })
-export class HomePageComponent {
+export class HelpPageComponent {
   constructor(
     private meta: Meta,
     private title: Title,
@@ -24,7 +24,7 @@ export class HomePageComponent {
   }
 
   private makeGoogleFriendly() {
-    this.title.setTitle('Backrooms DB - Home');
+    this.title.setTitle('Backrooms DB - Help');
 
     this.meta.addTags([
       {
@@ -36,7 +36,7 @@ export class HomePageComponent {
       {
         name: 'keywords',
         content:
-          'Backrooms, decks, deck builder, collection, TCG, community, friends, share',
+          'Backrooms, decks, deck builder, collection, TCG, community, friends, share, help, guide, faq',
       },
     ]);
   }

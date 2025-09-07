@@ -1,5 +1,5 @@
 export const environment = {
-  production: true,
+  production: false,
   firebaseConfig: {
     apiKey: 'AIzaSyBLuyQouuUp4XJlFHFKVWm65YmI1U7CFXM',
     authDomain: 'backrooms-tcg-dev.firebaseapp.com',
