@@ -9,6 +9,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - No changes.
 
+### Added
+
+- August 2025 Promo Card "Phase Plate".
+- Missing card image for Lobby Levels Card 47 "Death Moth".
+- Missing card image for Lobby Levels Card 66 "Space Portal".
+
+### Changed
+
+- Replaced images for the following promo cards to match the default size of the rest of the cards: "C.C.B.B", "Ferdinand", and "Overdrive Marion".
+
 ## [0.0.8] - 2025-09-07
 
 ### Added

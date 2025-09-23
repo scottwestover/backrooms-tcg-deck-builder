@@ -747,7 +747,7 @@
     "version": "Normal",
     "cardType": "Entity"
   },
-    {
+  {
     "id": "P-035",
     "name": {
       "english": "Overdrive Marion"
@@ -768,5 +768,27 @@
     "notes": "-",
     "version": "Normal",
     "cardType": "Entity"
+  },
+  {
+    "id": "P-036",
+    "name": {
+      "english": "Phase Plate"
+    },
+    "rarity": "HYPER",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/promo/P-036.webp",
+    "illustrator": "-",
+    "cardNumber": "99036",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Item"
   }
 ]
