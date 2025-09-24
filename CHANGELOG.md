@@ -19,7 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Replaced images for the following promo cards to match the default size of the rest of the cards: "C.C.B.B", "Ferdinand", and "Overdrive Marion" [71dfb05](https://github.com/scottwestover/backrooms-tcg-deck-builder/commit/71dfb0545fe5a743d560bddda35a0e0faafeca3c).
-- Updated workflow files to no longer publish when only changes are to the CI pipeline or Changelog files.
+- Updated workflow files to no longer publish when only changes are to the CI pipeline or Changelog files [9d7bc6c](https://github.com/scottwestover/backrooms-tcg-deck-builder/commit/9d7bc6c01546ea4be772b14c0101a920476e1b3b).
 
 ## [0.0.8] - 2025-09-07
 
