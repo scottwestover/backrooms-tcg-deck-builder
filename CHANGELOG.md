@@ -14,11 +14,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - August 2025 Promo Card "Phase Plate" [71dfb05](https://github.com/scottwestover/backrooms-tcg-deck-builder/commit/71dfb0545fe5a743d560bddda35a0e0faafeca3c).
 - Missing card image for Lobby Levels Card 47 "Death Moth" [71dfb05](https://github.com/scottwestover/backrooms-tcg-deck-builder/commit/71dfb0545fe5a743d560bddda35a0e0faafeca3c).
 - Missing card image for Lobby Levels Card 66 "Space Portal" [71dfb05](https://github.com/scottwestover/backrooms-tcg-deck-builder/commit/71dfb0545fe5a743d560bddda35a0e0faafeca3c).
-- Added YouTube tutorial videos to the sections on the "Help" page.
+- Added YouTube tutorial videos to the sections on the "Help" page [57caafd](https://github.com/scottwestover/backrooms-tcg-deck-builder/commit/57caafd5d4f7a870d913d8fce6c92b42db596420).
 
 ### Changed
 
 - Replaced images for the following promo cards to match the default size of the rest of the cards: "C.C.B.B", "Ferdinand", and "Overdrive Marion" [71dfb05](https://github.com/scottwestover/backrooms-tcg-deck-builder/commit/71dfb0545fe5a743d560bddda35a0e0faafeca3c).
+- Updated workflow files to no longer publish when only changes are to the CI pipeline or Changelog files.
 
 ## [0.0.8] - 2025-09-07
 
