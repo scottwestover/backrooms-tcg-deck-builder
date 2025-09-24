@@ -93,6 +93,16 @@ import { DividerModule } from 'primeng/divider';
           alt="modify your deck"
           src="../../../assets/images/help/mobile/modify_deck.gif" />
       </div>
+
+      <hr />
+      <div class="video-container">
+        <iframe
+          src="https://www.youtube.com/embed/OMypfIqeCp0?si=O_21PMqtSW7YWroS"
+          title="YouTube video player"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen></iframe>
+      </div>
     </div>
     <ng-template #desktopContent>
       <!-- Desktop Content -->
@@ -179,6 +189,16 @@ import { DividerModule } from 'primeng/divider';
           class="responsive-image"
           alt="modify your deck"
           src="../../../assets/images/help/desktop/modify_deck.gif" />
+      </div>
+
+      <hr />
+      <div class="video-container">
+        <iframe
+          src="https://www.youtube.com/embed/OMypfIqeCp0?si=O_21PMqtSW7YWroS"
+          title="YouTube video player"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen></iframe>
       </div>
     </ng-template>
   `,

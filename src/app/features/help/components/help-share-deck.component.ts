@@ -34,6 +34,16 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
         others. Try visiting the link in your browser and you should be taken to
         your deck!
       </p>
+
+      <hr />
+      <div class="video-container">
+        <iframe
+          src="https://www.youtube.com/embed/jYv5hmuYvEI?si=gEmkEsbKbnNCTHX6"
+          title="YouTube video player"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen></iframe>
+      </div>
     </div>
     <ng-template #desktopContent>
       <!-- Desktop Content -->
@@ -66,6 +76,16 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
         others. Try visiting the link in your browser and you should be taken to
         your deck!
       </p>
+
+      <hr />
+      <div class="video-container">
+        <iframe
+          src="https://www.youtube.com/embed/jYv5hmuYvEI?si=gEmkEsbKbnNCTHX6"
+          title="YouTube video player"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen></iframe>
+      </div>
     </ng-template>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
