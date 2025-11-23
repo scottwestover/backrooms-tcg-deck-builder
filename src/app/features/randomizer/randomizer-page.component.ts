@@ -20,6 +20,10 @@ import { BackroomsCardStore } from '../../store/backrooms-card.store';
 import { WebsiteStore } from '../../store/website.store';
 import { CardImageComponent } from '../shared/card-image.component';
 import { PageComponent } from '../shared/page.component';
+import { CardListGalleryComponent } from './components/card-list-gallery.component';
+import { CardListTableComponent } from './components/card-list-table.component';
+import { RandomizerManualControlsComponent } from './components/randomizer-manual-controls.component';
+import { RandomizerResultsHeaderComponent } from './components/randomizer-results-header.component';
 
 interface DeckAsList {
   id: string;
@@ -87,113 +91,20 @@ interface DeckAsList {
         </div>
 
         @if (generationMode === 'manual') {
-          <div
-            class="mb-4 grid grid-cols-1 gap-4 rounded-lg bg-gray-800 p-4 md:grid-cols-4">
-            <div class="flex flex-col">
-              <label for="rooms-select" class="mb-1 text-sm text-gray-400"
-                >Rooms Archetype:</label
-              >
-              <select
-                name="rooms-select"
-                [(ngModel)]="manualSelections.rooms"
-                (change)="onManualSelectionChange()"
-                class="rounded-md bg-gray-700 p-2 text-white">
-                <option [ngValue]="null" disabled>Select Rooms</option>
-                @for (archetypeKey of archetypeKeys; track archetypeKey) {
-                  <option [value]="archetypeKey">
-                    {{ archetypes[archetypeKey].name }}
-                  </option>
-                }
-              </select>
-            </div>
-            <div class="flex flex-col">
-              <label for="items-select" class="mb-1 text-sm text-gray-400"
-                >Items Archetype:</label
-              >
-              <select
-                name="items-select"
-                [(ngModel)]="manualSelections.items"
-                (change)="onManualSelectionChange()"
-                class="rounded-md bg-gray-700 p-2 text-white">
-                <option [ngValue]="null" disabled>Select Items</option>
-                @for (archetypeKey of archetypeKeys; track archetypeKey) {
-                  <option [value]="archetypeKey">
-                    {{ archetypes[archetypeKey].name }}
-                  </option>
-                }
-              </select>
-            </div>
-            <div class="flex flex-col">
-              <label for="entities-select" class="mb-1 text-sm text-gray-400"
-                >Entities Archetype:</label
-              >
-              <select
-                name="entities-select"
-                [(ngModel)]="manualSelections.entities"
-                (change)="onManualSelectionChange()"
-                class="rounded-md bg-gray-700 p-2 text-white">
-                <option [ngValue]="null" disabled>Select Entities</option>
-                @for (archetypeKey of archetypeKeys; track archetypeKey) {
-                  <option [value]="archetypeKey">
-                    {{ archetypes[archetypeKey].name }}
-                  </option>
-                }
-              </select>
-            </div>
-            <div class="flex flex-col">
-              <label for="outcomes-select" class="mb-1 text-sm text-gray-400"
-                >Outcomes Archetype:</label
-              >
-              <select
-                name="outcomes-select"
-                [(ngModel)]="manualSelections.outcomes"
-                (change)="onManualSelectionChange()"
-                class="rounded-md bg-gray-700 p-2 text-white">
-                <option [ngValue]="null" disabled>Select Outcomes</option>
-                @for (archetypeKey of archetypeKeys; track archetypeKey) {
-                  <option [value]="archetypeKey">
-                    {{ archetypes[archetypeKey].name }}
-                  </option>
-                }
-              </select>
-            </div>
-          </div>
+          <backrooms-randomizer-manual-controls
+            [archetypes]="archetypes"
+            [archetypeKeys]="archetypeKeys"
+            [(manualSelections)]="manualSelections"
+            (selectionChange)="
+              onManualSelectionChange()
+            "></backrooms-randomizer-manual-controls>
         }
 
         @if (generatedDeck) {
           <div class="mt-6 w-full text-white">
             @if (generationMode !== 'manual') {
-              @if (isMixedDeck(generatedDeck)) {
-                <div class="mb-4 rounded-lg bg-gray-800 p-4 text-center">
-                  <p class="mb-1 text-sm text-gray-400">Deck Results:</p>
-                  <h2 class="text-xl font-bold text-yellow-400">Mixed Deck</h2>
-                  <div class="grid grid-cols-2 gap-2 text-sm md:grid-cols-4">
-                    <p>
-                      <span class="font-bold">Rooms:</span>
-                      {{ generatedDeck.archetypeNames.rooms }}
-                    </p>
-                    <p>
-                      <span class="font-bold">Items:</span>
-                      {{ generatedDeck.archetypeNames.items }}
-                    </p>
-                    <p>
-                      <span class="font-bold">Entities:</span>
-                      {{ generatedDeck.archetypeNames.entities }}
-                    </p>
-                    <p>
-                      <span class="font-bold">Outcomes:</span>
-                      {{ generatedDeck.archetypeNames.outcomes }}
-                    </p>
-                  </div>
-                </div>
-              } @else {
-                <div class="mb-4 rounded-lg bg-gray-800 p-4 text-center">
-                  <p class="mb-1 text-sm text-gray-400">Deck Results:</p>
-                  <h2 class="text-xl font-bold text-yellow-400">
-                    {{ generatedDeck.archetypeName }}
-                  </h2>
-                </div>
-              }
+              <backrooms-randomizer-results-header
+                [deck]="generatedDeck"></backrooms-randomizer-results-header>
             }
 
             <div
@@ -229,140 +140,12 @@ interface DeckAsList {
               </div>
             </div>
 
-            @if (cardViewMode === 'images' && generatedCards) {
-              <div class="space-y-4 mt-4">
-                <div *ngIf="generatedCards.rooms.length > 0">
-                  <h3 class="mb-2 text-lg font-bold">Rooms</h3>
-                  <div class="card-grid">
-                    <div
-                      *ngFor="let card of generatedCards.rooms"
-                      style="width: 150px">
-                      <backrooms-card-image
-                        [card]="card"></backrooms-card-image>
-                    </div>
-                  </div>
-                </div>
-                <div *ngIf="generatedCards.items.length > 0">
-                  <h3 class="mb-2 text-lg font-bold">Items</h3>
-                  <div class="card-grid">
-                    <div
-                      *ngFor="let card of generatedCards.items"
-                      style="width: 150px">
-                      <backrooms-card-image
-                        [card]="card"></backrooms-card-image>
-                    </div>
-                  </div>
-                </div>
-                <div *ngIf="generatedCards.entities.length > 0">
-                  <h3 class="mb-2 text-lg font-bold">Entities</h3>
-                  <div class="card-grid">
-                    <div
-                      *ngFor="let card of generatedCards.entities"
-                      style="width: 150px">
-                      <backrooms-card-image
-                        [card]="card"></backrooms-card-image>
-                    </div>
-                  </div>
-                </div>
-                <div *ngIf="generatedCards.outcomes.length > 0">
-                  <h3 class="mb-2 text-lg font-bold">Outcomes</h3>
-                  <div class="card-grid">
-                    <div
-                      *ngFor="let card of generatedCards.outcomes"
-                      style="width: 150px">
-                      <backrooms-card-image
-                        [card]="card"></backrooms-card-image>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            } @else if (cardViewMode === 'list' && generatedDeckAsList) {
-              <div class="space-y-4 mt-4">
-                <div *ngIf="generatedDeckAsList.rooms.length > 0">
-                  <h3 class="mb-2 text-lg font-bold">Rooms</h3>
-                  <table class="w-full table-fixed text-left">
-                    <thead class="bg-gray-700">
-                      <tr>
-                        <th class="p-2 w-1/5">ID</th>
-                        <th class="p-2 w-7/10">Name</th>
-                        <th class="p-2 w-1/10">Qty</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr
-                        *ngFor="let card of generatedDeckAsList.rooms"
-                        class="border-b border-gray-700">
-                        <td class="p-2">{{ card.id }}</td>
-                        <td class="p-2">{{ card.name }}</td>
-                        <td class="p-2">{{ card.count }}</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-                <div *ngIf="generatedDeckAsList.items.length > 0">
-                  <h3 class="mb-2 text-lg font-bold">Items</h3>
-                  <table class="w-full table-fixed text-left">
-                    <thead class="bg-gray-700">
-                      <tr>
-                        <th class="p-2 w-1/5">ID</th>
-                        <th class="p-2 w-7/10">Name</th>
-                        <th class="p-2 w-1/10">Qty</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr
-                        *ngFor="let card of generatedDeckAsList.items"
-                        class="border-b border-gray-700">
-                        <td class="p-2">{{ card.id }}</td>
-                        <td class="p-2">{{ card.name }}</td>
-                        <td class="p-2">{{ card.count }}</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-                <div *ngIf="generatedDeckAsList.entities.length > 0">
-                  <h3 class="mb-2 text-lg font-bold">Entities</h3>
-                  <table class="w-full table-fixed text-left">
-                    <thead class="bg-gray-700">
-                      <tr>
-                        <th class="p-2 w-1/5">ID</th>
-                        <th class="p-2 w-7/10">Name</th>
-                        <th class="p-2 w-1/10">Qty</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr
-                        *ngFor="let card of generatedDeckAsList.entities"
-                        class="border-b border-gray-700">
-                        <td class="p-2">{{ card.id }}</td>
-                        <td class="p-2">{{ card.name }}</td>
-                        <td class="p-2">{{ card.count }}</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-                <div *ngIf="generatedDeckAsList.outcomes.length > 0">
-                  <h3 class="mb-2 text-lg font-bold">Outcomes</h3>
-                  <table class="w-full table-fixed text-left">
-                    <thead class="bg-gray-700">
-                      <tr>
-                        <th class="p-2 w-1/5">ID</th>
-                        <th class="p-2 w-7/10">Name</th>
-                        <th class="p-2 w-1/10">Qty</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr
-                        *ngFor="let card of generatedDeckAsList.outcomes"
-                        class="border-b border-gray-700">
-                        <td class="p-2">{{ card.id }}</td>
-                        <td class="p-2">{{ card.name }}</td>
-                        <td class="p-2">{{ card.count }}</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
+            @if (cardViewMode === 'images') {
+              <backrooms-card-list-gallery
+                [cards]="generatedCards"></backrooms-card-list-gallery>
+            } @else if (cardViewMode === 'list') {
+              <backrooms-card-list-table
+                [deckAsList]="generatedDeckAsList"></backrooms-card-list-table>
             }
           </div>
         }
@@ -389,6 +172,10 @@ interface DeckAsList {
     PageComponent,
     CardImageComponent,
     FormsModule,
+    CardListGalleryComponent,
+    CardListTableComponent,
+    RandomizerManualControlsComponent,
+    RandomizerResultsHeaderComponent,
   ],
 })
 export class RandomizerPageComponent implements OnInit {
@@ -556,20 +343,15 @@ export class RandomizerPageComponent implements OnInit {
     };
   }
 
-  isMixedDeck(
-    deck: GeneratedDeck | GeneratedMixedDeck,
-  ): deck is GeneratedMixedDeck {
-    return 'archetypeNames' in deck;
-  }
-
   addToDeckbuilder() {
     if (!this.generatedDeck) return;
 
     const newDeck: IDeck = {
       id: uuid.v4(),
-      title: this.isMixedDeck(this.generatedDeck)
-        ? 'Mixed Random Deck'
-        : this.generatedDeck.archetypeName,
+      title:
+        'archetypeNames' in this.generatedDeck
+          ? 'Mixed Random Deck'
+          : this.generatedDeck.archetypeName,
       description: 'A randomly generated deck.',
       cards: this.generatedDeck.cards,
       date: new Date().toISOString(),
