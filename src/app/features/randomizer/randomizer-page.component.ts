@@ -8,6 +8,8 @@ import {
 import { FormsModule } from '@angular/forms';
 import { Meta, Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
+import { ButtonModule } from 'primeng/button';
+import { TooltipModule } from 'primeng/tooltip';
 import * as uuid from 'uuid';
 import { BackroomsCard, ICountCard, IDeck } from '../../../models';
 import {
@@ -17,6 +19,7 @@ import {
   RandomizerService,
 } from '../../services/randomizer.service';
 import { BackroomsCardStore } from '../../store/backrooms-card.store';
+import { DialogStore } from '../../store/dialog.store';
 import { WebsiteStore } from '../../store/website.store';
 import { CardImageComponent } from '../shared/card-image.component';
 import { PageComponent } from '../shared/page.component';
@@ -109,11 +112,21 @@ interface DeckAsList {
 
             <div
               class="mb-4 flex flex-col items-center justify-between gap-4 md:flex-row md:items-end">
-              <button
-                (click)="addToDeckbuilder()"
-                class="rounded-lg bg-yellow-500 px-5 py-1.5 font-bold text-black transition-transform hover:scale-105 md:px-6 md:py-2">
-                Add to Deckbuilder
-              </button>
+              <div class="flex gap-2 items-end">
+                <button
+                  (click)="addToDeckbuilder()"
+                  class="rounded-lg bg-yellow-500 px-5 py-1.5 font-bold text-black transition-transform hover:scale-105 md:px-6 md:py-2">
+                  Add to Deckbuilder
+                </button>
+                <button
+                  (click)="openExportDeckDialog()"
+                  class="p-button-outlined py-1.5 px-3"
+                  icon="pi pi-upload"
+                  iconPos="left"
+                  pButton
+                  pTooltip="Click to export this deck!"
+                  tooltipPosition="top"></button>
+              </div>
 
               <div class="flex flex-col items-center">
                 <p class="mb-1 text-sm text-gray-400">Deck View:</p>
@@ -176,6 +189,8 @@ interface DeckAsList {
     CardListTableComponent,
     RandomizerManualControlsComponent,
     RandomizerResultsHeaderComponent,
+    ButtonModule, // Added for pButton
+    TooltipModule, // Added for pTooltip
   ],
 })
 export class RandomizerPageComponent implements OnInit {
@@ -186,6 +201,7 @@ export class RandomizerPageComponent implements OnInit {
   private randomizerService = inject(RandomizerService);
   private cardStore = inject(BackroomsCardStore);
   private websiteStore = inject(WebsiteStore);
+  private dialogStore = inject(DialogStore); // Injected DialogStore
 
   generationMode: 'simple' | 'mixed' | 'manual' = 'simple';
   cardViewMode: 'images' | 'list' = 'images';
@@ -363,6 +379,30 @@ export class RandomizerPageComponent implements OnInit {
 
     this.websiteStore.updateDeck(newDeck);
     this.router.navigate(['/deckbuilder', newDeck.id]);
+  }
+
+  openExportDeckDialog() {
+    if (!this.generatedDeck) return;
+
+    const deckToExport: IDeck = {
+      id: uuid.v4(), // Generate a new ID for the exported deck
+      title:
+        'archetypeNames' in this.generatedDeck
+          ? 'Mixed Random Deck'
+          : this.generatedDeck.archetypeName,
+      description: 'A randomly generated deck.',
+      cards: this.generatedDeck.cards,
+      date: new Date().toISOString(),
+      user: '',
+      userId: '',
+      imageCardId: this.generatedDeck.cards[0]?.id ?? 'LL-001',
+      docId: '',
+    };
+
+    this.dialogStore.updateExportDeckDialog({
+      show: true,
+      deck: deckToExport,
+    });
   }
 
   private makeGoogleFriendly() {
