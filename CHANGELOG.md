@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - No changes.
 
+## [0.0.9] - 2025-11-23
+
 ### Added
 
 - August 2025 Promo Card "Phase Plate" [71dfb05](https://github.com/scottwestover/backrooms-tcg-deck-builder/commit/71dfb0545fe5a743d560bddda35a0e0faafeca3c).
