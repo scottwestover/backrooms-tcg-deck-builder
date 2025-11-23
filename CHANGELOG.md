@@ -9,6 +9,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - No changes.
 
+### Added
+
+- Added new "Randomizer" page that can be used for generating random decks to use for a game. The randomizer has three different modes: simple, mixed, and manual. "Simple" chooses a random deck from a json file and presents that deck to the player. "Mixed" will randomly choose each part of a backrooms deck from one of the premade decks in the json file and present the new combined deck to the player. "Manual" allows a player to choose which part of a deck they want from each of the premade decks in the json file.
+- How the randomization works is that each premade deck has an unique name, and we will randomly choose from one of those decks when creating a card pool. Each deck will consist of four parts: items, entites, rooms, and outcomes. Now, when "Simple" mode is used, we grab all four parts of a deck from a single premade deck. When "Mixed" is used, we randomly grab one of the premade decks for each part of the deck, and use those cards for a particular section of the deck. As an example, if I have 3 premade decks: DeckA, DeckB, and DeckC, for the random deck that is created, the items might come from DeckA, the rooms and entities migh come from DeckB, and the outcomes might come from DeckC. The "Manual" mode allows the user to select each one of these options individually.
+- New card back image to replace the existing unofficial image that was used.
+- October 2025 Promo Card "Trunk or Treat".
+- November 2025 Promo Card "Lustratio Latrina".
+- Aquazone preview cards.
+- Event cards from starter decks.
+
 ## [0.0.9] - 2025-11-23
 
 ### Added
