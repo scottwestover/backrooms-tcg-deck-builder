@@ -36,9 +36,8 @@ export interface GeneratedMixedDeck {
 export class RandomizerService {
   private http = inject(HttpClient);
 
-  private archetypes$: Observable<ArchetypeData> = this.http
-    .get<any>('/assets/randomizer/archetypes.json')
-    .pipe(
+  getArchetypes(): Observable<ArchetypeData> {
+    return this.http.get<any>('/assets/randomizer/archetypes.json').pipe(
       map((data) => {
         // The user's format has qty, so we map it to count to match ICountCard
         const archetypes: ArchetypeData = {};
@@ -66,13 +65,16 @@ export class RandomizerService {
         return archetypes;
       }),
     );
-
-  getArchetypes(): Observable<ArchetypeData> {
-    return this.archetypes$;
   }
 
   generateSimpleDeck(archetypes: ArchetypeData): GeneratedDeck {
     const keys = Object.keys(archetypes);
+    if (keys.length === 0) {
+      return {
+        archetypeName: 'Unknown Archetype',
+        cards: [],
+      };
+    }
     const randomKey = keys[Math.floor(Math.random() * keys.length)];
     const archetype = archetypes[randomKey];
 
@@ -91,6 +93,17 @@ export class RandomizerService {
 
   generateMixedDeck(archetypes: ArchetypeData): GeneratedMixedDeck {
     const keys = Object.keys(archetypes);
+    if (keys.length === 0) {
+      return {
+        archetypeNames: {
+          rooms: 'Unknown Archetype',
+          items: 'Unknown Archetype',
+          outcomes: 'Unknown Archetype',
+          entities: 'Unknown Archetype',
+        },
+        cards: [],
+      };
+    }
 
     const getRandomKey = () => keys[Math.floor(Math.random() * keys.length)];
 
