@@ -54,6 +54,20 @@ import { FilterButtonComponent } from '../filter/filter-button.component';
 
       <li
         class="flex flex-col items-center group cursor-pointer"
+        [ngClass]="getNavigationBorder('/randomizer')"
+        (click)="router.navigateByUrl('/randomizer')">
+        <i
+          class="pi pi-sync group-hover:text-[#FFD54F]"
+          style="font-size: 1.5rem"></i>
+        <button
+          style="font-size:smaller"
+          class="p-2 group-hover:text-[#FFD54F]">
+          Randomizer
+        </button>
+      </li>
+
+      <li
+        class="flex flex-col items-center group cursor-pointer"
         [ngClass]="getNavigationBorder('/collection')"
         (click)="router.navigateByUrl('/collection')">
         <i

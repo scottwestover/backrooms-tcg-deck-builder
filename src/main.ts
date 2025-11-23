@@ -17,8 +17,8 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import {
   provideFirestore,
-  getFirestore,
-  enableIndexedDbPersistence,
+  // getFirestore,
+  // enableIndexedDbPersistence,
   initializeFirestore,
   persistentLocalCache,
 } from '@angular/fire/firestore';
@@ -55,6 +55,7 @@ import { HelpPageComponent } from './app/features/help/help-page.component';
 import { DecksPageComponent } from './app/features/decks/decks-page.component';
 import { HomePageComponent } from './app/features/home/home-page.component';
 import { ProfilePageComponent } from './app/features/profile/profile-page.component';
+import { RandomizerPageComponent } from './app/features/randomizer/randomizer-page.component';
 import { AuthService } from './app/services/auth.service';
 import { BackroomsBackendService } from './app/services/backrooms-backend.service';
 import { environment } from './environments/environment';
@@ -62,6 +63,10 @@ import { provideServiceWorker } from '@angular/service-worker';
 import { persistentMultipleTabManager } from 'firebase/firestore';
 
 const routes: Routes = [
+  {
+    path: 'randomizer',
+    component: RandomizerPageComponent,
+  },
   {
     path: 'decks',
     component: DecksPageComponent,
