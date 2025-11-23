@@ -53,7 +53,7 @@ export class CollectionPageComponent {
   }
 
   private makeGoogleFriendly() {
-    this.title.setTitle('Backrooms DB- Collection');
+    this.title.setTitle('Backrooms DB - Collection');
 
     this.meta.addTags([
       {
