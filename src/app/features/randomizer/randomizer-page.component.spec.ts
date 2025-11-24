@@ -250,4 +250,128 @@ describe('RandomizerPageComponent', () => {
     component.setGenerationMode('manual');
     expect(component.overallSelection).toBe('alpha');
   });
+
+  describe('Mode Switching and State Persistence', () => {
+    beforeEach(() => {
+      // ngOnInit is needed to populate archetypes
+      component.ngOnInit();
+      fixture.detectChanges();
+    });
+
+    it('should pre-fill manual selections when switching from a simple deck', () => {
+      const simpleDeck = {
+        archetypeName: 'Alpha',
+        cards: [{ id: 'R01', count: 1 }],
+      };
+      component.generatedDeck = simpleDeck;
+
+      component.setGenerationMode('manual');
+
+      expect(component.manualSelections).toEqual({
+        rooms: 'alpha',
+        items: 'alpha',
+        entities: 'alpha',
+        outcomes: 'alpha',
+      });
+      expect(component.overallSelection).toBe('alpha');
+      expect(component.generatedDeck).toBeTruthy();
+    });
+
+    it('should pre-fill manual selections when switching from a mixed deck', () => {
+      const mixedDeck = {
+        archetypeNames: {
+          rooms: 'Alpha',
+          items: 'Beta',
+          entities: 'Alpha',
+          outcomes: 'Beta',
+        },
+        cards: [
+          { id: 'R01', count: 1 },
+          { id: 'I01', count: 1 },
+        ],
+      };
+      component.generatedDeck = mixedDeck;
+
+      component.setGenerationMode('manual');
+
+      expect(component.manualSelections).toEqual({
+        rooms: 'alpha',
+        items: 'beta',
+        entities: 'alpha',
+        outcomes: 'beta',
+      });
+      expect(component.overallSelection).toBeNull();
+      expect(component.generatedDeck).toBeTruthy();
+    });
+
+    it('should make a manually modified deck "sticky" when switching modes', () => {
+      // 1. Start with a simple deck
+      const simpleDeck = {
+        archetypeName: 'Alpha',
+        cards: [{ id: 'R01', count: 1 }],
+      };
+      randomizerService.generateSimpleDeck.and.returnValue(simpleDeck);
+      component.generate(); // isManualDeck is now false
+
+      // 2. Switch to manual and modify
+      component.setGenerationMode('manual');
+      component.manualSelections.items = 'beta';
+      component.onManualSelectionChange(); // isManualDeck is now true
+
+      const manualDeck = component.generatedDeck;
+      expect(manualDeck).toBeTruthy();
+      expect((manualDeck as any).archetypeNames).toBeDefined(); // It's a mixed deck
+
+      // 3. Switch to simple mode - deck should be sticky
+      component.setGenerationMode('simple');
+      expect(component.generatedDeck).toBe(manualDeck);
+
+      // 4. Switch to mixed mode - deck should still be sticky
+      component.setGenerationMode('mixed');
+      expect(component.generatedDeck).toBe(manualDeck);
+
+      // 5. Generate a new deck - stickiness should be removed
+      const newSimpleDeck = {
+        archetypeName: 'Beta',
+        cards: [{ id: 'I01', count: 1 }],
+      };
+      randomizerService.generateSimpleDeck.and.returnValue(newSimpleDeck);
+      component.generationMode = 'simple'; // Set mode to match the mocked service
+      component.generate();
+      expect(component.generatedDeck).toBe(newSimpleDeck);
+      expect(component.isManualDeck).toBe(false);
+    });
+
+    it('should create a simple deck type from manual when all selections are the same', () => {
+      component.setGenerationMode('manual');
+      component.manualSelections = {
+        rooms: 'alpha',
+        items: 'alpha',
+        entities: 'alpha',
+        outcomes: 'alpha',
+      };
+
+      component.onManualSelectionChange();
+
+      expect(component.generatedDeck).toBeTruthy();
+      expect((component.generatedDeck as any).archetypeName).toBe('Alpha');
+      expect((component.generatedDeck as any).archetypeNames).toBeUndefined();
+    });
+
+    it('should create a mixed deck type from manual when selections are different', () => {
+      component.setGenerationMode('manual');
+      component.manualSelections = {
+        rooms: 'alpha',
+        items: 'beta',
+        entities: 'alpha',
+        outcomes: 'alpha',
+      };
+
+      component.onManualSelectionChange();
+
+      expect(component.generatedDeck).toBeTruthy();
+      expect((component.generatedDeck as any).archetypeNames).toBeDefined();
+      expect((component.generatedDeck as any).archetypeName).toBeUndefined();
+    });
+  });
 });

@@ -239,7 +239,9 @@ export class RandomizerPageComponent implements OnInit {
     outcomes: DeckAsList[];
   } | null = null;
 
-  ngOnInit() {
+  isManualDeck = false;
+
+  ngOnInit(): void {
     this.makeGoogleFriendly();
     this.cardStore.updateCards();
     this.randomizerService.getArchetypes().subscribe((data) => {
@@ -248,49 +250,109 @@ export class RandomizerPageComponent implements OnInit {
     });
   }
 
-  setGenerationMode(mode: 'simple' | 'mixed' | 'manual') {
+  setGenerationMode(mode: 'simple' | 'mixed' | 'manual'): void {
     this.generationMode = mode;
 
     if (mode === 'manual') {
-      if (
+      if (this.generatedDeck) {
+        if (this.isMixedDeck(this.generatedDeck)) {
+          const mixedDeck = this.generatedDeck;
+
+          this.manualSelections = {
+            rooms: this.findArchetypeKeyByName(mixedDeck.archetypeNames.rooms),
+            items: this.findArchetypeKeyByName(mixedDeck.archetypeNames.items),
+            entities: this.findArchetypeKeyByName(
+              mixedDeck.archetypeNames.entities,
+            ),
+            outcomes: this.findArchetypeKeyByName(
+              mixedDeck.archetypeNames.outcomes,
+            ),
+          };
+
+          const { rooms, items, entities, outcomes } = this.manualSelections;
+
+          if (
+            rooms &&
+            rooms === items &&
+            rooms === entities &&
+            rooms === outcomes
+          ) {
+            this.overallSelection = rooms;
+          } else {
+            this.overallSelection = null;
+          }
+        } else {
+          // Simple Deck
+          const simpleDeck = this.generatedDeck;
+          const key = this.findArchetypeKeyByName(simpleDeck.archetypeName);
+
+          this.manualSelections = {
+            rooms: key,
+            items: key,
+            entities: key,
+            outcomes: key,
+          };
+
+          this.overallSelection = key;
+        }
+      } else if (
         this.manualSelections.rooms === null &&
         this.archetypeKeys.length > 0
       ) {
         const defaultKey = this.archetypeKeys[0];
+
         this.manualSelections = {
           rooms: defaultKey,
+
           items: defaultKey,
+
           entities: defaultKey,
+
           outcomes: defaultKey,
         };
-        this.overallSelection = defaultKey; // Set default for overall selection
+
+        this.overallSelection = defaultKey;
       }
+
       this.onManualSelectionChange();
+
+      return;
+    }
+
+    if (this.isManualDeck) {
+      return;
+    }
+
+    this.generatedDeck = this.lastRandomDeck;
+
+    if (this.generatedDeck) {
+      this.updateDeckViews(this.generatedDeck.cards);
     } else {
-      this.generatedDeck = this.lastRandomDeck;
-      if (this.generatedDeck) {
-        this.updateDeckViews(this.generatedDeck.cards);
-      } else {
-        this.generatedCards = null;
-        this.generatedDeckAsList = null;
-      }
+      this.generatedCards = null;
+
+      this.generatedDeckAsList = null;
     }
   }
 
-  generate() {
+  generate(): void {
+    this.isManualDeck = false;
+
     let deck: (GeneratedDeck | GeneratedMixedDeck) & { cards: ICountCard[] };
+
     if (this.generationMode === 'simple') {
       deck = this.randomizerService.generateSimpleDeck(this.archetypes);
     } else {
       deck = this.randomizerService.generateMixedDeck(this.archetypes);
     }
+
     this.generatedDeck = deck;
     this.lastRandomDeck = deck;
     this.updateDeckViews(deck.cards);
   }
 
-  onOverallSelectionChange(archetypeKey: string | null) {
+  onOverallSelectionChange(archetypeKey: string | null): void {
     this.overallSelection = archetypeKey;
+
     if (archetypeKey) {
       this.manualSelections = {
         rooms: archetypeKey,
@@ -298,29 +360,30 @@ export class RandomizerPageComponent implements OnInit {
         entities: archetypeKey,
         outcomes: archetypeKey,
       };
+
       this.onManualSelectionChange();
     }
   }
 
-  onManualSelectionChange() {
+  onManualSelectionChange(): void {
+    this.isManualDeck = true;
+
     const { rooms, items, entities, outcomes } = this.manualSelections;
 
-    if (
-      rooms &&
-      items &&
-      entities &&
-      outcomes &&
-      !(rooms === items && rooms === entities && rooms === outcomes)
-    ) {
-      this.overallSelection = null;
-    }
-
     if (rooms && items && entities && outcomes) {
+      const allSame =
+        rooms === items && rooms === entities && rooms === outcomes;
+
+      if (allSame) {
+        this.overallSelection = rooms;
+      } else {
+        this.overallSelection = null;
+      }
+
       const roomCards = this.archetypes[rooms].rooms;
       const itemCards = this.archetypes[items].items;
       const entityCards = this.archetypes[entities].entities;
       const outcomeCards = this.archetypes[outcomes].outcomes;
-
       const allCards = [
         ...roomCards,
         ...itemCards,
@@ -328,40 +391,55 @@ export class RandomizerPageComponent implements OnInit {
         ...outcomeCards,
       ];
 
-      this.generatedDeck = {
-        archetypeName: 'Manual Mix',
-        cards: allCards,
-      };
+      if (allSame) {
+        this.generatedDeck = {
+          archetypeName: this.archetypes[rooms].name,
+          cards: allCards,
+        };
+      } else {
+        this.generatedDeck = {
+          archetypeNames: {
+            rooms: this.archetypes[rooms].name,
+            items: this.archetypes[items].name,
+            entities: this.archetypes[entities].name,
+            outcomes: this.archetypes[outcomes].name,
+          },
+          cards: allCards,
+        };
+      }
 
       this.updateDeckViews(allCards);
     }
   }
 
-  private updateDeckViews(cards: ICountCard[]) {
+  private isMixedDeck(
+    deck: GeneratedDeck | GeneratedMixedDeck,
+  ): deck is GeneratedMixedDeck {
+    return 'archetypeNames' in deck;
+  }
+
+  private findArchetypeKeyByName(name: string): string | null {
+    return (
+      this.archetypeKeys.find((key) => this.archetypes[key].name === name) ??
+      null
+    );
+  }
+
+  private updateDeckViews(cards: ICountCard[]): void {
     if (!cards) {
       this.generatedCards = null;
-
       this.generatedDeckAsList = null;
-
       return;
     }
 
     const cardMap = this.cardStore.cardsMap();
-
     const rooms: IDeckCard[] = [];
-
     const items: IDeckCard[] = [];
-
     const entities: IDeckCard[] = [];
-
     const outcomes: IDeckCard[] = [];
-
     const listRooms: DeckAsList[] = [];
-
     const listItems: DeckAsList[] = [];
-
     const listEntities: DeckAsList[] = [];
-
     const listOutcomes: DeckAsList[] = [];
 
     for (const countCard of cards) {
@@ -399,16 +477,13 @@ export class RandomizerPageComponent implements OnInit {
 
     this.generatedDeckAsList = {
       rooms: listRooms,
-
       items: listItems,
-
       entities: listEntities,
-
       outcomes: listOutcomes,
     };
   }
 
-  addToDeckbuilder() {
+  addToDeckbuilder(): void {
     if (!this.generatedDeck) return;
 
     // TODO: see if we can re-use the same method we use elsewhere for creating new decks instead of duplicating
@@ -431,7 +506,7 @@ export class RandomizerPageComponent implements OnInit {
     this.router.navigate(['/deckbuilder', newDeck.id]);
   }
 
-  openExportDeckDialog() {
+  openExportDeckDialog(): void {
     if (!this.generatedDeck) return;
 
     const deckToExport: IDeck = {
