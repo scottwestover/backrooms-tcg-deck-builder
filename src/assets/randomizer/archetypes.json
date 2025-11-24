@@ -372,5 +372,1144 @@
       { "id": "LL-065", "qty": 1 },
       { "id": "LL-068", "qty": 1 }
     ]
+  },
+  "battleforthebackrooms": {
+    "name": "Battle for the Backrooms ",
+    "rooms": [
+      { "id": "LL-001", "qty": 9 },
+      { "id": "LL-002", "qty": 2 },
+      { "id": "LL-004", "qty": 1 },
+      { "id": "LL-006", "qty": 5 },
+      { "id": "LL-009", "qty": 3 },
+      { "id": "LL-008", "qty": 3 },
+      { "id": "LL-003", "qty": 3 },
+      { "id": "LL-005", "qty": 4 }
+    ],
+    "entities": [
+      { "id": "LL-041", "qty": 1 },
+      { "id": "LL-035", "qty": 1 },
+      { "id": "LL-044", "qty": 1 },
+      { "id": "LL-055", "qty": 1 },
+      { "id": "LL-045", "qty": 2 },
+      { "id": "LL-048", "qty": 1 },
+      { "id": "LL-049", "qty": 1 },
+      { "id": "LL-043", "qty": 1 },
+      { "id": "LL-028", "qty": 1 }
+    ],
+    "items": [
+      { "id": "LL-016", "qty": 1 },
+      { "id": "LL-059", "qty": 1 },
+      { "id": "LL-060", "qty": 1 },
+      { "id": "LL-015", "qty": 2 },
+      { "id": "LL-014", "qty": 1 },
+      { "id": "LL-058", "qty": 1 },
+      { "id": "LL-023", "qty": 1 },
+      { "id": "LL-011", "qty": 2 }
+    ],
+    "outcomes": [
+      { "id": "LL-065", "qty": 1 },
+      { "id": "LL-068", "qty": 1 }
+    ]
+  },
+  "fungalwarfare": {
+    "name": "Fungal Warfare",
+    "rooms": [
+      { "id": "LL-003", "qty": 3 },
+      { "id": "LL-005", "qty": 2 },
+      { "id": "LL-006", "qty": 3 },
+      { "id": "LL-002", "qty": 8 },
+      { "id": "LL-004", "qty": 8 },
+      { "id": "LL-001", "qty": 6 }
+    ],
+    "entities": [
+      { "id": "LL-048", "qty": 1 },
+      { "id": "LL-044", "qty": 4 },
+      { "id": "LL-040", "qty": 1 },
+      { "id": "LL-041", "qty": 1 },
+      { "id": "LL-026", "qty": 2 },
+      { "id": "LL-028", "qty": 1 }
+    ],
+    "items": [
+      { "id": "LL-023", "qty": 1 },
+      { "id": "LL-064", "qty": 1 },
+      { "id": "LL-016", "qty": 2 },
+      { "id": "LL-014", "qty": 1 },
+      { "id": "LL-024", "qty": 1 },
+      { "id": "LL-059", "qty": 1 },
+      { "id": "LL-020", "qty": 1 },
+      { "id": "LL-058", "qty": 1 },
+      { "id": "LL-015", "qty": 1 }
+    ],
+    "outcomes": [
+      { "id": "LL-065", "qty": 1 },
+      { "id": "LL-068", "qty": 1 }
+    ]
+  },
+  "ancientcosmichorrors": {
+    "name": "Ancient Cosmic Horrors",
+    "rooms": [
+      { "id": "LL-005", "qty": 2 },
+      { "id": "LL-006", "qty": 1 },
+      { "id": "LL-003", "qty": 2 },
+      { "id": "LL-009", "qty": 2 },
+      { "id": "LL-002", "qty": 7 },
+      { "id": "LL-008", "qty": 2 },
+      { "id": "LL-007", "qty": 1 },
+      { "id": "LL-001", "qty": 6 },
+      { "id": "LL-004", "qty": 7 }
+    ],
+    "entities": [
+      { "id": "LL-039", "qty": 4 },
+      { "id": "LL-032", "qty": 2 },
+      { "id": "LL-035", "qty": 1 },
+      { "id": "LL-036", "qty": 1 },
+      { "id": "LL-033", "qty": 1 },
+      { "id": "LL-040", "qty": 1 }
+    ],
+    "items": [
+      { "id": "LL-023", "qty": 1 },
+      { "id": "LL-013", "qty": 1 },
+      { "id": "LL-012", "qty": 1 },
+      { "id": "LL-016", "qty": 2 },
+      { "id": "LL-059", "qty": 1 },
+      { "id": "LL-015", "qty": 1 },
+      { "id": "LL-020", "qty": 1 },
+      { "id": "LL-017", "qty": 1 },
+      { "id": "LL-019", "qty": 1 }
+    ],
+    "outcomes": [
+      { "id": "LL-070", "qty": 1 },
+      { "id": "LL-065", "qty": 1 }
+    ]
+  },
+  "landoftheancients": {
+    "name": "Land of the Ancients",
+    "rooms": [
+      { "id": "LL-004", "qty": 7 },
+      { "id": "LL-002", "qty": 7 },
+      { "id": "LL-001", "qty": 6 },
+      { "id": "LL-005", "qty": 2 },
+      { "id": "LL-008", "qty": 2 },
+      { "id": "LL-009", "qty": 2 },
+      { "id": "LL-003", "qty": 2 },
+      { "id": "LL-006", "qty": 1 },
+      { "id": "LL-007", "qty": 1 }
+    ],
+    "entities": [
+      { "id": "LL-039", "qty": 1 },
+      { "id": "LL-040", "qty": 1 },
+      { "id": "LL-035", "qty": 1 },
+      { "id": "LL-036", "qty": 1 },
+      { "id": "LL-032", "qty": 2 },
+      { "id": "LL-033", "qty": 2 },
+      { "id": "LL-041", "qty": 1 },
+      { "id": "LL-028", "qty": 1 }
+    ],
+    "items": [
+      { "id": "LL-014", "qty": 2 },
+      { "id": "LL-015", "qty": 1 },
+      { "id": "LL-016", "qty": 1 },
+      { "id": "LL-019", "qty": 1 },
+      { "id": "LL-017", "qty": 1 },
+      { "id": "LL-020", "qty": 1 },
+      { "id": "LL-024", "qty": 1 },
+      { "id": "LL-062", "qty": 1 },
+      { "id": "LL-059", "qty": 1 }
+    ],
+    "outcomes": [
+      { "id": "LL-068", "qty": 1 },
+      { "id": "LL-065", "qty": 1 }
+    ]
+  },
+  "dollfaceshouseoffun": {
+    "name": "Doll Face's House of Fun ",
+    "rooms": [
+      { "id": "LL-001", "qty": 8 },
+      { "id": "LL-004", "qty": 9 },
+      { "id": "LL-002", "qty": 7 },
+      { "id": "LL-006", "qty": 2 },
+      { "id": "LL-005", "qty": 2 },
+      { "id": "LL-008", "qty": 1 },
+      { "id": "P-014", "qty": 1 }
+    ],
+    "entities": [
+      { "id": "LL-026", "qty": 2 },
+      { "id": "LL-035", "qty": 1 },
+      { "id": "LL-031", "qty": 2 },
+      { "id": "LL-054", "qty": 1 },
+      { "id": "LL-039", "qty": 2 },
+      { "id": "LL-043", "qty": 1 },
+      { "id": "LL-047", "qty": 1 }
+    ],
+    "items": [
+      { "id": "LL-014", "qty": 2 },
+      { "id": "LL-023", "qty": 2 },
+      { "id": "LL-018", "qty": 2 },
+      { "id": "LL-012", "qty": 1 },
+      { "id": "LL-011", "qty": 1 },
+      { "id": "P-013", "qty": 1 },
+      { "id": "P-018", "qty": 1 }
+    ],
+    "outcomes": [
+      { "id": "LL-068", "qty": 1 },
+      { "id": "LL-065", "qty": 1 }
+    ]
+  },
+  "ladylindysescape": {
+    "name": "Lady Lindys Escape",
+    "rooms": [
+      { "id": "LL-001", "qty": 4 },
+      { "id": "LL-002", "qty": 9 },
+      { "id": "LL-004", "qty": 8 },
+      { "id": "LL-005", "qty": 4 },
+      { "id": "LL-006", "qty": 1 },
+      { "id": "LL-007", "qty": 3 },
+      { "id": "LL-010", "qty": 1 }
+    ],
+    "entities": [
+      { "id": "LL-030", "qty": 1 },
+      { "id": "LL-047", "qty": 2 },
+      { "id": "LL-049", "qty": 1 },
+      { "id": "LL-034", "qty": 1 },
+      { "id": "LL-043", "qty": 1 },
+      { "id": "LL-032", "qty": 3 },
+      { "id": "LL-052", "qty": 1 }
+    ],
+    "items": [
+      { "id": "LL-013", "qty": 1 },
+      { "id": "LL-011", "qty": 4 },
+      { "id": "LL-056", "qty": 1 },
+      { "id": "LL-019", "qty": 3 },
+      { "id": "LL-061", "qty": 1 }
+    ],
+    "outcomes": [
+      { "id": "LL-068", "qty": 1 },
+      { "id": "LL-065", "qty": 1 }
+    ]
+  },
+  "backroomsplunder": {
+    "name": "Backrooms Plunder",
+    "rooms": [
+      { "id": "LL-001", "qty": 4 },
+      { "id": "LL-006", "qty": 2 },
+      { "id": "LL-005", "qty": 2 },
+      { "id": "LL-009", "qty": 2 },
+      { "id": "LL-004", "qty": 9 },
+      { "id": "LL-002", "qty": 10 },
+      { "id": "LL-010", "qty": 1 }
+    ],
+    "entities": [
+      { "id": "LL-028", "qty": 1 },
+      { "id": "LL-029", "qty": 1 },
+      { "id": "LL-032", "qty": 1 },
+      { "id": "LL-035", "qty": 1 },
+      { "id": "LL-038", "qty": 1 },
+      { "id": "LL-044", "qty": 1 },
+      { "id": "LL-048", "qty": 1 },
+      { "id": "LL-049", "qty": 1 },
+      { "id": "LL-055", "qty": 1 },
+      { "id": "LL-036", "qty": 1 }
+    ],
+    "items": [
+      { "id": "LL-011", "qty": 1 },
+      { "id": "LL-014", "qty": 2 },
+      { "id": "LL-016", "qty": 1 },
+      { "id": "LL-023", "qty": 1 },
+      { "id": "LL-057", "qty": 1 },
+      { "id": "LL-059", "qty": 1 },
+      { "id": "LL-060", "qty": 1 },
+      { "id": "LL-062", "qty": 1 },
+      { "id": "LL-063", "qty": 1 }
+    ],
+    "outcomes": [
+      { "id": "LL-068", "qty": 1 },
+      { "id": "LL-065", "qty": 1 }
+    ]
+  },
+  "odetothebackrooms": {
+    "name": "Ode to the Backrooms",
+    "rooms": [
+      { "id": "LL-010", "qty": 1 },
+      { "id": "LL-007", "qty": 1 },
+      { "id": "LL-008", "qty": 2 },
+      { "id": "LL-005", "qty": 2 },
+      { "id": "LL-006", "qty": 2 },
+      { "id": "LL-003", "qty": 3 },
+      { "id": "LL-001", "qty": 3 },
+      { "id": "LL-002", "qty": 8 },
+      { "id": "LL-004", "qty": 8 }
+    ],
+    "entities": [
+      { "id": "LL-022", "qty": 1 },
+      { "id": "LL-025", "qty": 1 },
+      { "id": "LL-016", "qty": 2 },
+      { "id": "LL-059", "qty": 2 },
+      { "id": "LL-014", "qty": 1 },
+      { "id": "LL-017", "qty": 1 },
+      { "id": "LL-019", "qty": 1 },
+      { "id": "LL-024", "qty": 1 }
+    ],
+    "items": [
+      { "id": "LL-044", "qty": 1 },
+      { "id": "LL-045", "qty": 1 },
+      { "id": "LL-055", "qty": 1 },
+      { "id": "LL-029", "qty": 1 },
+      { "id": "LL-054", "qty": 1 },
+      { "id": "LL-028", "qty": 2 },
+      { "id": "LL-030", "qty": 1 },
+      { "id": "LL-037", "qty": 1 },
+      { "id": "LL-039", "qty": 1 }
+    ],
+    "outcomes": [
+      { "id": "LL-068", "qty": 1 },
+      { "id": "LL-065", "qty": 1 }
+    ]
+  },
+  "thehuntershandbook": {
+    "name": "The Hunter's Handbook",
+    "rooms": [
+      { "id": "LL-001", "qty": 6 },
+      { "id": "LL-002", "qty": 5 },
+      { "id": "LL-004", "qty": 5 },
+      { "id": "LL-003", "qty": 6 },
+      { "id": "LL-010", "qty": 1 },
+      { "id": "LL-008", "qty": 2 },
+      { "id": "LL-006", "qty": 2 },
+      { "id": "LL-005", "qty": 2 },
+      { "id": "LL-009", "qty": 1 }
+    ],
+    "entities": [
+      { "id": "LL-026", "qty": 2 },
+      { "id": "LL-028", "qty": 2 },
+      { "id": "LL-049", "qty": 2 },
+      { "id": "LL-029", "qty": 1 },
+      { "id": "LL-047", "qty": 1 },
+      { "id": "LL-039", "qty": 1 },
+      { "id": "LL-030", "qty": 1 }
+    ],
+    "items": [
+      { "id": "LL-011", "qty": 2 },
+      { "id": "LL-021", "qty": 2 },
+      { "id": "LL-060", "qty": 2 },
+      { "id": "LL-059", "qty": 1 },
+      { "id": "LL-023", "qty": 2 },
+      { "id": "LL-020", "qty": 1 },
+      { "id": "LL-015", "qty": 1 }
+    ],
+    "outcomes": [
+      { "id": "LL-068", "qty": 1 },
+      { "id": "LL-065", "qty": 1 }
+    ]
+  },
+  "freemansquest": {
+    "name": "Freeman's Quest",
+    "rooms": [
+      { "id": "LL-001", "qty": 7 },
+      { "id": "LL-002", "qty": 6 },
+      { "id": "LL-004", "qty": 7 },
+      { "id": "LL-005", "qty": 2 },
+      { "id": "LL-009", "qty": 1 },
+      { "id": "LL-006", "qty": 2 },
+      { "id": "LL-003", "qty": 5 }
+    ],
+    "entities": [
+      { "id": "LL-026", "qty": 1 },
+      { "id": "LL-039", "qty": 1 },
+      { "id": "LL-029", "qty": 1 },
+      { "id": "LL-038", "qty": 1 },
+      { "id": "LL-028", "qty": 1 },
+      { "id": "LL-049", "qty": 1 },
+      { "id": "LL-050", "qty": 1 },
+      { "id": "LL-053", "qty": 1 },
+      { "id": "LL-048", "qty": 1 },
+      { "id": "LL-047", "qty": 1 }
+    ],
+    "items": [
+      { "id": "LL-011", "qty": 2 },
+      { "id": "LL-023", "qty": 2 },
+      { "id": "LL-059", "qty": 1 },
+      { "id": "LL-020", "qty": 1 },
+      { "id": "LL-016", "qty": 1 },
+      { "id": "LL-060", "qty": 1 },
+      { "id": "LL-015", "qty": 1 },
+      { "id": "LL-063", "qty": 1 }
+    ],
+    "outcomes": [
+      { "id": "LL-068", "qty": 1 },
+      { "id": "LL-065", "qty": 1 }
+    ]
+  },
+  "facelinglabyrinth": {
+    "name": "Faceling Labyrinth",
+    "rooms": [
+      { "id": "LL-001", "qty": 9 },
+      { "id": "LL-002", "qty": 3 },
+      { "id": "LL-004", "qty": 7 },
+      { "id": "LL-003", "qty": 6 },
+      { "id": "LL-006", "qty": 3 },
+      { "id": "LL-005", "qty": 2 }
+    ],
+    "entities": [
+      { "id": "LL-039", "qty": 3 },
+      { "id": "LL-047", "qty": 2 },
+      { "id": "LL-048", "qty": 1 },
+      { "id": "LL-046", "qty": 1 },
+      { "id": "LL-035", "qty": 1 },
+      { "id": "LL-049", "qty": 1 },
+      { "id": "LL-055", "qty": 1 }
+    ],
+    "items": [
+      { "id": "LL-020", "qty": 1 },
+      { "id": "LL-011", "qty": 1 },
+      { "id": "LL-058", "qty": 1 },
+      { "id": "LL-014", "qty": 1 },
+      { "id": "LL-015", "qty": 1 },
+      { "id": "LL-016", "qty": 1 },
+      { "id": "LL-059", "qty": 2 },
+      { "id": "LL-023", "qty": 2 }
+    ],
+    "outcomes": [
+      { "id": "LL-067", "qty": 1 },
+      { "id": "LL-065", "qty": 1 }
+    ]
+  },
+  "aidensbirthdaybash": {
+    "name": "Aiden's Birthday Bash",
+    "rooms": [
+      { "id": "LL-001", "qty": 7 },
+      { "id": "LL-002", "qty": 6 },
+      { "id": "LL-003", "qty": 6 },
+      { "id": "LL-004", "qty": 4 },
+      { "id": "LL-008", "qty": 2 },
+      { "id": "LL-006", "qty": 2 },
+      { "id": "LL-005", "qty": 2 },
+      { "id": "LL-010", "qty": 1 }
+    ],
+    "entities": [
+      { "id": "LL-039", "qty": 2 },
+      { "id": "LL-026", "qty": 2 },
+      { "id": "LL-028", "qty": 2 },
+      { "id": "LL-030", "qty": 1 },
+      { "id": "LL-047", "qty": 1 },
+      { "id": "LL-054", "qty": 1 },
+      { "id": "LL-048", "qty": 1 }
+    ],
+    "items": [
+      { "id": "LL-023", "qty": 4 },
+      { "id": "LL-056", "qty": 1 },
+      { "id": "LL-020", "qty": 1 },
+      { "id": "LL-014", "qty": 1 },
+      { "id": "LL-015", "qty": 1 },
+      { "id": "LL-060", "qty": 1 },
+      { "id": "LL-059", "qty": 1 }
+    ],
+    "outcomes": [
+      { "id": "LL-067", "qty": 1 },
+      { "id": "LL-065", "qty": 1 }
+    ]
+  },
+  "attackanddefense": {
+    "name": "Attack and Defense",
+    "rooms": [
+      { "id": "LL-001", "qty": 6 },
+      { "id": "LL-002", "qty": 6 },
+      { "id": "LL-004", "qty": 6 },
+      { "id": "LL-007", "qty": 2 },
+      { "id": "LL-008", "qty": 3 },
+      { "id": "LL-006", "qty": 1 },
+      { "id": "LL-005", "qty": 2 },
+      { "id": "LL-003", "qty": 2 },
+      { "id": "LL-009", "qty": 2 }
+    ],
+    "entities": [
+      { "id": "LL-047", "qty": 1 },
+      { "id": "LL-038", "qty": 2 },
+      { "id": "LL-044", "qty": 1 },
+      { "id": "LL-046", "qty": 1 },
+      { "id": "LL-041", "qty": 1 },
+      { "id": "LL-040", "qty": 1 },
+      { "id": "LL-029", "qty": 1 },
+      { "id": "LL-026", "qty": 2 }
+    ],
+    "items": [
+      { "id": "LL-015", "qty": 2 },
+      { "id": "LL-024", "qty": 1 },
+      { "id": "LL-062", "qty": 1 },
+      { "id": "LL-019", "qty": 1 },
+      { "id": "LL-014", "qty": 2 },
+      { "id": "LL-016", "qty": 1 },
+      { "id": "LL-059", "qty": 1 },
+      { "id": "LL-017", "qty": 1 }
+    ],
+    "outcomes": [
+      { "id": "LL-068", "qty": 1 },
+      { "id": "LL-065", "qty": 1 }
+    ]
+  },
+  "partygoersandgreenerpastures": {
+    "name": "Partygoers and Greener Pastures",
+    "rooms": [
+      { "id": "LL-001", "qty": 8 },
+      { "id": "LL-002", "qty": 8 },
+      { "id": "LL-004", "qty": 8 },
+      { "id": "LL-005", "qty": 3 },
+      { "id": "LL-006", "qty": 2 },
+      { "id": "LL-010", "qty": 1 }
+    ],
+    "entities": [
+      { "id": "LL-034", "qty": 3 },
+      { "id": "LL-028", "qty": 1 },
+      { "id": "LL-035", "qty": 1 },
+      { "id": "LL-039", "qty": 2 },
+      { "id": "LL-048", "qty": 1 },
+      { "id": "LL-055", "qty": 1 }
+    ],
+    "items": [
+      { "id": "LL-015", "qty": 3 },
+      { "id": "LL-011", "qty": 2 },
+      { "id": "LL-023", "qty": 1 },
+      { "id": "LL-056", "qty": 1 },
+      { "id": "LL-059", "qty": 1 },
+      { "id": "LL-060", "qty": 1 },
+      { "id": "LL-025", "qty": 1 }
+    ],
+    "outcomes": [
+      { "id": "LL-067", "qty": 1 },
+      { "id": "LL-065", "qty": 1 }
+    ]
+  },
+  "summoningthescarlett": {
+    "name": "Summoning the Scarlett",
+    "rooms": [
+      { "id": "LL-001", "qty": 6 },
+      { "id": "LL-002", "qty": 7 },
+      { "id": "LL-004", "qty": 9 },
+      { "id": "LL-006", "qty": 2 },
+      { "id": "LL-008", "qty": 1 },
+      { "id": "LL-010", "qty": 1 },
+      { "id": "LL-007", "qty": 2 }
+    ],
+    "entities": [
+      { "id": "LL-026", "qty": 2 },
+      { "id": "LL-028", "qty": 1 },
+      { "id": "LL-041", "qty": 1 },
+      { "id": "LL-035", "qty": 1 },
+      { "id": "LL-036", "qty": 1 },
+      { "id": "LL-038", "qty": 1 },
+      { "id": "LL-055", "qty": 1 },
+      { "id": "LL-048", "qty": 1 },
+      { "id": "LL-049", "qty": 1 }
+    ],
+    "items": [
+      { "id": "LL-059", "qty": 3 },
+      { "id": "LL-015", "qty": 2 },
+      { "id": "LL-016", "qty": 1 },
+      { "id": "LL-011", "qty": 1 },
+      { "id": "LL-058", "qty": 1 },
+      { "id": "LL-019", "qty": 2 }
+    ],
+    "outcomes": [
+      { "id": "LL-068", "qty": 1 },
+      { "id": "LL-065", "qty": 1 }
+    ]
+  },
+  "backroomsafterschoolspecial": {
+    "name": "Backrooms Afterschool Special",
+    "rooms": [
+      { "id": "LL-001", "qty": 9 },
+      { "id": "LL-002", "qty": 6 },
+      { "id": "LL-004", "qty": 5 },
+      { "id": "LL-003", "qty": 6 },
+      { "id": "LL-006", "qty": 2 },
+      { "id": "LL-005", "qty": 1 },
+      { "id": "LL-010", "qty": 1 }
+    ],
+    "entities": [
+      { "id": "LL-047", "qty": 2 },
+      { "id": "LL-039", "qty": 3 },
+      { "id": "LL-030", "qty": 2 },
+      { "id": "LL-048", "qty": 1 },
+      { "id": "LL-054", "qty": 1 },
+      { "id": "LL-026", "qty": 1 }
+    ],
+    "items": [
+      { "id": "LL-024", "qty": 2 },
+      { "id": "LL-015", "qty": 2 },
+      { "id": "LL-014", "qty": 2 },
+      { "id": "LL-016", "qty": 1 },
+      { "id": "LL-013", "qty": 1 },
+      { "id": "LL-021", "qty": 1 },
+      { "id": "LL-022", "qty": 1 }
+    ],
+    "outcomes": [
+      { "id": "LL-068", "qty": 1 },
+      { "id": "LL-065", "qty": 1 }
+    ]
+  },
+  "luigiinwonderland": {
+    "name": "Luigi In Wonderland",
+    "rooms": [
+      { "id": "LL-001", "qty": 8 },
+      { "id": "LL-002", "qty": 8 },
+      { "id": "LL-004", "qty": 5 },
+      { "id": "LL-003", "qty": 3 },
+      { "id": "LL-010", "qty": 1 },
+      { "id": "LL-008", "qty": 2 },
+      { "id": "LL-006", "qty": 2 },
+      { "id": "LL-005", "qty": 1 }
+    ],
+    "entities": [
+      { "id": "LL-039", "qty": 2 },
+      { "id": "LL-026", "qty": 1 },
+      { "id": "LL-028", "qty": 1 },
+      { "id": "LL-048", "qty": 1 },
+      { "id": "LL-054", "qty": 1 },
+      { "id": "LL-045", "qty": 1 },
+      { "id": "LL-055", "qty": 1 },
+      { "id": "LL-052", "qty": 1 }
+    ],
+    "items": [
+      { "id": "LL-016", "qty": 1 },
+      { "id": "LL-059", "qty": 1 },
+      { "id": "LL-064", "qty": 1 },
+      { "id": "LL-019", "qty": 1 },
+      { "id": "LL-013", "qty": 2 },
+      { "id": "LL-014", "qty": 2 },
+      { "id": "LL-015", "qty": 2 }
+    ],
+    "outcomes": [
+      { "id": "LL-068", "qty": 1 },
+      { "id": "LL-065", "qty": 1 }
+    ]
+  },
+  "warandpeaceinthebackrooms": {
+    "name": "War and Peace in the Backrooms",
+    "rooms": [
+      { "id": "LL-001", "qty": 7 },
+      { "id": "LL-002", "qty": 7 },
+      { "id": "LL-004", "qty": 8 },
+      { "id": "LL-006", "qty": 2 },
+      { "id": "LL-005", "qty": 2 },
+      { "id": "LL-010", "qty": 1 },
+      { "id": "LL-008", "qty": 3 }
+    ],
+    "entities": [
+      { "id": "LL-049", "qty": 2 },
+      { "id": "LL-039", "qty": 2 },
+      { "id": "LL-033", "qty": 2 },
+      { "id": "LL-032", "qty": 2 },
+      { "id": "LL-047", "qty": 1 },
+      { "id": "LL-045", "qty": 1 }
+    ],
+    "items": [
+      { "id": "LL-011", "qty": 3 },
+      { "id": "LL-015", "qty": 2 },
+      { "id": "LL-059", "qty": 2 },
+      { "id": "LL-023", "qty": 1 },
+      { "id": "LL-056", "qty": 1 },
+      { "id": "LL-017", "qty": 1 }
+    ],
+    "outcomes": [
+      { "id": "LL-067", "qty": 1 },
+      { "id": "LL-065", "qty": 1 }
+    ]
+  },
+  "clocksmithsbetrayal": {
+    "name": "Clocksmith's Betrayal",
+    "rooms": [
+      { "id": "LL-001", "qty": 6 },
+      { "id": "LL-002", "qty": 3 },
+      { "id": "LL-004", "qty": 7 },
+      { "id": "LL-006", "qty": 4 },
+      { "id": "LL-008", "qty": 3 },
+      { "id": "LL-003", "qty": 7 }
+    ],
+    "entities": [
+      { "id": "LL-047", "qty": 2 },
+      { "id": "LL-039", "qty": 2 },
+      { "id": "LL-026", "qty": 2 },
+      { "id": "LL-055", "qty": 1 },
+      { "id": "LL-040", "qty": 1 },
+      { "id": "LL-054", "qty": 1 },
+      { "id": "LL-048", "qty": 1 }
+    ],
+    "items": [
+      { "id": "LL-023", "qty": 4 },
+      { "id": "LL-014", "qty": 2 },
+      { "id": "LL-059", "qty": 1 },
+      { "id": "LL-060", "qty": 1 },
+      { "id": "LL-015", "qty": 1 },
+      { "id": "LL-020", "qty": 1 }
+    ],
+    "outcomes": [
+      { "id": "LL-067", "qty": 1 },
+      { "id": "LL-065", "qty": 1 }
+    ]
+  },
+  "fearlesswandererinthehungrybeastlyvoid": {
+    "name": "Fearless Wanderer in the Hungry Beastly Void",
+    "rooms": [
+      { "id": "LL-001", "qty": 4 },
+      { "id": "LL-002", "qty": 5 },
+      { "id": "LL-004", "qty": 7 },
+      { "id": "LL-009", "qty": 4 },
+      { "id": "LL-005", "qty": 1 },
+      { "id": "LL-006", "qty": 2 },
+      { "id": "LL-008", "qty": 1 },
+      { "id": "LL-003", "qty": 4 },
+      { "id": "LL-007", "qty": 1 },
+      { "id": "LL-010", "qty": 1 }
+    ],
+    "entities": [
+      { "id": "LL-026", "qty": 2 },
+      { "id": "LL-028", "qty": 1 },
+      { "id": "LL-029", "qty": 1 },
+      { "id": "LL-039", "qty": 1 },
+      { "id": "LL-055", "qty": 1 },
+      { "id": "LL-049", "qty": 1 },
+      { "id": "LL-054", "qty": 1 },
+      { "id": "LL-048", "qty": 1 },
+      { "id": "LL-038", "qty": 1 }
+    ],
+    "items": [
+      { "id": "LL-023", "qty": 2 },
+      { "id": "LL-059", "qty": 2 },
+      { "id": "LL-020", "qty": 1 },
+      { "id": "LL-011", "qty": 1 },
+      { "id": "LL-019", "qty": 1 },
+      { "id": "LL-015", "qty": 1 },
+      { "id": "LL-058", "qty": 1 },
+      { "id": "LL-060", "qty": 1 }
+    ],
+    "outcomes": [
+      { "id": "LL-068", "qty": 1 },
+      { "id": "LL-065", "qty": 1 }
+    ]
+  },
+  "finalbattleforthebackrooms": {
+    "name": "Final Battle for the Backrooms",
+    "rooms": [
+      { "id": "LL-001", "qty": 5 },
+      { "id": "LL-002", "qty": 6 },
+      { "id": "LL-004", "qty": 6 },
+      { "id": "LL-009", "qty": 2 },
+      { "id": "LL-005", "qty": 1 },
+      { "id": "LL-006", "qty": 2 },
+      { "id": "LL-008", "qty": 5 },
+      { "id": "LL-003", "qty": 2 },
+      { "id": "LL-010", "qty": 1 }
+    ],
+    "entities": [
+      { "id": "LL-038", "qty": 3 },
+      { "id": "LL-032", "qty": 1 },
+      { "id": "LL-033", "qty": 1 },
+      { "id": "LL-039", "qty": 1 },
+      { "id": "LL-047", "qty": 1 },
+      { "id": "LL-054", "qty": 1 },
+      { "id": "LL-048", "qty": 1 },
+      { "id": "LL-055", "qty": 1 }
+    ],
+    "items": [
+      { "id": "LL-015", "qty": 2 },
+      { "id": "LL-058", "qty": 2 },
+      { "id": "LL-059", "qty": 3 },
+      { "id": "LL-017", "qty": 1 },
+      { "id": "LL-063", "qty": 1 },
+      { "id": "LL-016", "qty": 1 }
+    ],
+    "outcomes": [
+      { "id": "LL-068", "qty": 1 },
+      { "id": "LL-065", "qty": 1 }
+    ]
+  },
+  "doggiedaycare": {
+    "name": "Doggie Day Care",
+    "rooms": [
+      { "id": "LL-001", "qty": 6 },
+      { "id": "LL-002", "qty": 7 },
+      { "id": "LL-004", "qty": 7 },
+      { "id": "LL-006", "qty": 2 },
+      { "id": "LL-005", "qty": 4 },
+      { "id": "LL-008", "qty": 2 },
+      { "id": "LL-003", "qty": 2 }
+    ],
+    "entities": [
+      { "id": "LL-047", "qty": 2 },
+      { "id": "LL-028", "qty": 1 },
+      { "id": "LL-048", "qty": 1 },
+      { "id": "LL-032", "qty": 3 },
+      { "id": "LL-033", "qty": 1 },
+      { "id": "LL-078", "qty": 1 },
+      { "id": "LL-055", "qty": 1 }
+    ],
+    "items": [
+      { "id": "LL-016", "qty": 1 },
+      { "id": "LL-058", "qty": 2 },
+      { "id": "LL-011", "qty": 3 },
+      { "id": "LL-017", "qty": 1 },
+      { "id": "LL-059", "qty": 1 },
+      { "id": "LL-014", "qty": 2 }
+    ],
+    "outcomes": [
+      { "id": "LL-065", "qty": 1 },
+      { "id": "LL-067", "qty": 1 }
+    ]
+  },
+  "sneakingsuitserenade": {
+    "name": "Sneaking Suit Serenade",
+    "rooms": [
+      { "id": "LL-001", "qty": 9 },
+      { "id": "LL-002", "qty": 7 },
+      { "id": "LL-004", "qty": 7 },
+      { "id": "LL-006", "qty": 2 },
+      { "id": "LL-003", "qty": 2 },
+      { "id": "LL-005", "qty": 3 }
+    ],
+    "entities": [
+      { "id": "LL-026", "qty": 2 },
+      { "id": "LL-028", "qty": 2 },
+      { "id": "LL-029", "qty": 1 },
+      { "id": "LL-027", "qty": 1 },
+      { "id": "LL-042", "qty": 1 },
+      { "id": "LL-049", "qty": 1 },
+      { "id": "LL-054", "qty": 1 },
+      { "id": "LL-052", "qty": 1 }
+    ],
+    "items": [
+      { "id": "LL-056", "qty": 1 },
+      { "id": "LL-011", "qty": 2 },
+      { "id": "LL-022", "qty": 1 },
+      { "id": "LL-064", "qty": 1 },
+      { "id": "LL-060", "qty": 1 },
+      { "id": "LL-061", "qty": 1 },
+      { "id": "LL-013", "qty": 1 },
+      { "id": "LL-058", "qty": 1 }
+    ],
+    "outcomes": [
+      { "id": "LL-068", "qty": 1 },
+      { "id": "LL-065", "qty": 1 }
+    ]
+  },
+  "prosdrinktoforget": {
+    "name": "Pro's Drink to Forget",
+    "rooms": [
+      { "id": "LL-001", "qty": 6 },
+      { "id": "LL-002", "qty": 6 },
+      { "id": "LL-004", "qty": 5 },
+      { "id": "LL-006", "qty": 2 },
+      { "id": "LL-005", "qty": 2 },
+      { "id": "LL-010", "qty": 1 },
+      { "id": "LL-003", "qty": 4 }
+    ],
+    "entities": [
+      { "id": "LL-027", "qty": 2 },
+      { "id": "LL-031", "qty": 1 },
+      { "id": "LL-034", "qty": 1 },
+      { "id": "LL-028", "qty": 1 },
+      { "id": "LL-054", "qty": 1 },
+      { "id": "LL-042", "qty": 1 },
+      { "id": "LL-053", "qty": 1 },
+      { "id": "LL-038", "qty": 1 },
+      { "id": "LL-047", "qty": 1 }
+    ],
+    "items": [
+      { "id": "LL-016", "qty": 2 },
+      { "id": "LL-058", "qty": 2 },
+      { "id": "LL-020", "qty": 1 },
+      { "id": "LL-021", "qty": 1 },
+      { "id": "LL-023", "qty": 4 }
+    ],
+    "outcomes": [
+      { "id": "LL-068", "qty": 1 },
+      { "id": "LL-065", "qty": 1 }
+    ]
+  },
+  "thepartiesalwaysgreenerontheothersidedeckone": {
+    "name": "The Parties Always Greener on the Other Side Deck One (The Waiting Room)",
+    "rooms": [
+      { "id": "LL-001", "qty": 10 },
+      { "id": "LL-002", "qty": 9 },
+      { "id": "LL-004", "qty": 7 },
+      { "id": "LL-006", "qty": 2 },
+      { "id": "LL-005", "qty": 2 }
+    ],
+    "entities": [
+      { "id": "LL-076", "qty": 1 },
+      { "id": "LL-092", "qty": 1 },
+      { "id": "LL-030", "qty": 6 },
+      { "id": "LL-047", "qty": 2 }
+    ],
+    "items": [
+      { "id": "LL-012","qty": 3 },
+      { "id": "LL-018", "qty": 4 },
+      { "id": "LL-014", "qty": 2 },
+      { "id": "LL-063", "qty": 1 }
+    ],
+    "outcomes": [
+      { "id": "LL-068", "qty": 1 },
+      { "id": "LL-067", "qty": 1 }
+    ]
+  },
+  "thepartiesalwaysgreenerontheothersidedecktwo": {
+    "name": "The Parties Always Greener on the Other Side Deck Two (The Party)",
+    "rooms": [
+      { "id": "LL-001", "qty": 7 },
+      { "id": "LL-002", "qty": 6 },
+      { "id": "LL-004", "qty": 5 },
+      { "id": "LL-003", "qty": 5 },
+      { "id": "LL-006", "qty": 3 },
+      { "id": "LL-008", "qty": 3 },
+      { "id": "LL-010", "qty": 1 }
+    ],
+    "entities": [
+      { "id": "LL-081", "qty": 2 },
+      { "id": "LL-034", "qty": 4 },
+      { "id": "LL-026", "qty": 2 },
+      { "id": "LL-049", "qty": 1 },
+      { "id": "LL-055", "qty": 1 }
+    ],
+    "items": [
+      { "id": "LL-020", "qty": 1 },
+      { "id": "LL-023", "qty": 3 },
+      { "id": "LL-011", "qty": 2 },
+      { "id": "LL-015", "qty": 2 },
+      { "id": "LL-060", "qty": 2 }
+    ],
+    "outcomes": [
+      { "id": "LL-068", "qty": 1 },
+      { "id": "LL-067", "qty": 1 }
+    ]
+  },
+  "webexclusivebluedeck": {
+    "name": "Web Exclusive Blue Deck",
+    "rooms": [
+      { "id": "LL-001", "qty": 10 },
+      { "id": "LL-002", "qty": 5 },
+      { "id": "LL-003", "qty": 2 },
+      { "id": "LL-004", "qty": 5 },
+      { "id": "LL-005", "qty": 2 },
+      { "id": "LL-007", "qty": 2 },
+      { "id": "LL-009", "qty": 2 },
+      { "id": "LL-010", "qty": 2 }
+    ],
+    "entities": [
+      { "id": "LL-026", "qty": 2 },
+      { "id": "LL-027", "qty": 2 },
+      { "id": "LL-043", "qty": 1 },
+      { "id": "LL-044", "qty": 1 },
+      { "id": "LL-047", "qty": 2 },
+      { "id": "LL-049", "qty": 1 },
+      { "id": "LL-050", "qty": 1 }
+    ],
+    "items": [
+      { "id": "LL-012", "qty": 2 },
+      { "id": "LL-016", "qty": 1 },
+      { "id": "LL-018", "qty": 2 },
+      { "id": "LL-019", "qty": 1 },
+      { "id": "LL-020", "qty": 1 },
+      { "id": "LL-021", "qty": 1 },
+      { "id": "LL-058", "qty": 1 },
+      { "id": "LL-061", "qty": 1 }
+    ],
+    "outcomes": [
+      { "id": "LL-068", "qty": 1 },
+      { "id": "LL-065", "qty": 1 }
+    ]
+  },
+  "frownersgift": {
+    "name": "Frowners Gift",
+    "rooms": [
+      { "id": "LL-001", "qty": 10 },
+      { "id": "LL-002", "qty": 10 },
+      { "id": "LL-004", "qty": 5 },
+      { "id": "LL-005", "qty": 5 }
+    ],
+    "entities": [
+      { "id": "LL-026", "qty": 3 },
+      { "id": "LL-047", "qty": 1 },
+      { "id": "LL-027", "qty": 4 },
+      { "id": "LL-042", "qty": 1 },
+      { "id": "LL-051", "qty": 1 }
+    ],
+    "items": [
+      { "id": "LL-013", "qty": 4 },
+      { "id": "LL-021", "qty": 4 },
+      { "id": "LL-063", "qty": 2 }
+    ],
+    "outcomes": [
+      { "id": "LL-068", "qty": 1 },
+      { "id": "LL-065", "qty": 1 }
+    ]
+  },
+  "sundaytrainride": {
+    "name": "Sunday Train Ride",
+    "rooms": [
+      { "id": "LL-008", "qty": 3 },
+      { "id": "LL-001", "qty": 16 },
+      { "id": "LL-002", "qty": 11 }
+    ],
+    "entities": [
+      { "id": "LL-046", "qty": 1 },
+      { "id": "LL-094", "qty": 1 },
+      { "id": "LL-054", "qty": 1 },
+      { "id": "LL-049", "qty": 1 },
+      { "id": "LL-048", "qty": 1 },
+      { "id": "LL-026", "qty": 5 }
+    ],
+    "items": [
+      { "id": "LL-063", "qty": 1 },
+      { "id": "LL-016", "qty": 1 },
+      { "id": "LL-014", "qty": 1 },
+      { "id": "LL-015", "qty": 1 },
+      { "id": "LL-021", "qty": 3 },
+      { "id": "LL-011", "qty": 2 },
+      { "id": "LL-013", "qty": 1 }
+    ],
+    "outcomes": [
+      { "id": "LL-065", "qty": 1 },
+      { "id": "LL-068", "qty": 1 }
+    ]
+  },
+  "lookingdownfromupahead": {
+    "name": "Looking Down From Up Ahead",
+    "rooms": [
+      { "id": "P-016", "qty": 2 },
+      { "id": "LL-008", "qty": 3 },
+      { "id": "LL-006", "qty": 5 },
+      { "id": "LL-001", "qty": 15 },
+      { "id": "LL-002", "qty": 5 }
+    ],
+    "entities": [
+      { "id": "LL-045", "qty": 1 },
+      { "id": "P-003", "qty": 1 },
+      { "id": "P-011", "qty": 2 },
+      { "id": "LL-053", "qty": 1 },
+      { "id": "LL-054", "qty": 1 },
+      { "id": "LL-049", "qty": 1 },
+      { "id": "LL-043", "qty": 2 },
+      { "id": "P-012", "qty": 1 }
+    ],
+    "items": [
+      { "id": "P-018", "qty": 2 },
+      { "id": "LL-016", "qty": 3 },
+      { "id": "LL-017", "qty": 1 },
+      { "id": "LL-021", "qty": 3 },
+      { "id": "LL-011", "qty": 1 }
+    ],
+    "outcomes": [
+      { "id": "LL-065", "qty": 1 },
+      { "id": "LL-067", "qty": 1 }
+    ]
+  },
+  "throughtheeyeoftheneedleandback": {
+    "name": "Through the eye of the needle (and back)",
+    "rooms": [
+      { "id": "LL-009", "qty": 2 },
+      { "id": "LL-003", "qty": 2 },
+      { "id": "LL-007", "qty": 2 },
+      { "id": "LL-005", "qty": 2 },
+      { "id": "LL-004", "qty": 3 },
+      { "id": "LL-002", "qty": 8 },
+      { "id": "LL-001", "qty": 7 },
+      { "id": "LL-010", "qty": 1 },
+      { "id": "LL-099", "qty": 1 },
+      { "id": "LL-008", "qty": 1 },
+      { "id": "LL-006", "qty": 1 }
+    ],
+    "entities": [
+      { "id": "LL-101", "qty": 1 },
+      { "id": "LL-034", "qty": 3 },
+      { "id": "LL-037", "qty": 3 },
+      { "id": "LL-051", "qty": 1 },
+      { "id": "LL-028", "qty": 1 },
+      { "id": "LL-050", "qty": 1 }
+    ],
+    "items": [
+      { "id": "LL-019", "qty": 3 },
+      { "id": "LL-062", "qty": 1 },
+      { "id": "LL-060", "qty": 2 },
+      { "id": "LL-061", "qty": 1 },
+      { "id": "LL-013", "qty": 3 }
+    ],
+    "outcomes": [
+      { "id": "LL-067", "qty": 1 },
+      { "id": "LL-065", "qty": 1 }
+    ]
+  },
+  "custombuild": {
+    "name": "Custom Build",
+    "rooms": [
+      { "id": "LL-002", "qty": 7 },
+      { "id": "LL-003", "qty": 1 },
+      { "id": "LL-004", "qty": 7 },
+      { "id": "LL-001", "qty": 7 },
+      { "id": "LL-009", "qty": 1 },
+      { "id": "LL-005", "qty": 2 },
+      { "id": "LL-006", "qty": 2 },
+      { "id": "LL-008", "qty": 1 },
+      { "id": "LL-007", "qty": 1 },
+      { "id": "LL-010", "qty": 1 }
+    ],
+    "entities": [
+      { "id": "LL-047", "qty": 1 },
+      { "id": "LL-030", "qty": 1 },
+      { "id": "LL-048", "qty": 1 },
+      { "id": "LL-049", "qty": 1 },
+      { "id": "LL-031", "qty": 1 },
+      { "id": "LL-027", "qty": 1 },
+      { "id": "LL-044", "qty": 1 },
+      { "id": "LL-032", "qty": 1 },
+      { "id": "LL-036", "qty": 1 },
+      { "id": "LL-083", "qty": 1 }
+    ],
+    "items": [
+      { "id": "LL-012", "qty": 1 },
+      { "id": "LL-011", "qty": 1 },
+      { "id": "LL-018", "qty": 1 },
+      { "id": "LL-023", "qty": 1 },
+      { "id": "LL-056", "qty": 1 },
+      { "id": "LL-020", "qty": 1 },
+      { "id": "LL-021", "qty": 1 },
+      { "id": "LL-019", "qty": 1 },
+      { "id": "LL-016", "qty": 1 },
+      { "id": "LL-059", "qty": 1 }
+    ],
+    "outcomes": [
+      { "id": "LL-065", "qty": 1 },
+      { "id": "LL-068", "qty": 1 }
+    ]
+  },
+  "questforthepainitewall": {
+    "name": "Quest for the Painite Wall",
+    "rooms": [
+      { "id": "LL-001", "qty": 3 },
+      { "id": "LL-002", "qty": 6 },
+      { "id": "LL-003", "qty": 8 },
+      { "id": "LL-004", "qty": 7 },
+      { "id": "LL-005", "qty": 1 },
+      { "id": "LL-009", "qty": 4 },
+      { "id": "LL-099", "qty": 1 }
+    ],
+    "entities": [
+      { "id": "LL-030", "qty": 4 },
+      { "id": "LL-047", "qty": 1 },
+      { "id": "LL-028", "qty": 2 },
+      { "id": "LL-034", "qty": 2 },
+      { "id": "LL-048", "qty": 1 }
+    ],
+    "items": [
+      { "id": "LL-013", "qty": 3 },
+      { "id": "LL-020", "qty": 1 },
+      { "id": "LL-024", "qty": 1 },
+      { "id": "LL-062", "qty": 1 },
+      { "id": "LL-058", "qty": 1 },
+      { "id": "LL-025", "qty": 1 },
+      { "id": "LL-060", "qty": 1 },
+      { "id": "LL-061", "qty": 1 }
+    ],
+    "outcomes": [
+      { "id": "LL-065", "qty": 1 },
+      { "id": "LL-068", "qty": 1 }
+    ]
   }
 }
