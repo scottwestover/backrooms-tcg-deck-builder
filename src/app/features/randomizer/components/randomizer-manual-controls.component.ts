@@ -13,7 +13,25 @@ import { ArchetypeData } from '../../../services/randomizer.service';
   selector: 'backrooms-randomizer-manual-controls',
   template: `
     <div
-      class="mb-4 grid grid-cols-1 gap-4 rounded-lg bg-gray-800 p-4 md:grid-cols-4">
+      class="mb-4 grid grid-cols-1 gap-4 rounded-lg bg-gray-800 p-4 md:grid-cols-2 lg:grid-cols-5">
+      <div class="flex flex-col lg:col-span-1">
+        <label for="overall-select" class="mb-1 text-sm text-gray-400"
+          >Overall Deck:</label
+        >
+        <select
+          name="overall-select"
+          [ngModel]="overallSelection"
+          (ngModelChange)="onOverallSelectionChange($event)"
+          class="rounded-md bg-gray-700 p-2 text-white">
+          <option [ngValue]="null">Mixed</option>
+          @for (archetypeKey of archetypeKeys; track archetypeKey) {
+            <option [value]="archetypeKey">
+              {{ archetypes[archetypeKey].name }}
+            </option>
+          }
+        </select>
+      </div>
+
       <div class="flex flex-col">
         <label for="rooms-select" class="mb-1 text-sm text-gray-400"
           >Rooms Archetype:</label
@@ -89,6 +107,7 @@ import { ArchetypeData } from '../../../services/randomizer.service';
   imports: [NgFor, FormsModule],
 })
 export class RandomizerManualControlsComponent {
+  @Input() overallSelection: string | null = null;
   @Input() archetypes: ArchetypeData = {};
   @Input() archetypeKeys: string[] = [];
   @Input() manualSelections: {
@@ -100,6 +119,11 @@ export class RandomizerManualControlsComponent {
 
   @Output() manualSelectionsChange = new EventEmitter<any>();
   @Output() selectionChange = new EventEmitter<void>();
+  @Output() overallSelectionChange = new EventEmitter<string | null>();
+
+  onOverallSelectionChange(value: string | null) {
+    this.overallSelectionChange.emit(value);
+  }
 
   onSelectionChange(
     type: 'rooms' | 'items' | 'entities' | 'outcomes',

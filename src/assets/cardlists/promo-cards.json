@@ -217,7 +217,7 @@
     "cardNumber": "99010",
     "notes": "-",
     "version": "Normal",
-    "cardType": "ROOM"
+    "cardType": "Room"
   },
   {
     "id": "P-011",
@@ -725,7 +725,7 @@
     "version": "Normal",
     "cardType": "Entity"
   },
-    {
+  {
     "id": "P-034",
     "name": {
       "english": "Ferdinand"

@@ -5,7 +5,7 @@ import {
   Input,
   inject,
 } from '@angular/core';
-import { BackroomsCard } from '../../../../models';
+import { IDeckCard } from '../../../../models';
 import { CardImageComponent } from '../../shared/card-image.component';
 import { DialogStore } from '../../../store/dialog.store';
 
@@ -21,7 +21,13 @@ import { DialogStore } from '../../../store/dialog.store';
               *ngFor="let card of cards.rooms"
               class="card-item"
               (click)="openCardModal(card)">
-              <backrooms-card-image [card]="card"></backrooms-card-image>
+              <div class="relative">
+                <backrooms-card-image [card]="card"></backrooms-card-image>
+                <span
+                  class="text-shadow-white absolute bottom-8 right-1 z-[100] text-2xl font-black text-orange-500 sm:text-3xl lg:text-2xl xl:bottom-1">
+                  <span class="text-sky-700">x</span>{{ card.count }}
+                </span>
+              </div>
             </div>
           </div>
         </div>
@@ -32,7 +38,13 @@ import { DialogStore } from '../../../store/dialog.store';
               *ngFor="let card of cards.items"
               class="card-item"
               (click)="openCardModal(card)">
-              <backrooms-card-image [card]="card"></backrooms-card-image>
+              <div class="relative">
+                <backrooms-card-image [card]="card"></backrooms-card-image>
+                <span
+                  class="text-shadow-white absolute bottom-8 right-1 z-[100] text-2xl font-black text-orange-500 sm:text-3xl lg:text-2xl xl:bottom-1">
+                  <span class="text-sky-700">x</span>{{ card.count }}
+                </span>
+              </div>
             </div>
           </div>
         </div>
@@ -43,7 +55,13 @@ import { DialogStore } from '../../../store/dialog.store';
               *ngFor="let card of cards.entities"
               class="card-item"
               (click)="openCardModal(card)">
-              <backrooms-card-image [card]="card"></backrooms-card-image>
+              <div class="relative">
+                <backrooms-card-image [card]="card"></backrooms-card-image>
+                <span
+                  class="text-shadow-white absolute bottom-8 right-1 z-[100] text-2xl font-black text-orange-500 sm:text-3xl lg:text-2xl xl:bottom-1">
+                  <span class="text-sky-700">x</span>{{ card.count }}
+                </span>
+              </div>
             </div>
           </div>
         </div>
@@ -54,7 +72,13 @@ import { DialogStore } from '../../../store/dialog.store';
               *ngFor="let card of cards.outcomes"
               class="card-item"
               (click)="openCardModal(card)">
-              <backrooms-card-image [card]="card"></backrooms-card-image>
+              <div class="relative">
+                <backrooms-card-image [card]="card"></backrooms-card-image>
+                <span
+                  class="text-shadow-white absolute bottom-8 right-1 z-[100] text-2xl font-black text-orange-500 sm:text-3xl lg:text-2xl xl:bottom-1">
+                  <span class="text-sky-700">x</span>{{ card.count }}
+                </span>
+              </div>
             </div>
           </div>
         </div>
@@ -87,15 +111,15 @@ import { DialogStore } from '../../../store/dialog.store';
 })
 export class CardListGalleryComponent {
   @Input() cards: {
-    rooms: BackroomsCard[];
-    items: BackroomsCard[];
-    entities: BackroomsCard[];
-    outcomes: BackroomsCard[];
+    rooms: IDeckCard[];
+    items: IDeckCard[];
+    entities: IDeckCard[];
+    outcomes: IDeckCard[];
   } | null = null;
 
   private dialogStore = inject(DialogStore);
 
-  openCardModal(card: BackroomsCard): void {
+  openCardModal(card: IDeckCard): void {
     this.dialogStore.updateViewCardDialog({
       show: true,
       card: card,
