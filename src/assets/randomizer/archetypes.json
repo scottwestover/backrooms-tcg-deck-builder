@@ -32,79 +32,6 @@
       { "id": "LL-042", "qty": 1 }
     ]
   },
-  "hallsOfShadowedLight": {
-    "name": "Halls Of Shadowed Light",
-    "rooms": [
-      { "id": "LL-001", "qty": 5 },
-      { "id": "LL-002", "qty": 5 },
-      { "id": "LL-004", "qty": 5 },
-      { "id": "LL-005", "qty": 1 },
-      { "id": "LL-006", "qty": 1 },
-      { "id": "LL-007", "qty": 1 },
-      { "id": "LL-008", "qty": 2 },
-      { "id": "LL-009", "qty": 3 },
-      { "id": "LL-003", "qty": 7 }
-    ],
-    "items": [
-      { "id": "LL-012", "qty": 1 },
-      { "id": "LL-016", "qty": 1 },
-      { "id": "LL-017", "qty": 1 },
-      { "id": "LL-020", "qty": 1 },
-      { "id": "LL-064", "qty": 1 },
-      { "id": "LL-059", "qty": 2 },
-      { "id": "LL-015", "qty": 1 },
-      { "id": "LL-019", "qty": 1 },
-      { "id": "LL-063", "qty": 1 }
-    ],
-    "outcomes": [
-      { "id": "LL-068", "qty": 1 },
-      { "id": "LL-065", "qty": 1 }
-    ],
-    "entities": [
-      { "id": "LL-044", "qty": 2 },
-      { "id": "LL-054", "qty": 1 },
-      { "id": "LL-050", "qty": 1 },
-      { "id": "LL-052", "qty": 1 },
-      { "id": "LL-038", "qty": 4 },
-      { "id": "LL-035", "qty": 1 }
-    ]
-  },
-  "wonderland": {
-    "name": "Wonderland",
-    "rooms": [
-      { "id": "LL-001", "qty": 4 },
-      { "id": "LL-002", "qty": 8 },
-      { "id": "LL-003", "qty": 2 },
-      { "id": "LL-004", "qty": 8 },
-      { "id": "LL-005", "qty": 3 },
-      { "id": "LL-007", "qty": 3 },
-      { "id": "LL-009", "qty": 2 }
-    ],
-    "items": [
-      { "id": "LL-022", "qty": 1 },
-      { "id": "LL-016", "qty": 1 },
-      { "id": "LL-023", "qty": 2 },
-      { "id": "LL-020", "qty": 1 },
-      { "id": "LL-059", "qty": 1 },
-      { "id": "LL-015", "qty": 2 },
-      { "id": "LL-019", "qty": 2 }
-    ],
-    "outcomes": [
-      { "id": "LL-065", "qty": 1 },
-      { "id": "LL-068", "qty": 1 }
-    ],
-    "entities": [
-      { "id": "LL-046", "qty": 1 },
-      { "id": "LL-044", "qty": 1 },
-      { "id": "LL-028", "qty": 1 },
-      { "id": "LL-054", "qty": 1 },
-      { "id": "LL-053", "qty": 1 },
-      { "id": "LL-047", "qty": 1 },
-      { "id": "LL-027", "qty": 1 },
-      { "id": "LL-034", "qty": 2 },
-      { "id": "LL-041", "qty": 1 }
-    ]
-  },
   "holidaychallenge2023": {
     "name": "Holiday Challenge 2023",
     "rooms": [
@@ -381,7 +308,7 @@
     ],
     "entities": [
       { "id": "LL-041", "qty": 1 },
-      { "id": "LL-045", "qty": 1 },
+      { "id": "LL-046", "qty": 1 },
       { "id": "LL-054", "qty": 1 },
       { "id": "LL-053", "qty": 1 },
       { "id": "LL-044", "qty": 1 },
@@ -421,8 +348,8 @@
     "entities": [
       { "id": "LL-044", "qty": 1 },
       { "id": "LL-029", "qty": 1 },
-      { "id": "LL-045", "qty": 2 },
-      { "id": "TBD::(Mythical and Rare versions if possible)", "qty": 1 },
+      { "id": "LL-102", "qty": 1 },
+      { "id": "LL-088", "qty": 1 },
       { "id": "LL-026", "qty": 1 },
       { "id": "LL-039", "qty": 1 },
       { "id": "LL-053", "qty": 1 },
