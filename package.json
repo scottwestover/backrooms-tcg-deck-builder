@@ -8,6 +8,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
+    "test:once": "ng test --watch=false",
     "lint": "ng lint --fix",
     "format": "npx prettier src/**/*.{js,jsx,ts,tsx,html,css,scss} --write",
     "deploy:host": "npx firebase deploy --only hosting",

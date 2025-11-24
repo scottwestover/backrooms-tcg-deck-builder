@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { TooltipModule } from 'primeng/tooltip';
 import * as uuid from 'uuid';
-import { BackroomsCard, ICountCard, IDeck } from '../../../models';
+import { ICountCard, IDeck, IDeckCard } from '../../../models';
 import {
   ArchetypeData,
   GeneratedDeck,
@@ -98,6 +98,8 @@ interface DeckAsList {
             [archetypes]="archetypes"
             [archetypeKeys]="archetypeKeys"
             [(manualSelections)]="manualSelections"
+            [(overallSelection)]="overallSelection"
+            (overallSelectionChange)="onOverallSelectionChange($event)"
             (selectionChange)="
               onManualSelectionChange()
             "></backrooms-randomizer-manual-controls>
@@ -208,6 +210,7 @@ export class RandomizerPageComponent implements OnInit {
 
   archetypes: ArchetypeData = {};
   archetypeKeys: string[] = [];
+  overallSelection: string | null = null;
   manualSelections: {
     rooms: string | null;
     items: string | null;
@@ -223,10 +226,10 @@ export class RandomizerPageComponent implements OnInit {
     | null = null;
 
   generatedCards: {
-    rooms: BackroomsCard[];
-    items: BackroomsCard[];
-    entities: BackroomsCard[];
-    outcomes: BackroomsCard[];
+    rooms: IDeckCard[];
+    items: IDeckCard[];
+    entities: IDeckCard[];
+    outcomes: IDeckCard[];
   } | null = null;
 
   generatedDeckAsList: {
@@ -260,6 +263,7 @@ export class RandomizerPageComponent implements OnInit {
           entities: defaultKey,
           outcomes: defaultKey,
         };
+        this.overallSelection = defaultKey; // Set default for overall selection
       }
       this.onManualSelectionChange();
     } else {
@@ -285,8 +289,32 @@ export class RandomizerPageComponent implements OnInit {
     this.updateDeckViews(deck.cards);
   }
 
+  onOverallSelectionChange(archetypeKey: string | null) {
+    this.overallSelection = archetypeKey;
+    if (archetypeKey) {
+      this.manualSelections = {
+        rooms: archetypeKey,
+        items: archetypeKey,
+        entities: archetypeKey,
+        outcomes: archetypeKey,
+      };
+      this.onManualSelectionChange();
+    }
+  }
+
   onManualSelectionChange() {
     const { rooms, items, entities, outcomes } = this.manualSelections;
+
+    if (
+      rooms &&
+      items &&
+      entities &&
+      outcomes &&
+      !(rooms === items && rooms === entities && rooms === outcomes)
+    ) {
+      this.overallSelection = null;
+    }
+
     if (rooms && items && entities && outcomes) {
       const roomCards = this.archetypes[rooms].rooms;
       const itemCards = this.archetypes[items].items;
@@ -312,49 +340,70 @@ export class RandomizerPageComponent implements OnInit {
   private updateDeckViews(cards: ICountCard[]) {
     if (!cards) {
       this.generatedCards = null;
+
       this.generatedDeckAsList = null;
+
       return;
     }
 
     const cardMap = this.cardStore.cardsMap();
-    const rooms: BackroomsCard[] = [];
-    const items: BackroomsCard[] = [];
-    const entities: BackroomsCard[] = [];
-    const outcomes: BackroomsCard[] = [];
+
+    const rooms: IDeckCard[] = [];
+
+    const items: IDeckCard[] = [];
+
+    const entities: IDeckCard[] = [];
+
+    const outcomes: IDeckCard[] = [];
 
     const listRooms: DeckAsList[] = [];
+
     const listItems: DeckAsList[] = [];
+
     const listEntities: DeckAsList[] = [];
+
     const listOutcomes: DeckAsList[] = [];
 
     for (const countCard of cards) {
       const card = cardMap.get(countCard.id);
+
       if (card) {
+        const deckCard: IDeckCard = { ...card, count: countCard.count };
         const deckAsListCard = {
           id: card.id,
           name: card.name.english,
           count: countCard.count,
         };
 
-        for (let i = 0; i < countCard.count; i++) {
-          if (card.cardType === 'Room') rooms.push(card);
-          else if (card.cardType === 'Item') items.push(card);
-          else if (card.cardType === 'Entity') entities.push(card);
-          else if (card.cardType === 'Outcome') outcomes.push(card);
-        }
+        if (card.cardType.toLowerCase() === 'room') {
+          rooms.push(deckCard);
 
-        if (card.cardType === 'Room') listRooms.push(deckAsListCard);
-        else if (card.cardType === 'Item') listItems.push(deckAsListCard);
-        else if (card.cardType === 'Entity') listEntities.push(deckAsListCard);
-        else if (card.cardType === 'Outcome') listOutcomes.push(deckAsListCard);
+          listRooms.push(deckAsListCard);
+        } else if (card.cardType.toLowerCase() === 'item') {
+          items.push(deckCard);
+
+          listItems.push(deckAsListCard);
+        } else if (card.cardType.toLowerCase() === 'entity') {
+          entities.push(deckCard);
+
+          listEntities.push(deckAsListCard);
+        } else if (card.cardType.toLowerCase() === 'outcome') {
+          outcomes.push(deckCard);
+
+          listOutcomes.push(deckAsListCard);
+        }
       }
     }
 
     this.generatedCards = { rooms, items, entities, outcomes };
+
     this.generatedDeckAsList = {
       rooms: listRooms,
+
       items: listItems,
+
       entities: listEntities,
+
       outcomes: listOutcomes,
     };
   }
@@ -362,6 +411,7 @@ export class RandomizerPageComponent implements OnInit {
   addToDeckbuilder() {
     if (!this.generatedDeck) return;
 
+    // TODO: see if we can re-use the same method we use elsewhere for creating new decks instead of duplicating
     const newDeck: IDeck = {
       id: uuid.v4(),
       title:

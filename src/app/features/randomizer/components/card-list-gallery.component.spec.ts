@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { BackroomsCard } from '../../../../models';
+import { IDeckCard } from '../../../../models';
 import { CardImageComponent } from '../../shared/card-image.component';
 import { CardListGalleryComponent } from './card-list-gallery.component';
 
@@ -22,20 +22,22 @@ describe('CardListGalleryComponent', () => {
   let nativeElement: HTMLElement;
 
   const mockCards: {
-    rooms: BackroomsCard[];
-    items: BackroomsCard[];
-    entities: BackroomsCard[];
-    outcomes: BackroomsCard[];
+    rooms: IDeckCard[];
+    items: IDeckCard[];
+    entities: IDeckCard[];
+    outcomes: IDeckCard[];
   } = {
     rooms: [
-      { id: 'R01', name: { english: 'Room 1' } },
-      { id: 'R02', name: { english: 'Room 2' } },
-    ] as BackroomsCard[],
-    items: [{ id: 'I01', name: { english: 'Item 1' } }] as BackroomsCard[],
-    entities: [] as BackroomsCard[],
+      { id: 'R01', name: { english: 'Room 1' }, count: 1 },
+      { id: 'R02', name: { english: 'Room 2' }, count: 2 },
+    ] as IDeckCard[],
+    items: [
+      { id: 'I01', name: { english: 'Item 1' }, count: 3 },
+    ] as IDeckCard[],
+    entities: [] as IDeckCard[],
     outcomes: [
-      { id: 'O01', name: { english: 'Outcome 1' } },
-    ] as BackroomsCard[],
+      { id: 'O01', name: { english: 'Outcome 1' }, count: 4 },
+    ] as IDeckCard[],
   };
 
   beforeEach(async () => {
@@ -73,14 +75,10 @@ describe('CardListGalleryComponent', () => {
     expect(headerTexts).toContain('Rooms');
     expect(headerTexts).toContain('Items');
 
-    const roomImages = fixture.debugElement.queryAll(
-      By.css('.card-grid'),
-    )[0];
+    const roomImages = fixture.debugElement.queryAll(By.css('.card-grid'))[0];
     expect(roomImages.children.length).toBe(2);
 
-    const itemImages = fixture.debugElement.queryAll(
-      By.css('.card-grid'),
-    )[1];
+    const itemImages = fixture.debugElement.queryAll(By.css('.card-grid'))[1];
     expect(itemImages.children.length).toBe(1);
   });
 
@@ -92,5 +90,19 @@ describe('CardListGalleryComponent', () => {
     const headerTexts = Array.from(allHeaders).map((h) => h.textContent);
 
     expect(headerTexts).not.toContain('Entities');
+  });
+
+  it('should display the correct quantity for each card', () => {
+    component.cards = mockCards;
+    fixture.detectChanges();
+
+    const cardItems = nativeElement.querySelectorAll('.card-item');
+    const firstRoomQuantity = cardItems[0].querySelector('span span');
+    const secondRoomQuantity = cardItems[1].querySelector('span span');
+    const firstItemQuantity = cardItems[2].querySelector('span span');
+
+    expect(firstRoomQuantity?.parentElement?.textContent).toContain('x1');
+    expect(secondRoomQuantity?.parentElement?.textContent).toContain('x2');
+    expect(firstItemQuantity?.parentElement?.textContent).toContain('x3');
   });
 });

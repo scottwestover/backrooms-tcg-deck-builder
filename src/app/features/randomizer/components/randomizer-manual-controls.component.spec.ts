@@ -12,8 +12,11 @@ import { RandomizerManualControlsComponent } from './randomizer-manual-controls.
       [archetypes]="archetypes"
       [archetypeKeys]="archetypeKeys"
       [(manualSelections)]="manualSelections"
-      (selectionChange)="onSelectionChange()"
-    ></backrooms-randomizer-manual-controls>
+      [(overallSelection)]="overallSelection"
+      (overallSelectionChange)="onOverallSelectionChange($event)"
+      (selectionChange)="
+        onSelectionChange()
+      "></backrooms-randomizer-manual-controls>
   `,
   standalone: true,
   imports: [RandomizerManualControlsComponent, FormsModule],
@@ -30,11 +33,18 @@ class TestHostComponent {
     entities: null,
     outcomes: null,
   };
+  overallSelection: string | null = 'alpha';
 
   selectionChangeSpy = jasmine.createSpy('selectionChange');
+  overallSelectionChangeSpy = jasmine.createSpy('overallSelectionChange');
 
   onSelectionChange() {
     this.selectionChangeSpy();
+  }
+
+  onOverallSelectionChange(event: string | null) {
+    this.overallSelection = event;
+    this.overallSelectionChangeSpy(event);
   }
 }
 
@@ -61,13 +71,13 @@ describe('RandomizerManualControlsComponent', () => {
     expect(controlsComponent).toBeTruthy();
   });
 
-  it('should display four select dropdowns', () => {
+  it('should display five select dropdowns', () => {
     const selectElements = nativeElement.querySelectorAll('select');
-    expect(selectElements.length).toBe(4);
+    expect(selectElements.length).toBe(5);
   });
 
   it('should populate dropdowns with archetype names', () => {
-    const firstSelect = nativeElement.querySelector('select');
+    const firstSelect = nativeElement.querySelectorAll('select')[1];
     const options = firstSelect?.querySelectorAll('option');
     expect(options?.length).toBe(3); // null option + 2 archetypes
     expect(options?.[1].textContent?.trim()).toBe('Alpha');
@@ -77,8 +87,9 @@ describe('RandomizerManualControlsComponent', () => {
   it('should bind initial selections to dropdowns', () => {
     const selectElements = nativeElement.querySelectorAll('select');
     expect((selectElements[0] as HTMLSelectElement).value).toContain('alpha');
-    expect((selectElements[1] as HTMLSelectElement).value).toContain('beta');
-    expect((selectElements[2] as HTMLSelectElement).selectedIndex).toBe(0);
+    expect((selectElements[1] as HTMLSelectElement).value).toContain('alpha');
+    expect((selectElements[2] as HTMLSelectElement).value).toContain('beta');
+    expect((selectElements[3] as HTMLSelectElement).selectedIndex).toBe(0);
   });
 
   it('should emit selectionChange and update manualSelections on change', async () => {
@@ -95,5 +106,23 @@ describe('RandomizerManualControlsComponent', () => {
 
     // Check that the model in the host component was updated
     expect(hostComponent.manualSelections.rooms).toBe('beta');
+  });
+
+  it('should emit overallSelectionChange and update overallSelection on change', async () => {
+    const overallSelect = nativeElement.querySelector(
+      'select[name="overall-select"]',
+    ) as HTMLSelectElement;
+    overallSelect.value = 'beta';
+    overallSelect.dispatchEvent(new Event('change'));
+    fixture.detectChanges();
+    await fixture.whenStable();
+
+    // Check that the spy was called
+    expect(hostComponent.overallSelectionChangeSpy).toHaveBeenCalledWith(
+      'beta',
+    );
+
+    // Check that the model in the host component was updated
+    expect(hostComponent.overallSelection).toBe('beta');
   });
 });
