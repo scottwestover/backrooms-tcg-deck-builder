@@ -4,12 +4,16 @@ import {
   Component,
   inject,
   OnInit,
+  ChangeDetectorRef,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Meta, Title } from '@angular/platform-browser';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
+import { MessageService } from 'primeng/api';
+import { ToastModule } from 'primeng/toast';
 import { TooltipModule } from 'primeng/tooltip';
+import { take } from 'rxjs';
 import * as uuid from 'uuid';
 import { ICountCard, IDeck, IDeckCard } from '../../../models';
 import {
@@ -128,6 +132,14 @@ interface DeckAsList {
                   pButton
                   pTooltip="Click to export this deck!"
                   tooltipPosition="top"></button>
+                <button
+                  (click)="copyShareLink()"
+                  class="p-button-outlined py-1.5 px-3"
+                  icon="pi pi-link"
+                  iconPos="left"
+                  pButton
+                  pTooltip="Copy link to this page and share with others!"
+                  tooltipPosition="top"></button>
               </div>
 
               <div class="flex flex-col items-center">
@@ -193,10 +205,13 @@ interface DeckAsList {
     RandomizerResultsHeaderComponent,
     ButtonModule, // Added for pButton
     TooltipModule, // Added for pTooltip
+    ToastModule, // Added for p-toast
   ],
 })
 export class RandomizerPageComponent implements OnInit {
   private router = inject(Router);
+  private route = inject(ActivatedRoute);
+  private cdr = inject(ChangeDetectorRef);
   private meta = inject(Meta);
   private title = inject(Title);
 
@@ -204,11 +219,12 @@ export class RandomizerPageComponent implements OnInit {
   private cardStore = inject(BackroomsCardStore);
   private websiteStore = inject(WebsiteStore);
   private dialogStore = inject(DialogStore); // Injected DialogStore
+  private messageService = inject(MessageService); // Injected MessageService
 
   generationMode: 'simple' | 'mixed' | 'manual' = 'simple';
   cardViewMode: 'images' | 'list' = 'images';
 
-  archetypes: ArchetypeData = {};
+  archetypes: ArchetypeData = [];
   archetypeKeys: string[] = [];
   overallSelection: string | null = null;
   manualSelections: {
@@ -246,7 +262,31 @@ export class RandomizerPageComponent implements OnInit {
     this.cardStore.updateCards();
     this.randomizerService.getArchetypes().subscribe((data) => {
       this.archetypes = data;
-      this.archetypeKeys = Object.keys(data);
+      this.archetypeKeys = data.map((a) => a.id.toString());
+
+      this.route.queryParams.pipe(take(1)).subscribe((params) => {
+        const { rooms, items, entities, outcomes } = params;
+        if (rooms || items || entities || outcomes) {
+          const defaultKey =
+            this.archetypeKeys.length > 0 ? this.archetypeKeys[0] : null;
+
+          const selections = {
+            rooms: this.archetypeKeys.includes(rooms) ? rooms : defaultKey,
+            items: this.archetypeKeys.includes(items) ? items : defaultKey,
+            entities: this.archetypeKeys.includes(entities)
+              ? entities
+              : defaultKey,
+            outcomes: this.archetypeKeys.includes(outcomes)
+              ? outcomes
+              : defaultKey,
+          };
+
+          this.manualSelections = selections;
+          this.generationMode = 'mixed';
+          this.onManualSelectionChange();
+          this.cdr.markForCheck();
+        }
+      });
     });
   }
 
@@ -348,6 +388,30 @@ export class RandomizerPageComponent implements OnInit {
     this.generatedDeck = deck;
     this.lastRandomDeck = deck;
     this.updateDeckViews(deck.cards);
+
+    // Update URL and selections
+    let selections: {
+      rooms: string | null;
+      items: string | null;
+      entities: string | null;
+      outcomes: string | null;
+    };
+
+    if (this.isMixedDeck(deck)) {
+      selections = {
+        rooms: this.findArchetypeKeyByName(deck.archetypeNames.rooms),
+        items: this.findArchetypeKeyByName(deck.archetypeNames.items),
+        entities: this.findArchetypeKeyByName(deck.archetypeNames.entities),
+        outcomes: this.findArchetypeKeyByName(deck.archetypeNames.outcomes),
+      };
+    } else {
+      // Simple deck
+      const key = this.findArchetypeKeyByName(deck.archetypeName);
+      selections = { rooms: key, items: key, entities: key, outcomes: key };
+    }
+
+    this.manualSelections = selections;
+    this.updateUrlWithSelections(selections);
   }
 
   onOverallSelectionChange(archetypeKey: string | null): void {
@@ -380,10 +444,35 @@ export class RandomizerPageComponent implements OnInit {
         this.overallSelection = null;
       }
 
-      const roomCards = this.archetypes[rooms].rooms;
-      const itemCards = this.archetypes[items].items;
-      const entityCards = this.archetypes[entities].entities;
-      const outcomeCards = this.archetypes[outcomes].outcomes;
+      // Find archetypes by ID (string representation)
+      const roomArchetype = this.archetypes.find(
+        (a) => a.id.toString() === rooms,
+      );
+      const itemArchetype = this.archetypes.find(
+        (a) => a.id.toString() === items,
+      );
+      const entityArchetype = this.archetypes.find(
+        (a) => a.id.toString() === entities,
+      );
+      const outcomeArchetype = this.archetypes.find(
+        (a) => a.id.toString() === outcomes,
+      );
+
+      if (
+        !roomArchetype ||
+        !itemArchetype ||
+        !entityArchetype ||
+        !outcomeArchetype
+      ) {
+        // Handle error or return if archetypes are not found
+        console.error('One or more archetypes not found for manual selection.');
+        return;
+      }
+
+      const roomCards = roomArchetype.rooms;
+      const itemCards = itemArchetype.items;
+      const entityCards = entityArchetype.entities;
+      const outcomeCards = outcomeArchetype.outcomes;
       const allCards = [
         ...roomCards,
         ...itemCards,
@@ -393,23 +482,38 @@ export class RandomizerPageComponent implements OnInit {
 
       if (allSame) {
         this.generatedDeck = {
-          archetypeName: this.archetypes[rooms].name,
+          archetypeName: roomArchetype.name,
           cards: allCards,
         };
       } else {
         this.generatedDeck = {
           archetypeNames: {
-            rooms: this.archetypes[rooms].name,
-            items: this.archetypes[items].name,
-            entities: this.archetypes[entities].name,
-            outcomes: this.archetypes[outcomes].name,
+            rooms: roomArchetype.name,
+            items: itemArchetype.name,
+            entities: entityArchetype.name,
+            outcomes: outcomeArchetype.name,
           },
           cards: allCards,
         };
       }
 
       this.updateDeckViews(allCards);
+      this.updateUrlWithSelections(this.manualSelections);
     }
+  }
+
+  private updateUrlWithSelections(selections: {
+    rooms: string | null;
+    items: string | null;
+    entities: string | null;
+    outcomes: string | null;
+  }): void {
+    this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: selections,
+      queryParamsHandling: 'merge',
+      replaceUrl: true,
+    });
   }
 
   private isMixedDeck(
@@ -420,8 +524,9 @@ export class RandomizerPageComponent implements OnInit {
 
   private findArchetypeKeyByName(name: string): string | null {
     return (
-      this.archetypeKeys.find((key) => this.archetypes[key].name === name) ??
-      null
+      this.archetypes
+        .find((archetype) => archetype.name === name)
+        ?.id.toString() ?? null
     );
   }
 
@@ -528,6 +633,27 @@ export class RandomizerPageComponent implements OnInit {
       show: true,
       deck: deckToExport,
     });
+  }
+
+  copyShareLink(): void {
+    const currentUrl = window.location.origin + this.router.url;
+    navigator.clipboard
+      .writeText(currentUrl)
+      .then(() => {
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Link Copied!',
+          detail: 'The current page link has been copied to your clipboard.',
+        });
+      })
+      .catch((err) => {
+        console.error('Failed to copy link: ', err);
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Copy Failed!',
+          detail: 'Could not copy the link to your clipboard.',
+        });
+      });
   }
 
   private makeGoogleFriendly() {

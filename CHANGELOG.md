@@ -18,6 +18,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - November 2025 Promo Card "Lustratio Latrina" [47601a5](https://github.com/scottwestover/backrooms-tcg-deck-builder/commit/47601a53ab30d93190772ce0b41c9f8d14e1411e).
 - Aquazone preview cards [47601a5](https://github.com/scottwestover/backrooms-tcg-deck-builder/commit/47601a53ab30d93190772ce0b41c9f8d14e1411e).
 - Event cards from starter decks [47601a5](https://github.com/scottwestover/backrooms-tcg-deck-builder/commit/47601a53ab30d93190772ce0b41c9f8d14e1411e).
+- Added unit tests for new components and started adding unit tests to existing components that get modified.
+
+### Fixed
+
+- Fixed card types in the "promo-cards.json" file so promo cards will load in the correct card type selection.
 
 ## [0.0.9] - 2025-11-23
 

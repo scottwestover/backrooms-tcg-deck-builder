@@ -1,5 +1,6 @@
-{
-  "pestilence": {
+[
+  {
+    "id": 1,
     "name": "Pestilence",
     "rooms": [
       { "id": "LL-001", "qty": 8 },
@@ -32,7 +33,8 @@
       { "id": "LL-042", "qty": 1 }
     ]
   },
-  "holidaychallenge2023": {
+  {
+    "id": 2,
     "name": "Holiday Challenge 2023",
     "rooms": [
       { "id": "LL-001", "qty": 4 },
@@ -68,7 +70,8 @@
       { "id": "LL-065", "qty": 1 }
     ]
   },
-  "suitup": {
+  {
+    "id": 3,
     "name": "Suit Up!",
     "rooms": [
       { "id": "LL-001", "qty": 2 },
@@ -100,7 +103,8 @@
       { "id": "LL-065", "qty": 1 }
     ]
   },
-  "hounds": {
+  {
+    "id": 4,
     "name": "Hounds",
     "rooms": [
       { "id": "LL-001", "qty": 5 },
@@ -129,7 +133,8 @@
       { "id": "LL-066", "qty": 1 }
     ]
   },
-  "stranglerv1": {
+  {
+    "id": 5,
     "name": "Strangler v1",
     "rooms": [
       { "id": "LL-001", "qty": 8 },
@@ -163,7 +168,8 @@
       { "id": "LL-065", "qty": 1 }
     ]
   },
-  "poisonfacelingdeck": {
+  {
+    "id": 6,
     "name": "Poison Faceling Deck",
     "rooms": [
       { "id": "LL-001", "qty": 8 },
@@ -195,7 +201,8 @@
       { "id": "LL-065", "qty": 1 }
     ]
   },
-  "darkhallsdeck": {
+  {
+    "id": 7,
     "name": "Dark Halls Deck",
     "rooms": [
       { "id": "LL-003", "qty": 10 },
@@ -226,7 +233,8 @@
       { "id": "LL-065", "qty": 1 }
     ]
   },
-  "facesdeckold": {
+  {
+    "id": 8,
     "name": "Faces Deck Old",
     "rooms": [
       { "id": "LL-001", "qty": 10 },
@@ -258,7 +266,8 @@
       { "id": "LL-065", "qty": 1 }
     ]
   },
-  "hallsofshadowedlight": {
+  {
+    "id": 9,
     "name": "Halls of Shadowed Light",
     "rooms": [
       { "id": "LL-002", "qty": 5 },
@@ -295,7 +304,8 @@
       { "id": "LL-068", "qty": 1 }
     ]
   },
-  "noclippingintowonderland": {
+  {
+    "id": 10,
     "name": "No-Clipping into Wonderland",
     "rooms": [
       { "id": "LL-001", "qty": 4 },
@@ -331,7 +341,8 @@
       { "id": "LL-067", "qty": 1 }
     ]
   },
-  "lightsinthedarkness": {
+  {
+    "id": 11,
     "name": "Lights in the Darkness ",
     "rooms": [
       { "id": "LL-001", "qty": 7 },
@@ -373,7 +384,8 @@
       { "id": "LL-068", "qty": 1 }
     ]
   },
-  "battleforthebackrooms": {
+  {
+    "id": 12,
     "name": "Battle for the Backrooms ",
     "rooms": [
       { "id": "LL-001", "qty": 9 },
@@ -411,7 +423,8 @@
       { "id": "LL-068", "qty": 1 }
     ]
   },
-  "fungalwarfare": {
+  {
+    "id": 13,
     "name": "Fungal Warfare",
     "rooms": [
       { "id": "LL-003", "qty": 3 },
@@ -445,7 +458,8 @@
       { "id": "LL-068", "qty": 1 }
     ]
   },
-  "ancientcosmichorrors": {
+  {
+    "id": 14,
     "name": "Ancient Cosmic Horrors",
     "rooms": [
       { "id": "LL-005", "qty": 2 },
@@ -482,7 +496,8 @@
       { "id": "LL-065", "qty": 1 }
     ]
   },
-  "landoftheancients": {
+  {
+    "id": 15,
     "name": "Land of the Ancients",
     "rooms": [
       { "id": "LL-004", "qty": 7 },
@@ -521,7 +536,8 @@
       { "id": "LL-065", "qty": 1 }
     ]
   },
-  "dollfaceshouseoffun": {
+  {
+    "id": 16,
     "name": "Doll Face's House of Fun ",
     "rooms": [
       { "id": "LL-001", "qty": 8 },
@@ -555,7 +571,8 @@
       { "id": "LL-065", "qty": 1 }
     ]
   },
-  "ladylindysescape": {
+  {
+    "id": 17,
     "name": "Lady Lindys Escape",
     "rooms": [
       { "id": "LL-001", "qty": 4 },
@@ -587,7 +604,8 @@
       { "id": "LL-065", "qty": 1 }
     ]
   },
-  "backroomsplunder": {
+  {
+    "id": 18,
     "name": "Backrooms Plunder",
     "rooms": [
       { "id": "LL-001", "qty": 4 },
@@ -626,7 +644,8 @@
       { "id": "LL-065", "qty": 1 }
     ]
   },
-  "odetothebackrooms": {
+  {
+    "id": 19,
     "name": "Ode to the Backrooms",
     "rooms": [
       { "id": "LL-010", "qty": 1 },
@@ -665,7 +684,8 @@
       { "id": "LL-065", "qty": 1 }
     ]
   },
-  "thehuntershandbook": {
+  {
+    "id": 20,
     "name": "The Hunter's Handbook",
     "rooms": [
       { "id": "LL-001", "qty": 6 },
@@ -701,7 +721,8 @@
       { "id": "LL-065", "qty": 1 }
     ]
   },
-  "freemansquest": {
+  {
+    "id": 21,
     "name": "Freeman's Quest",
     "rooms": [
       { "id": "LL-001", "qty": 7 },
@@ -739,7 +760,8 @@
       { "id": "LL-065", "qty": 1 }
     ]
   },
-  "facelinglabyrinth": {
+  {
+    "id": 22,
     "name": "Faceling Labyrinth",
     "rooms": [
       { "id": "LL-001", "qty": 9 },
@@ -773,7 +795,8 @@
       { "id": "LL-065", "qty": 1 }
     ]
   },
-  "aidensbirthdaybash": {
+  {
+    "id": 23,
     "name": "Aiden's Birthday Bash",
     "rooms": [
       { "id": "LL-001", "qty": 7 },
@@ -808,7 +831,8 @@
       { "id": "LL-065", "qty": 1 }
     ]
   },
-  "attackanddefense": {
+  {
+    "id": 24,
     "name": "Attack and Defense",
     "rooms": [
       { "id": "LL-001", "qty": 6 },
@@ -846,7 +870,8 @@
       { "id": "LL-065", "qty": 1 }
     ]
   },
-  "partygoersandgreenerpastures": {
+  {
+    "id": 25,
     "name": "Partygoers and Greener Pastures",
     "rooms": [
       { "id": "LL-001", "qty": 8 },
@@ -878,7 +903,8 @@
       { "id": "LL-065", "qty": 1 }
     ]
   },
-  "summoningthescarlett": {
+  {
+    "id": 26,
     "name": "Summoning the Scarlett",
     "rooms": [
       { "id": "LL-001", "qty": 6 },
@@ -913,7 +939,8 @@
       { "id": "LL-065", "qty": 1 }
     ]
   },
-  "backroomsafterschoolspecial": {
+  {
+    "id": 27,
     "name": "Backrooms Afterschool Special",
     "rooms": [
       { "id": "LL-001", "qty": 9 },
@@ -946,7 +973,8 @@
       { "id": "LL-065", "qty": 1 }
     ]
   },
-  "luigiinwonderland": {
+  {
+    "id": 28,
     "name": "Luigi In Wonderland",
     "rooms": [
       { "id": "LL-001", "qty": 8 },
@@ -982,7 +1010,8 @@
       { "id": "LL-065", "qty": 1 }
     ]
   },
-  "warandpeaceinthebackrooms": {
+  {
+    "id": 29,
     "name": "War and Peace in the Backrooms",
     "rooms": [
       { "id": "LL-001", "qty": 7 },
@@ -1014,7 +1043,8 @@
       { "id": "LL-065", "qty": 1 }
     ]
   },
-  "clocksmithsbetrayal": {
+  {
+    "id": 30,
     "name": "Clocksmith's Betrayal",
     "rooms": [
       { "id": "LL-001", "qty": 6 },
@@ -1046,7 +1076,8 @@
       { "id": "LL-065", "qty": 1 }
     ]
   },
-  "fearlesswandererinthehungrybeastlyvoid": {
+  {
+    "id": 31,
     "name": "Fearless Wanderer in the Hungry Beastly Void",
     "rooms": [
       { "id": "LL-001", "qty": 4 },
@@ -1086,7 +1117,8 @@
       { "id": "LL-065", "qty": 1 }
     ]
   },
-  "finalbattleforthebackrooms": {
+  {
+    "id": 32,
     "name": "Final Battle for the Backrooms",
     "rooms": [
       { "id": "LL-001", "qty": 5 },
@@ -1122,7 +1154,8 @@
       { "id": "LL-065", "qty": 1 }
     ]
   },
-  "doggiedaycare": {
+  {
+    "id": 33,
     "name": "Doggie Day Care",
     "rooms": [
       { "id": "LL-001", "qty": 6 },
@@ -1155,7 +1188,8 @@
       { "id": "LL-067", "qty": 1 }
     ]
   },
-  "sneakingsuitserenade": {
+  {
+    "id": 34,
     "name": "Sneaking Suit Serenade",
     "rooms": [
       { "id": "LL-001", "qty": 9 },
@@ -1190,7 +1224,8 @@
       { "id": "LL-065", "qty": 1 }
     ]
   },
-  "prosdrinktoforget": {
+  {
+    "id": 35,
     "name": "Pro's Drink to Forget",
     "rooms": [
       { "id": "LL-001", "qty": 6 },
@@ -1224,7 +1259,8 @@
       { "id": "LL-065", "qty": 1 }
     ]
   },
-  "thepartiesalwaysgreenerontheothersidedeckone": {
+  {
+    "id": 36,
     "name": "The Parties Always Greener on the Other Side Deck One (The Waiting Room)",
     "rooms": [
       { "id": "LL-001", "qty": 10 },
@@ -1240,7 +1276,7 @@
       { "id": "LL-047", "qty": 2 }
     ],
     "items": [
-      { "id": "LL-012","qty": 3 },
+      { "id": "LL-012", "qty": 3 },
       { "id": "LL-018", "qty": 4 },
       { "id": "LL-014", "qty": 2 },
       { "id": "LL-063", "qty": 1 }
@@ -1250,7 +1286,8 @@
       { "id": "LL-067", "qty": 1 }
     ]
   },
-  "thepartiesalwaysgreenerontheothersidedecktwo": {
+  {
+    "id": 37,
     "name": "The Parties Always Greener on the Other Side Deck Two (The Party)",
     "rooms": [
       { "id": "LL-001", "qty": 7 },
@@ -1280,7 +1317,8 @@
       { "id": "LL-067", "qty": 1 }
     ]
   },
-  "webexclusivebluedeck": {
+  {
+    "id": 38,
     "name": "Web Exclusive Blue Deck",
     "rooms": [
       { "id": "LL-001", "qty": 10 },
@@ -1316,7 +1354,8 @@
       { "id": "LL-065", "qty": 1 }
     ]
   },
-  "frownersgift": {
+  {
+    "id": 39,
     "name": "Frowners Gift",
     "rooms": [
       { "id": "LL-001", "qty": 10 },
@@ -1341,7 +1380,8 @@
       { "id": "LL-065", "qty": 1 }
     ]
   },
-  "sundaytrainride": {
+  {
+    "id": 40,
     "name": "Sunday Train Ride",
     "rooms": [
       { "id": "LL-008", "qty": 3 },
@@ -1370,7 +1410,8 @@
       { "id": "LL-068", "qty": 1 }
     ]
   },
-  "lookingdownfromupahead": {
+  {
+    "id": 41,
     "name": "Looking Down From Up Ahead",
     "rooms": [
       { "id": "P-016", "qty": 2 },
@@ -1401,7 +1442,8 @@
       { "id": "LL-067", "qty": 1 }
     ]
   },
-  "throughtheeyeoftheneedleandback": {
+  {
+    "id": 42,
     "name": "Through the eye of the needle (and back)",
     "rooms": [
       { "id": "LL-009", "qty": 2 },
@@ -1436,7 +1478,8 @@
       { "id": "LL-065", "qty": 1 }
     ]
   },
-  "custombuild": {
+  {
+    "id": 43,
     "name": "Custom Build",
     "rooms": [
       { "id": "LL-002", "qty": 7 },
@@ -1479,7 +1522,8 @@
       { "id": "LL-068", "qty": 1 }
     ]
   },
-  "questforthepainitewall": {
+  {
+    "id": 44,
     "name": "Quest for the Painite Wall",
     "rooms": [
       { "id": "LL-001", "qty": 3 },
@@ -1512,4 +1556,4 @@
       { "id": "LL-068", "qty": 1 }
     ]
   }
-}
+]
