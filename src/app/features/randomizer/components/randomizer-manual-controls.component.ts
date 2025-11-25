@@ -7,7 +7,7 @@ import {
   Output,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { ArchetypeData } from '../../../services/randomizer.service';
+import { Archetype, ArchetypeData } from '../../../services/randomizer.service';
 
 @Component({
   selector: 'backrooms-randomizer-manual-controls',
@@ -26,7 +26,7 @@ import { ArchetypeData } from '../../../services/randomizer.service';
           <option [ngValue]="null">Mixed</option>
           @for (archetypeKey of archetypeKeys; track archetypeKey) {
             <option [value]="archetypeKey">
-              {{ archetypes[archetypeKey].name }}
+              {{ getArchetypeName(archetypeKey) }}
             </option>
           }
         </select>
@@ -44,7 +44,7 @@ import { ArchetypeData } from '../../../services/randomizer.service';
           <option [ngValue]="null" disabled>Select Rooms</option>
           @for (archetypeKey of archetypeKeys; track archetypeKey) {
             <option [value]="archetypeKey">
-              {{ archetypes[archetypeKey].name }}
+              {{ getArchetypeName(archetypeKey) }}
             </option>
           }
         </select>
@@ -61,7 +61,7 @@ import { ArchetypeData } from '../../../services/randomizer.service';
           <option [ngValue]="null" disabled>Select Items</option>
           @for (archetypeKey of archetypeKeys; track archetypeKey) {
             <option [value]="archetypeKey">
-              {{ archetypes[archetypeKey].name }}
+              {{ getArchetypeName(archetypeKey) }}
             </option>
           }
         </select>
@@ -78,7 +78,7 @@ import { ArchetypeData } from '../../../services/randomizer.service';
           <option [ngValue]="null" disabled>Select Entities</option>
           @for (archetypeKey of archetypeKeys; track archetypeKey) {
             <option [value]="archetypeKey">
-              {{ archetypes[archetypeKey].name }}
+              {{ getArchetypeName(archetypeKey) }}
             </option>
           }
         </select>
@@ -95,7 +95,7 @@ import { ArchetypeData } from '../../../services/randomizer.service';
           <option [ngValue]="null" disabled>Select Outcomes</option>
           @for (archetypeKey of archetypeKeys; track archetypeKey) {
             <option [value]="archetypeKey">
-              {{ archetypes[archetypeKey].name }}
+              {{ getArchetypeName(archetypeKey) }}
             </option>
           }
         </select>
@@ -108,7 +108,7 @@ import { ArchetypeData } from '../../../services/randomizer.service';
 })
 export class RandomizerManualControlsComponent {
   @Input() overallSelection: string | null = null;
-  @Input() archetypes: ArchetypeData = {};
+  @Input() archetypes: ArchetypeData = [];
   @Input() archetypeKeys: string[] = [];
   @Input() manualSelections: {
     rooms: string | null;
@@ -132,5 +132,12 @@ export class RandomizerManualControlsComponent {
     const newSelections = { ...this.manualSelections, [type]: value };
     this.manualSelectionsChange.emit(newSelections);
     this.selectionChange.emit();
+  }
+
+  getArchetypeName(archetypeId: string): string {
+    const archetype = this.archetypes.find(
+      (a: Archetype) => a.id.toString() === archetypeId,
+    );
+    return archetype ? archetype.name : 'Unknown Archetype';
   }
 }

@@ -4,6 +4,7 @@ import { map, Observable } from 'rxjs';
 import { ICountCard } from '../../models';
 
 export interface Archetype {
+  id: number;
   name: string;
   rooms: ICountCard[];
   items: ICountCard[];
@@ -11,9 +12,7 @@ export interface Archetype {
   entities: ICountCard[];
 }
 
-export interface ArchetypeData {
-  [key: string]: Archetype;
-}
+export type ArchetypeData = Archetype[];
 
 export interface GeneratedDeck {
   archetypeName: string;
@@ -37,46 +36,42 @@ export class RandomizerService {
   private http = inject(HttpClient);
 
   getArchetypes(): Observable<ArchetypeData> {
-    return this.http.get<any>('/assets/randomizer/archetypes.json').pipe(
+    return this.http.get<any[]>('/assets/randomizer/archetypes.json').pipe(
       map((data) => {
         // The user's format has qty, so we map it to count to match ICountCard
-        const archetypes: ArchetypeData = {};
-        for (const key in data) {
-          archetypes[key] = {
-            name: data[key].name,
-            rooms: data[key].rooms.map((c: any) => ({
-              id: c.id,
-              count: c.qty,
-            })),
-            items: data[key].items.map((c: any) => ({
-              id: c.id,
-              count: c.qty,
-            })),
-            outcomes: data[key].outcomes.map((c: any) => ({
-              id: c.id,
-              count: c.qty,
-            })),
-            entities: data[key].entities.map((c: any) => ({
-              id: c.id,
-              count: c.qty,
-            })),
-          };
-        }
-        return archetypes;
+        return data.map((archetype) => ({
+          id: archetype.id,
+          name: archetype.name,
+          rooms: archetype.rooms.map((c: any) => ({
+            id: c.id,
+            count: c.qty,
+          })),
+          items: archetype.items.map((c: any) => ({
+            id: c.id,
+            count: c.qty,
+          })),
+          outcomes: archetype.outcomes.map((c: any) => ({
+            id: c.id,
+            count: c.qty,
+          })),
+          entities: archetype.entities.map((c: any) => ({
+            id: c.id,
+            count: c.qty,
+          })),
+        }));
       }),
     );
   }
 
   generateSimpleDeck(archetypes: ArchetypeData): GeneratedDeck {
-    const keys = Object.keys(archetypes);
-    if (keys.length === 0) {
+    if (archetypes.length === 0) {
       return {
         archetypeName: 'Unknown Archetype',
         cards: [],
       };
     }
-    const randomKey = keys[Math.floor(Math.random() * keys.length)];
-    const archetype = archetypes[randomKey];
+    const randomIndex = Math.floor(Math.random() * archetypes.length);
+    const archetype = archetypes[randomIndex];
 
     const cards = [
       ...archetype.rooms,
@@ -92,8 +87,7 @@ export class RandomizerService {
   }
 
   generateMixedDeck(archetypes: ArchetypeData): GeneratedMixedDeck {
-    const keys = Object.keys(archetypes);
-    if (keys.length === 0) {
+    if (archetypes.length === 0) {
       return {
         archetypeNames: {
           rooms: 'Unknown Archetype',
@@ -105,26 +99,27 @@ export class RandomizerService {
       };
     }
 
-    const getRandomKey = () => keys[Math.floor(Math.random() * keys.length)];
+    const getRandomArchetype = () =>
+      archetypes[Math.floor(Math.random() * archetypes.length)];
 
-    const roomsKey = getRandomKey();
-    const itemsKey = getRandomKey();
-    const outcomesKey = getRandomKey();
-    const entitiesKey = getRandomKey();
+    const roomsArchetype = getRandomArchetype();
+    const itemsArchetype = getRandomArchetype();
+    const outcomesArchetype = getRandomArchetype();
+    const entitiesArchetype = getRandomArchetype();
 
-    const rooms = archetypes[roomsKey].rooms;
-    const items = archetypes[itemsKey].items;
-    const outcomes = archetypes[outcomesKey].outcomes;
-    const entities = archetypes[entitiesKey].entities;
+    const rooms = roomsArchetype.rooms;
+    const items = itemsArchetype.items;
+    const outcomes = outcomesArchetype.outcomes;
+    const entities = entitiesArchetype.entities;
 
     const cards = [...rooms, ...items, ...outcomes, ...entities];
 
     return {
       archetypeNames: {
-        rooms: archetypes[roomsKey].name,
-        items: archetypes[itemsKey].name,
-        outcomes: archetypes[outcomesKey].name,
-        entities: archetypes[entitiesKey].name,
+        rooms: roomsArchetype.name,
+        items: itemsArchetype.name,
+        outcomes: outcomesArchetype.name,
+        entities: entitiesArchetype.name,
       },
       cards: cards,
     };
