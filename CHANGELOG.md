@@ -18,11 +18,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - November 2025 Promo Card "Lustratio Latrina" [47601a5](https://github.com/scottwestover/backrooms-tcg-deck-builder/commit/47601a53ab30d93190772ce0b41c9f8d14e1411e).
 - Aquazone preview cards [47601a5](https://github.com/scottwestover/backrooms-tcg-deck-builder/commit/47601a53ab30d93190772ce0b41c9f8d14e1411e).
 - Event cards from starter decks [47601a5](https://github.com/scottwestover/backrooms-tcg-deck-builder/commit/47601a53ab30d93190772ce0b41c9f8d14e1411e).
-- Added unit tests for new components and started adding unit tests to existing components that get modified.
+- Added unit tests for new components and started adding unit tests to existing components that are modified.
 
 ### Fixed
 
-- Fixed card types in the "promo-cards.json" file so promo cards will load in the correct card type selection.
+- Fixed card types in the "promo-cards.json" file so promo cards will load in the correct card type selection [5adad99](https://github.com/scottwestover/backrooms-tcg-deck-builder/commit/5adad9950c2413ea38fb7f7c4f4bba93b115c41c).
+- Fixed bug in the deck builder page when an invalid deck id is provided, or a deck is not found for the provided id would throw an uncaught error in the app. This also addressed issues when a deck id did not exist in firestore but exists in localstorage for the user. The fix now checks localstorage before making a call to firestore, and if the deck is not found there we treat the id as a new deck [0aea7f2](https://github.com/scottwestover/backrooms-tcg-deck-builder/commit/0aea7f2166013f7edd7dd99a6093f47c91a0f0d7).
 
 ## [0.0.9] - 2025-11-23
 
