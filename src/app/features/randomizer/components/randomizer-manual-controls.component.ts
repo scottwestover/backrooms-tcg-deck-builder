@@ -19,6 +19,7 @@ import { Archetype, ArchetypeData } from '../../../services/randomizer.service';
           >Overall Deck:</label
         >
         <select
+          id="overall-select"
           name="overall-select"
           [ngModel]="overallSelection"
           (ngModelChange)="onOverallSelectionChange($event)"
@@ -37,6 +38,7 @@ import { Archetype, ArchetypeData } from '../../../services/randomizer.service';
           >Rooms Archetype:</label
         >
         <select
+          id="rooms-select"
           name="rooms-select"
           [ngModel]="manualSelections.rooms"
           (ngModelChange)="onSelectionChange('rooms', $event)"
@@ -54,6 +56,7 @@ import { Archetype, ArchetypeData } from '../../../services/randomizer.service';
           >Items Archetype:</label
         >
         <select
+          id="items-select"
           name="items-select"
           [ngModel]="manualSelections.items"
           (ngModelChange)="onSelectionChange('items', $event)"
@@ -71,6 +74,7 @@ import { Archetype, ArchetypeData } from '../../../services/randomizer.service';
           >Entities Archetype:</label
         >
         <select
+          id="entities-select"
           name="entities-select"
           [ngModel]="manualSelections.entities"
           (ngModelChange)="onSelectionChange('entities', $event)"
@@ -88,6 +92,7 @@ import { Archetype, ArchetypeData } from '../../../services/randomizer.service';
           >Outcomes Archetype:</label
         >
         <select
+          id="outcomes-select"
           name="outcomes-select"
           [ngModel]="manualSelections.outcomes"
           (ngModelChange)="onSelectionChange('outcomes', $event)"

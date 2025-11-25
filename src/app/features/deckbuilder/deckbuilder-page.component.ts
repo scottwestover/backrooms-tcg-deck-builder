@@ -95,17 +95,25 @@ export class DeckbuilderPageComponent implements OnInit {
         return this.backroomsBackendService.getSave(params['userId']);
       } else if (params['id']) {
         this.deckId = params['id'].split('::')[0];
-        return this.backroomsBackendService.getDeck(params['id']).pipe(
-          map((deck) => {
-            return { ...emptySave, decks: [deck] };
-          }),
-        );
+        const localDeck = this.websiteStore.deck();
+        if (localDeck && localDeck.id === this.deckId) {
+          return of({ ...emptySave, decks: [localDeck] });
+        } else {
+          return this.backroomsBackendService.getDeck(params['id']).pipe(
+            map((deck) => {
+              if (!deck) {
+                return { ...emptySave, decks: [] };
+              }
+              return { ...emptySave, decks: [deck] };
+            }),
+          );
+        }
       } else {
         return of(emptySave);
       }
     }),
     tap((save) => {
-      if (save.decks.length === 0) return;
+      if (!save || !save.decks || save.decks.length === 0) return;
       const foundDeck = save.decks.find((deck) => deck.id === this.deckId);
       if (!foundDeck) return;
 
