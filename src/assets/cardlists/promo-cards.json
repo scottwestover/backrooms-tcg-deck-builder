@@ -790,5 +790,49 @@
     "notes": "-",
     "version": "Normal",
     "cardType": "Item"
+  },
+  {
+    "id": "P-037",
+    "name": {
+      "english": "Trunk or Treat"
+    },
+    "rarity": "PURE",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/promo/P-037.webp",
+    "illustrator": "-",
+    "cardNumber": "99037",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "P-038",
+    "name": {
+      "english": "Lustratio Latrina"
+    },
+    "rarity": "RARE",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/promo/P-038.webp",
+    "illustrator": "-",
+    "cardNumber": "99038",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Outcome"
   }
 ]
