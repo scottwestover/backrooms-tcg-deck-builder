@@ -3,7 +3,6 @@ import { inject, Injectable } from '@angular/core';
 import { Firestore, getDoc } from '@angular/fire/firestore';
 import { first, from, Observable, of } from 'rxjs';
 import {
-  IColor,
   ICountCard,
   IDeck,
   IDeckFireStore,
