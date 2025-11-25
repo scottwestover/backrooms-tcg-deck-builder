@@ -296,6 +296,15 @@ export class NavLinksComponent implements OnInit, OnDestroy {
           this.route.includes(route) && !this.route.includes('deckbuilder'),
         'text-[#e2e4e6]': !this.route.includes(route),
       };
+    } else if (route === '/randomizer') {
+      return {
+        'border-l-[3px] border-white':
+          this.route.includes(route) && this.sidebar,
+        'border-b-[3px] lg:border-b-0 lg:border-l-[3px] border-white':
+          this.route.includes(route) && !this.sidebar,
+        'text-[#ffd54f]': this.route.includes(route),
+        'text-[#e2e4e6]': !this.route.includes(route),
+      };
     }
     return {
       'border-l-[3px] border-white': this.route === route && this.sidebar,

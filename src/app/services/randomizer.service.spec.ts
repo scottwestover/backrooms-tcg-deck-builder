@@ -15,39 +15,43 @@ describe('RandomizerService', () => {
   let mockBackroomsCardStore: Partial<InstanceType<typeof BackroomsCardStore>>;
   let mockWebsiteStore: Partial<InstanceType<typeof WebsiteStore>>;
 
-  const mockRawArchetypes = {
-    archetype1: {
+  const mockRawArchetypes = [
+    {
+      id: 1,
       name: 'Archetype One',
       rooms: [{ id: 'R1', qty: 1 }],
       items: [{ id: 'I1', qty: 1 }],
       entities: [{ id: 'E1', qty: 1 }],
       outcomes: [{ id: 'O1', qty: 1 }],
     },
-    archetype2: {
+    {
+      id: 2,
       name: 'Archetype Two',
       rooms: [{ id: 'R2', qty: 1 }],
       items: [{ id: 'I2', qty: 1 }],
       entities: [{ id: 'E2', qty: 1 }],
       outcomes: [{ id: 'O2', qty: 1 }],
     },
-  };
+  ];
 
-  const mockProcessedArchetypes = {
-    archetype1: {
+  const mockProcessedArchetypes = [
+    {
+      id: 1,
       name: 'Archetype One',
       rooms: [{ id: 'R1', count: 1 }] as ICountCard[],
       items: [{ id: 'I1', count: 1 }] as ICountCard[],
       entities: [{ id: 'E1', count: 1 }] as ICountCard[],
       outcomes: [{ id: 'O1', count: 1 }] as ICountCard[],
     },
-    archetype2: {
+    {
+      id: 2,
       name: 'Archetype Two',
       rooms: [{ id: 'R2', count: 1 }] as ICountCard[],
       items: [{ id: 'I2', count: 1 }] as ICountCard[],
       entities: [{ id: 'E2', count: 1 }] as ICountCard[],
       outcomes: [{ id: 'O2', count: 1 }] as ICountCard[],
     },
-  };
+  ];
 
   const mockCardsMap = new Map<string, BackroomsCard>();
   mockCardsMap.set('R1', { id: 'R1', cardType: 'Room' } as BackroomsCard);
@@ -112,15 +116,9 @@ describe('RandomizerService', () => {
       );
       expect(generatedDeck.cards.length).toBeGreaterThan(0);
 
-      const selectedArchetypeKey = Object.keys(mockProcessedArchetypes).find(
-        (key) =>
-          mockProcessedArchetypes[key as keyof typeof mockProcessedArchetypes]
-            .name === generatedDeck.archetypeName,
+      const selectedArchetype = mockProcessedArchetypes.find(
+        (a) => a.name === generatedDeck.archetypeName,
       )!;
-      const selectedArchetype =
-        mockProcessedArchetypes[
-          selectedArchetypeKey as keyof typeof mockProcessedArchetypes
-        ];
 
       expect(generatedDeck.cards).toEqual(
         jasmine.arrayContaining([
@@ -133,7 +131,7 @@ describe('RandomizerService', () => {
     });
 
     it('should return an empty deck if no archetypes are provided', () => {
-      const generatedDeck = service.generateSimpleDeck({});
+      const generatedDeck = service.generateSimpleDeck([]);
       expect(generatedDeck.archetypeName).toBe('Unknown Archetype');
       expect(generatedDeck.cards.length).toBe(0);
     });
@@ -180,7 +178,7 @@ describe('RandomizerService', () => {
     });
 
     it('should return an empty deck if no archetypes are provided for mixed deck', () => {
-      const generatedDeck = service.generateMixedDeck({});
+      const generatedDeck = service.generateMixedDeck([]);
       expect(generatedDeck.archetypeNames.rooms).toBe('Unknown Archetype');
       expect(generatedDeck.cards.length).toBe(0);
     });
