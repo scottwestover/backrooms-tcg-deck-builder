@@ -4,19 +4,20 @@ import {
   fakeAsync,
   tick,
 } from '@angular/core/testing';
-import { ActivatedRoute, Router } from '@angular/router';
-import { of, Subject } from 'rxjs'; // Added Subject
+import { Router } from '@angular/router';
+import { of, Subject } from 'rxjs';
 import { RandomizerPageComponent } from './randomizer-page.component';
 import { RandomizerService } from '../../services/randomizer.service';
 import { BackroomsCardStore } from '../../store/backrooms-card.store';
 import { WebsiteStore } from '../../store/website.store';
 import { DialogStore } from '../../store/dialog.store';
-import { Meta, Title, By } from '@angular/platform-browser';
-import { NO_ERRORS_SCHEMA, DebugElement } from '@angular/core';
+import { Meta, Title } from '@angular/platform-browser';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { IDeckCard } from '../../../models';
 import { ToastrModule } from 'ngx-toastr';
-import { AuthService } from '../../services/auth.service'; // Added AuthService import
-import { MessageService } from 'primeng/api'; // Added MessageService import
+import { AuthService } from '../../services/auth.service';
+import { MessageService } from 'primeng/api';
+import { UrlSyncService } from '../../services/url-sync.service';
 
 const authServiceMock = {
   userData: null,
@@ -45,7 +46,7 @@ describe('RandomizerPageComponent', () => {
   let dialogStore: jasmine.SpyObj<InstanceType<typeof DialogStore>>;
   let meta: jasmine.SpyObj<Meta>;
   let title: jasmine.SpyObj<Title>;
-  let route: ActivatedRoute;
+  let urlSyncService: jasmine.SpyObj<UrlSyncService>;
 
   const mockArchetypes = [
     {
@@ -91,8 +92,9 @@ describe('RandomizerPageComponent', () => {
     const routerSpy = jasmine.createSpyObj('Router', ['navigate']);
     const randomizerServiceSpy = jasmine.createSpyObj('RandomizerService', [
       'getArchetypes',
-      'generateSimpleDeck',
-      'generateMixedDeck',
+      'generateDeck',
+      'isMixedDeck',
+      'findArchetypeKeyByName',
     ]);
     const cardStoreSpy = jasmine.createSpyObj('BackroomsCardStore', [
       'updateCards',
@@ -106,16 +108,15 @@ describe('RandomizerPageComponent', () => {
     ]);
     const metaSpy = jasmine.createSpyObj('Meta', ['addTags']);
     const titleSpy = jasmine.createSpyObj('Title', ['setTitle']);
+    const urlSyncServiceSpy = jasmine.createSpyObj('UrlSyncService', [
+      'getQueryParams',
+      'updateUrlWithSelections',
+    ]);
+
     await TestBed.configureTestingModule({
       imports: [RandomizerPageComponent, ToastrModule.forRoot()],
       providers: [
         { provide: Router, useValue: routerSpy },
-        {
-          provide: ActivatedRoute,
-          useValue: {
-            queryParams: of({}), // Default empty queryParams
-          },
-        },
         { provide: RandomizerService, useValue: randomizerServiceSpy },
         { provide: BackroomsCardStore, useValue: cardStoreSpy },
         { provide: WebsiteStore, useValue: websiteStoreSpy },
@@ -127,13 +128,14 @@ describe('RandomizerPageComponent', () => {
           provide: MessageService,
           useValue: jasmine.createSpyObj('MessageService', ['add']),
         },
+        { provide: UrlSyncService, useValue: urlSyncServiceSpy },
       ],
       schemas: [NO_ERRORS_SCHEMA],
     }).compileComponents();
+
     fixture = TestBed.createComponent(RandomizerPageComponent);
     component = fixture.componentInstance;
     router = TestBed.inject(Router) as jasmine.SpyObj<Router>;
-    route = TestBed.inject(ActivatedRoute);
     randomizerService = TestBed.inject(
       RandomizerService,
     ) as jasmine.SpyObj<RandomizerService>;
@@ -148,12 +150,19 @@ describe('RandomizerPageComponent', () => {
     >;
     meta = TestBed.inject(Meta) as jasmine.SpyObj<Meta>;
     title = TestBed.inject(Title) as jasmine.SpyObj<Title>;
+    urlSyncService = TestBed.inject(
+      UrlSyncService,
+    ) as jasmine.SpyObj<UrlSyncService>;
+
+    urlSyncService.getQueryParams.and.returnValue(of({}));
     randomizerService.getArchetypes.and.returnValue(of(mockArchetypes));
     (cardStore.cardsMap as jasmine.Spy).and.returnValue(mockCardsMap);
 
-    // Ensure ngOnInit is called and archetypes are populated
-    component.ngOnInit();
-    fixture.detectChanges();
+    // Mock generateDeck for any manual generation triggered by default
+    const dummyDeck = { cards: [] };
+    randomizerService.generateDeck.and.returnValue(dummyDeck as any);
+
+    fixture.detectChanges(); // ngOnInit is called here
   });
 
   it('should create', () => {
@@ -168,7 +177,7 @@ describe('RandomizerPageComponent', () => {
     expect(cardStore.updateCards).toHaveBeenCalled();
     expect(randomizerService.getArchetypes).toHaveBeenCalled();
     expect(component.archetypes).toEqual(mockArchetypes);
-    expect(component.archetypeKeys).toEqual(['1', '2']); // Updated to expect string IDs
+    expect(component.archetypeKeys).toEqual(['1', '2']);
   });
 
   it('should set generation mode', () => {
@@ -181,14 +190,19 @@ describe('RandomizerPageComponent', () => {
       archetypeName: 'Alpha',
       cards: [{ id: 'R01', count: 1 }],
     };
-    randomizerService.generateSimpleDeck.and.returnValue(simpleDeck);
+    randomizerService.generateDeck.and.returnValue(simpleDeck as any);
+    randomizerService.isMixedDeck.and.returnValue(false);
+    randomizerService.findArchetypeKeyByName.and.returnValue('1');
+
     component.generationMode = 'simple';
     component.generate();
-    expect(randomizerService.generateSimpleDeck).toHaveBeenCalledWith(
+
+    expect(randomizerService.generateDeck).toHaveBeenCalledWith(
+      'simple',
       mockArchetypes,
-    ); // Updated to pass array
-    expect(component.generatedDeck).toEqual(simpleDeck);
-    expect(component.lastRandomDeck).toEqual(simpleDeck);
+    );
+    expect(component.generatedDeck).toEqual(simpleDeck as any);
+    expect(component.lastRandomDeck).toEqual(simpleDeck as any);
   });
 
   it('should generate a mixed deck', () => {
@@ -201,24 +215,50 @@ describe('RandomizerPageComponent', () => {
       },
       cards: [{ id: 'R01', count: 1 }],
     };
-    randomizerService.generateMixedDeck.and.returnValue(mixedDeck);
+    randomizerService.generateDeck.and.returnValue(mixedDeck as any);
+    randomizerService.isMixedDeck.and.returnValue(true);
+    randomizerService.findArchetypeKeyByName.and.callFake((name: string) =>
+      name === 'Alpha' ? '1' : '2',
+    );
+
     component.generationMode = 'mixed';
     component.generate();
-    expect(randomizerService.generateMixedDeck).toHaveBeenCalledWith(
+
+    expect(randomizerService.generateDeck).toHaveBeenCalledWith(
+      'mixed',
       mockArchetypes,
-    ); // Updated to pass array
-    expect(component.generatedDeck).toEqual(mixedDeck);
+    );
+    expect(component.generatedDeck).toEqual(mixedDeck as any);
   });
 
   it('should handle manual selection change', () => {
-    component.archetypes = mockArchetypes;
+    const manualDeck = {
+      archetypeNames: {
+        rooms: 'Alpha',
+        items: 'Beta',
+        entities: 'Alpha',
+        outcomes: 'Beta',
+      },
+      cards: [
+        { id: 'R01', count: 1 },
+        { id: 'I01', count: 1 },
+      ],
+    };
+    randomizerService.generateDeck.and.returnValue(manualDeck as any);
+
     component.manualSelections = {
-      rooms: '1', // Use string ID
-      items: '2', // Use string ID
-      entities: '1', // Use string ID
-      outcomes: '2', // Use string ID
+      rooms: '1',
+      items: '2',
+      entities: '1',
+      outcomes: '2',
     };
     component.onManualSelectionChange();
+
+    expect(randomizerService.generateDeck).toHaveBeenCalledWith(
+      'manual',
+      mockArchetypes,
+      component.manualSelections,
+    );
     expect(component.generatedDeck).toBeTruthy();
     expect(component.generatedDeck?.cards.length).toBe(2);
   });
@@ -228,9 +268,13 @@ describe('RandomizerPageComponent', () => {
       archetypeName: 'Alpha',
       cards: [{ id: 'R01', count: 2 }],
     };
-    randomizerService.generateSimpleDeck.and.returnValue(simpleDeck);
+    randomizerService.generateDeck.and.returnValue(simpleDeck as any);
+    randomizerService.isMixedDeck.and.returnValue(false);
+    randomizerService.findArchetypeKeyByName.and.returnValue('1');
+
     component.generationMode = 'simple';
     component.generate();
+
     expect(component.generatedCards?.rooms.length).toBe(1);
     expect(component.generatedCards?.rooms[0].count).toBe(2);
     expect(component.generatedDeckAsList?.rooms.length).toBe(1);
@@ -241,7 +285,7 @@ describe('RandomizerPageComponent', () => {
     component.generatedDeck = {
       archetypeName: 'Alpha',
       cards: [{ id: 'R01', count: 1 }],
-    };
+    } as any;
     component.addToDeckbuilder();
     expect(websiteStore.updateDeck).toHaveBeenCalled();
     expect(router.navigate).toHaveBeenCalledWith(jasmine.any(Array));
@@ -251,14 +295,13 @@ describe('RandomizerPageComponent', () => {
     component.generatedDeck = {
       archetypeName: 'Alpha',
       cards: [{ id: 'R01', count: 1 }],
-    };
+    } as any;
     component.openExportDeckDialog();
     expect(dialogStore.updateExportDeckDialog).toHaveBeenCalled();
   });
 
   it('should update manual selections when overall selection changes', () => {
-    fixture.detectChanges();
-    component.onOverallSelectionChange('2'); // Use string ID
+    component.onOverallSelectionChange('2');
     expect(component.overallSelection).toBe('2');
     expect(component.manualSelections).toEqual({
       rooms: '2',
@@ -269,19 +312,18 @@ describe('RandomizerPageComponent', () => {
   });
 
   it('should set overall selection to null when manual selections are mixed', () => {
-    fixture.detectChanges();
     component.manualSelections = {
-      rooms: '1', // Use string ID
-      items: '2', // Use string ID
-      entities: '1', // Use string ID
-      outcomes: '2', // Use string ID
+      rooms: '1',
+      items: '2',
+      entities: '1',
+      outcomes: '2',
     };
     component.onManualSelectionChange();
     expect(component.overallSelection).toBeNull();
   });
 
-  it('should set default overall selection when switching to manual mode', () => {
-    fixture.detectChanges();
+  it('should set default overall selection when switching to manual mode with no prior selections', () => {
+    component.generatedDeck = null;
     component.manualSelections = {
       rooms: null,
       items: null,
@@ -289,28 +331,29 @@ describe('RandomizerPageComponent', () => {
       outcomes: null,
     };
     component.setGenerationMode('manual');
-    expect(component.overallSelection).toBe('1'); // Updated to expect string ID
+    expect(component.overallSelection).toBe('1');
   });
 
   describe('Mode Switching and State Persistence', () => {
-    beforeEach(() => {
-      fixture.detectChanges();
-    });
-
     it('should pre-fill manual selections when switching from a simple deck', () => {
       const simpleDeck = {
         archetypeName: 'Alpha',
         cards: [{ id: 'R01', count: 1 }],
       };
-      component.generatedDeck = simpleDeck;
+      component.generatedDeck = simpleDeck as any;
+      randomizerService.isMixedDeck.and.returnValue(false);
+      randomizerService.findArchetypeKeyByName.and.returnValue('1');
+      randomizerService.generateDeck.and.returnValue(simpleDeck as any);
+
       component.setGenerationMode('manual');
+
       expect(component.manualSelections).toEqual({
-        rooms: '1', // Use string ID
-        items: '1', // Use string ID
-        entities: '1', // Use string ID
-        outcomes: '1', // Use string ID
+        rooms: '1',
+        items: '1',
+        entities: '1',
+        outcomes: '1',
       });
-      expect(component.overallSelection).toBe('1'); // Use string ID
+      expect(component.overallSelection).toBe('1');
       expect(component.generatedDeck).toBeTruthy();
     });
 
@@ -327,13 +370,20 @@ describe('RandomizerPageComponent', () => {
           { id: 'I01', count: 1 },
         ],
       };
-      component.generatedDeck = mixedDeck;
+      component.generatedDeck = mixedDeck as any;
+      randomizerService.isMixedDeck.and.returnValue(true);
+      randomizerService.findArchetypeKeyByName.and.callFake((name: string) =>
+        name === 'Alpha' ? '1' : '2',
+      );
+      randomizerService.generateDeck.and.returnValue(mixedDeck as any);
+
       component.setGenerationMode('manual');
+
       expect(component.manualSelections).toEqual({
-        rooms: '1', // Use string ID
-        items: '2', // Use string ID
-        entities: '1', // Use string ID
-        outcomes: '2', // Use string ID
+        rooms: '1',
+        items: '2',
+        entities: '1',
+        outcomes: '2',
       });
       expect(component.overallSelection).toBeNull();
       expect(component.generatedDeck).toBeTruthy();
@@ -345,56 +395,80 @@ describe('RandomizerPageComponent', () => {
         archetypeName: 'Alpha',
         cards: [{ id: 'R01', count: 1 }],
       };
-      randomizerService.generateSimpleDeck.and.returnValue(simpleDeck);
+      randomizerService.generateDeck.and.returnValue(simpleDeck as any);
+      randomizerService.isMixedDeck.and.returnValue(false);
+      randomizerService.findArchetypeKeyByName.and.returnValue('1');
+      component.generationMode = 'simple';
       component.generate(); // isManualDeck is now false
+
       // 2. Switch to manual and modify
+      const manualDeck = {
+        archetypeNames: { rooms: 'Alpha', items: 'Beta' },
+        cards: [],
+      };
+      randomizerService.generateDeck.and.returnValue(manualDeck as any);
       component.setGenerationMode('manual');
-      component.manualSelections.items = '2'; // Use string ID
+      component.manualSelections.items = '2';
       component.onManualSelectionChange(); // isManualDeck is now true
-      const manualDeck = component.generatedDeck;
-      expect(manualDeck).toBeTruthy();
-      expect((manualDeck as any).archetypeNames).toBeDefined(); // It's a mixed deck
+      const generatedManualDeck = component.generatedDeck;
+      expect(generatedManualDeck).toBe(manualDeck as any);
+
       // 3. Switch to simple mode - deck should be sticky
       component.setGenerationMode('simple');
-      expect(component.generatedDeck).toBe(manualDeck);
+      expect(component.generatedDeck).toBe(generatedManualDeck);
+
       // 4. Switch to mixed mode - deck should still be sticky
       component.setGenerationMode('mixed');
-      expect(component.generatedDeck).toBe(manualDeck);
+      expect(component.generatedDeck).toBe(generatedManualDeck);
+
       // 5. Generate a new deck - stickiness should be removed
       const newSimpleDeck = {
         archetypeName: 'Beta',
         cards: [{ id: 'I01', count: 1 }],
       };
-      randomizerService.generateSimpleDeck.and.returnValue(newSimpleDeck);
-      component.generationMode = 'simple'; // Set mode to match the mocked service
+      randomizerService.generateDeck.and.returnValue(newSimpleDeck as any);
+      randomizerService.isMixedDeck.and.returnValue(false);
+      randomizerService.findArchetypeKeyByName.and.returnValue('2');
+      component.generationMode = 'simple';
       component.generate();
-      expect(component.generatedDeck).toBe(newSimpleDeck);
+      expect(component.generatedDeck).toBe(newSimpleDeck as any);
       expect(component.isManualDeck).toBe(false);
     });
 
     it('should create a simple deck type from manual when all selections are the same', () => {
+      const simpleDeck = { archetypeName: 'Alpha', cards: [] };
+      randomizerService.generateDeck.and.returnValue(simpleDeck as any);
+
       component.setGenerationMode('manual');
       component.manualSelections = {
-        rooms: '1', // Use string ID
-        items: '1', // Use string ID
-        entities: '1', // Use string ID
-        outcomes: '1', // Use string ID
+        rooms: '1',
+        items: '1',
+        entities: '1',
+        outcomes: '1',
       };
       component.onManualSelectionChange();
+
       expect(component.generatedDeck).toBeTruthy();
       expect((component.generatedDeck as any).archetypeName).toBe('Alpha');
       expect((component.generatedDeck as any).archetypeNames).toBeUndefined();
     });
 
     it('should create a mixed deck type from manual when selections are different', () => {
+      const mixedDeck = {
+        archetypeNames: { rooms: 'Alpha', items: 'Beta' },
+        cards: [],
+      };
+      randomizerService.generateDeck.and.returnValue(mixedDeck as any);
+
       component.setGenerationMode('manual');
       component.manualSelections = {
-        rooms: '1', // Use string ID
-        items: '2', // Use string ID
-        entities: '1', // Use string ID
-        outcomes: '1', // Use string ID
+        rooms: '1',
+        items: '2',
+        entities: '1',
+        outcomes: '1',
       };
       component.onManualSelectionChange();
+
       expect(component.generatedDeck).toBeTruthy();
       expect((component.generatedDeck as any).archetypeNames).toBeDefined();
       expect((component.generatedDeck as any).archetypeName).toBeUndefined();
@@ -402,12 +476,9 @@ describe('RandomizerPageComponent', () => {
   });
 
   describe('copyShareLink', () => {
-    let routerSpy: jasmine.SpyObj<Router>;
-
     beforeEach(() => {
-      routerSpy = TestBed.inject(Router) as jasmine.SpyObj<Router>;
       // Mock the router.url property
-      Object.defineProperty(routerSpy, 'url', {
+      Object.defineProperty(router, 'url', {
         value: '/randomizer?rooms=1&items=2',
         writable: true,
       });
@@ -422,7 +493,7 @@ describe('RandomizerPageComponent', () => {
       );
 
       component.copyShareLink();
-      tick(); // Resolve the promise
+      tick();
 
       expect(navigator.clipboard.writeText).toHaveBeenCalledWith(
         window.location.origin + '/randomizer?rooms=1&items=2',
@@ -444,7 +515,7 @@ describe('RandomizerPageComponent', () => {
       );
 
       component.copyShareLink();
-      tick(); // Resolve the promise
+      tick();
 
       expect(navigator.clipboard.writeText).toHaveBeenCalledWith(
         window.location.origin + '/randomizer?rooms=1&items=2',
@@ -462,95 +533,60 @@ describe('RandomizerPageComponent', () => {
 describe('RandomizerPageComponent - Initialization with Query Parameters', () => {
   let component: RandomizerPageComponent;
   let fixture: ComponentFixture<RandomizerPageComponent>;
-  let router: jasmine.SpyObj<Router>;
   let randomizerService: jasmine.SpyObj<RandomizerService>;
-  let cardStore: jasmine.SpyObj<InstanceType<typeof BackroomsCardStore>>;
-  let websiteStore: jasmine.SpyObj<InstanceType<typeof WebsiteStore>>;
-  let dialogStore: jasmine.SpyObj<InstanceType<typeof DialogStore>>;
-  let meta: jasmine.SpyObj<Meta>;
-  let title: jasmine.SpyObj<Title>;
-  let route: ActivatedRoute;
+  let urlSyncService: jasmine.SpyObj<UrlSyncService>;
 
   const mockArchetypes = [
-    {
-      id: 1,
-      name: 'Alpha',
-      rooms: [{ id: 'R01', count: 1 }],
-      items: [],
-      entities: [],
-      outcomes: [],
-    },
-    {
-      id: 2,
-      name: 'Beta',
-      rooms: [],
-      items: [{ id: 'I01', count: 1 }],
-      entities: [],
-      outcomes: [],
-    },
+    { id: 1, name: 'Alpha', rooms: [{ id: 'R01', count: 1 }] },
+    { id: 2, name: 'Beta', items: [{ id: 'I01', count: 1 }] },
   ];
 
   const mockCardsMap = new Map<string, IDeckCard>([
-    [
-      'R01',
-      {
-        id: 'R01',
-        name: { english: 'Room 1' },
-        cardType: 'Room',
-        count: 1,
-      } as IDeckCard,
-    ],
-    [
-      'I01',
-      {
-        id: 'I01',
-        name: { english: 'Item 1' },
-        cardType: 'Item',
-        count: 1,
-      } as IDeckCard,
-    ],
+    ['R01', { id: 'R01', name: { english: 'Room 1' } } as IDeckCard],
+    ['I01', { id: 'I01', name: { english: 'Item 1' } } as IDeckCard],
   ]);
 
   beforeEach(async () => {
-    const activatedRouteSpy = {
-      queryParams: of({
-        rooms: '1', // Use string ID
-        items: '2', // Use string ID
-        entities: '1', // Use string ID
-        outcomes: '2', // Use string ID
-      }),
-    };
-
-    const routerSpy = jasmine.createSpyObj('Router', ['navigate']);
+    const urlSyncServiceSpy = jasmine.createSpyObj('UrlSyncService', [
+      'getQueryParams',
+      'updateUrlWithSelections',
+    ]);
     const randomizerServiceSpy = jasmine.createSpyObj('RandomizerService', [
       'getArchetypes',
-      'generateSimpleDeck',
-      'generateMixedDeck',
+      'generateDeck',
+      'isMixedDeck',
+      'findArchetypeKeyByName',
     ]);
     const cardStoreSpy = jasmine.createSpyObj('BackroomsCardStore', [
       'updateCards',
       'cardsMap',
     ]);
-    const websiteStoreSpy = jasmine.createSpyObj('WebsiteStore', [
-      'updateDeck',
-    ]);
-    const dialogStoreSpy = jasmine.createSpyObj('DialogStore', [
-      'updateExportDeckDialog',
-    ]);
-    const metaSpy = jasmine.createSpyObj('Meta', ['addTags']);
-    const titleSpy = jasmine.createSpyObj('Title', ['setTitle']);
 
     await TestBed.configureTestingModule({
       imports: [RandomizerPageComponent, ToastrModule.forRoot()],
       providers: [
-        { provide: Router, useValue: routerSpy },
-        { provide: ActivatedRoute, useValue: activatedRouteSpy },
+        {
+          provide: Router,
+          useValue: jasmine.createSpyObj('Router', ['navigate', 'url']),
+        },
+        { provide: UrlSyncService, useValue: urlSyncServiceSpy },
         { provide: RandomizerService, useValue: randomizerServiceSpy },
         { provide: BackroomsCardStore, useValue: cardStoreSpy },
-        { provide: WebsiteStore, useValue: websiteStoreSpy },
-        { provide: DialogStore, useValue: dialogStoreSpy },
-        { provide: Meta, useValue: metaSpy },
-        { provide: Title, useValue: titleSpy },
+        {
+          provide: WebsiteStore,
+          useValue: jasmine.createSpyObj('WebsiteStore', ['updateDeck']),
+        },
+        {
+          provide: DialogStore,
+          useValue: jasmine.createSpyObj('DialogStore', [
+            'updateExportDeckDialog',
+          ]),
+        },
+        { provide: Meta, useValue: jasmine.createSpyObj('Meta', ['addTags']) },
+        {
+          provide: Title,
+          useValue: jasmine.createSpyObj('Title', ['setTitle']),
+        },
         { provide: AuthService, useValue: authServiceMock },
         {
           provide: MessageService,
@@ -563,33 +599,45 @@ describe('RandomizerPageComponent - Initialization with Query Parameters', () =>
     fixture = TestBed.createComponent(RandomizerPageComponent);
     component = fixture.componentInstance;
 
-    router = TestBed.inject(Router) as jasmine.SpyObj<Router>;
-    route = TestBed.inject(ActivatedRoute);
     randomizerService = TestBed.inject(
       RandomizerService,
     ) as jasmine.SpyObj<RandomizerService>;
-    cardStore = TestBed.inject(BackroomsCardStore) as jasmine.SpyObj<
+    urlSyncService = TestBed.inject(
+      UrlSyncService,
+    ) as jasmine.SpyObj<UrlSyncService>;
+    const cardStore = TestBed.inject(BackroomsCardStore) as jasmine.SpyObj<
       InstanceType<typeof BackroomsCardStore>
     >;
-    websiteStore = TestBed.inject(WebsiteStore) as jasmine.SpyObj<
-      InstanceType<typeof WebsiteStore>
-    >;
-    dialogStore = TestBed.inject(DialogStore) as jasmine.SpyObj<
-      InstanceType<typeof DialogStore>
-    >;
-    meta = TestBed.inject(Meta) as jasmine.SpyObj<Meta>;
-    title = TestBed.inject(Title) as jasmine.SpyObj<Title>;
 
-    randomizerService.getArchetypes.and.returnValue(of(mockArchetypes));
+    urlSyncService.getQueryParams.and.returnValue(
+      of({
+        rooms: '1',
+        items: '2',
+        entities: '1',
+        outcomes: '2',
+      }),
+    );
+    randomizerService.getArchetypes.and.returnValue(of(mockArchetypes as any));
     (cardStore.cardsMap as jasmine.Spy).and.returnValue(mockCardsMap);
 
-    // Ensure ngOnInit is called and archetypes are populated
-    component.ngOnInit();
-    fixture.detectChanges();
+    const mixedDeck = {
+      archetypeNames: {
+        rooms: 'Alpha',
+        items: 'Beta',
+        entities: 'Alpha',
+        outcomes: 'Beta',
+      },
+      cards: [
+        { id: 'R01', count: 1 },
+        { id: 'I01', count: 1 },
+      ],
+    };
+    randomizerService.generateDeck.and.returnValue(mixedDeck as any);
+
+    fixture.detectChanges(); // ngOnInit
   });
 
-  it('should set generationMode to "mixed" and generate a deck from query params', fakeAsync(() => {
-    // Assertions
+  it('should set generationMode to "mixed" and generate a deck from query params', () => {
     expect(component.generationMode).toBe('mixed');
     expect(component.manualSelections).toEqual({
       rooms: '1',
@@ -598,8 +646,7 @@ describe('RandomizerPageComponent - Initialization with Query Parameters', () =>
       outcomes: '2',
     });
     expect(component.generatedDeck).toBeTruthy();
-    // Check if it's a mixed deck
     expect((component.generatedDeck as any).archetypeNames).toBeDefined();
     expect((component.generatedDeck as any).archetypeNames.items).toBe('Beta');
-  }));
+  });
 });
