@@ -1,0 +1,70 @@
+[
+  {
+    "id": "AZ-023",
+    "name": {
+      "english": "Lobby Dumbwaiter"
+    },
+    "rarity": "UNCOMMON",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-023.webp",
+    "illustrator": "Francisco K.",
+    "cardNumber": "3023",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Outcome"
+  },
+  {
+    "id": "AZ-039",
+    "name": {
+      "english": "Baktéria Maris"
+    },
+    "rarity": "HYPER",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-039.webp",
+    "illustrator": "-",
+    "cardNumber": "3039",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "AZ-054",
+    "name": {
+      "english": "The Soulroot Signet"
+    },
+    "rarity": "UNCOMMON",
+    "types": [
+      "ITEM"
+    ],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-054.webp",
+    "illustrator": "-",
+    "cardNumber": "3054",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Item"
+  }
+]

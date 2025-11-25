@@ -8,6 +8,7 @@ export const GroupedSets = [
     items: [
       { label: 'Lobby Levels', value: 'LL' },
       { label: 'Car Park', value: 'CP' },
+      { label: 'Aqua Zone', value: 'AZ' },
     ],
   },
   {
