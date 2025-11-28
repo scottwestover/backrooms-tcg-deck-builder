@@ -1,6 +1,7 @@
 import { NgClass, NgIf } from '@angular/common';
 import { Component, OnInit, effect, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { saveAs } from 'file-saver';
 import { ButtonModule } from 'primeng/button';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { SelectButtonModule } from 'primeng/selectbutton';
@@ -172,8 +173,7 @@ export class ExportDeckDialogComponent implements OnInit {
     }
   }
 
-  async exportDeckToFile(): Promise<void> {
-    const { saveAs } = await import('file-saver');
+  exportDeckToFile(): void {
     let blob = new Blob([this.deckText], { type: 'text/txt' });
     saveAs(blob, this.deck.title + '.txt');
   }
