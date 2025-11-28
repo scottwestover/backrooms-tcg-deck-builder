@@ -10,6 +10,7 @@ import { DividerModule } from 'primeng/divider';
 import { AccordionModule } from 'primeng/accordion';
 import { HelpCreateDeckComponent } from './help-create-deck.component';
 import { HelpShareDeckComponent } from './help-share-deck.component';
+import { HelpDeckRandomizerComponent } from './help-deck-randomizer.component';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { map } from 'rxjs/operators';
 
@@ -33,6 +34,9 @@ import { map } from 'rxjs/operators';
             <backrooms-help-share-deck
               *ngSwitchCase="'share-deck'"
               [isMobile]="data.isMobile"></backrooms-help-share-deck>
+            <backrooms-help-deck-randomizer
+              *ngSwitchCase="'deck-randomizer'"
+              [isMobile]="data.isMobile"></backrooms-help-deck-randomizer>
           </ng-container>
         </p-accordionTab>
       </p-accordion>
@@ -49,6 +53,7 @@ import { map } from 'rxjs/operators';
     NgSwitchCase,
     HelpCreateDeckComponent,
     HelpShareDeckComponent,
+    HelpDeckRandomizerComponent,
     NgIf,
   ],
   styleUrls: ['./help-intro.component.scss'],
@@ -68,6 +73,10 @@ export class HelpIntroComponent {
     {
       id: 'share-deck',
       question: 'How do I share a deck?',
+    },
+    {
+      id: 'deck-randomizer',
+      question: 'How do I use the deck randomizer?',
     },
   ];
 }
