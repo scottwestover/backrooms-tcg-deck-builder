@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - No changes.
 
+## [0.0.10] - 2025-11-28
+
 ### Added
 
 - Added new "Randomizer" page that can be used for generating random decks to use for a game. The randomizer has three different modes: simple, mixed, and manual. "Simple" chooses a random deck from a json file and presents that deck to the player. "Mixed" will randomly choose each part of a backrooms deck from one of the premade decks in the json file and present the new combined deck to the player. "Manual" allows a player to choose which part of a deck they want from each of the premade decks in the json file [e6e0c27](https://github.com/scottwestover/backrooms-tcg-deck-builder/commit/e6e0c2725c7e38ce2e4d521519407f143c85e437).
@@ -18,12 +20,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - November 2025 Promo Card "Lustratio Latrina" [47601a5](https://github.com/scottwestover/backrooms-tcg-deck-builder/commit/47601a53ab30d93190772ce0b41c9f8d14e1411e).
 - Aquazone preview cards [47601a5](https://github.com/scottwestover/backrooms-tcg-deck-builder/commit/47601a53ab30d93190772ce0b41c9f8d14e1411e).
 - Event cards from starter decks [47601a5](https://github.com/scottwestover/backrooms-tcg-deck-builder/commit/47601a53ab30d93190772ce0b41c9f8d14e1411e).
-- Added unit tests for new components and started adding unit tests to existing components that are modified.
+- Added unit tests for new components and started adding unit tests to existing components that are modified [5adad99](https://github.com/scottwestover/backrooms-tcg-deck-builder/commit/5adad9950c2413ea38fb7f7c4f4bba93b115c41c).
+- Added new section to the help page with content on how to use the deck randomization feature [52e0202](https://github.com/scottwestover/backrooms-tcg-deck-builder/commit/52e0202e24821bd510688685d98d2864c11777d9).
 
 ### Fixed
 
 - Fixed card types in the "promo-cards.json" file so promo cards will load in the correct card type selection [5adad99](https://github.com/scottwestover/backrooms-tcg-deck-builder/commit/5adad9950c2413ea38fb7f7c4f4bba93b115c41c).
 - Fixed bug in the deck builder page when an invalid deck id is provided, or a deck is not found for the provided id would throw an uncaught error in the app. This also addressed issues when a deck id did not exist in firestore but exists in localstorage for the user. The fix now checks localstorage before making a call to firestore, and if the deck is not found there we treat the id as a new deck [0aea7f2](https://github.com/scottwestover/backrooms-tcg-deck-builder/commit/0aea7f2166013f7edd7dd99a6093f47c91a0f0d7).
+- Fixed regression with export deck as a file feature [3ff3237](https://github.com/scottwestover/backrooms-tcg-deck-builder/commit/3ff32376a0fe4d367560b4eb86cd66bab903c17a).
 
 ## [0.0.9] - 2025-11-23
 
