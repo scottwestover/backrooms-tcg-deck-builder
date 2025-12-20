@@ -161,7 +161,7 @@ export class ChallengesPageComponent implements OnInit {
   availableTypes: SelectItem[] = [];
   selectedTypes: string[] = [];
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.makeGoogleFriendly();
     this.challengeService
       .getChallenges()
@@ -212,7 +212,7 @@ export class ChallengesPageComponent implements OnInit {
       });
   }
 
-  onTypeChange(): void {
+  public onTypeChange(): void {
     if (this.generationMode === 'manual') {
       this.manualChallengeSlots = [null, null, null, null];
     } else {
@@ -221,7 +221,7 @@ export class ChallengesPageComponent implements OnInit {
     this.updateUrl();
   }
 
-  setGenerationMode(mode: 'all-levels' | 'random' | 'manual'): void {
+  public setGenerationMode(mode: 'all-levels' | 'random' | 'manual'): void {
     this.generationMode = mode;
     if (mode !== 'manual') {
       // If switching from manual, sync generated from manual slots
@@ -243,7 +243,7 @@ export class ChallengesPageComponent implements OnInit {
     this.cdr.markForCheck();
   }
 
-  generate(): void {
+  public generate(): void {
     if (this.generationMode === 'manual') return;
 
     const filteredChallenges = this.getFilteredChallenges();
@@ -262,7 +262,7 @@ export class ChallengesPageComponent implements OnInit {
     this.updateUrl();
   }
 
-  rerollChallenge(challengeToReplace: IChallenge, index: number): void {
+  public rerollChallenge(challengeToReplace: IChallenge, index: number): void {
     const filteredChallenges = this.getFilteredChallenges();
     const currentChallengeIds = new Set(
       this.generatedChallenges.map((c) => c.id),
@@ -292,7 +292,10 @@ export class ChallengesPageComponent implements OnInit {
     }
   }
 
-  onManualChallengeChange(index: number, challenge: IChallenge | null) {
+  public onManualChallengeChange(
+    index: number,
+    challenge: IChallenge | null,
+  ): void {
     this.manualChallengeSlots[index] = challenge;
     this.manualChallengeSlots = [...this.manualChallengeSlots];
     this.updateUrl();
@@ -328,7 +331,7 @@ export class ChallengesPageComponent implements OnInit {
     this.urlSyncService.updateUrl(params);
   }
 
-  private makeGoogleFriendly() {
+  private makeGoogleFriendly(): void {
     this.title.setTitle('Backrooms TCG - Challenge Randomizer');
     this.meta.addTags([
       {

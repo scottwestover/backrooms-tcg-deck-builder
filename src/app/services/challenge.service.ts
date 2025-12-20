@@ -9,11 +9,11 @@ import { IChallenge } from '../../models';
 export class ChallengeService {
   private http = inject(HttpClient);
 
-  getChallenges(): Observable<IChallenge[]> {
+  public getChallenges(): Observable<IChallenge[]> {
     return this.http.get<IChallenge[]>('assets/randomizer/challenges.json');
   }
 
-  generateChallenges(
+  public generateChallenges(
     mode: 'all-levels' | 'random',
     challenges: IChallenge[],
     count: number = 4,

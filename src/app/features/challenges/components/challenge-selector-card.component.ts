@@ -98,7 +98,7 @@ export class ChallengeSelectorCardComponent implements OnChanges {
     return this.allChallenges.filter((c) => this.activeTypes.includes(c.type));
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
+  public ngOnChanges(changes: SimpleChanges): void {
     if (changes['allChallenges'] || changes['activeTypes']) {
       const available = this.challengesFilteredByType;
       this.availableLevels = [
@@ -124,7 +124,7 @@ export class ChallengeSelectorCardComponent implements OnChanges {
     }
   }
 
-  onLevelChange(level: number | null) {
+  public onLevelChange(level: number | null): void {
     this.selectedLevel = level;
     this.filterChallenges(level);
     if (
@@ -136,7 +136,7 @@ export class ChallengeSelectorCardComponent implements OnChanges {
     }
   }
 
-  filterChallenges(level: number | null) {
+  public filterChallenges(level: number | null): void {
     const available = this.challengesFilteredByType;
     if (level === null) {
       this.filteredChallenges = available;
@@ -145,7 +145,7 @@ export class ChallengeSelectorCardComponent implements OnChanges {
     }
   }
 
-  onChallengeChange(challenge: IChallenge | null) {
+  public onChallengeChange(challenge: IChallenge | null): void {
     this.challengeChange.emit(challenge);
   }
 }

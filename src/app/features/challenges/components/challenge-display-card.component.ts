@@ -56,7 +56,7 @@ export class ChallengeDisplayCardComponent {
   @Input() rerollable = false;
   @Output() reroll = new EventEmitter<void>();
 
-  onRerollClick(): void {
+  public onRerollClick(): void {
     this.reroll.emit();
   }
 }

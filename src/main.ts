@@ -56,7 +56,7 @@ import { DecksPageComponent } from './app/features/decks/decks-page.component';
 import { HomePageComponent } from './app/features/home/home-page.component';
 import { ProfilePageComponent } from './app/features/profile/profile-page.component';
 import { RandomizerPageComponent } from './app/features/randomizer/randomizer-page.component';
-import { ChallengesPageComponent } from './app/features/challenges/challenges-page.component'; // New import
+import { ChallengesPageComponent } from './app/features/challenges/challenges-page.component';
 import { AuthService } from './app/services/auth.service';
 import { BackroomsBackendService } from './app/services/backrooms-backend.service';
 import { environment } from './environments/environment';
@@ -65,7 +65,7 @@ import { persistentMultipleTabManager } from 'firebase/firestore';
 
 const routes: Routes = [
   {
-    path: 'challenges', // New route
+    path: 'challenges',
     component: ChallengesPageComponent,
   },
   {

@@ -66,7 +66,6 @@ import { FilterButtonComponent } from '../filter/filter-button.component';
         </button>
       </li>
 
-      <!-- New Challenges Link -->
       <li
         class="flex flex-col items-center group cursor-pointer"
         [ngClass]="getNavigationBorder('/challenges')"
