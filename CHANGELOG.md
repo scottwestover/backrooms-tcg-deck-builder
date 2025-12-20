@@ -11,7 +11,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- TODO
+- Added new "Challenge Randomizer" page for generating random sets of challenges. This feature includes:
+    - Three generation modes: "All Levels" (one challenge per difficulty level), "Random" (four random challenges), and "Manual" (user selects challenges).
+    - A multi-select filter to choose which challenge types (e.g., GENERIC, CAR_PARK, LOBBY_LEVEL) are included in the randomization pool.
+    - Individual re-roll buttons for generated challenges (in "All Levels" and "Random" modes) to replace a single challenge with a new one.
+    - Responsive layout for manual mode dropdowns and improved styling for challenge details.
+    - A Python script to parse CSV challenge data into the required JSON format.
 
 ## [0.0.10] - 2025-11-28
 
