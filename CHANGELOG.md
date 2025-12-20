@@ -7,8 +7,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
-- No changes.
-
 ### Added
 
 - Added new "Challenge Randomizer" page for generating random sets of challenges. This feature includes:
