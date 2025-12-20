@@ -1,4 +1,3 @@
-import { AsyncPipe, NgClass, NgFor, NgIf } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -12,12 +11,14 @@ import { SelectItem } from 'primeng/api';
 import { ButtonModule } from 'primeng/button';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { TooltipModule } from 'primeng/tooltip';
-
+import { switchMap, take } from 'rxjs';
 import { IChallenge } from '../../../models';
 import { ChallengeService } from '../../services/challenge.service';
+import { UrlSyncService } from '../../services/url-sync.service';
 import { PageComponent } from '../shared/page.component';
 import { ChallengeDisplayCardComponent } from './components/challenge-display-card.component';
 import { ChallengeSelectorCardComponent } from './components/challenge-selector-card.component';
+import { AsyncPipe, NgClass, NgForOf, NgIf } from '@angular/common';
 
 @Component({
   selector: 'backrooms-challenges-page',
@@ -79,7 +80,7 @@ import { ChallengeSelectorCardComponent } from './components/challenge-selector-
               optionValue="value"
               display="chip"
               placeholder="Select Types"
-              styleClass="w-full md:w-64"
+              styleClass="w-full max-w-sm md:w-64"
               [filter]="false"
               [showHeader]="false">
             </p-multiSelect>
@@ -132,7 +133,7 @@ import { ChallengeSelectorCardComponent } from './components/challenge-selector-
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     NgClass,
-    NgFor,
+    NgForOf,
     NgIf,
     AsyncPipe,
     PageComponent,
@@ -149,6 +150,7 @@ export class ChallengesPageComponent implements OnInit {
   private meta = inject(Meta);
   private title = inject(Title);
   private challengeService = inject(ChallengeService);
+  private urlSyncService = inject(UrlSyncService);
 
   generationMode: 'all-levels' | 'random' | 'manual' = 'all-levels';
 
@@ -158,44 +160,87 @@ export class ChallengesPageComponent implements OnInit {
 
   availableTypes: SelectItem[] = [];
   selectedTypes: string[] = [];
-  manualModeChallenges: IChallenge[] = [];
 
   ngOnInit(): void {
     this.makeGoogleFriendly();
-    this.challengeService.getChallenges().subscribe((data) => {
-      this.allChallenges = data;
+    this.challengeService
+      .getChallenges()
+      .pipe(
+        switchMap((data) => {
+          this.allChallenges = data;
+          const uniqueTypes = [...new Set(data.map((c) => c.type))];
+          this.availableTypes = uniqueTypes.map((t) => ({
+            label: t,
+            value: t,
+          }));
+          return this.urlSyncService.getQueryParams().pipe(take(1));
+        }),
+      )
+      .subscribe((params) => {
+        const typesParam = params['types'];
+        if (typesParam) {
+          this.selectedTypes = typesParam.split(',');
+        } else {
+          this.selectedTypes = this.availableTypes.map(
+            (t) => t.value as string,
+          );
+        }
 
-      const uniqueTypes = [...new Set(data.map((c) => c.type))];
-      this.availableTypes = uniqueTypes.map((t) => ({ label: t, value: t }));
-      this.selectedTypes = [...uniqueTypes];
-      this.updateManualChallenges();
-    });
+        const challengeIds = [
+          params['c1'],
+          params['c2'],
+          params['c3'],
+          params['c4'],
+        ]
+          .filter((id) => !!id)
+          .map((id) => parseInt(id, 10));
+
+        if (challengeIds.length > 0) {
+          const challengesFromUrl = challengeIds.map(
+            (id) => this.allChallenges.find((c) => c.id === id) || null,
+          );
+
+          this.generatedChallenges = challengesFromUrl.filter(
+            (c) => c !== null,
+          ) as IChallenge[];
+          // this.manualChallengeSlots = challengesFromUrl; // Removed this line
+
+          // If we load from a URL, default to showing the generated challenges in random mode
+          this.generationMode = 'random';
+          this.cdr.markForCheck();
+        }
+      });
   }
 
   onTypeChange(): void {
-    this.updateManualChallenges();
     if (this.generationMode === 'manual') {
-      // When types change in manual mode, clear the existing selections
-      // to force the child components to re-evaluate with the new list.
       this.manualChallengeSlots = [null, null, null, null];
     } else {
       this.generate();
     }
-  }
-
-  updateManualChallenges(): void {
-    this.manualModeChallenges = this.getFilteredChallenges();
-    this.cdr.markForCheck();
+    this.updateUrl();
   }
 
   setGenerationMode(mode: 'all-levels' | 'random' | 'manual'): void {
     this.generationMode = mode;
     if (mode !== 'manual') {
+      // If switching from manual, sync generated from manual slots
+      if (this.manualChallengeSlots.some((c) => c !== null)) {
+        this.generatedChallenges = this.manualChallengeSlots.filter(
+          (c) => c !== null,
+        ) as IChallenge[];
+      }
       this.generate();
     } else {
-      this.generatedChallenges = [];
-      this.cdr.markForCheck();
+      // If switching to manual, sync manual slots from generated
+      if (this.generatedChallenges.length > 0) {
+        this.manualChallengeSlots = Array.from(
+          { length: 4 },
+          (_, i) => this.generatedChallenges[i] || null,
+        );
+      }
     }
+    this.cdr.markForCheck();
   }
 
   generate(): void {
@@ -205,6 +250,7 @@ export class ChallengesPageComponent implements OnInit {
     if (filteredChallenges.length < 4 && this.generationMode === 'all-levels') {
       this.generatedChallenges = [];
       this.cdr.markForCheck();
+      this.updateUrl();
       return;
     }
 
@@ -213,6 +259,7 @@ export class ChallengesPageComponent implements OnInit {
       filteredChallenges,
     );
     this.cdr.markForCheck();
+    this.updateUrl();
   }
 
   rerollChallenge(challengeToReplace: IChallenge, index: number): void {
@@ -240,14 +287,15 @@ export class ChallengesPageComponent implements OnInit {
           Math.floor(Math.random() * potentialNewChallenges.length)
         ];
       this.generatedChallenges[index] = newChallenge;
-      this.generatedChallenges = [...this.generatedChallenges]; // Trigger change detection
+      this.generatedChallenges = [...this.generatedChallenges];
+      this.updateUrl();
     }
-    // If no other challenges are available, do nothing.
   }
 
   onManualChallengeChange(index: number, challenge: IChallenge | null) {
     this.manualChallengeSlots[index] = challenge;
-    this.manualChallengeSlots = [...this.manualChallengeSlots]; // Trigger change detection
+    this.manualChallengeSlots = [...this.manualChallengeSlots];
+    this.updateUrl();
   }
 
   private getFilteredChallenges(): IChallenge[] {
@@ -257,6 +305,27 @@ export class ChallengesPageComponent implements OnInit {
     return this.allChallenges.filter((c) =>
       this.selectedTypes.includes(c.type),
     );
+  }
+
+  private updateUrl(): void {
+    const challengesToSync =
+      this.generationMode === 'manual'
+        ? this.manualChallengeSlots
+        : this.generatedChallenges;
+
+    const params: any = {};
+
+    challengesToSync.forEach((challenge, index) => {
+      if (challenge) {
+        params[`c${index + 1}`] = challenge.id;
+      }
+    });
+
+    if (this.selectedTypes.length < this.availableTypes.length) {
+      params['types'] = this.selectedTypes.join(',');
+    }
+
+    this.urlSyncService.updateUrl(params);
   }
 
   private makeGoogleFriendly() {

@@ -4,12 +4,14 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { of } from 'rxjs';
 import { IChallenge } from '../../../models';
 import { ChallengeService } from '../../services/challenge.service';
+import { UrlSyncService } from '../../services/url-sync.service';
 import { ChallengesPageComponent } from './challenges-page.component';
 
 describe('ChallengesPageComponent', () => {
   let component: ChallengesPageComponent;
   let fixture: ComponentFixture<ChallengesPageComponent>;
   let challengeService: jasmine.SpyObj<ChallengeService>;
+  let urlSyncService: jasmine.SpyObj<UrlSyncService>;
   let nativeElement: HTMLElement;
 
   const mockChallenges: IChallenge[] = [
@@ -19,7 +21,15 @@ describe('ChallengesPageComponent', () => {
       difficulty: 1,
       description: 'd1',
       creator: 'c1',
-      type: 't1',
+      type: 'GENERIC',
+    },
+    {
+      id: 5,
+      name: 'C5',
+      difficulty: 1,
+      description: 'd5',
+      creator: 'c5',
+      type: 'GENERIC',
     },
     {
       id: 2,
@@ -27,7 +37,7 @@ describe('ChallengesPageComponent', () => {
       difficulty: 2,
       description: 'd2',
       creator: 'c2',
-      type: 't2',
+      type: 'CAR_PARK',
     },
     {
       id: 3,
@@ -35,7 +45,7 @@ describe('ChallengesPageComponent', () => {
       difficulty: 3,
       description: 'd3',
       creator: 'c3',
-      type: 't3',
+      type: 'LOBBY_LEVEL',
     },
     {
       id: 4,
@@ -43,7 +53,7 @@ describe('ChallengesPageComponent', () => {
       difficulty: 4,
       description: 'd4',
       creator: 'c4',
-      type: 't4',
+      type: 'GENERIC',
     },
   ];
 
@@ -52,11 +62,16 @@ describe('ChallengesPageComponent', () => {
       'getChallenges',
       'generateChallenges',
     ]);
+    const urlSyncServiceSpy = jasmine.createSpyObj('UrlSyncService', [
+      'getQueryParams',
+      'updateUrl',
+    ]);
 
     await TestBed.configureTestingModule({
       imports: [ChallengesPageComponent, NoopAnimationsModule],
       providers: [
         { provide: ChallengeService, useValue: challengeServiceSpy },
+        { provide: UrlSyncService, useValue: urlSyncServiceSpy },
         {
           provide: Title,
           useValue: jasmine.createSpyObj('Title', ['setTitle']),
@@ -71,7 +86,12 @@ describe('ChallengesPageComponent', () => {
     challengeService = TestBed.inject(
       ChallengeService,
     ) as jasmine.SpyObj<ChallengeService>;
+    urlSyncService = TestBed.inject(
+      UrlSyncService,
+    ) as jasmine.SpyObj<UrlSyncService>;
 
+    // Default mock implementations
+    urlSyncService.getQueryParams.and.returnValue(of({}));
     challengeService.getChallenges.and.returnValue(of(mockChallenges));
     challengeService.generateChallenges.and.returnValue(mockChallenges);
   });
@@ -81,44 +101,28 @@ describe('ChallengesPageComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should fetch challenges on init', () => {
+  it('should fetch challenges and types on init', () => {
     fixture.detectChanges(); // ngOnInit
     expect(challengeService.getChallenges).toHaveBeenCalled();
     expect(component.allChallenges).toEqual(mockChallenges);
+    expect(component.availableTypes.length).toBe(3);
+    expect(component.selectedTypes.length).toBe(3);
   });
 
-  it('should not generate challenges on init', () => {
+  it('should initialize state from URL query params', () => {
+    const urlParams = { c1: '1', c2: '3', types: 'GENERIC,LOBBY_LEVEL' };
+    urlSyncService.getQueryParams.and.returnValue(of(urlParams));
+
     fixture.detectChanges(); // ngOnInit
-    expect(challengeService.generateChallenges).not.toHaveBeenCalled();
-    expect(component.generatedChallenges.length).toBe(0);
-  });
-
-  it('should set generation mode and generate challenges', () => {
-    fixture.detectChanges();
-
-    component.setGenerationMode('random');
 
     expect(component.generationMode).toBe('random');
-    expect(challengeService.generateChallenges).toHaveBeenCalledWith(
-      'random',
-      mockChallenges,
-    );
-    expect(component.generatedChallenges).toEqual(mockChallenges);
+    expect(component.selectedTypes).toEqual(['GENERIC', 'LOBBY_LEVEL']);
+    expect(component.generatedChallenges.length).toBe(2);
+    expect(component.generatedChallenges[0]?.id).toBe(1);
+    expect(component.generatedChallenges[1]?.id).toBe(3);
   });
 
-  it('should switch to manual mode', () => {
-    fixture.detectChanges();
-    component.setGenerationMode('manual');
-    fixture.detectChanges();
-
-    expect(component.generationMode).toBe('manual');
-    const selectorCards = nativeElement.querySelectorAll(
-      'backrooms-challenge-selector-card',
-    );
-    expect(selectorCards.length).toBe(4);
-  });
-
-  it('should call generate when the button is clicked', () => {
+  it('should call generate and updateUrl when the button is clicked', () => {
     fixture.detectChanges();
     component.generationMode = 'all-levels';
     fixture.detectChanges();
@@ -130,7 +134,64 @@ describe('ChallengesPageComponent', () => {
 
     expect(challengeService.generateChallenges).toHaveBeenCalledWith(
       'all-levels',
-      mockChallenges,
+      jasmine.any(Array),
     );
+    expect(urlSyncService.updateUrl).toHaveBeenCalled();
+  });
+
+  it('should update url when types change', () => {
+    fixture.detectChanges();
+    component.onTypeChange();
+    expect(urlSyncService.updateUrl).toHaveBeenCalled();
+  });
+
+  it('should update url when a manual challenge is selected', () => {
+    fixture.detectChanges();
+    component.onManualChallengeChange(0, mockChallenges[0]);
+    expect(component.manualChallengeSlots[0]).toBe(mockChallenges[0]);
+    expect(urlSyncService.updateUrl).toHaveBeenCalled();
+  });
+
+  it('should re-roll a challenge and update url', () => {
+    // Setup: Ensure types are selected so that getFilteredChallenges works
+    component.selectedTypes = ['GENERIC', 'CAR_PARK', 'LOBBY_LEVEL'];
+    // Start with a realistic set for 'all-levels' mode
+    component.generatedChallenges = [
+      mockChallenges[0], // id 1, diff 1
+      mockChallenges[2], // id 2, diff 2
+      mockChallenges[3], // id 3, diff 3
+      mockChallenges[4], // id 4, diff 4
+    ];
+    fixture.detectChanges();
+
+    // Reroll the first challenge (id: 1, difficulty: 1)
+    component.rerollChallenge(mockChallenges[0], 0);
+
+    // The new challenge should be the other level 1 challenge (id: 5)
+    expect(component.generatedChallenges[0].id).toBe(5);
+    expect(urlSyncService.updateUrl).toHaveBeenCalled();
+  });
+
+  it('should sync manual slots when switching from random mode', () => {
+    component.generationMode = 'random';
+    component.generatedChallenges = [...mockChallenges];
+    fixture.detectChanges();
+
+    component.setGenerationMode('manual');
+    expect(component.manualChallengeSlots[0]?.id).toBe(mockChallenges[0].id);
+    expect(component.manualChallengeSlots[3]?.id).toBe(mockChallenges[3].id);
+  });
+
+  it('should sync generated challenges when switching from manual mode', () => {
+    component.generationMode = 'manual';
+    component.manualChallengeSlots = [...mockChallenges];
+    fixture.detectChanges();
+
+    component.setGenerationMode('random');
+    expect(component.generatedChallenges[0]?.id).toBe(mockChallenges[0].id);
+    expect(component.generatedChallenges[3]?.id).toBe(mockChallenges[3].id);
+    // generate() is called, which also calls updateUrl()
+    expect(challengeService.generateChallenges).toHaveBeenCalled();
+    expect(urlSyncService.updateUrl).toHaveBeenCalled();
   });
 });

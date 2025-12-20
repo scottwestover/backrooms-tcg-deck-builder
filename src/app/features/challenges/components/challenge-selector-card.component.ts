@@ -127,7 +127,11 @@ export class ChallengeSelectorCardComponent implements OnChanges {
   onLevelChange(level: number | null) {
     this.selectedLevel = level;
     this.filterChallenges(level);
-    if (this.challenge && level !== null && this.challenge.difficulty !== level) {
+    if (
+      this.challenge &&
+      level !== null &&
+      this.challenge.difficulty !== level
+    ) {
       this.onChallengeChange(null);
     }
   }
@@ -136,11 +140,8 @@ export class ChallengeSelectorCardComponent implements OnChanges {
     const available = this.challengesFilteredByType;
     if (level === null) {
       this.filteredChallenges = available;
-    }
-    else {
-      this.filteredChallenges = available.filter(
-        (c) => c.difficulty === level,
-      );
+    } else {
+      this.filteredChallenges = available.filter((c) => c.difficulty === level);
     }
   }
 

@@ -1,5 +1,5 @@
 import { Injectable, inject } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -23,6 +23,14 @@ export class UrlSyncService {
       relativeTo: this.route,
       queryParams: selections,
       queryParamsHandling: 'merge',
+      replaceUrl: true,
+    });
+  }
+
+  updateUrl(params: Params): void {
+    this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: params,
       replaceUrl: true,
     });
   }
