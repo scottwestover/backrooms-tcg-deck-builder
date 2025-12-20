@@ -1,0 +1,1546 @@
+[
+    {
+        "id": 1,
+        "name": "Guide",
+        "difficulty": 1,
+        "description": "Equip 2 Wearables at the same time",
+        "creator": "The Red Tide",
+        "type": "GENERIC"
+    },
+    {
+        "id": 2,
+        "name": "Two's Company",
+        "difficulty": 1,
+        "description": "Escape with a Companion by your side",
+        "creator": "The Red Tide",
+        "type": "GENERIC"
+    },
+    {
+        "id": 3,
+        "name": "Full Stomach",
+        "difficulty": 1,
+        "description": "Use 3 Consumables on yourself",
+        "creator": "Hass Thrift",
+        "type": "GENERIC"
+    },
+    {
+        "id": 4,
+        "name": "Sneaky",
+        "difficulty": 1,
+        "description": "Conceal 3 Unfriendly Entites on the Field of Play",
+        "creator": "The Red Tide",
+        "type": "GENERIC"
+    },
+    {
+        "id": 5,
+        "name": "No-Clip Surprise!",
+        "difficulty": 1,
+        "description": "During the no-clip round, deal the first 8 cards face\ndown followed by the next 8 cards face-up (as normal)\nwith 4 cards in your DIH. The face down cards will act\nas surprises. When uncovered, reveal the card beneath.\nIf it's an entity and there are currently no entities being\nengaged, you must engage the revealed entity. If it's an\nitem and you have not picked up an item during the round,\nyou must add it to your inventory. If you deck out, you\nmust deal the cards as a no-clip surpise again.",
+        "creator": "Hass Thrift",
+        "type": "GENERIC"
+    },
+    {
+        "id": 6,
+        "name": "Max Sanity Intact",
+        "difficulty": 1,
+        "description": "You must have 20 Sanity before escaping the Backrooms",
+        "creator": "Hass Thrift",
+        "type": "GENERIC"
+    },
+    {
+        "id": 7,
+        "name": "Full Backpack",
+        "difficulty": 1,
+        "description": "Escape the Backrooms with 4 items in your Inventory",
+        "creator": "NowayArtemus",
+        "type": "GENERIC"
+    },
+    {
+        "id": 8,
+        "name": "Dissolving Painite",
+        "difficulty": 1,
+        "description": "If you have a Painite Gem when you reveal the Exit Card (Golden Stairs/Golden Exit/Etc), flip your gem. If it lands Movement Side up, you lose it.",
+        "creator": "NowayArtemus",
+        "type": "GENERIC"
+    },
+    {
+        "id": 9,
+        "name": "Unyielding Focus",
+        "difficulty": 1,
+        "description": "When you deck out, engaged Entities stay engaged and do not get shuffled in with the rest of the cards",
+        "creator": "NowayArtemus",
+        "type": "GENERIC"
+    },
+    {
+        "id": 10,
+        "name": "Empty Pockets",
+        "difficulty": 1,
+        "description": "You must escape the Backrooms with no items in your Inventory. You cannot discard an item without using it or exchanging it.",
+        "creator": "NowayArtemus",
+        "type": "GENERIC"
+    },
+    {
+        "id": 11,
+        "name": "Hoarder Mode",
+        "difficulty": 1,
+        "description": "When using an item, lose 1 Sanity in addition to any normal Sanity effects",
+        "creator": "Halcyon was Here",
+        "type": "GENERIC"
+    },
+    {
+        "id": 12,
+        "name": "They Grow or Somethin'",
+        "difficulty": 1,
+        "description": "Items with 5 Attack or higher take up two item slots.",
+        "creator": "RestedKnight",
+        "type": "GENERIC"
+    },
+    {
+        "id": 13,
+        "name": "Resourceful Wanderer",
+        "difficulty": 1,
+        "description": "Use 4 different types of consumables before escaping.",
+        "creator": "The Red Tide",
+        "type": "GENERIC"
+    },
+    {
+        "id": 14,
+        "name": "Experienced Explorer",
+        "difficulty": 1,
+        "description": "Use 3 Unique Attack Items before exiting.",
+        "creator": "NowayArtemus",
+        "type": "GENERIC"
+    },
+    {
+        "id": 15,
+        "name": "Strategic Exit",
+        "difficulty": 1,
+        "description": "Successfully complete the game without using any consumables.",
+        "creator": "The Red Tide",
+        "type": "GENERIC"
+    },
+    {
+        "id": 16,
+        "name": "Three's a Crowd",
+        "difficulty": 1,
+        "description": "Have 3 different companions before exiting.",
+        "creator": "NowayArtemus",
+        "type": "GENERIC"
+    },
+    {
+        "id": 17,
+        "name": "Fearless",
+        "difficulty": 1,
+        "description": "Defeat 4 different Entities before escaping the Backrooms.",
+        "creator": "NowayArtemus",
+        "type": "GENERIC"
+    },
+    {
+        "id": 18,
+        "name": "Sanity Cap",
+        "difficulty": 2,
+        "description": "You cannot exceed 20 Sanity. If your Sanity were to exceed 20, deduct your Sanity cost instead of adding it. For example, if you had 18 Sanity and moved into Hallway with +3 Sanity, then you would end up with 15 Sanity.",
+        "creator": "Hass Thrift",
+        "type": "GENERIC"
+    },
+    {
+        "id": 19,
+        "name": "Woke Up and Chose Violence",
+        "difficulty": 2,
+        "description": "Shuffle X Unfriendly Entities into your deck. You must defeat X number of these entitites before escaping.",
+        "creator": "Support Flamingo (Albert)",
+        "type": "GENERIC"
+    },
+    {
+        "id": 20,
+        "name": "Brink of Insanity (Lvl 1)",
+        "difficulty": 2,
+        "description": "You cannot escape the Backrooms with more than 10 sanity",
+        "creator": "Hass Thrift",
+        "type": "GENERIC"
+    },
+    {
+        "id": 21,
+        "name": "Pain Mode",
+        "difficulty": 2,
+        "description": "Engaged Unfriendly Entities deal one more DIH damage every round and reduce one extra sanity upon engagement",
+        "creator": "NowayArtemus",
+        "type": "GENERIC"
+    },
+    {
+        "id": 22,
+        "name": "Entity Exterminator",
+        "difficulty": 2,
+        "description": "Defeat 6 different Entities before escaping the Backrooms.",
+        "creator": "The Red Tide",
+        "type": "GENERIC"
+    },
+    {
+        "id": 23,
+        "name": "Ravenous Void",
+        "difficulty": 2,
+        "description": "Navigation Points placed onto an Unfriendly Entity or a Permanent Fixture go into the Discard Pile",
+        "creator": "Halcyon was Here",
+        "type": "GENERIC"
+    },
+    {
+        "id": 24,
+        "name": "Small Pockets",
+        "difficulty": 2,
+        "description": "You only have 3 Inventory slots",
+        "creator": "Halcyon was Here",
+        "type": "GENERIC"
+    },
+    {
+        "id": 25,
+        "name": "Super Hoarder Mode",
+        "difficulty": 2,
+        "description": "When using an item, lose 2 Sanity in addition to any normal Sanity effects",
+        "creator": "Halcyon was Here",
+        "type": "GENERIC"
+    },
+    {
+        "id": 26,
+        "name": "Don't Let Them Follow You",
+        "difficulty": 2,
+        "description": "(All hostile/dual entities need to be gem eligible) Do not have any gem eligible entities on the FOP or Engagement when you escape. If they see you use a gem to escape, they may learn how to follow you back to reality. Dont doom the world you fought to return to.",
+        "creator": "Passing Wanderer",
+        "type": "GENERIC"
+    },
+    {
+        "id": 27,
+        "name": "Purity of the Gem",
+        "difficulty": 2,
+        "description": "When exiting the Golden Stairs (of the Lobby Levels) flip the painite gem. If it lands gem up, you escaped. If it doesnt, you lose the gem and you can not pass. The gems purity was not good enough to break the barrier.",
+        "creator": "Passing Wanderer",
+        "type": "GENERIC"
+    },
+    {
+        "id": 28,
+        "name": "Gatekeeper Guardian",
+        "difficulty": 2,
+        "description": "When the Golden Stairs or Golden Exit card is revealed on the FIeld of Play, search the Pull Pile and then discard for the first Unfriendly entity of at least Red or Higher rarity, then place it on top of the Exit Card. You must defeat this entity to be able to access the escape. If this entity would be discarded for any reason besides being defeated in combat, shuffle the Golden Stairs/Exit into the Pull Pile.",
+        "creator": "NowayArtemus",
+        "type": "GENERIC"
+    },
+    {
+        "id": 29,
+        "name": "Enemy Territory",
+        "difficulty": 2,
+        "description": "You may only have 1 Friendly/Dual type entity in your deck. The rest must be Unfriendly Entities.",
+        "creator": "fr33b33",
+        "type": "GENERIC"
+    },
+    {
+        "id": 30,
+        "name": "Overwhelming Forces",
+        "difficulty": 2,
+        "description": "Have 2 Portal to Death cards in your deck as well as an exit card. Remove 1 room card of your choice before the start of the game.",
+        "creator": "Dacsinu",
+        "type": "GENERIC"
+    },
+    {
+        "id": 31,
+        "name": "Brink of Insanity (Lvl 2)",
+        "difficulty": 3,
+        "description": "You cannot escape the Backrooms with more than 5 sanity",
+        "creator": "Hass Thrift",
+        "type": "GENERIC"
+    },
+    {
+        "id": 32,
+        "name": "You Can't Run!",
+        "difficulty": 3,
+        "description": "With the exception of the no-clip round, if any entity is revealed in the FOP and there are no entities currently engaged then you must either engage them immediately or use an item to distract them (if possible). If multiple entities are in the FOP at the same time, you may choose which one to engage first. Once an entity is defeated and there are other entities in the FOP, you must immediately engage with the next one the following round.",
+        "creator": "Hass Thrift",
+        "type": "GENERIC"
+    },
+    {
+        "id": 33,
+        "name": "Light at the End of the Hallway",
+        "difficulty": 3,
+        "description": "Place the Golden Stairs at the end of your Pull Pile. Do not shuffle the Golden Stairs with the rest of the Pull Pile. When your Pull Pile is empty and the Golden Stairs is in your DIH, reset the board and attempt to escape!",
+        "creator": "Hass Thrift",
+        "type": "GENERIC"
+    },
+    {
+        "id": 34,
+        "name": "Avoid Them!",
+        "difficulty": 3,
+        "description": "You must escape the Backrooms without engaging with any Unfriendly Entities. If you must engage with an Unfriendly Entity, you lose.",
+        "creator": "Support Flamingo (Albert)",
+        "type": "GENERIC"
+    },
+    {
+        "id": 35,
+        "name": "Beastly Powers",
+        "difficulty": 3,
+        "description": "Each Entity that holds a Painite Gem has double health",
+        "creator": "NowayArtemus",
+        "type": "GENERIC"
+    },
+    {
+        "id": 36,
+        "name": "Maximum Painite",
+        "difficulty": 3,
+        "description": "You must loot two Painite Gems in one game. Upon defeat, these Entities enter your Inventory and take up an Inventory slot.",
+        "creator": "NowayArtemus",
+        "type": "GENERIC"
+    },
+    {
+        "id": 37,
+        "name": "Fearless Exterminator",
+        "difficulty": 3,
+        "description": "Defeat 8 different Entities before escaping the Backrooms.",
+        "creator": "The Red Tide",
+        "type": "GENERIC"
+    },
+    {
+        "id": 38,
+        "name": "Bleeding Out (Week One)",
+        "difficulty": 3,
+        "description": "Escape the Backrooms with 4 DIH or less",
+        "creator": "NowayArtemus",
+        "type": "GENERIC"
+    },
+    {
+        "id": 39,
+        "name": "Enemy Territory",
+        "difficulty": 3,
+        "description": "You may only have Unfriendly Entities in your deck. Friendly and Dual types are banned",
+        "creator": "fr33b33",
+        "type": "GENERIC"
+    },
+    {
+        "id": 40,
+        "name": "One of Everything",
+        "difficulty": 3,
+        "description": "You must escape with a companion, a consumable, an attack item, and a wearable item.",
+        "creator": "NowayArtemus",
+        "type": "GENERIC"
+    },
+    {
+        "id": 41,
+        "name": "Purple Light District",
+        "difficulty": 3,
+        "description": "All hostile entities in your deck must be purple light or higher",
+        "creator": "Dacsinu",
+        "type": "GENERIC"
+    },
+    {
+        "id": 42,
+        "name": "Red Light District",
+        "difficulty": 3,
+        "description": "All Red Light or higher entities in your deck must be Unfriendly.",
+        "creator": "NowayArtemus",
+        "type": "GENERIC"
+    },
+    {
+        "id": 43,
+        "name": "The Terminator",
+        "difficulty": 4,
+        "description": "Defeat 10 different Entities before escaping the Backrooms.",
+        "creator": "The Red Tide",
+        "type": "GENERIC"
+    },
+    {
+        "id": 44,
+        "name": "Near Obliteration",
+        "difficulty": 4,
+        "description": "Escape the Backrooms with 1 Sanity and 1 DIH",
+        "creator": "NowayArtemus",
+        "type": "GENERIC"
+    },
+    {
+        "id": 45,
+        "name": "Brink of Insanity (Lvl 3)",
+        "difficulty": 4,
+        "description": "You cannot escape the Backrooms with more than 1 sanity",
+        "creator": "Hass Thrift",
+        "type": "GENERIC"
+    },
+    {
+        "id": 46,
+        "name": "Maximum Painite Madness",
+        "difficulty": 4,
+        "description": "You must loot three Painite Gems in one game. Upon defeat, these Entities enter your Inventory and take up an Inventory slot.",
+        "creator": "NowayArtemus",
+        "type": "GENERIC"
+    },
+    {
+        "id": 47,
+        "name": "Time Trial",
+        "difficulty": 1,
+        "description": "Escape the Backrooms in 20 min or less",
+        "creator": "The Red Tide",
+        "type": "GENERIC"
+    },
+    {
+        "id": 48,
+        "name": "Time Trial",
+        "difficulty": 2,
+        "description": "Escape the Backrooms in 15 min or less",
+        "creator": "The Red Tide",
+        "type": "GENERIC"
+    },
+    {
+        "id": 49,
+        "name": "Time Trial",
+        "difficulty": 3,
+        "description": "Escape the Backrooms in 10 min or less",
+        "creator": "The Red Tide",
+        "type": "GENERIC"
+    },
+    {
+        "id": 50,
+        "name": "Time Trial",
+        "difficulty": 4,
+        "description": "Escape the Backrooms in 5 min or less",
+        "creator": "The Red Tide",
+        "type": "GENERIC"
+    },
+    {
+        "id": 51,
+        "name": "What are the odds:",
+        "difficulty": 1,
+        "description": "Roll a d20 dice to choose your starting sanity. If you start with 16-20 Sanity, this is worth 1 Point. 11-15 Sanity is worth 2 Points. 6-10 Sanity is worth 3 Points. 1-5 Sanity is worth 4 Points.",
+        "creator": "Hass Thrift",
+        "type": "GENERIC"
+    },
+    {
+        "id": 52,
+        "name": "Souvenir",
+        "difficulty": 1,
+        "description": "Exit the Car Park with the Key Card in your Inventory.",
+        "creator": "NowayArtemus",
+        "type": "CAR_PARK"
+    },
+    {
+        "id": 53,
+        "name": "Unprepared",
+        "difficulty": 1,
+        "description": "Visit the Painite Toll Booth without having a Painite Gem.",
+        "creator": "NowayArtemus",
+        "type": "CAR_PARK"
+    },
+    {
+        "id": 54,
+        "name": "Be Prepared",
+        "difficulty": 1,
+        "description": "Have a full Inventory when you enter the Destroyed Lot.",
+        "creator": "NowayArtemus",
+        "type": "CAR_PARK"
+    },
+    {
+        "id": 55,
+        "name": "Mindless Wandering",
+        "difficulty": 1,
+        "description": "Enter 4 rooms that cause you to lose Sanity.",
+        "creator": "NowayArtemus",
+        "type": "CAR_PARK"
+    },
+    {
+        "id": 56,
+        "name": "Upside down Smile",
+        "difficulty": 1,
+        "description": "Defeat 2 Smilers before exiting the Car Park.",
+        "creator": "NowayArtemus",
+        "type": "CAR_PARK"
+    },
+    {
+        "id": 57,
+        "name": "Way Found",
+        "difficulty": 1,
+        "description": "Cover 2 entities using the Wayfinder.",
+        "creator": "NowayArtemus",
+        "type": "CAR_PARK"
+    },
+    {
+        "id": 58,
+        "name": "For the Road",
+        "difficulty": 1,
+        "description": "Have 2 Skits in your Inventory when you exit.",
+        "creator": "NowayArtemus",
+        "type": "CAR_PARK"
+    },
+    {
+        "id": 59,
+        "name": "Potent Recall",
+        "difficulty": 1,
+        "description": "Find and use the Memory Fluid to re-arrange the Field of Play.",
+        "creator": "NowayArtemus",
+        "type": "CAR_PARK"
+    },
+    {
+        "id": 60,
+        "name": "Calling All Creatures",
+        "difficulty": 1,
+        "description": "Shuffle 2 Unfriendly Entities into your DiH using the Echoing Intercom.",
+        "creator": "NowayArtemus",
+        "type": "CAR_PARK"
+    },
+    {
+        "id": 61,
+        "name": "Ponder the Orb",
+        "difficulty": 1,
+        "description": "Use the Navigator's Orb 3 times before exiting.",
+        "creator": "NowayArtemus",
+        "type": "CAR_PARK"
+    },
+    {
+        "id": 62,
+        "name": "Wyrm Whisperer",
+        "difficulty": 1,
+        "description": "Tame the Memory Wyrm.",
+        "creator": "NowayArtemus",
+        "type": "CAR_PARK"
+    },
+    {
+        "id": 63,
+        "name": "Calming Compass",
+        "difficulty": 1,
+        "description": "Use the Old Bronze Compass and put 1 Entity on the bottom of the Pull Pile.",
+        "creator": "NowayArtemus",
+        "type": "CAR_PARK"
+    },
+    {
+        "id": 64,
+        "name": "Invaders from Afar",
+        "difficulty": 1,
+        "description": "Have Enforcers summon X entities before you escape. Each Entity is worth 1 point, maximum 4. Gain 1 extra point if you defeat all summoned entities.",
+        "creator": "NowayArtemus",
+        "type": "CAR_PARK"
+    },
+    {
+        "id": 65,
+        "name": "Do You Like... My Car?",
+        "difficulty": 1,
+        "description": "Defeat up to three entities that are in the Cursed Toy Car.",
+        "creator": "Groyer",
+        "type": "CAR_PARK"
+    },
+    {
+        "id": 66,
+        "name": "Removing Alert status!",
+        "difficulty": 1,
+        "description": "Discard two entities using the Echoing Intercom.",
+        "creator": "Groyer",
+        "type": "CAR_PARK"
+    },
+    {
+        "id": 67,
+        "name": "Scurry Away, Little Man",
+        "difficulty": 1,
+        "description": "Engage a Death Rat with no hostile entities on the field, causing it to instantly run.",
+        "creator": "Groyer",
+        "type": "CAR_PARK"
+    },
+    {
+        "id": 68,
+        "name": "My dude, what are you doing?",
+        "difficulty": 1,
+        "description": "Engage the Wayfinder... and cover an unfriendly Entity with another one.",
+        "creator": "Groyer",
+        "type": "CAR_PARK"
+    },
+    {
+        "id": 69,
+        "name": "Vending Visit",
+        "difficulty": 2,
+        "description": "Interact with the Vending Room twice, once by using a Key Card and once by paying a Painite Gem",
+        "creator": "NowayArtemus",
+        "type": "CAR_PARK"
+    },
+    {
+        "id": 70,
+        "name": "Killer Smile",
+        "difficulty": 2,
+        "description": "Defeat 3 Smilers before exiting the Car Park.",
+        "creator": "NowayArtemus",
+        "type": "CAR_PARK"
+    },
+    {
+        "id": 71,
+        "name": "Friendly Neighborhood Moth",
+        "difficulty": 2,
+        "description": "Add two items to your Inventory through Death Moth engagements.",
+        "creator": "NowayArtemus",
+        "type": "CAR_PARK"
+    },
+    {
+        "id": 72,
+        "name": "Itching for Items",
+        "difficulty": 2,
+        "description": "Have 3 items in your Inventory when engaging a Hoarder",
+        "creator": "NowayArtemus",
+        "type": "CAR_PARK"
+    },
+    {
+        "id": 73,
+        "name": "Nearly Hexed",
+        "difficulty": 2,
+        "description": "Defeat a Hex Doll with 5 or less cards in your Deck in Hand.",
+        "creator": "NowayArtemus",
+        "type": "CAR_PARK"
+    },
+    {
+        "id": 74,
+        "name": "Death Rat Hijinks",
+        "difficulty": 2,
+        "description": "Engage a Death Rat when there are at least 3 other entities on the Field of Play.",
+        "creator": "NowayArtemus",
+        "type": "CAR_PARK"
+    },
+    {
+        "id": 75,
+        "name": "Step on it!",
+        "difficulty": 2,
+        "description": "Defeat a Jhkix before it escapes after 3 rounds.",
+        "creator": "NowayArtemus",
+        "type": "CAR_PARK"
+    },
+    {
+        "id": 76,
+        "name": "Treasure Regained",
+        "difficulty": 2,
+        "description": "Gain a Red Light or higher item back from the Discard pile after defeating a Minus Moth.",
+        "creator": "NowayArtemus",
+        "type": "CAR_PARK"
+    },
+    {
+        "id": 77,
+        "name": "Turncoat Behavior",
+        "difficulty": 2,
+        "description": "Engage a Turncoat when there are at least 5 rooms on the FOP.",
+        "creator": "NowayArtemus",
+        "type": "CAR_PARK"
+    },
+    {
+        "id": 78,
+        "name": "Kodak Moment",
+        "difficulty": 2,
+        "description": "Defeat the Security Kiosk twice, using unique methods each time.",
+        "creator": "NowayArtemus",
+        "type": "CAR_PARK"
+    },
+    {
+        "id": 79,
+        "name": "Ride 'em Cowboy!",
+        "difficulty": 2,
+        "description": "Tame the Scarlett Wyrm",
+        "creator": "NowayArtemus",
+        "type": "CAR_PARK"
+    },
+    {
+        "id": 80,
+        "name": "Friend Turned Foe",
+        "difficulty": 2,
+        "description": "Engage Aiden twice, once as a friendly entity, and once as an unfriendly.",
+        "creator": "NowayArtemus",
+        "type": "CAR_PARK"
+    },
+    {
+        "id": 81,
+        "name": "Roadtrip Munchies",
+        "difficulty": 2,
+        "description": "Have 3 Skits in your Inventory when you exit.",
+        "creator": "NowayArtemus",
+        "type": "CAR_PARK"
+    },
+    {
+        "id": 82,
+        "name": "Can't Give it Up",
+        "difficulty": 2,
+        "description": "Return the Hex Pipe to your Inventory twice before exiting.",
+        "creator": "NowayArtemus",
+        "type": "CAR_PARK"
+    },
+    {
+        "id": 83,
+        "name": "Gives you Wings",
+        "difficulty": 2,
+        "description": "Defeat an entity using the Death Moth's Brew as the final attack.",
+        "creator": "NowayArtemus",
+        "type": "CAR_PARK"
+    },
+    {
+        "id": 84,
+        "name": "Battering Ram",
+        "difficulty": 2,
+        "description": "Deal at least 10 damage with Shopping Carts before exiting.",
+        "creator": "NowayArtemus",
+        "type": "CAR_PARK"
+    },
+    {
+        "id": 85,
+        "name": "Flair for Days",
+        "difficulty": 2,
+        "description": "Place out 4 cards using the Road Flares.",
+        "creator": "NowayArtemus",
+        "type": "CAR_PARK"
+    },
+    {
+        "id": 86,
+        "name": "That Little Bastard!",
+        "difficulty": 2,
+        "description": "Engage with a Red Light or higher entity when the Cursed Toy Car appears on the Field of Play.",
+        "creator": "NowayArtemus",
+        "type": "CAR_PARK"
+    },
+    {
+        "id": 87,
+        "name": "Like Clockwork",
+        "difficulty": 2,
+        "description": "Place 4 cards onto the bottom of your DiH using the Clockwork Torch.",
+        "creator": "NowayArtemus",
+        "type": "CAR_PARK"
+    },
+    {
+        "id": 88,
+        "name": "Dressed for Success",
+        "difficulty": 2,
+        "description": "Keep the Reflective Vest on for 3 rounds while engaged to an entity.",
+        "creator": "NowayArtemus",
+        "type": "CAR_PARK"
+    },
+    {
+        "id": 89,
+        "name": "Save Yourself!",
+        "difficulty": 2,
+        "description": "Shuffle 2 Friendly Entities into your DiH using the Echoing Intercom.",
+        "creator": "NowayArtemus",
+        "type": "CAR_PARK"
+    },
+    {
+        "id": 90,
+        "name": "Mental Burdens",
+        "difficulty": 2,
+        "description": "Lose at least 5 Sanity using Oliver's ability while he is your companion.",
+        "creator": "NowayArtemus",
+        "type": "CAR_PARK"
+    },
+    {
+        "id": 91,
+        "name": "Heed the Call!",
+        "difficulty": 2,
+        "description": "Shuffle 4 Unfriendly Entities into your DiH using the Echoing Intercom.",
+        "creator": "NowayArtemus",
+        "type": "CAR_PARK"
+    },
+    {
+        "id": 92,
+        "name": "Spin and Crash!",
+        "difficulty": 2,
+        "description": "Defeat an enemy in the Cursed Toy Car using only Oil Slick Shrooms.",
+        "creator": "Groyer",
+        "type": "CAR_PARK"
+    },
+    {
+        "id": 93,
+        "name": "Need Some Gas?",
+        "difficulty": 2,
+        "description": "Defeat an enemy in the Cursed Toy Car using only Petrol Shrooms.",
+        "creator": "Groyer",
+        "type": "CAR_PARK"
+    },
+    {
+        "id": 94,
+        "name": "Wyrmymon Battler",
+        "difficulty": 2,
+        "description": "Tame a Wyrm and defeat another Wyrm with it using no other attack items.",
+        "creator": "Groyer",
+        "type": "CAR_PARK"
+    },
+    {
+        "id": 95,
+        "name": "Can I Keep It?",
+        "difficulty": 2,
+        "description": "Tame a Wyrm and have it in your Inventory when you enter the Golden Exit.",
+        "creator": "Groyer",
+        "type": "CAR_PARK"
+    },
+    {
+        "id": 96,
+        "name": "Back-To-Back",
+        "difficulty": 2,
+        "description": "Defeat an Enforcer, then engage and defeat the entity it summoned by the end of the next Action Round.",
+        "creator": "BiggestSmilerFan",
+        "type": "CAR_PARK"
+    },
+    {
+        "id": 97,
+        "name": "Blurred Mind",
+        "difficulty": 3,
+        "description": "Use the Memory Fluid 3 times before exiting.",
+        "creator": "NowayArtemus",
+        "type": "CAR_PARK"
+    },
+    {
+        "id": 98,
+        "name": "Smudged Vision",
+        "difficulty": 3,
+        "description": "Use the Smudge Pot on 3 unique entities.",
+        "creator": "NowayArtemus",
+        "type": "CAR_PARK"
+    },
+    {
+        "id": 99,
+        "name": "Toxic Relationship",
+        "difficulty": 3,
+        "description": "Lose 5 extra Sanity using the Petrol Shrooms from using them over 5 turns,",
+        "creator": "NowayArtemus",
+        "type": "CAR_PARK"
+    },
+    {
+        "id": 100,
+        "name": "One Begets the Other",
+        "difficulty": 3,
+        "description": "Use a tamed Wyrm as a weapon against an Ancient Wyrm. Gain 1 extra point if it's the final blow to defeat the Ancient Wyrm.",
+        "creator": "NowayArtemus",
+        "type": "CAR_PARK"
+    },
+    {
+        "id": 101,
+        "name": "Sight Seeing",
+        "difficulty": 3,
+        "description": "Engage and defeat an entity in every Lot type (Abandoned, Desolate, Destroyed)",
+        "creator": "NowayArtemus",
+        "type": "CAR_PARK"
+    },
+    {
+        "id": 102,
+        "name": "Tamer of the Ancients",
+        "difficulty": 3,
+        "description": "Tame an Ancient Wyrm",
+        "creator": "NowayArtemus",
+        "type": "CAR_PARK"
+    },
+    {
+        "id": 103,
+        "name": "Photo Finish",
+        "difficulty": 3,
+        "description": "Defeat the Security Kiosk 3 times, once with the Key Card, once paying a Painite Gem, and once by engaging it.",
+        "creator": "NowayArtemus",
+        "type": "CAR_PARK"
+    },
+    {
+        "id": 104,
+        "name": "Ancient Eyes Upon You",
+        "difficulty": 3,
+        "description": "Enter at least 3 rooms while engaged with the Ancient Tollkeeper",
+        "creator": "NowayArtemus",
+        "type": "CAR_PARK"
+    },
+    {
+        "id": 105,
+        "name": "Shop Til They Drop",
+        "difficulty": 3,
+        "description": "Deal at least 8 damage in a single attack using the Shopping Cart",
+        "creator": "NowayArtemus",
+        "type": "CAR_PARK"
+    },
+    {
+        "id": 106,
+        "name": "Ticket Fiasco",
+        "difficulty": 3,
+        "description": "Have 2 Cursed Parking Tickets in your Inventory at the same time.",
+        "creator": "NowayArtemus",
+        "type": "CAR_PARK"
+    },
+    {
+        "id": 107,
+        "name": "Nerfed!",
+        "difficulty": 3,
+        "description": "Use the Oil Slick Shrooms on 3 entities with at least 3 Attack/DiH Damage",
+        "creator": "NowayArtemus",
+        "type": "CAR_PARK"
+    },
+    {
+        "id": 108,
+        "name": "Sour Luck",
+        "difficulty": 3,
+        "description": "Find no items when using the Abandoned Backpack.",
+        "creator": "NowayArtemus",
+        "type": "CAR_PARK"
+    },
+    {
+        "id": 109,
+        "name": "Abundance",
+        "difficulty": 3,
+        "description": "Find 2 items using the Abandoned Backpack before you escape.",
+        "creator": "NowayArtemus",
+        "type": "CAR_PARK"
+    },
+    {
+        "id": 110,
+        "name": "Outta the Way!",
+        "difficulty": 3,
+        "description": "Be engaged with a red light or higher entity when the Shadow Lurker is revealed and engages you on the Field of Play.",
+        "creator": "NowayArtemus",
+        "type": "CAR_PARK"
+    },
+    {
+        "id": 111,
+        "name": "Master of Monsters",
+        "difficulty": 4,
+        "description": "Tame 2 unique Wyrms.",
+        "creator": "NowayArtemus",
+        "type": "CAR_PARK"
+    },
+    {
+        "id": 112,
+        "name": "Shop Till You Drop!",
+        "difficulty": 4,
+        "description": "(LV 1-4): Exit with at least 1 item in your Shopping Cart (min. 1). Gain up to 4 points, 1 point per item when you leave to a Max of 4.",
+        "creator": "Groyer",
+        "type": "CAR_PARK"
+    },
+    {
+        "id": 113,
+        "name": "A Knife in the Dark",
+        "difficulty": 4,
+        "description": "Engage & defeat a Turncoat when at least 6 of the cards on the FoP are Rooms for at least one turn.",
+        "creator": "Groyer",
+        "type": "CAR_PARK"
+    },
+    {
+        "id": 114,
+        "name": "Something Truly Evil",
+        "difficulty": 4,
+        "description": "Engage & defeat a Hex Doll when your DiH is at least 19.",
+        "creator": "Groyer",
+        "type": "CAR_PARK"
+    },
+    {
+        "id": 115,
+        "name": "Back to the Lobby",
+        "difficulty": 2,
+        "description": "Use the Lift to exit the Car Park and enter the Lobby Levels.",
+        "creator": "NowayArtemus",
+        "type": "CAR_PARK"
+    },
+    {
+        "id": 116,
+        "name": "Search for the Cube",
+        "difficulty": 1,
+        "description": "Find and use the B.S.C.O.S. Device",
+        "creator": "The Red Tide",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 117,
+        "name": "Clocksmith's Revenge",
+        "difficulty": 1,
+        "description": "Defeat Clocksmith for his Painite Gem",
+        "creator": "The Red Tide",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 118,
+        "name": "Grawlix's Revenge",
+        "difficulty": 1,
+        "description": "Defeat Grawlix for his Painite Gem",
+        "creator": "The Red Tide",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 119,
+        "name": "Gift for Aiden",
+        "difficulty": 1,
+        "description": "Gift Aiden a Painite Gem",
+        "creator": "The Red Tide",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 120,
+        "name": "False Hope",
+        "difficulty": 1,
+        "description": "Use a False Wall to escape an engagement",
+        "creator": "The Red Tide",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 121,
+        "name": "Gift for Doll Face",
+        "difficulty": 1,
+        "description": "Conceal Doll Face with an Almond Water",
+        "creator": "The Red Tide",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 122,
+        "name": "Hypnotized Mind",
+        "difficulty": 1,
+        "description": "Engage a Monitor",
+        "creator": "The Red Tide",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 123,
+        "name": "Gift for Arch Raven",
+        "difficulty": 1,
+        "description": "Give Arch Raven a Death Moth Jelly during an engagement.",
+        "creator": "The Red Tide",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 124,
+        "name": "Hole in the Wall",
+        "difficulty": 1,
+        "description": "Use Shrink Drink to go through a Punctured Wall",
+        "creator": "The Red Tide",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 125,
+        "name": "Freeing the Frowner",
+        "difficulty": 1,
+        "description": "Use Memory Fluid on Frowner on the Field of Play.",
+        "creator": "The Red Tide",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 126,
+        "name": "Forgetting to Remember",
+        "difficulty": 1,
+        "description": "Use Memory Fluid on yourself",
+        "creator": "The Red Tide",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 127,
+        "name": "Faceling Hunt",
+        "difficulty": 1,
+        "description": "You must defeat 2 Facelings before you escape the Backrooms",
+        "creator": "NowayArtemus",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 128,
+        "name": "Ball Chase",
+        "difficulty": 1,
+        "description": "You must have at least 2 Electric Tennis Balls in your Inventory before you can escape the Backrooms",
+        "creator": "NowayArtemus",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 129,
+        "name": "Dead End Pro",
+        "difficulty": 1,
+        "description": "Defeat 3 entities while at a Dead End.",
+        "creator": "NowayArtemus",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 130,
+        "name": "Hoarder Mode",
+        "difficulty": 1,
+        "description": "When using an item, lose 1 Sanity in addition to any normal Sanity effects",
+        "creator": "Halcyon was Here",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 131,
+        "name": "Feeding the Hounds",
+        "difficulty": 1,
+        "description": "Conceal 2 Hounds using Death Moth Jelly before exiting.",
+        "creator": "NowayArtemus",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 132,
+        "name": "Choke Out",
+        "difficulty": 1,
+        "description": "Defeat an Entity using Poison Hall as the final blow.",
+        "creator": "The Red Tide",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 133,
+        "name": "Death Moth Delivery",
+        "difficulty": 1,
+        "description": "Receive 2 items from Death Moth encounters.",
+        "creator": "NowayArtemus",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 134,
+        "name": "Death's Door",
+        "difficulty": 1,
+        "description": "Use 2 Death Shrooms before exiting.",
+        "creator": "NowayArtemus",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 135,
+        "name": "Prism Pain",
+        "difficulty": 1,
+        "description": "For each level, the Golden Stairs must be moved once before an escape can be made. Each time the stairs are moved, you must pay a Painite gem gathered from a unique source (each entity is unique, as is each room). At the max level, 5 gems have to be brought back to the stairs before exiting.",
+        "creator": "Dacsinu",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 136,
+        "name": "Hopper Hunter",
+        "difficulty": 2,
+        "description": "Send an Entity to the Discard Pile using Hopper Device",
+        "creator": "The Red Tide",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 137,
+        "name": "Greener on the Other Side",
+        "difficulty": 2,
+        "description": "Exit through Greener Pastures",
+        "creator": "The Red Tide",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 138,
+        "name": "Tilted Run",
+        "difficulty": 2,
+        "description": "You must have 2 Liquid Pain cards in your Inventory and 10 or less Sanity to escape the Backrooms",
+        "creator": "NowayArtemus",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 139,
+        "name": "Sweet Revenge",
+        "difficulty": 2,
+        "description": "Defeat the Conductor with Crimson Knight as your companion",
+        "creator": "The Red Tide",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 140,
+        "name": "Faceling Hunt: Glutton",
+        "difficulty": 2,
+        "description": "You must defeat 2 Facelings before you escape the Backrooms, but with only 1 in your deck",
+        "creator": "NowayArtemus",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 141,
+        "name": "Jar O' Bright Pro",
+        "difficulty": 2,
+        "description": "Use Jar 'O Bright twice, once as a concealment item, and once to gain CCS from a Dark Hall.",
+        "creator": "NowayArtemus",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 142,
+        "name": "Hound Tamer",
+        "difficulty": 2,
+        "description": "Defeat both a Hound and an Ancient Hound before escaping.",
+        "creator": "NowayArtemus",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 143,
+        "name": "Faceling Fight",
+        "difficulty": 2,
+        "description": "Defeat both a Faceling and an Ancient Faceling before escaping.",
+        "creator": "NowayArtemus",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 144,
+        "name": "Searching for Stranglers",
+        "difficulty": 2,
+        "description": "Defeat both a Strangler and an Ancient Strangler before escaping.",
+        "creator": "NowayArtemus",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 145,
+        "name": "Friends with Grawlix",
+        "difficulty": 2,
+        "description": "Receive 2 items from Grawlix encounters.",
+        "creator": "NowayArtemus",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 146,
+        "name": "Flash Sphere Pro",
+        "difficulty": 2,
+        "description": "Use Flash Sphere 3 times, once as a concealment item, once as an attack item, and once to gain CCS from the Dark Hall.",
+        "creator": "NowayArtemus",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 147,
+        "name": "Mirror Peace",
+        "difficulty": 2,
+        "description": "Deal at least 8 damage using the Mirror Piece.",
+        "creator": "NowayArtemus",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 148,
+        "name": "Jar O' Dark Pro",
+        "difficulty": 2,
+        "description": "Use Jar O' Dark twice, once as a concealment item and once to gain CCS from a Bright Hall.",
+        "creator": "NowayArtemus",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 149,
+        "name": "All outta gum",
+        "difficulty": 2,
+        "description": "Use Dumb Gum on two different Entities before exiting.",
+        "creator": "NowayArtemus",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 150,
+        "name": "Poison Pro",
+        "difficulty": 2,
+        "description": "Defeat an Entity using Poison Hall as the only form of damage.",
+        "creator": "The Red Tide",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 151,
+        "name": "Mario Run",
+        "difficulty": 2,
+        "description": "You must have 3 different types of Shrooms in your Inventory before escaping the Backrooms",
+        "creator": "NowayArtemus",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 152,
+        "name": "Shrink Pro",
+        "difficulty": 2,
+        "description": "Use Shrink Drink twice, once as a concealment item and once to enter a Punctured Wall.",
+        "creator": "NowayArtemus",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 153,
+        "name": "Poisoned Hall Pro",
+        "difficulty": 2,
+        "description": "Defeat 2 Entities while in a Poisoned Hall.",
+        "creator": "NowayArtemus",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 154,
+        "name": "Dark Hall Pro",
+        "difficulty": 2,
+        "description": "Defeat 2 entities while in a Dark Hall.",
+        "creator": "NowayArtemus",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 155,
+        "name": "Bright Hal Pro",
+        "difficulty": 2,
+        "description": "Defeat 2 entities while in a Bright Hall.",
+        "creator": "NowayArtemus",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 156,
+        "name": "Destroyed Hall Pro",
+        "difficulty": 2,
+        "description": "Defeat 2 entities while in a Destroyed Hall.",
+        "creator": "NowayArtemus",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 157,
+        "name": "Escape Pro",
+        "difficulty": 2,
+        "description": "Defeat a red light or higher entity before entering a False Wall.",
+        "creator": "NowayArtemus",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 158,
+        "name": "Purity of the Gem",
+        "difficulty": 2,
+        "description": "When exiting the Golden Stairs (of the Lobby Levels) flip the painite gem. If it lands gem up, you escaped. If it doesnt, you lose the gem and you can not pass. The gems purity was not good enough to break the barrier.",
+        "creator": "Passing Wanderer",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 159,
+        "name": "Double Trouble",
+        "difficulty": 2,
+        "description": "Use Scarabacks to collect a 2nd item on the FOP.",
+        "creator": "LogantheBackroomsNerd",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 160,
+        "name": "Ancient One",
+        "difficulty": 3,
+        "description": "Defeat the Ancient Conductor",
+        "creator": "The Red Tide",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 161,
+        "name": "Skip into Reality",
+        "difficulty": 3,
+        "description": "Acquire and use Skip Rock to enter the Golden Stairs",
+        "creator": "The Red Tide",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 162,
+        "name": "Poison Expert",
+        "difficulty": 3,
+        "description": "Defeat 2 Entities using Poison Hall as the only form of damage",
+        "creator": "The Red Tide",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 163,
+        "name": "Fearless Fighter",
+        "difficulty": 3,
+        "description": "Engage and defeat an entity in every hallway type (Poisoned, Dark, Bright, Destroyed) during a single game.",
+        "creator": "The Red Tide",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 164,
+        "name": "Tilted Run On HARD",
+        "difficulty": 3,
+        "description": "You must have 2 Liquid Pain cards in your Inventory and 5 or less Sanity to escape the Backrooms",
+        "creator": "NowayArtemus",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 165,
+        "name": "Super Mario Run",
+        "difficulty": 3,
+        "description": "You must have 4 different types of Shrooms in your Inventory before escaping the Backrooms",
+        "creator": "NowayArtemus",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 166,
+        "name": "Madness Combat",
+        "difficulty": 4,
+        "description": "Defeat 7 entities all using all 7 different attack items (Boom Shrooms, Shock Shrooms, Death Shrooms, Liquid Pain, Electric Tennis Ball, Mirror Piece, and Flash Sphere)",
+        "creator": "Logan the Backrooms Nerd",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 167,
+        "name": "The Entity Next Door",
+        "difficulty": 1,
+        "description": "Anytime you lose DIH to an entity you also lose the same amount of sanity.",
+        "creator": "BigTasty",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 168,
+        "name": "Here Comes the Sun",
+        "difficulty": 1,
+        "description": "Go into 4 Bright Halls without any protection (Master Goggles/Jar O'Dark) before escaping.",
+        "creator": "LuckyLogan",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 169,
+        "name": "You Monster! 1",
+        "difficulty": 1,
+        "description": "Defeat Doll Face with Almond Water in your inventory.",
+        "creator": "LuckyLogan",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 170,
+        "name": "You Monster! 2",
+        "difficulty": 1,
+        "description": "Drink Almond Water while in an encounter with Doll Face, then proceed to defeat her.",
+        "creator": "RestedKnight42",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 171,
+        "name": "You Monster! 3",
+        "difficulty": 1,
+        "description": "Use Almond Water on the FOP as the sacrificial item when the Void is revealed. Proceed to use Hopper to send Doll Face home.",
+        "creator": "RestedKnight42",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 172,
+        "name": "You Monster! 4",
+        "difficulty": 1,
+        "description": "Use 2 Almond Water on the FOP as the sacrificial items when the Space Portal is revealed. Then proceed to use Hopper to send Doll Face home.",
+        "creator": "RestedKnight42",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 173,
+        "name": "You Monster! 5",
+        "difficulty": 1,
+        "description": "Have a Painite Gem and Golden Stairs on the FOP. Use Lindy's Momento to conjure the Space Portal. Sacrifice 2 Almond Water on the FOP. Laugh. Then proceed to use Hopper to send Doll Face home. Leave a wake in your path, Wanderer.",
+        "creator": "RestedKnight42",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 174,
+        "name": "Spider Slaughter",
+        "difficulty": 1,
+        "description": "Defeat 2 Tsuchigumos before escaping.",
+        "creator": "LuckyLogan",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 175,
+        "name": "Items of Time",
+        "difficulty": 1,
+        "description": "Receive 4 items from the Clocksmith.",
+        "creator": "LuckyLogan",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 176,
+        "name": "Big and Bulky",
+        "difficulty": 1,
+        "description": "Defeat 4 entities with at least 3 HP.",
+        "creator": "LuckyLogan",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 177,
+        "name": "Long Start",
+        "difficulty": 1,
+        "description": "Start a noclip round with 10 sanity.",
+        "creator": "LuckyLogan",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 178,
+        "name": "Helping Too Much",
+        "difficulty": 1,
+        "description": "Deck Out twice while Freeman is your companion.",
+        "creator": "LuckyLogan",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 179,
+        "name": "Sticky Situation",
+        "difficulty": 1,
+        "description": "Send 2 entities to the DP by using Gold Tape.",
+        "creator": "LuckyLogan",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 180,
+        "name": "Hide and Seek",
+        "difficulty": 1,
+        "description": "Enter a false wall while you're engaged and with at least 2 Entities on the field of play.",
+        "creator": "LuckyLogan",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 181,
+        "name": "Weakened by the Abyss",
+        "difficulty": 1,
+        "description": "While the void is on the FOP, all attack items do half Damage rounded up.",
+        "creator": "LuckyLogan",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 182,
+        "name": "The Quiet Game",
+        "difficulty": 1,
+        "description": "Conceal 2 unfriendly entities using liquid silence.",
+        "creator": "LuckyLogan",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 183,
+        "name": "Trapped",
+        "difficulty": 1,
+        "description": "Have at least 3 Dead Ends on the Field of Play.",
+        "creator": "LuckyLogan",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 184,
+        "name": "Ambush!",
+        "difficulty": 1,
+        "description": "When you defeat a Gem-eligible entity, after flipping to get the Painite, if you received a Gem, immediately engage another Unfriendly Entity. If none are on the FOP, summon one from the top of the Pull Pile.",
+        "creator": "LuckyLogan",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 185,
+        "name": "The Invisible Man",
+        "difficulty": 1,
+        "description": "Cover 2 entities with room cards while Cloak Coat is active.",
+        "creator": "LuckyLogan",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 186,
+        "name": "Who's Laughing Now?",
+        "difficulty": 1,
+        "description": "Defeat 2 Laughters before escaping.",
+        "creator": "LuckyLogan",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 187,
+        "name": "The Returner",
+        "difficulty": 1,
+        "description": "Defeat Bakteria Twice with only 1 Bakteria in your deck.",
+        "creator": "LuckyLogan",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 188,
+        "name": "Nap Time",
+        "difficulty": 1,
+        "description": "Conceal 2 entities using Snooze Shrooms",
+        "creator": "LuckyLogan",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 189,
+        "name": "Shocking",
+        "difficulty": 1,
+        "description": "Defeat an entity with at least 4 HP using only Shock Shrooms.",
+        "creator": "LuckyLogan",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 190,
+        "name": "Pinged to Death",
+        "difficulty": 1,
+        "description": "Defeat an entity with at least 3 HP with only Electric Tennis Balls",
+        "creator": "LuckyLogan",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 191,
+        "name": "Party in the Backrooms",
+        "difficulty": 1,
+        "description": "Have companions join your party at least 4 times before you escape.",
+        "creator": "Passing Wanderer",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 192,
+        "name": "Everything we can Carry",
+        "difficulty": 1,
+        "description": "Escape the Backrooms with 1 companion and 3 items",
+        "creator": "NowayArtemus",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 193,
+        "name": "Cutting Corners",
+        "difficulty": 1,
+        "description": "Have at least 4 Dead Ends on the Field of Play.",
+        "creator": "LuckyLogan",
+        "type": "LOBBY_LEVEL"
+    }
+]

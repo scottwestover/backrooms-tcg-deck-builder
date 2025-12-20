@@ -97,4 +97,41 @@ describe('NavLinksComponent', () => {
       expect(result['text-[#e2e4e6]']).toBe(true);
     });
   });
+
+  describe('getNavigationBorder for /challenges', () => {
+    it('should return active styles when route is exactly "/challenges"', () => {
+      routerStub.url = '/challenges';
+      routerEventsSubject.next(
+        new NavigationEnd(1, '/challenges', '/challenges'),
+      );
+      fixture.detectChanges();
+      const result = component.getNavigationBorder('/challenges');
+      expect(result['text-[#ffd54f]']).toBe(true);
+      expect(result['text-[#e2e4e6]']).toBe(false);
+    });
+
+    it('should return active styles when route is "/challenges" with query params', () => {
+      routerStub.url = '/challenges?mode=manual';
+      routerEventsSubject.next(
+        new NavigationEnd(
+          1,
+          '/challenges?mode=manual',
+          '/challenges?mode=manual',
+        ),
+      );
+      fixture.detectChanges();
+      const result = component.getNavigationBorder('/challenges');
+      expect(result['text-[#ffd54f]']).toBe(true);
+      expect(result['text-[#e2e4e6]']).toBe(false);
+    });
+
+    it('should return inactive styles when route is different', () => {
+      routerStub.url = '/home';
+      routerEventsSubject.next(new NavigationEnd(1, '/home', '/home'));
+      fixture.detectChanges();
+      const result = component.getNavigationBorder('/challenges');
+      expect(result['text-[#ffd54f]']).toBe(false);
+      expect(result['text-[#e2e4e6]']).toBe(true);
+    });
+  });
 });
