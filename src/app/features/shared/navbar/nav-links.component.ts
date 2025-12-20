@@ -68,6 +68,20 @@ import { FilterButtonComponent } from '../filter/filter-button.component';
 
       <li
         class="flex flex-col items-center group cursor-pointer"
+        [ngClass]="getNavigationBorder('/challenges')"
+        (click)="router.navigateByUrl('/challenges')">
+        <i
+          class="pi pi-star group-hover:text-[#FFD54F]"
+          style="font-size: 1.5rem"></i>
+        <button
+          style="font-size:smaller"
+          class="p-2 group-hover:text-[#FFD54F]">
+          Challenges
+        </button>
+      </li>
+
+      <li
+        class="flex flex-col items-center group cursor-pointer"
         [ngClass]="getNavigationBorder('/collection')"
         (click)="router.navigateByUrl('/collection')">
         <i
@@ -297,6 +311,15 @@ export class NavLinksComponent implements OnInit, OnDestroy {
         'text-[#e2e4e6]': !this.route.includes(route),
       };
     } else if (route === '/randomizer') {
+      return {
+        'border-l-[3px] border-white':
+          this.route.includes(route) && this.sidebar,
+        'border-b-[3px] lg:border-b-0 lg:border-l-[3px] border-white':
+          this.route.includes(route) && !this.sidebar,
+        'text-[#ffd54f]': this.route.includes(route),
+        'text-[#e2e4e6]': !this.route.includes(route),
+      };
+    } else if (route === '/challenges') {
       return {
         'border-l-[3px] border-white':
           this.route.includes(route) && this.sidebar,
