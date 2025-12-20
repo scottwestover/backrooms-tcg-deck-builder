@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     - Individual re-roll buttons for generated challenges (in "All Levels" and "Random" modes) to replace a single challenge with a new one.
     - Responsive layout for manual mode dropdowns and improved styling for challenge details.
     - A Python script to parse CSV challenge data into the required JSON format.
+- All of the changes were included as part of [431ff56](https://github.com/scottwestover/backrooms-tcg-deck-builder/commit/431ff56bf4f4488cd8735032c598b17039a948fa).
 
 ## [0.0.10] - 2025-11-28
 
