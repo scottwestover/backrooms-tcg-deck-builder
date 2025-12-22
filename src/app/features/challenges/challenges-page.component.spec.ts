@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Meta, Title } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { of } from 'rxjs';
+import { of, Subject } from 'rxjs';
 import { IChallenge } from '../../../models';
 import { AuthService } from '../../services/auth.service';
 import { ChallengeService } from '../../services/challenge.service';
@@ -62,16 +62,20 @@ describe('ChallengesPageComponent', () => {
   ];
 
   beforeEach(async () => {
-    const challengeServiceSpy = jasmine.createSpyObj('ChallengeService', [
-      'getChallenges',
-      'generateChallenges',
-    ]);
+    challengeService = jasmine.createSpyObj(
+      'ChallengeService',
+      ['getChallenges', 'generateChallenges'],
+      {
+        refreshChallenges$: new Subject<IChallenge>(), // Mock refreshChallenges$ Subject
+      },
+    );
     const urlSyncServiceSpy = jasmine.createSpyObj('UrlSyncService', [
       'getQueryParams',
       'updateUrl',
     ]);
     const authServiceSpy = jasmine.createSpyObj('AuthService', [], {
-      isLoggedIn: false, // Default to not logged in
+      isLoggedIn: false,
+      authChange: new Subject<boolean>(),
     });
     const dialogStoreSpy = jasmine.createSpyObj('DialogStore', [
       'updateCreateChallengeDialog',
@@ -80,7 +84,7 @@ describe('ChallengesPageComponent', () => {
     await TestBed.configureTestingModule({
       imports: [ChallengesPageComponent, NoopAnimationsModule],
       providers: [
-        { provide: ChallengeService, useValue: challengeServiceSpy },
+        { provide: ChallengeService, useValue: challengeService },
         { provide: UrlSyncService, useValue: urlSyncServiceSpy },
         { provide: AuthService, useValue: authServiceSpy },
         { provide: DialogStore, useValue: dialogStoreSpy },
@@ -240,7 +244,6 @@ describe('ChallengesPageComponent', () => {
     component.setGenerationMode('random');
     expect(component.generatedChallenges[0]?.id).toBe(mockChallenges[0].id);
     expect(component.generatedChallenges[3]?.id).toBe(mockChallenges[3].id);
-    // generate() is called, which also calls updateUrl()
     expect(challengeService.generateChallenges).toHaveBeenCalled();
     expect(urlSyncService.updateUrl).toHaveBeenCalled();
   });

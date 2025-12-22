@@ -179,6 +179,22 @@ export class ChallengesPageComponent implements OnInit {
 
   public ngOnInit(): void {
     this.makeGoogleFriendly();
+    this.fetchChallengesAndSetData();
+
+    // Subscribe to auth changes to update button visibility for OnPush strategy
+    this.authService.authChange.subscribe(() => {
+      this.cdr.markForCheck();
+    });
+
+    // Subscribe to challenge refresh events
+    this.challengeService.refreshChallenges$.subscribe((newChallenge) => {
+      this.allChallenges = [...this.allChallenges, newChallenge];
+      this.updateAvailableTypes(newChallenge.type);
+      this.cdr.markForCheck();
+    });
+  }
+
+  private fetchChallengesAndSetData(): void {
     this.challengeService
       .getChallenges()
       .pipe(
@@ -207,7 +223,9 @@ export class ChallengesPageComponent implements OnInit {
           params['c2'],
           params['c3'],
           params['c4'],
-        ].filter((id) => !!id);
+        ]
+          .filter((id) => !!id)
+          .map((id) => id);
 
         if (challengeIds.length > 0) {
           const challengesFromUrl = challengeIds.map(
@@ -217,13 +235,21 @@ export class ChallengesPageComponent implements OnInit {
           this.generatedChallenges = challengesFromUrl.filter(
             (c) => c !== null,
           ) as IChallenge[];
-          // this.manualChallengeSlots = challengesFromUrl; // Removed this line
 
-          // If we load from a URL, default to showing the generated challenges in random mode
           this.generationMode = 'random';
           this.cdr.markForCheck();
         }
       });
+  }
+
+  private updateAvailableTypes(newType: string): void {
+    if (!this.availableTypes.some((type) => type.value === newType)) {
+      this.availableTypes = [
+        ...this.availableTypes,
+        { label: newType, value: newType },
+      ];
+      this.selectedTypes = [...this.selectedTypes, newType];
+    }
   }
 
   public onTypeChange(): void {
@@ -287,11 +313,12 @@ export class ChallengesPageComponent implements OnInit {
     if (this.generationMode === 'all-levels') {
       const difficulty = challengeToReplace.difficulty;
       potentialNewChallenges = filteredChallenges.filter(
-        (c) => c.difficulty === difficulty && !currentChallengeIds.has(c.id),
+        (c) =>
+          c.difficulty === difficulty && !currentChallengeIds.has(c.id as any),
       );
     } else if (this.generationMode === 'random') {
       potentialNewChallenges = filteredChallenges.filter(
-        (c) => !currentChallengeIds.has(c.id),
+        (c) => !currentChallengeIds.has(c.id as any),
       );
     }
 

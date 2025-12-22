@@ -3,6 +3,7 @@ import {
   Component,
   inject,
   OnInit,
+  effect,
 } from '@angular/core';
 import {
   FormBuilder,
@@ -44,11 +45,17 @@ import { MessageService } from 'primeng/api';
             id="difficulty"
             formControlName="difficulty"
             [options]="[1, 2, 3, 4]"
-            placeholder="Select a Level"></p-dropdown>
+            placeholder="Select a Level"
+            appendTo="body"></p-dropdown>
         </div>
         <div class="flex flex-col gap-2">
           <label htmlFor="type">Type</label>
-          <input pInputText id="type" formControlName="type" />
+          <p-dropdown
+            id="type"
+            formControlName="type"
+            [options]="['GENERIC', 'CAR_PARK', 'LOBBY_LEVEL']"
+            placeholder="Select a Type"
+            appendTo="body"></p-dropdown>
         </div>
       </div>
 
@@ -60,7 +67,7 @@ import { MessageService } from 'primeng/api';
         <p-button
           type="submit"
           label="Save Challenge"
-          [disabled]="form.invalid"></p-button>
+          [disabled]="form.invalid || loading"></p-button>
       </div>
     </form>
   `,
@@ -82,6 +89,18 @@ export class CreateChallengeDialogComponent implements OnInit {
   private dialogStore = inject(DialogStore);
 
   form!: FormGroup;
+  loading = false;
+
+  constructor() {
+    effect(
+      () => {
+        if (this.dialogStore.createChallenge()) {
+          this.form?.reset(); // Reset form when dialog opens
+        }
+      },
+      { allowSignalWrites: true },
+    );
+  }
 
   public ngOnInit(): void {
     this.form = this.fb.group({
@@ -97,6 +116,8 @@ export class CreateChallengeDialogComponent implements OnInit {
       return;
     }
 
+    this.loading = true; // Set loading to true on submit
+
     this.challengeService.createChallenge(this.form.value).subscribe({
       next: () => {
         this.messageService.add({
@@ -104,6 +125,8 @@ export class CreateChallengeDialogComponent implements OnInit {
           summary: 'Success',
           detail: 'Challenge created successfully!',
         });
+        this.form.reset(); // Reset form on success
+        this.loading = false; // Reset loading
         this.closeDialog();
       },
       error: (err) => {
@@ -113,6 +136,7 @@ export class CreateChallengeDialogComponent implements OnInit {
           detail: 'There was an error creating the challenge.',
         });
         console.error(err);
+        this.loading = false; // Reset loading
       },
     });
   }

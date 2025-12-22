@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { Observable, combineLatest, from, map, of } from 'rxjs';
+import { Observable, combineLatest, from, map, of, Subject } from 'rxjs';
 import { IChallenge } from '../../models';
 import { AuthService } from './auth.service';
 import { FirestoreService } from './firestore.service';
@@ -12,6 +12,8 @@ export class ChallengeService {
   private http = inject(HttpClient);
   private authService = inject(AuthService);
   private firestoreService = inject(FirestoreService);
+
+  public refreshChallenges$: Subject<IChallenge> = new Subject<IChallenge>(); // Emit IChallenge
 
   public getChallenges(): Observable<IChallenge[]> {
     const localChallenges$ = this.http
@@ -47,13 +49,24 @@ export class ChallengeService {
     }
 
     const user = this.authService.userData;
-    const newChallenge = {
+    const newChallengeData = {
       ...data,
       creator: user.displayName,
       userId: user.uid,
     };
 
-    return from(this.firestoreService.addDoc('challenges', newChallenge));
+    return from(
+      this.firestoreService.addDoc('challenges', newChallengeData),
+    ).pipe(
+      map((docRef) => {
+        const createdChallenge: IChallenge = {
+          id: docRef.id,
+          ...newChallengeData,
+        };
+        this.refreshChallenges$.next(createdChallenge);
+        return createdChallenge;
+      }),
+    );
   }
 
   public generateChallenges(

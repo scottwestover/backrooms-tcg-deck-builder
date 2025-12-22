@@ -27,11 +27,7 @@ service cloud.firestore {
     // Rules for the challenges collection
     match /challenges/{challengeId} {
       allow read: if true;
-      // TODO: clean these up if changes work as expected
-      // Allow authenticated users to create challenges
-      // allow create: if request.auth != null && request.resource.data.userId == request.auth.uid;
-      // Allow only the creator to update or delete their challenge
-      // allow update, delete: if request.auth != null && resource.data.userId == request.auth.uid;
+      allow create: if request.auth != null && request.resource.data.userId == request.auth.uid;
       allow update: if request.auth != null && request.auth.uid == resource.data.userId && request.resource.id.matches(".*::"+request.auth.uid) == true;
       allow delete: if request.auth != null && request.auth.uid == resource.data.userId && resource.id.matches(".*::"+request.auth.uid) == true;
     }

@@ -85,9 +85,12 @@ describe('CreateChallengeDialogComponent', () => {
       challengeServiceSpy.createChallenge.and.returnValue(of({}));
       component.submit();
       tick();
-      expect(challengeServiceSpy.createChallenge).toHaveBeenCalledWith(
-        component.form.value,
-      );
+      expect(challengeServiceSpy.createChallenge).toHaveBeenCalledWith({
+        name: 'Test',
+        description: 'Test Desc',
+        difficulty: 1,
+        type: 'Test Type',
+      });
       expect(dialogStoreSpy.updateCreateChallengeDialog).toHaveBeenCalledWith(
         false,
       );
