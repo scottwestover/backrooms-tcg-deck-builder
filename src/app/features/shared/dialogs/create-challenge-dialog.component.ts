@@ -83,7 +83,7 @@ export class CreateChallengeDialogComponent implements OnInit {
 
   form!: FormGroup;
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.form = this.fb.group({
       name: ['', Validators.required],
       description: ['', Validators.required],
@@ -92,7 +92,7 @@ export class CreateChallengeDialogComponent implements OnInit {
     });
   }
 
-  submit(): void {
+  public submit(): void {
     if (this.form.invalid) {
       return;
     }
@@ -117,7 +117,7 @@ export class CreateChallengeDialogComponent implements OnInit {
     });
   }
 
-  closeDialog(): void {
+  public closeDialog(): void {
     this.dialogStore.updateCreateChallengeDialog(false);
   }
 }
