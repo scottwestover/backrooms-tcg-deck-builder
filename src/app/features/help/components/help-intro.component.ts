@@ -11,6 +11,7 @@ import { AccordionModule } from 'primeng/accordion';
 import { HelpCreateDeckComponent } from './help-create-deck.component';
 import { HelpShareDeckComponent } from './help-share-deck.component';
 import { HelpDeckRandomizerComponent } from './help-deck-randomizer.component';
+import { HelpChallengeRandomizerComponent } from './help-challenge-randomizer.component';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { map } from 'rxjs/operators';
 
@@ -37,6 +38,9 @@ import { map } from 'rxjs/operators';
             <backrooms-help-deck-randomizer
               *ngSwitchCase="'deck-randomizer'"
               [isMobile]="data.isMobile"></backrooms-help-deck-randomizer>
+            <backrooms-help-challenge-randomizer
+              *ngSwitchCase="'challenge-randomizer'"
+              [isMobile]="data.isMobile"></backrooms-help-challenge-randomizer>
           </ng-container>
         </p-accordionTab>
       </p-accordion>
@@ -54,6 +58,7 @@ import { map } from 'rxjs/operators';
     HelpCreateDeckComponent,
     HelpShareDeckComponent,
     HelpDeckRandomizerComponent,
+    HelpChallengeRandomizerComponent,
     NgIf,
   ],
   styleUrls: ['./help-intro.component.scss'],
@@ -77,6 +82,10 @@ export class HelpIntroComponent {
     {
       id: 'deck-randomizer',
       question: 'How do I use the deck randomizer?',
+    },
+    {
+      id: 'challenge-randomizer',
+      question: 'How do I use the challenge randomizer?',
     },
   ];
 }
