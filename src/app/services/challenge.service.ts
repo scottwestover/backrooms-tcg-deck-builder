@@ -1,22 +1,17 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import {
-  Firestore,
-  addDoc,
-  collection,
-  getDocs,
-} from '@angular/fire/firestore';
 import { Observable, combineLatest, from, map, of } from 'rxjs';
 import { IChallenge } from '../../models';
 import { AuthService } from './auth.service';
+import { FirestoreService } from './firestore.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ChallengeService {
   private http = inject(HttpClient);
-  private firestore = inject(Firestore);
   private authService = inject(AuthService);
+  private firestoreService = inject(FirestoreService);
 
   public getChallenges(): Observable<IChallenge[]> {
     const localChallenges$ = this.http
@@ -28,7 +23,7 @@ export class ChallengeService {
       );
 
     const firestoreChallenges$ = from(
-      getDocs(collection(this.firestore, 'challenges')),
+      this.firestoreService.getDocs('challenges'),
     ).pipe(
       map((querySnapshot) => {
         const challenges: IChallenge[] = [];
@@ -58,7 +53,7 @@ export class ChallengeService {
       userId: user.uid,
     };
 
-    return from(addDoc(collection(this.firestore, 'challenges'), newChallenge));
+    return from(this.firestoreService.addDoc('challenges', newChallenge));
   }
 
   public generateChallenges(
