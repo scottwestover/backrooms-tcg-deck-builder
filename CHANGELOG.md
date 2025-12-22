@@ -18,6 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     - Responsive layout for manual mode dropdowns and improved styling for challenge details.
     - A Python script to parse CSV challenge data into the required JSON format.
 - All of the changes were included as part of [431ff56](https://github.com/scottwestover/backrooms-tcg-deck-builder/commit/431ff56bf4f4488cd8735032c598b17039a948fa).
+- Added new section to the help page with content on how to use the challenge randomization feature [7bd6e56](https://github.com/scottwestover/backrooms-tcg-deck-builder/commit/7bd6e56d0411e91c23246c70d6369efc57c59d21).
 
 ## [0.0.10] - 2025-11-28
 
