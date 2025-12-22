@@ -6,6 +6,7 @@ import {
 } from '@angular/core';
 import { DialogModule } from 'primeng/dialog';
 import { ChangelogDialogComponent } from './dialogs/changelog-dialog.component';
+import { CreateChallengeDialogComponent } from './dialogs/create-challenge-dialog.component';
 import { DeckDialogComponent } from './dialogs/deck-dialog.component';
 import { ExportDeckDialogComponent } from './dialogs/export-deck-dialog.component';
 import { ViewCardDialogComponent } from './dialogs/view-card-dialog.component';
@@ -70,6 +71,18 @@ import { DialogStore } from '../../store/dialog.store';
       styleClass="background-darker surface-ground w-full h-full max-w-6xl min-h-[500px]">
       <backrooms-changelog-dialog></backrooms-changelog-dialog>
     </p-dialog>
+
+    <p-dialog
+      header="Create a New Challenge"
+      [(visible)]="createChallengeDialog"
+      (onHide)="closeCreateChallengeDialog()"
+      [modal]="true"
+      [dismissableMask]="true"
+      [resizable]="false"
+      styleClass="w-full max-w-lg"
+      [baseZIndex]="10000">
+      <backrooms-create-challenge-dialog></backrooms-create-challenge-dialog>
+    </p-dialog>
   `,
   standalone: true,
   //changeDetection: ChangeDetectionStrategy.OnPush,
@@ -79,6 +92,7 @@ import { DialogStore } from '../../store/dialog.store';
     ViewCardDialogComponent,
     ExportDeckDialogComponent,
     DeckDialogComponent,
+    CreateChallengeDialogComponent,
   ],
 })
 export class DialogComponent {
@@ -89,6 +103,7 @@ export class DialogComponent {
   exportDeckDialog = false;
   deckDialog = false;
   changelogDialog = false;
+  createChallengeDialog = false;
 
   constructor() {
     effect(() => {
@@ -106,6 +121,9 @@ export class DialogComponent {
     effect(() => {
       this.changelogDialog = this.dialogStore.changelog();
     });
+    effect(() => {
+      this.createChallengeDialog = this.dialogStore.createChallenge();
+    });
   }
 
   closeSettingsDialog() {
@@ -122,5 +140,8 @@ export class DialogComponent {
   }
   closeChangelogDialog() {
     this.dialogStore.updateChangelogDialog(false);
+  }
+  closeCreateChallengeDialog() {
+    this.dialogStore.updateCreateChallengeDialog(false);
   }
 }

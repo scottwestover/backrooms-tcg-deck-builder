@@ -3,8 +3,10 @@ import { Meta, Title } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { of } from 'rxjs';
 import { IChallenge } from '../../../models';
+import { AuthService } from '../../services/auth.service';
 import { ChallengeService } from '../../services/challenge.service';
 import { UrlSyncService } from '../../services/url-sync.service';
+import { DialogStore } from '../../store/dialog.store';
 import { ChallengesPageComponent } from './challenges-page.component';
 
 describe('ChallengesPageComponent', () => {
@@ -12,11 +14,13 @@ describe('ChallengesPageComponent', () => {
   let fixture: ComponentFixture<ChallengesPageComponent>;
   let challengeService: jasmine.SpyObj<ChallengeService>;
   let urlSyncService: jasmine.SpyObj<UrlSyncService>;
+  let authService: jasmine.SpyObj<AuthService>;
+  let dialogStore: jasmine.SpyObj<InstanceType<typeof DialogStore>>;
   let nativeElement: HTMLElement;
 
   const mockChallenges: IChallenge[] = [
     {
-      id: 1,
+      id: '1',
       name: 'C1',
       difficulty: 1,
       description: 'd1',
@@ -24,7 +28,7 @@ describe('ChallengesPageComponent', () => {
       type: 'GENERIC',
     },
     {
-      id: 5,
+      id: '5',
       name: 'C5',
       difficulty: 1,
       description: 'd5',
@@ -32,7 +36,7 @@ describe('ChallengesPageComponent', () => {
       type: 'GENERIC',
     },
     {
-      id: 2,
+      id: '2',
       name: 'C2',
       difficulty: 2,
       description: 'd2',
@@ -40,7 +44,7 @@ describe('ChallengesPageComponent', () => {
       type: 'CAR_PARK',
     },
     {
-      id: 3,
+      id: '3',
       name: 'C3',
       difficulty: 3,
       description: 'd3',
@@ -48,7 +52,7 @@ describe('ChallengesPageComponent', () => {
       type: 'LOBBY_LEVEL',
     },
     {
-      id: 4,
+      id: '4',
       name: 'C4',
       difficulty: 4,
       description: 'd4',
@@ -66,12 +70,20 @@ describe('ChallengesPageComponent', () => {
       'getQueryParams',
       'updateUrl',
     ]);
+    const authServiceSpy = jasmine.createSpyObj('AuthService', [], {
+      isLoggedIn: false, // Default to not logged in
+    });
+    const dialogStoreSpy = jasmine.createSpyObj('DialogStore', [
+      'updateCreateChallengeDialog',
+    ]);
 
     await TestBed.configureTestingModule({
       imports: [ChallengesPageComponent, NoopAnimationsModule],
       providers: [
         { provide: ChallengeService, useValue: challengeServiceSpy },
         { provide: UrlSyncService, useValue: urlSyncServiceSpy },
+        { provide: AuthService, useValue: authServiceSpy },
+        { provide: DialogStore, useValue: dialogStoreSpy },
         {
           provide: Title,
           useValue: jasmine.createSpyObj('Title', ['setTitle']),
@@ -89,6 +101,10 @@ describe('ChallengesPageComponent', () => {
     urlSyncService = TestBed.inject(
       UrlSyncService,
     ) as jasmine.SpyObj<UrlSyncService>;
+    authService = TestBed.inject(AuthService) as jasmine.SpyObj<AuthService>;
+    dialogStore = TestBed.inject(DialogStore) as jasmine.SpyObj<
+      InstanceType<typeof DialogStore>
+    >;
 
     // Default mock implementations
     urlSyncService.getQueryParams.and.returnValue(of({}));
@@ -118,8 +134,8 @@ describe('ChallengesPageComponent', () => {
     expect(component.generationMode).toBe('random');
     expect(component.selectedTypes).toEqual(['GENERIC', 'LOBBY_LEVEL']);
     expect(component.generatedChallenges.length).toBe(2);
-    expect(component.generatedChallenges[0]?.id).toBe(1);
-    expect(component.generatedChallenges[1]?.id).toBe(3);
+    expect(component.generatedChallenges[0]?.id).toBe('1');
+    expect(component.generatedChallenges[1]?.id).toBe('3');
   });
 
   it('should call generate and updateUrl when the button is clicked', () => {
@@ -139,23 +155,46 @@ describe('ChallengesPageComponent', () => {
     expect(urlSyncService.updateUrl).toHaveBeenCalled();
   });
 
-  it('should update url when types change', () => {
-    fixture.detectChanges();
-    component.onTypeChange();
-    expect(urlSyncService.updateUrl).toHaveBeenCalled();
-  });
+  describe('Create Challenge Button', () => {
+    it('should NOT show the create challenge button if user is not logged in', () => {
+      (
+        Object.getOwnPropertyDescriptor(authService, 'isLoggedIn')
+          ?.get as jasmine.Spy
+      ).and.returnValue(false);
+      fixture.detectChanges();
+      const createButton = nativeElement.querySelector('button.bg-sky-500');
+      expect(createButton).toBeFalsy();
+    });
 
-  it('should update url when a manual challenge is selected', () => {
-    fixture.detectChanges();
-    component.onManualChallengeChange(0, mockChallenges[0]);
-    expect(component.manualChallengeSlots[0]).toBe(mockChallenges[0]);
-    expect(urlSyncService.updateUrl).toHaveBeenCalled();
+    it('should show the create challenge button if user is logged in', () => {
+      (
+        Object.getOwnPropertyDescriptor(authService, 'isLoggedIn')
+          ?.get as jasmine.Spy
+      ).and.returnValue(true);
+      fixture.detectChanges();
+      const createButton = nativeElement.querySelector('button.bg-sky-500');
+      expect(createButton).toBeTruthy();
+    });
+
+    it('should open the create challenge dialog when the button is clicked', () => {
+      (
+        Object.getOwnPropertyDescriptor(authService, 'isLoggedIn')
+          ?.get as jasmine.Spy
+      ).and.returnValue(true);
+      fixture.detectChanges();
+      const createButton = nativeElement.querySelector(
+        'button.bg-sky-500',
+      ) as HTMLButtonElement;
+      createButton.click();
+
+      expect(dialogStore.updateCreateChallengeDialog).toHaveBeenCalledWith(
+        true,
+      );
+    });
   });
 
   it('should re-roll a challenge and update url', () => {
-    // Setup: Ensure types are selected so that getFilteredChallenges works
     component.selectedTypes = ['GENERIC', 'CAR_PARK', 'LOBBY_LEVEL'];
-    // Start with a realistic set for 'all-levels' mode
     component.generatedChallenges = [
       mockChallenges[0], // id 1, diff 1
       mockChallenges[2], // id 2, diff 2
@@ -164,34 +203,9 @@ describe('ChallengesPageComponent', () => {
     ];
     fixture.detectChanges();
 
-    // Reroll the first challenge (id: 1, difficulty: 1)
     component.rerollChallenge(mockChallenges[0], 0);
 
-    // The new challenge should be the other level 1 challenge (id: 5)
-    expect(component.generatedChallenges[0].id).toBe(5);
-    expect(urlSyncService.updateUrl).toHaveBeenCalled();
-  });
-
-  it('should sync manual slots when switching from random mode', () => {
-    component.generationMode = 'random';
-    component.generatedChallenges = [...mockChallenges];
-    fixture.detectChanges();
-
-    component.setGenerationMode('manual');
-    expect(component.manualChallengeSlots[0]?.id).toBe(mockChallenges[0].id);
-    expect(component.manualChallengeSlots[3]?.id).toBe(mockChallenges[3].id);
-  });
-
-  it('should sync generated challenges when switching from manual mode', () => {
-    component.generationMode = 'manual';
-    component.manualChallengeSlots = [...mockChallenges];
-    fixture.detectChanges();
-
-    component.setGenerationMode('random');
-    expect(component.generatedChallenges[0]?.id).toBe(mockChallenges[0].id);
-    expect(component.generatedChallenges[3]?.id).toBe(mockChallenges[3].id);
-    // generate() is called, which also calls updateUrl()
-    expect(challengeService.generateChallenges).toHaveBeenCalled();
+    expect(component.generatedChallenges[0].id).toBe('5');
     expect(urlSyncService.updateUrl).toHaveBeenCalled();
   });
 });

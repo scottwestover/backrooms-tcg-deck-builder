@@ -1,16 +1,64 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { Observable } from 'rxjs';
+import {
+  Firestore,
+  addDoc,
+  collection,
+  getDocs,
+} from '@angular/fire/firestore';
+import { Observable, combineLatest, from, map, of } from 'rxjs';
 import { IChallenge } from '../../models';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ChallengeService {
   private http = inject(HttpClient);
+  private firestore = inject(Firestore);
+  private authService = inject(AuthService);
 
   public getChallenges(): Observable<IChallenge[]> {
-    return this.http.get<IChallenge[]>('assets/randomizer/challenges.json');
+    const localChallenges$ = this.http
+      .get<IChallenge[]>('assets/randomizer/challenges.json')
+      .pipe(
+        map((challenges) =>
+          challenges.map((c) => ({ ...c, id: c.id.toString() })),
+        ),
+      );
+
+    const firestoreChallenges$ = from(
+      getDocs(collection(this.firestore, 'challenges')),
+    ).pipe(
+      map((querySnapshot) => {
+        const challenges: IChallenge[] = [];
+        querySnapshot.forEach((doc) => {
+          challenges.push({ id: doc.id, ...doc.data() } as IChallenge);
+        });
+        return challenges;
+      }),
+    );
+
+    return combineLatest([localChallenges$, firestoreChallenges$]).pipe(
+      map(([local, firestore]) => [...local, ...firestore]),
+    );
+  }
+
+  public createChallenge(
+    data: Omit<IChallenge, 'id' | 'creator'>,
+  ): Observable<any> {
+    if (!this.authService.isLoggedIn || !this.authService.userData) {
+      return of(null);
+    }
+
+    const user = this.authService.userData;
+    const newChallenge = {
+      ...data,
+      creator: user.displayName,
+      userId: user.uid,
+    };
+
+    return from(addDoc(collection(this.firestore, 'challenges'), newChallenge));
   }
 
   public generateChallenges(

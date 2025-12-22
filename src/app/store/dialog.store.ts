@@ -21,6 +21,7 @@ interface ViewCardDialog {
 type Dialog = {
   changelog: boolean;
   settings: boolean;
+  createChallenge: boolean;
   viewCard: ViewCardDialog;
   exportDeck: ExportDeckDialog;
   deck: DeckDialog;
@@ -29,6 +30,7 @@ type Dialog = {
 const initialState: Dialog = {
   changelog: false,
   settings: false,
+  createChallenge: false,
   viewCard: {
     show: false,
     card: JSON.parse(JSON.stringify(dummyCard)),
@@ -55,6 +57,9 @@ export const DialogStore = signalStore(
     },
     updateSettingsDialog(settings: boolean): void {
       patchState(store, (state) => ({ settings }));
+    },
+    updateCreateChallengeDialog(createChallenge: boolean): void {
+      patchState(store, (state) => ({ createChallenge }));
     },
     updateViewCardDialog(viewCard: ViewCardDialog): void {
       patchState(store, (state) => ({ viewCard }));

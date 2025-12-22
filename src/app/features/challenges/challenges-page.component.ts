@@ -13,8 +13,10 @@ import { MultiSelectModule } from 'primeng/multiselect';
 import { TooltipModule } from 'primeng/tooltip';
 import { switchMap, take } from 'rxjs';
 import { IChallenge } from '../../../models';
+import { AuthService } from '../../services/auth.service';
 import { ChallengeService } from '../../services/challenge.service';
 import { UrlSyncService } from '../../services/url-sync.service';
+import { DialogStore } from '../../store/dialog.store';
 import { PageComponent } from '../shared/page.component';
 import { ChallengeDisplayCardComponent } from './components/challenge-display-card.component';
 import { ChallengeSelectorCardComponent } from './components/challenge-selector-card.component';
@@ -25,13 +27,25 @@ import { AsyncPipe, NgClass, NgForOf, NgIf } from '@angular/common';
   template: `
     <backrooms-page>
       <div class="mx-auto w-full max-w-7xl self-baseline px-5">
-        <h1
-          class="text-shadow mt-6 pb-1 text-2xl font-black text-[#e2e4e6] md:text-4xl">
-          Challenge Randomizer
-        </h1>
-        <p class="text-md mb-1 text-gray-400">
-          Generate a random set of challenges to complete.
-        </p>
+        <div class="flex items-center justify-between">
+          <div>
+            <h1
+              class="text-shadow mt-6 pb-1 text-2xl font-black text-[#e2e4e6] md:text-4xl">
+              Challenge Randomizer
+            </h1>
+            <p class="text-md mb-1 text-gray-400">
+              Generate a random set of challenges to complete.
+            </p>
+          </div>
+
+          @if (authService.isLoggedIn) {
+            <button
+              (click)="openCreateChallengeDialog()"
+              class="mt-4 rounded-lg bg-sky-500 px-4 py-2 font-bold text-white transition-transform hover:scale-105">
+              Create Challenge
+            </button>
+          }
+        </div>
 
         <hr />
 
@@ -151,6 +165,8 @@ export class ChallengesPageComponent implements OnInit {
   private title = inject(Title);
   private challengeService = inject(ChallengeService);
   private urlSyncService = inject(UrlSyncService);
+  public authService = inject(AuthService);
+  public dialogStore = inject(DialogStore);
 
   generationMode: 'all-levels' | 'random' | 'manual' = 'all-levels';
 
@@ -191,9 +207,7 @@ export class ChallengesPageComponent implements OnInit {
           params['c2'],
           params['c3'],
           params['c4'],
-        ]
-          .filter((id) => !!id)
-          .map((id) => parseInt(id, 10));
+        ].filter((id) => !!id);
 
         if (challengeIds.length > 0) {
           const challengesFromUrl = challengeIds.map(
@@ -299,6 +313,10 @@ export class ChallengesPageComponent implements OnInit {
     this.manualChallengeSlots[index] = challenge;
     this.manualChallengeSlots = [...this.manualChallengeSlots];
     this.updateUrl();
+  }
+
+  public openCreateChallengeDialog(): void {
+    this.dialogStore.updateCreateChallengeDialog(true);
   }
 
   private getFilteredChallenges(): IChallenge[] {

@@ -3,16 +3,20 @@ import {
   HttpClientTestingModule,
   HttpTestingController,
 } from '@angular/common/http/testing';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { ChallengeService } from './challenge.service';
-import { IChallenge } from '../../models';
+import { IChallenge, IUser } from '../../models';
+import { AuthService } from './auth.service';
 
 describe('ChallengeService', () => {
   let service: ChallengeService;
   let httpMock: HttpTestingController;
+  let authServiceMock: Partial<AuthService>;
 
   const mockChallenges: IChallenge[] = [
     {
-      id: 1,
+      id: '1',
       name: 'C1',
       difficulty: 1,
       description: '',
@@ -20,7 +24,7 @@ describe('ChallengeService', () => {
       type: '',
     },
     {
-      id: 2,
+      id: '2',
       name: 'C2',
       difficulty: 1,
       description: '',
@@ -28,7 +32,7 @@ describe('ChallengeService', () => {
       type: '',
     },
     {
-      id: 3,
+      id: '3',
       name: 'C3',
       difficulty: 2,
       description: '',
@@ -36,7 +40,7 @@ describe('ChallengeService', () => {
       type: '',
     },
     {
-      id: 4,
+      id: '4',
       name: 'C4',
       difficulty: 3,
       description: '',
@@ -44,7 +48,7 @@ describe('ChallengeService', () => {
       type: '',
     },
     {
-      id: 5,
+      id: '5',
       name: 'C5',
       difficulty: 4,
       description: '',
@@ -52,7 +56,7 @@ describe('ChallengeService', () => {
       type: '',
     },
     {
-      id: 6,
+      id: '6',
       name: 'C6',
       difficulty: 4,
       description: '',
@@ -61,10 +65,31 @@ describe('ChallengeService', () => {
     },
   ];
 
+  const mockUser: IUser = {
+    uid: 'test-uid',
+    displayName: 'Tester',
+    photoURL: '',
+    save: {} as any,
+  };
+
   beforeEach(() => {
+    authServiceMock = {
+      get isLoggedIn() {
+        return true;
+      },
+      userData: mockUser,
+    };
+
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
-      providers: [ChallengeService],
+      imports: [
+        HttpClientTestingModule,
+        provideFirebaseApp(() => initializeApp({ projectId: 'test-project' })),
+        provideFirestore(() => getFirestore()),
+      ],
+      providers: [
+        ChallengeService,
+        { provide: AuthService, useValue: authServiceMock },
+      ],
     });
     service = TestBed.inject(ChallengeService);
     httpMock = TestBed.inject(HttpTestingController);
