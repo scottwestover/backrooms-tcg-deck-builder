@@ -193,6 +193,19 @@ describe('ChallengesPageComponent', () => {
     });
   });
 
+  it('should update url when types change', () => {
+    fixture.detectChanges();
+    component.onTypeChange();
+    expect(urlSyncService.updateUrl).toHaveBeenCalled();
+  });
+
+  it('should update url when a manual challenge is selected', () => {
+    fixture.detectChanges();
+    component.onManualChallengeChange(0, mockChallenges[0]);
+    expect(component.manualChallengeSlots[0]).toBe(mockChallenges[0]);
+    expect(urlSyncService.updateUrl).toHaveBeenCalled();
+  });
+
   it('should re-roll a challenge and update url', () => {
     component.selectedTypes = ['GENERIC', 'CAR_PARK', 'LOBBY_LEVEL'];
     component.generatedChallenges = [
@@ -206,6 +219,29 @@ describe('ChallengesPageComponent', () => {
     component.rerollChallenge(mockChallenges[0], 0);
 
     expect(component.generatedChallenges[0].id).toBe('5');
+    expect(urlSyncService.updateUrl).toHaveBeenCalled();
+  });
+
+  it('should sync manual slots when switching from random mode', () => {
+    component.generationMode = 'random';
+    component.generatedChallenges = [...mockChallenges];
+    fixture.detectChanges();
+
+    component.setGenerationMode('manual');
+    expect(component.manualChallengeSlots[0]?.id).toBe(mockChallenges[0].id);
+    expect(component.manualChallengeSlots[3]?.id).toBe(mockChallenges[3].id);
+  });
+
+  it('should sync generated challenges when switching from manual mode', () => {
+    component.generationMode = 'manual';
+    component.manualChallengeSlots = [...mockChallenges];
+    fixture.detectChanges();
+
+    component.setGenerationMode('random');
+    expect(component.generatedChallenges[0]?.id).toBe(mockChallenges[0].id);
+    expect(component.generatedChallenges[3]?.id).toBe(mockChallenges[3].id);
+    // generate() is called, which also calls updateUrl()
+    expect(challengeService.generateChallenges).toHaveBeenCalled();
     expect(urlSyncService.updateUrl).toHaveBeenCalled();
   });
 });
