@@ -21,6 +21,7 @@ import { PageComponent } from '../shared/page.component';
 import { ChallengeDisplayCardComponent } from './components/challenge-display-card.component';
 import { ChallengeSelectorCardComponent } from './components/challenge-selector-card.component';
 import { AsyncPipe, NgClass, NgForOf, NgIf } from '@angular/common';
+import { ChallengeManagementSectionComponent } from './components/challenge-management-section.component';
 
 @Component({
   selector: 'backrooms-challenges-page',
@@ -37,14 +38,6 @@ import { AsyncPipe, NgClass, NgForOf, NgIf } from '@angular/common';
               Generate a random set of challenges to complete.
             </p>
           </div>
-
-          @if (authService.isLoggedIn) {
-            <button
-              (click)="openCreateChallengeDialog()"
-              class="mt-4 rounded-lg bg-sky-500 px-4 py-2 font-bold text-white transition-transform hover:scale-105">
-              Create Challenge
-            </button>
-          }
         </div>
 
         <hr />
@@ -140,6 +133,7 @@ import { AsyncPipe, NgClass, NgForOf, NgIf } from '@angular/common';
             }
           </div>
         </div>
+        <backrooms-challenge-management-section></backrooms-challenge-management-section>
       </div>
     </backrooms-page>
   `,
@@ -157,6 +151,7 @@ import { AsyncPipe, NgClass, NgForOf, NgIf } from '@angular/common';
     ChallengeSelectorCardComponent,
     MultiSelectModule,
     FormsModule,
+    ChallengeManagementSectionComponent,
   ],
 })
 export class ChallengesPageComponent implements OnInit {
@@ -187,9 +182,25 @@ export class ChallengesPageComponent implements OnInit {
     });
 
     // Subscribe to challenge refresh events
-    this.challengeService.refreshChallenges$.subscribe((newChallenge) => {
-      this.allChallenges = [...this.allChallenges, newChallenge];
-      this.updateAvailableTypes(newChallenge.type);
+    this.challengeService.refreshChallenges$.subscribe((payload) => {
+      if (payload) {
+        // If a challenge object is emitted (new or updated)
+        const existingIndex = this.allChallenges.findIndex(
+          (c) => c.id === payload.id,
+        );
+        if (existingIndex > -1) {
+          // Update existing challenge
+          this.allChallenges[existingIndex] = payload;
+          this.allChallenges = [...this.allChallenges]; // Trigger change detection for array reference
+        } else {
+          // Add new challenge
+          this.allChallenges = [...this.allChallenges, payload];
+        }
+        this.updateAvailableTypes(payload.type);
+      } else {
+        // If undefined is emitted (e.g., after a delete), re-fetch all challenges
+        this.fetchChallengesAndSetData();
+      }
       this.cdr.markForCheck();
     });
   }
@@ -235,7 +246,6 @@ export class ChallengesPageComponent implements OnInit {
           this.generatedChallenges = challengesFromUrl.filter(
             (c) => c !== null,
           ) as IChallenge[];
-
           this.generationMode = 'random';
           this.cdr.markForCheck();
         }
@@ -340,10 +350,6 @@ export class ChallengesPageComponent implements OnInit {
     this.manualChallengeSlots[index] = challenge;
     this.manualChallengeSlots = [...this.manualChallengeSlots];
     this.updateUrl();
-  }
-
-  public openCreateChallengeDialog(): void {
-    this.dialogStore.updateCreateChallengeDialog(true);
   }
 
   private getFilteredChallenges(): IChallenge[] {

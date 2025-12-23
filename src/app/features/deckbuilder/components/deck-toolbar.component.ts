@@ -102,6 +102,7 @@ import { ImportDeckDialogComponent } from '../../shared/dialogs/import-deck-dial
       header="New Deck Confirmation"
       icon="pi pi-file"
       key="NewDeck"
+      acceptButtonStyleClass="p-button-outlined"
       rejectButtonStyleClass="p-button-outlined"></p-confirmDialog>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,

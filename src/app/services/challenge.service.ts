@@ -13,7 +13,9 @@ export class ChallengeService {
   private authService = inject(AuthService);
   private firestoreService = inject(FirestoreService);
 
-  public refreshChallenges$: Subject<IChallenge> = new Subject<IChallenge>(); // Emit IChallenge
+  public refreshChallenges$: Subject<IChallenge | undefined> = new Subject<
+    IChallenge | undefined
+  >();
 
   public getChallenges(): Observable<IChallenge[]> {
     const localChallenges$ = this.http
@@ -60,11 +62,38 @@ export class ChallengeService {
     ).pipe(
       map((docRef) => {
         const createdChallenge: IChallenge = {
-          id: docRef.id,
+          id: docRef.id, // Firestore-generated ID
           ...newChallengeData,
         };
-        this.refreshChallenges$.next(createdChallenge);
+        this.refreshChallenges$.next(createdChallenge); // Emit the full challenge object
         return createdChallenge;
+      }),
+    );
+  }
+
+  public updateChallenge(challenge: IChallenge): Observable<void> {
+    if (!this.authService.isLoggedIn || !this.authService.userData) {
+      return of(undefined);
+    }
+    const { id, ...data } = challenge;
+    return from(this.firestoreService.updateDoc('challenges', id, data)).pipe(
+      map(() => {
+        this.refreshChallenges$.next(challenge);
+        return undefined;
+      }),
+    );
+  }
+
+  public deleteChallenge(challengeId: string): Observable<void> {
+    if (!this.authService.isLoggedIn || !this.authService.userData) {
+      return of(undefined);
+    }
+    return from(
+      this.firestoreService.deleteDoc('challenges', challengeId),
+    ).pipe(
+      map(() => {
+        this.refreshChallenges$.next(undefined);
+        return undefined;
       }),
     );
   }
