@@ -9,7 +9,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- TODO: add documentation on new feature for creating challengs.
+- Implemented functionality for logged-in users to create their own custom challenges.
+- Introduced a "My Challenges" modal where users can view, edit, and delete challenges they have created.
+- Refactored the challenge creation modal to handle both new challenge creation and editing existing challenges, dynamically updating its title and pre-filling forms.
+- Ensured real-time updates for the challenges list in the randomizer page and "My Challenges" modal after creation, editing, or deletion, without requiring a page refresh.
+- Integrated challenges with Firestore, implementing security rules to ensure only the creator can edit or delete their challenges.
+- Improved user experience by:
+    - Moving "My Challenges" and "Create Challenge" buttons to a dedicated section below the randomizer controls, including a login prompt for logged-out users.
+    - Enhancing styling for action buttons (edit/delete) on challenge cards.
+    - Improving modal sizing and button styling for consistency.
 
 ## [0.0.11] - 2025-12-22
 
