@@ -70,11 +70,11 @@ import { IChallenge } from '../../../../models';
 export class ChallengeDisplayCardComponent {
   @Input() challenge: IChallenge | null = null;
   @Input() rerollable = false;
-  @Input() showEditDelete: boolean = false; // New Input
+  @Input() showEditDelete: boolean = false;
 
-  @Output() reroll = new EventEmitter<IChallenge>(); // Changed to emit IChallenge
-  @Output() edit = new EventEmitter<IChallenge>(); // New Output
-  @Output() delete = new EventEmitter<IChallenge>(); // New Output
+  @Output() reroll = new EventEmitter<IChallenge>();
+  @Output() edit = new EventEmitter<IChallenge>();
+  @Output() delete = new EventEmitter<IChallenge>();
 
   public onRerollClick(): void {
     if (this.challenge) {

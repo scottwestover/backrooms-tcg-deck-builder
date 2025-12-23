@@ -62,10 +62,10 @@ export class ChallengeService {
     ).pipe(
       map((docRef) => {
         const createdChallenge: IChallenge = {
-          id: docRef.id, // Firestore-generated ID
+          id: docRef.id,
           ...newChallengeData,
         };
-        this.refreshChallenges$.next(createdChallenge); // Emit the full challenge object
+        this.refreshChallenges$.next(createdChallenge);
         return createdChallenge;
       }),
     );
@@ -124,7 +124,7 @@ export class ChallengeService {
     );
 
     const result: IChallenge[] = [];
-    const difficulties = [1, 2, 3, 4]; // Assuming levels 1-4
+    const difficulties = [1, 2, 3, 4];
 
     for (const difficulty of difficulties) {
       const group = groupedByDifficulty[difficulty];

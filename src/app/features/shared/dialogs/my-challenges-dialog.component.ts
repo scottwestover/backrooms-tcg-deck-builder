@@ -61,7 +61,7 @@ export class MyChallengesDialogComponent implements OnInit {
 
   myChallenges: IChallenge[] = [];
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.loadMyChallenges();
 
     this.challengeService.refreshChallenges$.subscribe((payload) => {
@@ -69,7 +69,7 @@ export class MyChallengesDialogComponent implements OnInit {
     });
   }
 
-  loadMyChallenges(): void {
+  public loadMyChallenges(): void {
     if (this.authService.userData) {
       this.challengeService.getChallenges().subscribe((allChallenges) => {
         this.myChallenges = allChallenges.filter(
@@ -83,13 +83,13 @@ export class MyChallengesDialogComponent implements OnInit {
     }
   }
 
-  editChallenge(challenge: IChallenge): void {
+  public editChallenge(challenge: IChallenge): void {
     this.dialogStore.updateChallengeToEdit(challenge);
     this.dialogStore.updateCreateChallengeDialog(true);
     this.closeDialog();
   }
 
-  deleteChallenge(challenge: IChallenge): void {
+  public deleteChallenge(challenge: IChallenge): void {
     this.confirmationService.confirm({
       message: `Are you sure you want to delete the challenge "${challenge.name}"? This action cannot be undone.`,
       header: 'Delete Challenge',
@@ -123,7 +123,7 @@ export class MyChallengesDialogComponent implements OnInit {
     });
   }
 
-  closeDialog(): void {
+  public closeDialog(): void {
     this.dialogStore.updateMyChallengesDialog(false);
   }
 }

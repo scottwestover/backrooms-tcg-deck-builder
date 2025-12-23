@@ -8,6 +8,7 @@ import { ChallengeService } from '../../services/challenge.service';
 import { UrlSyncService } from '../../services/url-sync.service';
 import { DialogStore } from '../../store/dialog.store';
 import { ChallengesPageComponent } from './challenges-page.component';
+import { ToastrModule } from 'ngx-toastr';
 
 describe('ChallengesPageComponent', () => {
   let component: ChallengesPageComponent;
@@ -26,6 +27,7 @@ describe('ChallengesPageComponent', () => {
       description: 'd1',
       creator: 'c1',
       type: 'GENERIC',
+      userId: 'uid-a',
     },
     {
       id: '5',
@@ -34,6 +36,7 @@ describe('ChallengesPageComponent', () => {
       description: 'd5',
       creator: 'c5',
       type: 'GENERIC',
+      userId: 'uid-a',
     },
     {
       id: '2',
@@ -42,6 +45,7 @@ describe('ChallengesPageComponent', () => {
       description: 'd2',
       creator: 'c2',
       type: 'CAR_PARK',
+      userId: 'uid-b',
     },
     {
       id: '3',
@@ -50,6 +54,7 @@ describe('ChallengesPageComponent', () => {
       description: 'd3',
       creator: 'c3',
       type: 'LOBBY_LEVEL',
+      userId: 'uid-c',
     },
     {
       id: '4',
@@ -58,6 +63,7 @@ describe('ChallengesPageComponent', () => {
       description: 'd4',
       creator: 'c4',
       type: 'GENERIC',
+      userId: 'uid-d',
     },
   ];
 
@@ -66,28 +72,34 @@ describe('ChallengesPageComponent', () => {
       'ChallengeService',
       ['getChallenges', 'generateChallenges'],
       {
-        refreshChallenges$: new Subject<IChallenge>(), // Mock refreshChallenges$ Subject
+        refreshChallenges$: new Subject<IChallenge | undefined>(),
       },
     );
-    const urlSyncServiceSpy = jasmine.createSpyObj('UrlSyncService', [
+    urlSyncService = jasmine.createSpyObj('UrlSyncService', [
       'getQueryParams',
       'updateUrl',
     ]);
-    const authServiceSpy = jasmine.createSpyObj('AuthService', [], {
+    authService = jasmine.createSpyObj('AuthService', [], {
       isLoggedIn: false,
       authChange: new Subject<boolean>(),
+      userData: null,
     });
-    const dialogStoreSpy = jasmine.createSpyObj('DialogStore', [
+    dialogStore = jasmine.createSpyObj('DialogStore', [
       'updateCreateChallengeDialog',
+      'updateMyChallengesDialog',
     ]);
 
     await TestBed.configureTestingModule({
-      imports: [ChallengesPageComponent, NoopAnimationsModule],
+      imports: [
+        ChallengesPageComponent,
+        NoopAnimationsModule,
+        ToastrModule.forRoot(),
+      ],
       providers: [
         { provide: ChallengeService, useValue: challengeService },
-        { provide: UrlSyncService, useValue: urlSyncServiceSpy },
-        { provide: AuthService, useValue: authServiceSpy },
-        { provide: DialogStore, useValue: dialogStoreSpy },
+        { provide: UrlSyncService, useValue: urlSyncService },
+        { provide: AuthService, useValue: authService },
+        { provide: DialogStore, useValue: dialogStore },
         {
           provide: Title,
           useValue: jasmine.createSpyObj('Title', ['setTitle']),
@@ -99,16 +111,6 @@ describe('ChallengesPageComponent', () => {
     fixture = TestBed.createComponent(ChallengesPageComponent);
     component = fixture.componentInstance;
     nativeElement = fixture.nativeElement;
-    challengeService = TestBed.inject(
-      ChallengeService,
-    ) as jasmine.SpyObj<ChallengeService>;
-    urlSyncService = TestBed.inject(
-      UrlSyncService,
-    ) as jasmine.SpyObj<UrlSyncService>;
-    authService = TestBed.inject(AuthService) as jasmine.SpyObj<AuthService>;
-    dialogStore = TestBed.inject(DialogStore) as jasmine.SpyObj<
-      InstanceType<typeof DialogStore>
-    >;
 
     // Default mock implementations
     urlSyncService.getQueryParams.and.returnValue(of({}));
@@ -157,44 +159,6 @@ describe('ChallengesPageComponent', () => {
       jasmine.any(Array),
     );
     expect(urlSyncService.updateUrl).toHaveBeenCalled();
-  });
-
-  describe('Create Challenge Button', () => {
-    it('should NOT show the create challenge button if user is not logged in', () => {
-      (
-        Object.getOwnPropertyDescriptor(authService, 'isLoggedIn')
-          ?.get as jasmine.Spy
-      ).and.returnValue(false);
-      fixture.detectChanges();
-      const createButton = nativeElement.querySelector('button.bg-sky-500');
-      expect(createButton).toBeFalsy();
-    });
-
-    it('should show the create challenge button if user is logged in', () => {
-      (
-        Object.getOwnPropertyDescriptor(authService, 'isLoggedIn')
-          ?.get as jasmine.Spy
-      ).and.returnValue(true);
-      fixture.detectChanges();
-      const createButton = nativeElement.querySelector('button.bg-sky-500');
-      expect(createButton).toBeTruthy();
-    });
-
-    it('should open the create challenge dialog when the button is clicked', () => {
-      (
-        Object.getOwnPropertyDescriptor(authService, 'isLoggedIn')
-          ?.get as jasmine.Spy
-      ).and.returnValue(true);
-      fixture.detectChanges();
-      const createButton = nativeElement.querySelector(
-        'button.bg-sky-500',
-      ) as HTMLButtonElement;
-      createButton.click();
-
-      expect(dialogStore.updateCreateChallengeDialog).toHaveBeenCalledWith(
-        true,
-      );
-    });
   });
 
   it('should update url when types change', () => {

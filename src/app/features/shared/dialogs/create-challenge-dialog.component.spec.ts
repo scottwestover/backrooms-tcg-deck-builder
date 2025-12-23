@@ -11,6 +11,7 @@ import { CreateChallengeDialogComponent } from './create-challenge-dialog.compon
 import { ChallengeService } from '../../../services/challenge.service';
 import { DialogStore } from '../../../store/dialog.store';
 import { MessageService } from 'primeng/api';
+import { IChallenge } from 'src/models';
 
 describe('CreateChallengeDialogComponent', () => {
   let component: CreateChallengeDialogComponent;
@@ -19,13 +20,31 @@ describe('CreateChallengeDialogComponent', () => {
   let dialogStoreSpy: jasmine.SpyObj<InstanceType<typeof DialogStore>>;
   let messageServiceSpy: jasmine.SpyObj<MessageService>;
 
+  const mockChallenge: IChallenge = {
+    id: 'testId',
+    name: 'Test Challenge',
+    description: 'A challenge for testing',
+    difficulty: 2,
+    type: 'GENERIC',
+    creator: 'Test User',
+    userId: 'testUserId',
+  };
+
   beforeEach(async () => {
     challengeServiceSpy = jasmine.createSpyObj('ChallengeService', [
       'createChallenge',
+      'updateChallenge',
     ]);
-    dialogStoreSpy = jasmine.createSpyObj('DialogStore', [
-      'updateCreateChallengeDialog',
-    ]);
+    dialogStoreSpy = jasmine.createSpyObj(
+      'DialogStore',
+      ['updateCreateChallengeDialog', 'updateChallengeToEdit'],
+      {
+        createChallenge: () => true,
+        challengeToEdit: jasmine
+          .createSpy('challengeToEdit')
+          .and.returnValue(null),
+      },
+    );
     messageServiceSpy = jasmine.createSpyObj('MessageService', ['add']);
 
     await TestBed.configureTestingModule({
@@ -79,17 +98,34 @@ describe('CreateChallengeDialogComponent', () => {
       component.form.controls['name'].setValue('');
       component.submit();
       expect(challengeServiceSpy.createChallenge).not.toHaveBeenCalled();
+      expect(challengeServiceSpy.updateChallenge).not.toHaveBeenCalled();
     });
 
-    it('should show success and close on successful submission', fakeAsync(() => {
+    it('should call createChallenge on successful submission in create mode', fakeAsync(() => {
       challengeServiceSpy.createChallenge.and.returnValue(of({}));
       component.submit();
       tick();
-      expect(challengeServiceSpy.createChallenge).toHaveBeenCalledWith({
+      expect(challengeServiceSpy.createChallenge).toHaveBeenCalled();
+      expect(dialogStoreSpy.updateCreateChallengeDialog).toHaveBeenCalledWith(
+        false,
+      );
+    }));
+
+    it('should call updateChallenge on successful submission in edit mode', fakeAsync(() => {
+      (dialogStoreSpy.challengeToEdit as jasmine.Spy).and.returnValue(
+        mockChallenge,
+      );
+      challengeServiceSpy.updateChallenge.and.returnValue(of(undefined));
+      component.submit();
+      tick();
+      expect(challengeServiceSpy.updateChallenge).toHaveBeenCalledWith({
+        id: 'testId',
         name: 'Test',
         description: 'Test Desc',
         difficulty: 1,
         type: 'Test Type',
+        creator: 'Test User',
+        userId: 'testUserId',
       });
       expect(dialogStoreSpy.updateCreateChallengeDialog).toHaveBeenCalledWith(
         false,
@@ -99,7 +135,7 @@ describe('CreateChallengeDialogComponent', () => {
     it('should show error on failed submission', fakeAsync(() => {
       const error = new Error('Test Error');
       challengeServiceSpy.createChallenge.and.returnValue(
-        throwError(() => error), // Use throwError()
+        throwError(() => error),
       );
 
       component.submit();

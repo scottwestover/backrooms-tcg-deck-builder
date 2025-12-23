@@ -48,6 +48,13 @@ class MockChangelogDialogComponent {}
 })
 class MockCreateChallengeDialogComponent {}
 
+@Component({
+  selector: 'backrooms-my-challenges-dialog',
+  template: '',
+  standalone: true,
+})
+class MockMyChallengesDialogComponent {}
+
 describe('DialogComponent', () => {
   let component: DialogComponent;
   let fixture: ComponentFixture<DialogComponent>;
@@ -59,6 +66,7 @@ describe('DialogComponent', () => {
   const deckSignal = signal({ show: false, editable: true, deck: emptyDeck });
   const changelogSignal = signal(false);
   const createChallengeSignal = signal(false);
+  const myChallengesSignal = signal(false); // New signal for myChallenges
 
   beforeEach(async () => {
     const storeSpy = jasmine.createSpyObj(
@@ -70,6 +78,8 @@ describe('DialogComponent', () => {
         'showDeckDialog',
         'updateChangelogDialog',
         'updateCreateChallengeDialog',
+        'updateMyChallengesDialog', // Add new method
+        'challengeToEdit',
       ],
       {
         settings: settingsSignal,
@@ -78,6 +88,7 @@ describe('DialogComponent', () => {
         deck: deckSignal,
         changelog: changelogSignal,
         createChallenge: createChallengeSignal,
+        myChallenges: myChallengesSignal, // Add new signal
       },
     );
 
@@ -97,6 +108,7 @@ describe('DialogComponent', () => {
             MockViewCardDialogComponent,
             MockChangelogDialogComponent,
             MockCreateChallengeDialogComponent,
+            MockMyChallengesDialogComponent, // Add new mock component
           ],
         },
       })
@@ -121,12 +133,26 @@ describe('DialogComponent', () => {
       tick(); // Let the effect run
       expect(component.createChallengeDialog).toBeTrue();
     }));
+
+    it('should update myChallengesDialog when store signal changes', fakeAsync(() => {
+      myChallengesSignal.set(true);
+      fixture.detectChanges();
+      tick(); // Let the effect run
+      expect(component.myChallengesDialog).toBeTrue();
+    }));
   });
 
   describe('Close Handlers', () => {
     it('should call updateCreateChallengeDialog on closeCreateChallengeDialog', () => {
       component.closeCreateChallengeDialog();
       expect(dialogStoreSpy.updateCreateChallengeDialog).toHaveBeenCalledWith(
+        false,
+      );
+    });
+
+    it('should call updateMyChallengesDialog on closeMyChallengesDialog', () => {
+      component.closeMyChallengesDialog();
+      expect(dialogStoreSpy.updateMyChallengesDialog).toHaveBeenCalledWith(
         false,
       );
     });

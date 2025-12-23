@@ -142,25 +142,31 @@ export class DialogComponent {
     });
   }
 
-  closeSettingsDialog() {
+  public closeSettingsDialog() {
     this.dialogStore.updateSettingsDialog(false);
   }
-  closeViewCardDialog() {
+
+  public closeViewCardDialog() {
     this.dialogStore.showViewCardDialog(false);
   }
-  closeExportDeckDialog() {
+
+  public closeExportDeckDialog() {
     this.dialogStore.showExportDeckDialog(false);
   }
-  closeDeckDialog() {
+
+  public closeDeckDialog() {
     this.dialogStore.showDeckDialog(false);
   }
-  closeChangelogDialog() {
+
+  public closeChangelogDialog() {
     this.dialogStore.updateChangelogDialog(false);
   }
-  closeCreateChallengeDialog() {
+
+  public closeCreateChallengeDialog() {
     this.dialogStore.updateCreateChallengeDialog(false);
   }
-  closeMyChallengesDialog() {
+
+  public closeMyChallengesDialog() {
     this.dialogStore.updateMyChallengesDialog(false);
   }
 }

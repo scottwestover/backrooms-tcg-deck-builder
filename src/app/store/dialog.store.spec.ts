@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { DialogStore } from './dialog.store';
-import { dummyCard, emptyDeck } from '../../models';
+import { dummyCard, emptyDeck, IChallenge } from '../../models';
 
 describe('DialogStore', () => {
   let store: InstanceType<typeof DialogStore>;
@@ -20,6 +20,8 @@ describe('DialogStore', () => {
     expect(store.changelog()).toBeFalse();
     expect(store.settings()).toBeFalse();
     expect(store.createChallenge()).toBeFalse();
+    expect(store.myChallenges()).toBeFalse();
+    expect(store.challengeToEdit()).toBeNull();
     expect(store.viewCard().show).toBeFalse();
     expect(store.exportDeck().show).toBeFalse();
     expect(store.deck().show).toBeFalse();
@@ -44,6 +46,30 @@ describe('DialogStore', () => {
     expect(store.createChallenge()).toBeTrue();
     store.updateCreateChallengeDialog(false);
     expect(store.createChallenge()).toBeFalse();
+  });
+
+  it('should update myChallenges dialog state', () => {
+    store.updateMyChallengesDialog(true);
+    expect(store.myChallenges()).toBeTrue();
+    store.updateMyChallengesDialog(false);
+    expect(store.myChallenges()).toBeFalse();
+  });
+
+  it('should update challengeToEdit state', () => {
+    const mockChallenge: IChallenge = {
+      id: 'testId',
+      name: 'Test Challenge',
+      description: 'A challenge for testing',
+      difficulty: 2,
+      type: 'GENERIC',
+      creator: 'Test User',
+      userId: 'testUserId',
+    };
+    store.updateChallengeToEdit(mockChallenge);
+    expect(store.challengeToEdit()).toEqual(mockChallenge);
+
+    store.updateChallengeToEdit(null);
+    expect(store.challengeToEdit()).toBeNull();
   });
 
   it('should update viewCard dialog state', () => {
