@@ -19,6 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     - Enhancing styling for action buttons (edit/delete) on challenge cards.
     - Improving modal sizing and button styling for consistency.
 - All of the changes were included as part of [41e6cd0](https://github.com/scottwestover/backrooms-tcg-deck-builder/commit/41e6cd08133ee63903c61b38e2ad75feed2d39c0).
+- Updated challenges page to dynamically show "My Challenges" and "Create Challenge" buttons based on auth service events for user login and logout [41e6cd0](https://github.com/scottwestover/backrooms-tcg-deck-builder/commit/41e6cd08133ee63903c61b38e2ad75feed2d39c0).
 
 ## [0.0.11] - 2025-12-22
 
