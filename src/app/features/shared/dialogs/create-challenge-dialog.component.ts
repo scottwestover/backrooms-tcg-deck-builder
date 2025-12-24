@@ -18,6 +18,7 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
 import { ChallengeService } from '../../../services/challenge.service';
 import { DialogStore } from '../../../store/dialog.store';
 import { MessageService } from 'primeng/api';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'backrooms-create-challenge-dialog',
@@ -62,11 +63,15 @@ import { MessageService } from 'primeng/api';
       <div class="mt-4 flex justify-end gap-2">
         <p-button
           label="Cancel"
-          styleClass="p-button-secondary"
+          styleClass="p-button-outlined text-white border-white bg-transparent"
           (onClick)="closeDialog()"></p-button>
         <p-button
           type="submit"
-          label="Save Challenge"
+          [label]="
+            dialogStore.challengeToEdit()
+              ? 'Update Challenge'
+              : 'Save Challenge'
+          "
           [disabled]="form.invalid || loading"></p-button>
       </div>
     </form>
@@ -86,7 +91,7 @@ export class CreateChallengeDialogComponent implements OnInit {
   private fb = inject(FormBuilder);
   private challengeService = inject(ChallengeService);
   private messageService = inject(MessageService);
-  private dialogStore = inject(DialogStore);
+  public dialogStore = inject(DialogStore); // Make public to access in template
 
   form!: FormGroup;
   loading = false;
@@ -94,8 +99,19 @@ export class CreateChallengeDialogComponent implements OnInit {
   constructor() {
     effect(
       () => {
-        if (this.dialogStore.createChallenge()) {
-          this.form?.reset(); // Reset form when dialog opens
+        const isDialogVisible = this.dialogStore.createChallenge();
+        const challenge = this.dialogStore.challengeToEdit();
+
+        if (isDialogVisible) {
+          if (challenge) {
+            this.form.patchValue(challenge);
+          } else {
+            this.form?.reset();
+          }
+        } else {
+          // When dialog closes, ensure form is reset and challengeToEdit is cleared
+          this.form?.reset();
+          this.dialogStore.updateChallengeToEdit(null);
         }
       },
       { allowSignalWrites: true },
@@ -116,27 +132,49 @@ export class CreateChallengeDialogComponent implements OnInit {
       return;
     }
 
-    this.loading = true; // Set loading to true on submit
+    this.loading = true;
 
-    this.challengeService.createChallenge(this.form.value).subscribe({
+    const challengeData = this.form.value;
+    let operation$: Observable<any>;
+    let successMessage: string;
+    let errorMessage: string;
+
+    const challengeToEdit = this.dialogStore.challengeToEdit(); // Get from store
+
+    if (challengeToEdit) {
+      // Update existing challenge
+      operation$ = this.challengeService.updateChallenge({
+        ...challengeToEdit,
+        ...challengeData,
+      });
+      successMessage = 'Challenge updated successfully!';
+      errorMessage = 'There was an error updating the challenge.';
+    } else {
+      // Create new challenge
+      operation$ = this.challengeService.createChallenge(challengeData);
+      successMessage = 'Challenge created successfully!';
+      errorMessage = 'There was an error creating the challenge.';
+    }
+
+    operation$.subscribe({
       next: () => {
         this.messageService.add({
           severity: 'success',
           summary: 'Success',
-          detail: 'Challenge created successfully!',
+          detail: successMessage,
         });
-        this.form.reset(); // Reset form on success
-        this.loading = false; // Reset loading
+        this.form.reset();
+        this.loading = false;
         this.closeDialog();
       },
-      error: (err) => {
+      error: (err: Error) => {
         this.messageService.add({
           severity: 'error',
           summary: 'Error',
-          detail: 'There was an error creating the challenge.',
+          detail: errorMessage,
         });
         console.error(err);
-        this.loading = false; // Reset loading
+        this.loading = false;
       },
     });
   }

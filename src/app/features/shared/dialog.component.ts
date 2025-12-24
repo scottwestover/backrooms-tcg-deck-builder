@@ -1,9 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  effect,
-  inject,
-} from '@angular/core';
+import { Component, effect, inject } from '@angular/core';
 import { DialogModule } from 'primeng/dialog';
 import { ChangelogDialogComponent } from './dialogs/changelog-dialog.component';
 import { CreateChallengeDialogComponent } from './dialogs/create-challenge-dialog.component';
@@ -11,6 +6,7 @@ import { DeckDialogComponent } from './dialogs/deck-dialog.component';
 import { ExportDeckDialogComponent } from './dialogs/export-deck-dialog.component';
 import { ViewCardDialogComponent } from './dialogs/view-card-dialog.component';
 import { DialogStore } from '../../store/dialog.store';
+import { MyChallengesDialogComponent } from './dialogs/my-challenges-dialog.component';
 
 @Component({
   selector: 'backrooms-dialog',
@@ -73,7 +69,11 @@ import { DialogStore } from '../../store/dialog.store';
     </p-dialog>
 
     <p-dialog
-      header="Create a New Challenge"
+      [header]="
+        dialogStore.challengeToEdit()
+          ? 'Edit Challenge'
+          : 'Create a New Challenge'
+      "
       [(visible)]="createChallengeDialog"
       (onHide)="closeCreateChallengeDialog()"
       [modal]="true"
@@ -83,9 +83,20 @@ import { DialogStore } from '../../store/dialog.store';
       [baseZIndex]="10000">
       <backrooms-create-challenge-dialog></backrooms-create-challenge-dialog>
     </p-dialog>
+
+    <p-dialog
+      header="My Challenges"
+      [(visible)]="myChallengesDialog"
+      (onHide)="closeMyChallengesDialog()"
+      [modal]="true"
+      [dismissableMask]="true"
+      [resizable]="false"
+      styleClass="w-full max-w-7xl"
+      [baseZIndex]="10000">
+      <backrooms-my-challenges-dialog></backrooms-my-challenges-dialog>
+    </p-dialog>
   `,
   standalone: true,
-  //changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     DialogModule,
     ChangelogDialogComponent,
@@ -93,6 +104,7 @@ import { DialogStore } from '../../store/dialog.store';
     ExportDeckDialogComponent,
     DeckDialogComponent,
     CreateChallengeDialogComponent,
+    MyChallengesDialogComponent,
   ],
 })
 export class DialogComponent {
@@ -104,6 +116,7 @@ export class DialogComponent {
   deckDialog = false;
   changelogDialog = false;
   createChallengeDialog = false;
+  myChallengesDialog = false;
 
   constructor() {
     effect(() => {
@@ -124,24 +137,36 @@ export class DialogComponent {
     effect(() => {
       this.createChallengeDialog = this.dialogStore.createChallenge();
     });
+    effect(() => {
+      this.myChallengesDialog = this.dialogStore.myChallenges();
+    });
   }
 
-  closeSettingsDialog() {
+  public closeSettingsDialog() {
     this.dialogStore.updateSettingsDialog(false);
   }
-  closeViewCardDialog() {
+
+  public closeViewCardDialog() {
     this.dialogStore.showViewCardDialog(false);
   }
-  closeExportDeckDialog() {
+
+  public closeExportDeckDialog() {
     this.dialogStore.showExportDeckDialog(false);
   }
-  closeDeckDialog() {
+
+  public closeDeckDialog() {
     this.dialogStore.showDeckDialog(false);
   }
-  closeChangelogDialog() {
+
+  public closeChangelogDialog() {
     this.dialogStore.updateChangelogDialog(false);
   }
-  closeCreateChallengeDialog() {
+
+  public closeCreateChallengeDialog() {
     this.dialogStore.updateCreateChallengeDialog(false);
+  }
+
+  public closeMyChallengesDialog() {
+    this.dialogStore.updateMyChallengesDialog(false);
   }
 }

@@ -15,7 +15,7 @@ import { IChallenge } from '../../../../models';
     @if (challenge) {
       <div
         class="relative flex h-full flex-col rounded-lg border border-gray-700 bg-gray-800 p-4 transition-colors hover:border-yellow-500">
-        @if (rerollable) {
+        @if (rerollable && !showEditDelete) {
           <button
             pButton
             type="button"
@@ -42,8 +42,24 @@ import { IChallenge } from '../../../../models';
               {{ challenge.type }}
             </span>
           </div>
-          <span class="ml-2 truncate">by {{ challenge.creator }}</span>
+          @if (!showEditDelete && challenge.creator) {
+            <span class="ml-2 truncate">by {{ challenge.creator }}</span>
+          }
         </div>
+        @if (showEditDelete) {
+          <div class="absolute top-2 right-2 flex gap-2">
+            <p-button
+              icon="pi pi-pencil"
+              class="p-button-rounded p-button-text p-button-outlined text-white border-white"
+              (onClick)="edit.emit(challenge)"></p-button>
+          </div>
+          <div class="absolute bottom-2 right-2 flex gap-2">
+            <p-button
+              icon="pi pi-trash"
+              class="p-button-rounded p-button-text p-button-outlined text-white border-white"
+              (onClick)="delete.emit(challenge)"></p-button>
+          </div>
+        }
       </div>
     }
   `,
@@ -54,9 +70,15 @@ import { IChallenge } from '../../../../models';
 export class ChallengeDisplayCardComponent {
   @Input() challenge: IChallenge | null = null;
   @Input() rerollable = false;
-  @Output() reroll = new EventEmitter<void>();
+  @Input() showEditDelete: boolean = false;
+
+  @Output() reroll = new EventEmitter<IChallenge>();
+  @Output() edit = new EventEmitter<IChallenge>();
+  @Output() delete = new EventEmitter<IChallenge>();
 
   public onRerollClick(): void {
-    this.reroll.emit();
+    if (this.challenge) {
+      this.reroll.emit(this.challenge);
+    }
   }
 }

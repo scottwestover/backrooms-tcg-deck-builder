@@ -4,9 +4,12 @@ import {
   collection,
   getDocs,
   addDoc,
-  CollectionReference,
+  updateDoc,
+  deleteDoc,
+  doc,
   DocumentData,
   WithFieldValue,
+  PartialWithFieldValue,
 } from '@angular/fire/firestore';
 
 @Injectable({
@@ -21,5 +24,19 @@ export class FirestoreService {
 
   addDoc(path: string, data: WithFieldValue<DocumentData>) {
     return addDoc(collection(this.firestore, path), data);
+  }
+
+  updateDoc(
+    path: string,
+    id: string,
+    data: PartialWithFieldValue<DocumentData>,
+  ) {
+    const docRef = doc(this.firestore, path, id);
+    return updateDoc(docRef, data);
+  }
+
+  deleteDoc(path: string, id: string) {
+    const docRef = doc(this.firestore, path, id);
+    return deleteDoc(docRef);
   }
 }
