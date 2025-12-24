@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
 import { AuthService } from 'src/app/services/auth.service';
@@ -43,10 +43,17 @@ import { SaveStore } from 'src/app/store/save.store';
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ChallengeManagementSectionComponent {
+export class ChallengeManagementSectionComponent implements OnInit {
   public authService = inject(AuthService);
   public saveStore = inject(SaveStore);
   private dialogStore = inject(DialogStore);
+  private cdr = inject(ChangeDetectorRef);
+
+  ngOnInit(): void {
+    this.authService.authChange.subscribe(() => {
+      this.cdr.markForCheck();
+    });
+  }
 
   public login(): void {
     if (!this.authService.isLoggedIn) {

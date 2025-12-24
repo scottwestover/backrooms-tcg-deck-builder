@@ -18,6 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     - Moving "My Challenges" and "Create Challenge" buttons to a dedicated section below the randomizer controls, including a login prompt for logged-out users.
     - Enhancing styling for action buttons (edit/delete) on challenge cards.
     - Improving modal sizing and button styling for consistency.
+- All of the changes were included as part of [41e6cd0](https://github.com/scottwestover/backrooms-tcg-deck-builder/commit/41e6cd08133ee63903c61b38e2ad75feed2d39c0).
 
 ## [0.0.11] - 2025-12-22
 
