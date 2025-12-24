@@ -1,4 +1,10 @@
-import { ChangeDetectionStrategy, Component, inject, OnInit, ChangeDetectorRef } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  OnInit,
+  ChangeDetectorRef,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
 import { AuthService } from 'src/app/services/auth.service';
@@ -49,7 +55,7 @@ export class ChallengeManagementSectionComponent implements OnInit {
   private dialogStore = inject(DialogStore);
   private cdr = inject(ChangeDetectorRef);
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.authService.authChange.subscribe(() => {
       this.cdr.markForCheck();
     });

@@ -1,10 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { of } from 'rxjs';
 import { ChallengeManagementSectionComponent } from './challenge-management-section.component';
 import { AuthService } from 'src/app/services/auth.service';
 import { DialogStore } from 'src/app/store/dialog.store';
 import { ToastrModule } from 'ngx-toastr';
+import { Subject } from 'rxjs';
 
 describe('ChallengeManagementSectionComponent', () => {
   let component: ChallengeManagementSectionComponent;
@@ -16,6 +16,7 @@ describe('ChallengeManagementSectionComponent', () => {
   beforeEach(async () => {
     authServiceSpy = jasmine.createSpyObj('AuthService', ['GoogleAuth'], {
       isLoggedIn: false,
+      authChange: new Subject<boolean>(),
     });
     dialogStoreSpy = jasmine.createSpyObj('DialogStore', [
       'updateMyChallengesDialog',
