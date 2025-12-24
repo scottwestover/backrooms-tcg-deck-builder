@@ -15,7 +15,7 @@ describe('ChallengeSelectorCardComponent', () => {
 
   const mockChallenges: IChallenge[] = [
     {
-      id: 1,
+      id: '1',
       name: 'C1',
       difficulty: 1,
       description: 'd1',
@@ -23,7 +23,7 @@ describe('ChallengeSelectorCardComponent', () => {
       type: 't1',
     },
     {
-      id: 2,
+      id: '2',
       name: 'C2',
       difficulty: 1,
       description: 'd2',
@@ -31,7 +31,7 @@ describe('ChallengeSelectorCardComponent', () => {
       type: 't2',
     },
     {
-      id: 3,
+      id: '3',
       name: 'C3',
       difficulty: 2,
       description: 'd3',

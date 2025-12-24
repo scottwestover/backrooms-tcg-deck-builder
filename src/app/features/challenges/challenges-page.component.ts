@@ -13,25 +13,32 @@ import { MultiSelectModule } from 'primeng/multiselect';
 import { TooltipModule } from 'primeng/tooltip';
 import { switchMap, take } from 'rxjs';
 import { IChallenge } from '../../../models';
+import { AuthService } from '../../services/auth.service';
 import { ChallengeService } from '../../services/challenge.service';
 import { UrlSyncService } from '../../services/url-sync.service';
+import { DialogStore } from '../../store/dialog.store';
 import { PageComponent } from '../shared/page.component';
 import { ChallengeDisplayCardComponent } from './components/challenge-display-card.component';
 import { ChallengeSelectorCardComponent } from './components/challenge-selector-card.component';
 import { AsyncPipe, NgClass, NgForOf, NgIf } from '@angular/common';
+import { ChallengeManagementSectionComponent } from './components/challenge-management-section.component';
 
 @Component({
   selector: 'backrooms-challenges-page',
   template: `
     <backrooms-page>
       <div class="mx-auto w-full max-w-7xl self-baseline px-5">
-        <h1
-          class="text-shadow mt-6 pb-1 text-2xl font-black text-[#e2e4e6] md:text-4xl">
-          Challenge Randomizer
-        </h1>
-        <p class="text-md mb-1 text-gray-400">
-          Generate a random set of challenges to complete.
-        </p>
+        <div class="flex items-center justify-between">
+          <div>
+            <h1
+              class="text-shadow mt-6 pb-1 text-2xl font-black text-[#e2e4e6] md:text-4xl">
+              Challenge Randomizer
+            </h1>
+            <p class="text-md mb-1 text-gray-400">
+              Generate a random set of challenges to complete.
+            </p>
+          </div>
+        </div>
 
         <hr />
 
@@ -126,6 +133,7 @@ import { AsyncPipe, NgClass, NgForOf, NgIf } from '@angular/common';
             }
           </div>
         </div>
+        <backrooms-challenge-management-section></backrooms-challenge-management-section>
       </div>
     </backrooms-page>
   `,
@@ -143,6 +151,7 @@ import { AsyncPipe, NgClass, NgForOf, NgIf } from '@angular/common';
     ChallengeSelectorCardComponent,
     MultiSelectModule,
     FormsModule,
+    ChallengeManagementSectionComponent,
   ],
 })
 export class ChallengesPageComponent implements OnInit {
@@ -151,6 +160,8 @@ export class ChallengesPageComponent implements OnInit {
   private title = inject(Title);
   private challengeService = inject(ChallengeService);
   private urlSyncService = inject(UrlSyncService);
+  public authService = inject(AuthService);
+  public dialogStore = inject(DialogStore);
 
   generationMode: 'all-levels' | 'random' | 'manual' = 'all-levels';
 
@@ -163,6 +174,38 @@ export class ChallengesPageComponent implements OnInit {
 
   public ngOnInit(): void {
     this.makeGoogleFriendly();
+    this.fetchChallengesAndSetData();
+
+    // Subscribe to auth changes to update button visibility for OnPush strategy
+    this.authService.authChange.subscribe(() => {
+      this.cdr.markForCheck();
+    });
+
+    // Subscribe to challenge refresh events
+    this.challengeService.refreshChallenges$.subscribe((payload) => {
+      if (payload) {
+        // If a challenge object is emitted (new or updated)
+        const existingIndex = this.allChallenges.findIndex(
+          (c) => c.id === payload.id,
+        );
+        if (existingIndex > -1) {
+          // Update existing challenge
+          this.allChallenges[existingIndex] = payload;
+          this.allChallenges = [...this.allChallenges]; // Trigger change detection for array reference
+        } else {
+          // Add new challenge
+          this.allChallenges = [...this.allChallenges, payload];
+        }
+        this.updateAvailableTypes(payload.type);
+      } else {
+        // If undefined is emitted (e.g., after a delete), re-fetch all challenges
+        this.fetchChallengesAndSetData();
+      }
+      this.cdr.markForCheck();
+    });
+  }
+
+  private fetchChallengesAndSetData(): void {
     this.challengeService
       .getChallenges()
       .pipe(
@@ -193,7 +236,7 @@ export class ChallengesPageComponent implements OnInit {
           params['c4'],
         ]
           .filter((id) => !!id)
-          .map((id) => parseInt(id, 10));
+          .map((id) => id);
 
         if (challengeIds.length > 0) {
           const challengesFromUrl = challengeIds.map(
@@ -203,13 +246,20 @@ export class ChallengesPageComponent implements OnInit {
           this.generatedChallenges = challengesFromUrl.filter(
             (c) => c !== null,
           ) as IChallenge[];
-          // this.manualChallengeSlots = challengesFromUrl; // Removed this line
-
-          // If we load from a URL, default to showing the generated challenges in random mode
           this.generationMode = 'random';
           this.cdr.markForCheck();
         }
       });
+  }
+
+  private updateAvailableTypes(newType: string): void {
+    if (!this.availableTypes.some((type) => type.value === newType)) {
+      this.availableTypes = [
+        ...this.availableTypes,
+        { label: newType, value: newType },
+      ];
+      this.selectedTypes = [...this.selectedTypes, newType];
+    }
   }
 
   public onTypeChange(): void {
@@ -273,11 +323,12 @@ export class ChallengesPageComponent implements OnInit {
     if (this.generationMode === 'all-levels') {
       const difficulty = challengeToReplace.difficulty;
       potentialNewChallenges = filteredChallenges.filter(
-        (c) => c.difficulty === difficulty && !currentChallengeIds.has(c.id),
+        (c) =>
+          c.difficulty === difficulty && !currentChallengeIds.has(c.id as any),
       );
     } else if (this.generationMode === 'random') {
       potentialNewChallenges = filteredChallenges.filter(
-        (c) => !currentChallengeIds.has(c.id),
+        (c) => !currentChallengeIds.has(c.id as any),
       );
     }
 

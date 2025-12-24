@@ -23,5 +23,13 @@ service cloud.firestore {
       allow update: if request.auth != null && request.auth.uid == resource.data.userId && request.resource.id.matches(".*::"+request.auth.uid) == true;
       allow delete: if request.auth != null && request.auth.uid == resource.data.userId && resource.id.matches(".*::"+request.auth.uid) == true;
     }
+    
+    // Rules for the challenges collection
+    match /challenges/{challengeId} {
+      allow read: if true;
+      allow create: if request.auth != null && request.resource.data.userId == request.auth.uid;
+      allow update: if request.auth != null && request.auth.uid == resource.data.userId;
+      allow delete: if request.auth != null && request.auth.uid == resource.data.userId;
+    }
   }
 }

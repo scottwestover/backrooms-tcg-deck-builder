@@ -1,5 +1,11 @@
 import { patchState, signalStore, withMethods, withState } from '@ngrx/signals';
-import { BackroomsCard, dummyCard, emptyDeck, IDeck } from '../../models';
+import {
+  BackroomsCard,
+  dummyCard,
+  emptyDeck,
+  IChallenge,
+  IDeck,
+} from '../../models';
 
 interface DeckDialog {
   show: boolean;
@@ -21,6 +27,9 @@ interface ViewCardDialog {
 type Dialog = {
   changelog: boolean;
   settings: boolean;
+  createChallenge: boolean;
+  myChallenges: boolean;
+  challengeToEdit: IChallenge | null;
   viewCard: ViewCardDialog;
   exportDeck: ExportDeckDialog;
   deck: DeckDialog;
@@ -29,6 +38,9 @@ type Dialog = {
 const initialState: Dialog = {
   changelog: false,
   settings: false,
+  createChallenge: false,
+  myChallenges: false,
+  challengeToEdit: null, // Initialize new property
   viewCard: {
     show: false,
     card: JSON.parse(JSON.stringify(dummyCard)),
@@ -55,6 +67,15 @@ export const DialogStore = signalStore(
     },
     updateSettingsDialog(settings: boolean): void {
       patchState(store, (state) => ({ settings }));
+    },
+    updateCreateChallengeDialog(createChallenge: boolean): void {
+      patchState(store, (state) => ({ createChallenge }));
+    },
+    updateMyChallengesDialog(myChallenges: boolean): void {
+      patchState(store, (state) => ({ myChallenges }));
+    },
+    updateChallengeToEdit(challengeToEdit: IChallenge | null): void {
+      patchState(store, (state) => ({ challengeToEdit }));
     },
     updateViewCardDialog(viewCard: ViewCardDialog): void {
       patchState(store, (state) => ({ viewCard }));

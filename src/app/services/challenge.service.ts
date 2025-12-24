@@ -1,16 +1,101 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, combineLatest, from, map, of, Subject } from 'rxjs';
 import { IChallenge } from '../../models';
+import { AuthService } from './auth.service';
+import { FirestoreService } from './firestore.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ChallengeService {
   private http = inject(HttpClient);
+  private authService = inject(AuthService);
+  private firestoreService = inject(FirestoreService);
+
+  public refreshChallenges$: Subject<IChallenge | undefined> = new Subject<
+    IChallenge | undefined
+  >();
 
   public getChallenges(): Observable<IChallenge[]> {
-    return this.http.get<IChallenge[]>('assets/randomizer/challenges.json');
+    const localChallenges$ = this.http
+      .get<IChallenge[]>('assets/randomizer/challenges.json')
+      .pipe(
+        map((challenges) =>
+          challenges.map((c) => ({ ...c, id: c.id.toString() })),
+        ),
+      );
+
+    const firestoreChallenges$ = from(
+      this.firestoreService.getDocs('challenges'),
+    ).pipe(
+      map((querySnapshot) => {
+        const challenges: IChallenge[] = [];
+        querySnapshot.forEach((doc) => {
+          challenges.push({ id: doc.id, ...doc.data() } as IChallenge);
+        });
+        return challenges;
+      }),
+    );
+
+    return combineLatest([localChallenges$, firestoreChallenges$]).pipe(
+      map(([local, firestore]) => [...local, ...firestore]),
+    );
+  }
+
+  public createChallenge(
+    data: Omit<IChallenge, 'id' | 'creator'>,
+  ): Observable<any> {
+    if (!this.authService.isLoggedIn || !this.authService.userData) {
+      return of(null);
+    }
+
+    const user = this.authService.userData;
+    const newChallengeData = {
+      ...data,
+      creator: user.displayName,
+      userId: user.uid,
+    };
+
+    return from(
+      this.firestoreService.addDoc('challenges', newChallengeData),
+    ).pipe(
+      map((docRef) => {
+        const createdChallenge: IChallenge = {
+          id: docRef.id,
+          ...newChallengeData,
+        };
+        this.refreshChallenges$.next(createdChallenge);
+        return createdChallenge;
+      }),
+    );
+  }
+
+  public updateChallenge(challenge: IChallenge): Observable<void> {
+    if (!this.authService.isLoggedIn || !this.authService.userData) {
+      return of(undefined);
+    }
+    const { id, ...data } = challenge;
+    return from(this.firestoreService.updateDoc('challenges', id, data)).pipe(
+      map(() => {
+        this.refreshChallenges$.next(challenge);
+        return undefined;
+      }),
+    );
+  }
+
+  public deleteChallenge(challengeId: string): Observable<void> {
+    if (!this.authService.isLoggedIn || !this.authService.userData) {
+      return of(undefined);
+    }
+    return from(
+      this.firestoreService.deleteDoc('challenges', challengeId),
+    ).pipe(
+      map(() => {
+        this.refreshChallenges$.next(undefined);
+        return undefined;
+      }),
+    );
   }
 
   public generateChallenges(
@@ -39,7 +124,7 @@ export class ChallengeService {
     );
 
     const result: IChallenge[] = [];
-    const difficulties = [1, 2, 3, 4]; // Assuming levels 1-4
+    const difficulties = [1, 2, 3, 4];
 
     for (const difficulty of difficulties) {
       const group = groupedByDifficulty[difficulty];

@@ -1,8 +1,9 @@
 export interface IChallenge {
-  id: number;
+  id: string;
   name: string;
-  difficulty: number;
   description: string;
-  creator: string;
+  difficulty: number;
   type: string;
+  creator: string;
+  userId?: string;
 }

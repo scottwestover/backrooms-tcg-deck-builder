@@ -1,77 +1,105 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Meta, Title } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { of } from 'rxjs';
+import { of, Subject } from 'rxjs';
 import { IChallenge } from '../../../models';
+import { AuthService } from '../../services/auth.service';
 import { ChallengeService } from '../../services/challenge.service';
 import { UrlSyncService } from '../../services/url-sync.service';
+import { DialogStore } from '../../store/dialog.store';
 import { ChallengesPageComponent } from './challenges-page.component';
+import { ToastrModule } from 'ngx-toastr';
 
 describe('ChallengesPageComponent', () => {
   let component: ChallengesPageComponent;
   let fixture: ComponentFixture<ChallengesPageComponent>;
   let challengeService: jasmine.SpyObj<ChallengeService>;
   let urlSyncService: jasmine.SpyObj<UrlSyncService>;
+  let authService: jasmine.SpyObj<AuthService>;
+  let dialogStore: jasmine.SpyObj<InstanceType<typeof DialogStore>>;
   let nativeElement: HTMLElement;
 
   const mockChallenges: IChallenge[] = [
     {
-      id: 1,
+      id: '1',
       name: 'C1',
       difficulty: 1,
       description: 'd1',
       creator: 'c1',
       type: 'GENERIC',
+      userId: 'uid-a',
     },
     {
-      id: 5,
+      id: '5',
       name: 'C5',
       difficulty: 1,
       description: 'd5',
       creator: 'c5',
       type: 'GENERIC',
+      userId: 'uid-a',
     },
     {
-      id: 2,
+      id: '2',
       name: 'C2',
       difficulty: 2,
       description: 'd2',
       creator: 'c2',
       type: 'CAR_PARK',
+      userId: 'uid-b',
     },
     {
-      id: 3,
+      id: '3',
       name: 'C3',
       difficulty: 3,
       description: 'd3',
       creator: 'c3',
       type: 'LOBBY_LEVEL',
+      userId: 'uid-c',
     },
     {
-      id: 4,
+      id: '4',
       name: 'C4',
       difficulty: 4,
       description: 'd4',
       creator: 'c4',
       type: 'GENERIC',
+      userId: 'uid-d',
     },
   ];
 
   beforeEach(async () => {
-    const challengeServiceSpy = jasmine.createSpyObj('ChallengeService', [
-      'getChallenges',
-      'generateChallenges',
-    ]);
-    const urlSyncServiceSpy = jasmine.createSpyObj('UrlSyncService', [
+    challengeService = jasmine.createSpyObj(
+      'ChallengeService',
+      ['getChallenges', 'generateChallenges'],
+      {
+        refreshChallenges$: new Subject<IChallenge | undefined>(),
+      },
+    );
+    urlSyncService = jasmine.createSpyObj('UrlSyncService', [
       'getQueryParams',
       'updateUrl',
     ]);
+    authService = jasmine.createSpyObj('AuthService', [], {
+      isLoggedIn: false,
+      authChange: new Subject<boolean>(),
+      userData: null,
+    });
+    dialogStore = jasmine.createSpyObj('DialogStore', [
+      'updateCreateChallengeDialog',
+      'updateMyChallengesDialog',
+    ]);
 
     await TestBed.configureTestingModule({
-      imports: [ChallengesPageComponent, NoopAnimationsModule],
+      imports: [
+        ChallengesPageComponent,
+        NoopAnimationsModule,
+        ToastrModule.forRoot(),
+      ],
       providers: [
-        { provide: ChallengeService, useValue: challengeServiceSpy },
-        { provide: UrlSyncService, useValue: urlSyncServiceSpy },
+        { provide: ChallengeService, useValue: challengeService },
+        { provide: UrlSyncService, useValue: urlSyncService },
+        { provide: AuthService, useValue: authService },
+        { provide: DialogStore, useValue: dialogStore },
         {
           provide: Title,
           useValue: jasmine.createSpyObj('Title', ['setTitle']),
@@ -83,12 +111,6 @@ describe('ChallengesPageComponent', () => {
     fixture = TestBed.createComponent(ChallengesPageComponent);
     component = fixture.componentInstance;
     nativeElement = fixture.nativeElement;
-    challengeService = TestBed.inject(
-      ChallengeService,
-    ) as jasmine.SpyObj<ChallengeService>;
-    urlSyncService = TestBed.inject(
-      UrlSyncService,
-    ) as jasmine.SpyObj<UrlSyncService>;
 
     // Default mock implementations
     urlSyncService.getQueryParams.and.returnValue(of({}));
@@ -118,8 +140,8 @@ describe('ChallengesPageComponent', () => {
     expect(component.generationMode).toBe('random');
     expect(component.selectedTypes).toEqual(['GENERIC', 'LOBBY_LEVEL']);
     expect(component.generatedChallenges.length).toBe(2);
-    expect(component.generatedChallenges[0]?.id).toBe(1);
-    expect(component.generatedChallenges[1]?.id).toBe(3);
+    expect(component.generatedChallenges[0]?.id).toBe('1');
+    expect(component.generatedChallenges[1]?.id).toBe('3');
   });
 
   it('should call generate and updateUrl when the button is clicked', () => {
@@ -153,9 +175,7 @@ describe('ChallengesPageComponent', () => {
   });
 
   it('should re-roll a challenge and update url', () => {
-    // Setup: Ensure types are selected so that getFilteredChallenges works
     component.selectedTypes = ['GENERIC', 'CAR_PARK', 'LOBBY_LEVEL'];
-    // Start with a realistic set for 'all-levels' mode
     component.generatedChallenges = [
       mockChallenges[0], // id 1, diff 1
       mockChallenges[2], // id 2, diff 2
@@ -164,11 +184,9 @@ describe('ChallengesPageComponent', () => {
     ];
     fixture.detectChanges();
 
-    // Reroll the first challenge (id: 1, difficulty: 1)
     component.rerollChallenge(mockChallenges[0], 0);
 
-    // The new challenge should be the other level 1 challenge (id: 5)
-    expect(component.generatedChallenges[0].id).toBe(5);
+    expect(component.generatedChallenges[0].id).toBe('5');
     expect(urlSyncService.updateUrl).toHaveBeenCalled();
   });
 
@@ -190,7 +208,6 @@ describe('ChallengesPageComponent', () => {
     component.setGenerationMode('random');
     expect(component.generatedChallenges[0]?.id).toBe(mockChallenges[0].id);
     expect(component.generatedChallenges[3]?.id).toBe(mockChallenges[3].id);
-    // generate() is called, which also calls updateUrl()
     expect(challengeService.generateChallenges).toHaveBeenCalled();
     expect(urlSyncService.updateUrl).toHaveBeenCalled();
   });

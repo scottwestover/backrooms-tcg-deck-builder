@@ -9,7 +9,7 @@ describe('ChallengeDisplayCardComponent', () => {
   let nativeElement: HTMLElement;
 
   const mockChallenge: IChallenge = {
-    id: 1,
+    id: '1',
     name: 'Test Challenge',
     difficulty: 3,
     description: 'This is a test description.',
