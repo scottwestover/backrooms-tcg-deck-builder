@@ -9,8 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Added new section to the help page with content on how to create and manage custom challenges.
-- Added new unit tests for components in the help page.
+- Added new section to the help page with content on how to create and manage custom challenges [708ec3e](https://github.com/scottwestover/backrooms-tcg-deck-builder/commit/708ec3e978561cd411697789444ab195da5c9ea3).
+- Added new unit tests for components in the help page [708ec3e](https://github.com/scottwestover/backrooms-tcg-deck-builder/commit/708ec3e978561cd411697789444ab195da5c9ea3).
 
 ## [0.0.12] - 2025-12-24
 
