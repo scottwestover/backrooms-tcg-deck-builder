@@ -401,7 +401,7 @@
     },
     {
         "id": 51,
-        "name": "What are the odds:",
+        "name": "What are the odds?",
         "difficulty": 1,
         "description": "Roll a d20 dice to choose your starting sanity. If you start with 16-20 Sanity, this is worth 1 Point. 11-15 Sanity is worth 2 Points. 6-10 Sanity is worth 3 Points. 1-5 Sanity is worth 4 Points.",
         "creator": "Hass Thrift",
@@ -1542,5 +1542,173 @@
         "description": "Have at least 4 Dead Ends on the Field of Play.",
         "creator": "LuckyLogan",
         "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 194,
+        "name": "Evolving Horrors",
+        "difficulty": 2,
+        "description": "SETUP: Place an Ancient Faceling into the NLD Zone before the game begins. CHALLENGE: Defeat the Faceling and then the Ancient Faceling before escaping. Once you defeat the Faceling, instead of placing it in the discard pile, set it aside out of play and shuffle the Ancient Faceling into the Pull Pile from the NLD Zone, and continue playing.",
+        "creator": "NowayArtemus",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 195,
+        "name": "Drained Dry",
+        "difficulty": 2,
+        "description": "At the start of every Action Round that you're engaged to an entity, lose 1 Sanity.",
+        "creator": "Unknown",
+        "type": "GENERIC"
+    },
+    {
+        "id": 196,
+        "name": "Aiding Aiden",
+        "difficulty": 2,
+        "description": "Before escaping, you must engage with Aiden at least twice. One of those times, you must give him a Painite Gem.",
+        "creator": "Unknown",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 197,
+        "name": "Backrooms Hit List",
+        "difficulty": 3,
+        "description": "Defeat 4, 6, or 8 different unique entities before exiting. 4 entities are worth 1 Point, 6 entities are worth 2 points, and 8 entities are worth 3 points. Use a die or tokens to track each time you defeat a unique entity.",
+        "creator": "Unknown",
+        "type": "GENERIC"
+    },
+    {
+        "id": 198,
+        "name": "Dark Hall Aficionado 1",
+        "difficulty": 2,
+        "description": "Defeat 2 Entities while in a Dark Hall for 2 points",
+        "creator": "Unknown",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 199,
+        "name": "Dark Hall Aficionado 2",
+        "difficulty": 3,
+        "description": "Defeat 3 Entities while in a Dark Hall for 3 Points.",
+        "creator": "Unknown",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 200,
+        "name": "Bright Hall Maestro 1",
+        "difficulty": 2,
+        "description": "Defeat 2 Entities while in a Bright Hall.",
+        "creator": "Unknown",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 201,
+        "name": "Bright Hall Maestro 2",
+        "difficulty": 3,
+        "description": "Defeat 3 Entities while in a Bright Hall.",
+        "creator": "Unknown",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 202,
+        "name": "Hole-ding Out",
+        "difficulty": 2,
+        "description": "Defeat an entity, then use Shrink Drink to go through a Punctured Wall. Moving through the Punctured Wall must happen the next movement round after defeating the entity.",
+        "creator": "Unknown",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 203,
+        "name": "Wave of Hypnosis",
+        "difficulty": 3,
+        "description": "Engage and defeat 3 Monitors.",
+        "creator": "Unknown",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 204,
+        "name": "Wandering Warrior",
+        "difficulty": 4,
+        "description": "Engage and defeat a Green light or higher entity in each hallway type (i.e. Poisoned, Dark, Bright, Destroyed). For each unique Hallway type you defeat an entity in, gain 1 Point.",
+        "creator": "Unknown",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 205,
+        "name": "Unnatural Strength",
+        "difficulty": 2,
+        "description": "All Unfriendly entities deal double Deck-in-Hand damage while engaged.",
+        "creator": "Unknown",
+        "type": "GENERIC"
+    },
+    {
+        "id": 206,
+        "name": "Sapping Sanity",
+        "difficulty": 2,
+        "description": "All items cost an additional -2 Sanity to use, on top of any regular Sanity loss.",
+        "creator": "Unknown",
+        "type": "GENERIC"
+    },
+    {
+        "id": 207,
+        "name": "Extra Juicy Fruit",
+        "difficulty": 3,
+        "description": "Use Dumb Gum on 3 different entities. This Gum is a powerful weapon in the backrooms, allowing you to put the dangerous unfriendlies down before they get you!",
+        "creator": "Unknown",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 208,
+        "name": "White Elephant Party for the Arch-Raven",
+        "difficulty": 2,
+        "description": "Gift the Arch-Raven Death Moth Jelly during two separate encounters to gain its favor. This bird loves to give gifts, and also endlessly desires its favorite jar of Death Moth Jelly.",
+        "creator": "Unknown",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 209,
+        "name": "Paper Snake Party",
+        "difficulty": 2,
+        "description": "Engage the Paper Snakes and sacrifice a Painite Gem and an item to it over one or more encounters. These don\u2019t need to be in the same encounter. Even the Paper Snakes get some holiday cheer!",
+        "creator": "Unknown",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 210,
+        "name": "Truly Empty Pockets",
+        "difficulty": 2,
+        "description": "Escape the Backrooms without any items in your inventory. Items may not be discarded unless actively used or discarded due to taking a fifth item. To embody the spirit of giving, you must leave as light as you came, Wanderer.",
+        "creator": "Unknown",
+        "type": "GENERIC"
+    },
+    {
+        "id": 211,
+        "name": "Starving Void",
+        "difficulty": 2,
+        "description": "Lose 2 items from your Inventory to the Void before escaping. The Void is hungry for a helping of presents, so give it what it wants to appease its bottomless appetite.",
+        "creator": "Unknown",
+        "type": "GENERIC"
+    },
+    {
+        "id": 212,
+        "name": "Clocksmith's Holiday Treasury",
+        "difficulty": 2,
+        "description": "Gain a total of 4 items from encounters with the Clocksmith. This mysterious fella often has nuggets of wisdom to dispense, as well as some valuable items should you choose to leave him with his Painite Gem.",
+        "creator": "Unknown",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 213,
+        "name": "Turning the Frown Upside Down",
+        "difficulty": 2,
+        "description": "Use Memory Fluid to appease a Frowner Entity during two separate encounters. Even the Frowners need love this holiday season, so appease their mind with some Memory Fluid cologne and let their sorrows fade into holiday cheer.",
+        "creator": "Unknown",
+        "type": "LOBBY_LEVEL"
+    },
+    {
+        "id": 214,
+        "name": "The Entity Next Door (L2)",
+        "difficulty": 2,
+        "description": "Whenever you lose DIH to an Entity while engaged, your Sanity drops by the same amount. Every engagement in this place drains both your mind and your body. Prepare yourself to suffer, but through suffering, find your salvation!",
+        "creator": "BigTasty",
+        "type": "GENERIC"
     }
 ]
