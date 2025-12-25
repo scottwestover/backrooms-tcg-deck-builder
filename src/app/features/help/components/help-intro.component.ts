@@ -14,6 +14,8 @@ import { HelpDeckRandomizerComponent } from './help-deck-randomizer.component';
 import { HelpChallengeRandomizerComponent } from './help-challenge-randomizer.component';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { map } from 'rxjs/operators';
+import { HelpCreateCustomChallengesComponent } from './help-create-custom-challenges.component';
+import { HelpManageCustomChallengesComponent } from './help-manage-custom-challenges.component';
 
 @Component({
   selector: 'backrooms-help-intro',
@@ -41,6 +43,16 @@ import { map } from 'rxjs/operators';
             <backrooms-help-challenge-randomizer
               *ngSwitchCase="'challenge-randomizer'"
               [isMobile]="data.isMobile"></backrooms-help-challenge-randomizer>
+            <backrooms-help-create-custom-challenges-component
+              *ngSwitchCase="'create-custom-challenge'"
+              [isMobile]="
+                data.isMobile
+              "></backrooms-help-create-custom-challenges-component>
+            <backrooms-help-manage-custom-challenges-component
+              *ngSwitchCase="'manage-custom-challenge'"
+              [isMobile]="
+                data.isMobile
+              "></backrooms-help-manage-custom-challenges-component>
           </ng-container>
         </p-accordionTab>
       </p-accordion>
@@ -59,6 +71,8 @@ import { map } from 'rxjs/operators';
     HelpShareDeckComponent,
     HelpDeckRandomizerComponent,
     HelpChallengeRandomizerComponent,
+    HelpCreateCustomChallengesComponent,
+    HelpManageCustomChallengesComponent,
     NgIf,
   ],
   styleUrls: ['./help-intro.component.scss'],
@@ -86,6 +100,14 @@ export class HelpIntroComponent {
     {
       id: 'challenge-randomizer',
       question: 'How do I use the challenge randomizer?',
+    },
+    {
+      id: 'create-custom-challenge',
+      question: 'How do I create a custom challenge?',
+    },
+    {
+      id: 'manage-custom-challenge',
+      question: 'How do I manage my custom challenges?',
     },
   ];
 }

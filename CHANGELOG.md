@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+### Added
+
+- Added new section to the help page with content on how to create and manage custom challenges.
+- Added new unit tests for components in the help page.
+
 ## [0.0.12] - 2025-12-24
 
 ### Added
