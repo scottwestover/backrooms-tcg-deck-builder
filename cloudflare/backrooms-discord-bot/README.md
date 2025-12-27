@@ -1,16 +1,11 @@
 # Cloudflare worker app
 
-awwbot is an example app that brings the cuteness of `r/aww` straight to your Discord server, hosted on Cloudflare workers. Cloudflare Workers are a convenient way to host Discord bots due to the free tier, simple development model, and automatically managed environment (no VMs!).
-
-The tutorial for building awwbot is [in the developer documentation](https://discord.com/developers/docs/tutorials/hosting-on-cloudflare-workers)
-
-![awwbot in action](https://user-images.githubusercontent.com/534619/157503404-a6c79d1b-f0d0-40c2-93cb-164f9df7c138.gif)
+Cloudflare worker app for hosting a Discord bot on the free tier.
 
 ## Resources used
 
 - [Discord Interactions API](https://discord.com/developers/docs/interactions/receiving-and-responding)
 - [Cloudflare Workers](https://workers.cloudflare.com/) for hosting
-- [Reddit API](https://www.reddit.com/dev/api/) to send messages back to the user
 
 ---
 
@@ -22,7 +17,6 @@ Below is a basic overview of the project structure:
 ├── .github/workflows/ci.yaml -> Github Action configuration
 ├── src
 │   ├── commands.js           -> JSON payloads for commands
-│   ├── reddit.js             -> Interactions with the Reddit API
 │   ├── register.js           -> Sets up commands with the Discord API
 │   ├── server.js             -> Discord app logic and routing
 ├── test
@@ -54,13 +48,7 @@ Next, you'll need to create a Cloudflare Worker.
 
 ## Running locally
 
-First clone the project:
-
-```
-git clone https://github.com/discord/cloudflare-sample-app.git
-```
-
-Then navigate to its directory and install dependencies:
+Install dependencies:
 
 ```
 cd cloudflare-sample-app

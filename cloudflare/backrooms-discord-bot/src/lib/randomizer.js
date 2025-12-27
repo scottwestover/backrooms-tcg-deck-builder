@@ -154,7 +154,7 @@ export function formatCardList(cards) {
     if (cardInfo) {
       const list = groupedCards[cardInfo.cardType + 's'];
       if (list) {
-        list.push(`${cardCounts[id]}x ${cardInfo.name.english}`);
+        list.push(`${cardCounts[id]}x ${cardInfo.name.english} (${cardInfo.id})`);
       }
     }
   }
