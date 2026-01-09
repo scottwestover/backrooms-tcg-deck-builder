@@ -12,6 +12,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added new section to the help page with content on how to create and manage custom challenges [708ec3e](https://github.com/scottwestover/backrooms-tcg-deck-builder/commit/708ec3e978561cd411697789444ab195da5c9ea3).
 - Added new unit tests for components in the help page [708ec3e](https://github.com/scottwestover/backrooms-tcg-deck-builder/commit/708ec3e978561cd411697789444ab195da5c9ea3).
 - Added new challenges to the app [d0c4df9](https://github.com/scottwestover/backrooms-tcg-deck-builder/commit/d0c4df999bddc107df2660bf5cd2f0df6c5537ee).
+- December 2025 Promo Card "Enoch's Drift" .
+- January 2026 Promo Card "Pool Guard" .
+- New Aquazone preview cards .
 
 ## [0.0.12] - 2025-12-24
 

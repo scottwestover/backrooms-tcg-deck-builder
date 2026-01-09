@@ -834,5 +834,49 @@
     "notes": "-",
     "version": "Normal",
     "cardType": "Outcome"
+  },
+  {
+    "id": "P-039",
+    "name": {
+      "english": "Enoch's Drift"
+    },
+    "rarity": "SHATTERED",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/promo/P-039.webp",
+    "illustrator": "-",
+    "cardNumber": "99039",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "P-040",
+    "name": {
+      "english": "Pool Guard"
+    },
+    "rarity": "UNCOMMON",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/promo/P-040.webp",
+    "illustrator": "-",
+    "cardNumber": "99040",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
   }
 ]

@@ -1,5 +1,102 @@
 [
   {
+    "id": "AZ-001",
+    "name": {
+      "english": "Watery Corridor"
+    },
+    "rarity": "COMMON",
+    "types": [
+      "ROOM"
+    ],
+    "ccs": {
+      "type": "PP",
+      "value": "3"
+    },
+    "navigationPoints": "2",
+    "sanityPoints": "2",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-001.webp",
+    "illustrator": "-",
+    "cardNumber": "3001",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Room"
+  },
+  {
+    "id": "AZ-002",
+    "name": {
+      "english": "Turn Arcades"
+    },
+    "rarity": "COMMON",
+    "types": [
+      "ROOM"
+    ],
+    "ccs": {
+      "type": "PP",
+      "value": "2"
+    },
+    "navigationPoints": "1",
+    "sanityPoints": "1",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-002.webp",
+    "illustrator": "-",
+    "cardNumber": "3002",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Room"
+  },
+  {
+    "id": "AZ-003",
+    "name": {
+      "english": "Darkened Poolrooms"
+    },
+    "rarity": "COMMON",
+    "types": [
+      "ROOM"
+    ],
+    "ccs": {
+      "type": "PP",
+      "value": "3"
+    },
+    "navigationPoints": "2",
+    "sanityPoints": "-3",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-003.webp",
+    "illustrator": "-",
+    "cardNumber": "3003",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Room"
+  },
+  {
+    "id": "AZ-019",
+    "name": {
+      "english": "Water Level Rises"
+    },
+    "rarity": "COMMON",
+    "types": [
+      "ROOM",
+      "HAZZARD"
+    ],
+    "ccs": {
+      "type": "PP",
+      "value": "0"
+    },
+    "navigationPoints": "",
+    "sanityPoints": "-1",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-019.webp",
+    "illustrator": "-",
+    "cardNumber": "3019",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Room"
+  },
+  {
     "id": "AZ-023",
     "name": {
       "english": "Lobby Dumbwaiter"
@@ -20,6 +117,28 @@
     "notes": "-",
     "version": "Normal",
     "cardType": "Outcome"
+  },
+  {
+    "id": "AZ-024",
+    "name": {
+      "english": "Faceling Irei"
+    },
+    "rarity": "UNCOMMON",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-024.webp",
+    "illustrator": "-",
+    "cardNumber": "3024",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
   },
   {
     "id": "AZ-039",
