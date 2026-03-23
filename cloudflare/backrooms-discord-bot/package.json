@@ -19,7 +19,9 @@
   "license": "MIT",
   "dependencies": {
     "discord-interactions": "4.0.0",
-    "itty-router": "5.0.9"
+    "fuse.js": "7.1.0",
+    "itty-router": "5.0.9",
+    "jose": "6.2.1"
   },
   "devDependencies": {
     "@eslint/js": "9.1.1",

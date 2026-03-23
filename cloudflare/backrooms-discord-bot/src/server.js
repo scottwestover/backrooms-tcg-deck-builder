@@ -7,10 +7,15 @@ import {
   InteractionResponseType,
   InteractionType,
   verifyKey,
+  InteractionResponseFlags,
+  MessageComponentTypes,
 } from 'discord-interactions';
+import Fuse from 'fuse.js';
 import {
   DECK_RANDOM_COMMAND,
   INVITE_COMMAND,
+  COMPLETE_TRIAL_COMMAND,
+  PROFILE_COMMAND,
 } from './commands.js';
 import {
   generateDeck,
@@ -18,7 +23,18 @@ import {
   formatCardList,
   getDeckbuilderUrl,
 } from './lib/randomizer.js';
-import { InteractionResponseFlags } from 'discord-interactions';
+import {
+  getWanderTrialByName,
+  getDiscordUser,
+  updateDiscordUser,
+  serializeFirestoreDocument,
+} from './lib/firestore.js';
+import {
+  calculateTrialResults,
+  createTrialResponseEmbed,
+} from './lib/gamification.js';
+import { createProfileEmbed } from './lib/profile.js';
+import trials from '../data/wander-trials.json' assert { type: 'json' };
 
 class JsonResponse extends Response {
   constructor(body, init) {
@@ -34,6 +50,12 @@ class JsonResponse extends Response {
 
 const router = AutoRouter();
 
+// Helper to get command options by name
+const getOption = (options, name) => {
+  const option = options.find((o) => o.name === name);
+  return option ? option.value : null;
+};
+
 /**
  * A simple :wave: hello page to verify the worker is working.
  */
@@ -42,9 +64,7 @@ router.get('/', (request, env) => {
 });
 
 /**
- * Main route for all requests sent from Discord.  All incoming messages will
- * include a JSON payload described here:
- * https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-object
+ * Main route for all requests sent from Discord.
  */
 router.post('/', async (request, env) => {
   const { isValid, interaction } = await server.verifyDiscordRequest(
@@ -52,19 +72,21 @@ router.post('/', async (request, env) => {
     env,
   );
   if (!isValid || !interaction) {
+    console.error('Bad request signature.');
     return new Response('Bad request signature.', { status: 401 });
   }
+  //console.log('Incoming interaction:', JSON.stringify(interaction, null, 2));
+  console.log('Incoming interaction:', interaction.type);
 
   if (interaction.type === InteractionType.PING) {
-    // The `PING` message is used during the initial webhook handshake, and is
-    // required to configure the webhook in the developer portal.
-    return new JsonResponse({
-      type: InteractionResponseType.PONG,
-    });
+    console.log('Handling PING request.');
+    return new JsonResponse({ type: InteractionResponseType.PONG });
   }
 
   if (interaction.type === InteractionType.APPLICATION_COMMAND) {
-    // Most user commands will come as `APPLICATION_COMMAND`.
+    console.log(
+      `Handling APPLICATION_COMMAND: ${interaction.data.name.toLowerCase()}`,
+    );
     switch (interaction.data.name.toLowerCase()) {
       case INVITE_COMMAND.name.toLowerCase(): {
         const applicationId = env.DISCORD_APPLICATION_ID;
@@ -78,7 +100,7 @@ router.post('/', async (request, env) => {
         });
       }
       case DECK_RANDOM_COMMAND.name.toLowerCase(): {
-        const mode = interaction.data.options[0].value;
+        const mode = getOption(interaction.data.options, 'mode');
         const deck = generateDeck(mode);
 
         const cardList = formatCardList(deck.cards);
@@ -102,13 +124,7 @@ router.post('/', async (request, env) => {
         return new JsonResponse({
           type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
           data: {
-            embeds: [
-              {
-                title: title,
-                description: description,
-                color: 0xfeb737, // Yellowish color
-              },
-            ],
+            embeds: [{ title, description, color: 0xfeb737 }],
             components: [
               {
                 type: 1, // Action Row
@@ -125,12 +141,142 @@ router.post('/', async (request, env) => {
           },
         });
       }
+      case COMPLETE_TRIAL_COMMAND.name.toLowerCase(): {
+        const trialName = getOption(interaction.data.options, 'trial-name');
+
+        const fuseOptions = {
+          keys: ['name'],
+          threshold: 0.4,
+          minMatchCharLength: 3,
+          includeScore: true,
+        };
+
+        // Fuzzy search for the trial
+        const trialFuse = new Fuse(trials, fuseOptions);
+        const trialResults = trialFuse.search(trialName);
+
+        if (!trialResults.length) {
+          return new JsonResponse({
+            type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+            data: {
+              content: `Trial "${trialName}" not found.`,
+              flags: InteractionResponseFlags.EPHEMERAL,
+            },
+          });
+        }
+        const trial = trialResults[0].item;
+
+        // Construct and return the interactive message for challenge selection
+        return new JsonResponse({
+          type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+          data: {
+            content: `Found trial: **${trial.name}**. Please select the challenges you completed.`,
+            flags: InteractionResponseFlags.EPHEMERAL,
+            components: [
+              {
+                type: MessageComponentTypes.ACTION_ROW, // type 1 for ActionRow
+                components: [
+                  {
+                    type: MessageComponentTypes.STRING_SELECT, // type 3 for SelectMenu (string-based)
+                    custom_id: `select_challenges_${trial.id}`, // Unique ID for this select menu
+                    placeholder: 'Select completed challenges...',
+                    min_values: 1,
+                    max_values: trial.challenges.length,
+                    options: trial.challenges.map(challenge => ({
+                      label: challenge.name,
+                      value: challenge.id,
+                      description: `Grants ${challenge.xp} XP`
+                    }))
+                  }
+                ]
+              }
+            ],
+          },
+        });
+      }
+      case PROFILE_COMMAND.name.toLowerCase(): {
+        const discordId = interaction.member.user.id;
+        const discordUser = await getDiscordUser(discordId, env);
+
+        if (!discordUser) {
+          return new JsonResponse({
+            type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+            data: {
+              content: 'You have not completed any trials yet.',
+              flags: InteractionResponseFlags.EPHEMERAL,
+            },
+          });
+        }
+
+        const embed = createProfileEmbed(discordUser);
+        return new JsonResponse({
+          type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+          data: {
+            embeds: [embed],
+          },
+        });
+      }
       default:
+        console.error(`Unknown command: ${interaction.data.name}`);
         return new JsonResponse({ error: 'Unknown Type' }, { status: 400 });
+    }
+  } else if (interaction.type === InteractionType.MESSAGE_COMPONENT) {
+    const componentId = interaction.data.custom_id;
+    console.log(`Handling MESSAGE_COMPONENT: ${componentId}`);
+    if (componentId.startsWith('select_challenges_')) {
+      const trialId = componentId.replace('select_challenges_', '');
+      const selectedChallengeIds = interaction.data.values;
+      console.log(
+        `Trial ${trialId} completed with challenges: ${selectedChallengeIds.join(', ')}`,
+      );
+
+      const trial = trials.find(t => t.id === trialId);
+
+      if (!trial) {
+        console.error(`Could not find trial with ID: ${trialId}`);
+        return new JsonResponse({
+          type: InteractionResponseType.UPDATE_MESSAGE,
+          data: {
+            content: 'Error: Could not find the selected trial.',
+            flags: InteractionResponseFlags.EPHEMERAL,
+            components: [], // Remove components
+          },
+        });
+      }
+
+      const completedChallenges = trial.challenges.filter(challenge =>
+        selectedChallengeIds.includes(challenge.id)
+      );
+
+      const discordId = interaction.member.user.id;
+      const discordUser = await getDiscordUser(discordId, env);
+      
+      const results = calculateTrialResults(
+        discordUser,
+        trial,
+        completedChallenges,
+        interaction.member.user.username,
+      );
+      // console.log('Trial results:', JSON.stringify(results, null, 2));
+      console.log('recieved trial results');
+
+      const serializedUser = serializeFirestoreDocument(results.updatedUser);
+      await updateDiscordUser(discordId, serializedUser, env);
+      const embed = createTrialResponseEmbed(results);
+
+      return new JsonResponse({
+        type: InteractionResponseType.UPDATE_MESSAGE,
+        data: {
+          embeds: [embed],
+          components: [], // Remove components after selection
+        },
+      });
     }
   }
 
-  console.error('Unknown Type');
+  console.error('Unknown Type', {
+    interaction: JSON.stringify(interaction, null, 2),
+  });
   return new JsonResponse({ error: 'Unknown Type' }, { status: 400 });
 });
 router.all('*', () => new Response('Not Found.', { status: 404 }));

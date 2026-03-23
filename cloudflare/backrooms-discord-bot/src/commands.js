@@ -10,7 +10,7 @@ export const DECK_RANDOM_COMMAND = {
     {
       name: 'mode',
       description: 'The randomization mode to use.',
-      type: 3, // STRING
+      type: 3,
       required: true,
       choices: [
         {
@@ -29,4 +29,22 @@ export const DECK_RANDOM_COMMAND = {
 export const INVITE_COMMAND = {
   name: 'invite',
   description: 'Get an invite link to add the bot to your server',
+};
+
+export const COMPLETE_TRIAL_COMMAND = {
+  name: 'complete-trial',
+  description: 'Complete a Wander Trial to earn XP and achievements.',
+  options: [
+    {
+      name: 'trial-name',
+      description: 'The name of the trial you completed.',
+      type: 3,
+      required: true,
+    },
+  ],
+};
+
+export const PROFILE_COMMAND = {
+  name: 'profile',
+  description: 'View your profile.',
 };

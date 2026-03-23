@@ -1,4 +1,9 @@
-import { INVITE_COMMAND, DECK_RANDOM_COMMAND } from './commands.js';
+import {
+  INVITE_COMMAND,
+  DECK_RANDOM_COMMAND,
+  COMPLETE_TRIAL_COMMAND,
+  PROFILE_COMMAND,
+} from './commands.js';
 import dotenv from 'dotenv';
 import process from 'node:process';
 
@@ -34,7 +39,12 @@ const response = await fetch(url, {
     Authorization: `Bot ${token}`,
   },
   method: 'PUT',
-  body: JSON.stringify([DECK_RANDOM_COMMAND, INVITE_COMMAND]),
+  body: JSON.stringify([
+    DECK_RANDOM_COMMAND,
+    INVITE_COMMAND,
+    COMPLETE_TRIAL_COMMAND,
+    PROFILE_COMMAND,
+  ]),
 });
 
 if (response.ok) {

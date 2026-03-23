@@ -1,0 +1,610 @@
+[
+  {
+    "id": "1",
+    "name": "Entities From Outer Space",
+    "challenges": [
+      {
+        "id": "trial_1_challenge_1",
+        "name": "From The Dark And Infinite Cold",
+        "xp": 100
+      },
+      { "id": "trial_1_challenge_2", "name": "Cosmic Terrors", "xp": 100 },
+      { "id": "trial_1_challenge_3", "name": "The Infinite Abyss", "xp": 100 }
+    ]
+  },
+  {
+    "id": "2",
+    "name": "Shades Of An Artist",
+    "challenges": [
+      {
+        "id": "trial_2_challenge_1",
+        "name": "Four Faces In The Dark",
+        "xp": 100
+      },
+      {
+        "id": "trial_2_challenge_2",
+        "name": "Three Faces In A Corner",
+        "xp": 100
+      },
+      {
+        "id": "trial_2_challenge_3",
+        "name": "Two Faces In A Hallway",
+        "xp": 100
+      },
+      {
+        "id": "trial_2_challenge_4",
+        "name": "A Face Into The Shiny Light",
+        "xp": 100
+      }
+    ]
+  },
+  {
+    "id": "3",
+    "name": "Split Cerberus",
+    "challenges": [
+      { "id": "trial_3_challenge_1", "name": "Dog Day Afternoon", "xp": 100 },
+      {
+        "id": "trial_3_challenge_2",
+        "name": "Into the Next Level!",
+        "xp": 100
+      },
+      { "id": "trial_3_challenge_3", "name": "Pay the Toll", "xp": 100 },
+      { "id": "trial_3_challenge_4", "name": "Echoing Signals", "xp": 100 },
+      {
+        "id": "trial_3_challenge_5",
+        "name": "Topple the Tollkeeper",
+        "xp": 100
+      }
+    ]
+  },
+  {
+    "id": "4",
+    "name": "What a Terrible Night for a Curse!",
+    "challenges": [
+      { "id": "trial_4_challenge_1", "name": "The Curse Strikes!", "xp": 100 },
+      { "id": "trial_4_challenge_2", "name": "Persistent Pain", "xp": 100 },
+      { "id": "trial_4_challenge_3", "name": "Cursed Strength", "xp": 100 },
+      { "id": "trial_4_challenge_4", "name": "The Pastures", "xp": 100 },
+      { "id": "trial_4_challenge_5", "name": "Unfriendly Entrance", "xp": 100 }
+    ]
+  },
+  {
+    "id": "5",
+    "name": "Shifting Times",
+    "challenges": [
+      { "id": "trial_5_challenge_1", "name": "The spider problem", "xp": 100 },
+      {
+        "id": "trial_5_challenge_2",
+        "name": "The man behind the problem",
+        "xp": 100
+      },
+      {
+        "id": "trial_5_challenge_3",
+        "name": "The problem of all problems",
+        "xp": 100
+      }
+    ]
+  },
+  {
+    "id": "6",
+    "name": "Rampage of the Enforcer",
+    "challenges": [
+      {
+        "id": "trial_6_challenge_1",
+        "name": "Death Moth Delivery Prime",
+        "xp": 100
+      },
+      { "id": "trial_6_challenge_2", "name": "Shadows and Light", "xp": 100 },
+      { "id": "trial_6_challenge_3", "name": "Right Hand Entity", "xp": 100 },
+      { "id": "trial_6_challenge_4", "name": "Cross Slash", "xp": 100 }
+    ]
+  },
+  {
+    "id": "7",
+    "name": "Car Park Mouse Trap",
+    "challenges": [
+      { "id": "trial_7_challenge_1", "name": "Pave the Way", "xp": 100 },
+      { "id": "trial_7_challenge_2", "name": "Tools of Survival", "xp": 100 },
+      {
+        "id": "trial_7_challenge_3",
+        "name": "Shadows in the Garage",
+        "xp": 100
+      },
+      { "id": "trial_7_challenge_4", "name": "Golden Turn", "xp": 100 },
+      {
+        "id": "trial_7_challenge_5",
+        "name": "Golden Turn with Extra Steps",
+        "xp": 100
+      }
+    ]
+  },
+  {
+    "id": "8",
+    "name": "Treacherous Paths",
+    "challenges": [
+      { "id": "trial_8_challenge_1", "name": "Gift for Arch-Raven", "xp": 100 },
+      { "id": "trial_8_challenge_2", "name": "Mirror Peace", "xp": 100 },
+      { "id": "trial_8_challenge_3", "name": "Faceling Hunt", "xp": 100 },
+      { "id": "trial_8_challenge_4", "name": "Poison Expert", "xp": 100 }
+    ]
+  },
+  {
+    "id": "9",
+    "name": "Lady Lindy, Retired Wanderer",
+    "challenges": [
+      { "id": "trial_9_challenge_1", "name": "Meeting the Lady", "xp": 100 },
+      { "id": "trial_9_challenge_2", "name": "Bubble-icious", "xp": 100 },
+      { "id": "trial_9_challenge_3", "name": "All we Can Carry", "xp": 100 }
+    ]
+  },
+  {
+    "id": "10",
+    "name": "The Huntmaster",
+    "challenges": [
+      { "id": "trial_10_challenge_1", "name": "Bait and Switch", "xp": 100 },
+      { "id": "trial_10_challenge_2", "name": "Hound Tamer", "xp": 100 },
+      { "id": "trial_10_challenge_3", "name": "Hound Master", "xp": 100 },
+      { "id": "trial_10_challenge_4", "name": "Master of Masters", "xp": 100 }
+    ]
+  },
+  {
+    "id": "11",
+    "name": "The Tollkeeper's Ruin",
+    "challenges": [
+      { "id": "trial_11_challenge_1", "name": "Tool of Foresight", "xp": 100 },
+      { "id": "trial_11_challenge_2", "name": "Clashing Memories", "xp": 100 },
+      { "id": "trial_11_challenge_3", "name": "Kill the Keeper", "xp": 100 }
+    ]
+  },
+  {
+    "id": "12",
+    "name": "Ancient Cosmic Horrors",
+    "challenges": [
+      { "id": "trial_12_challenge_1", "name": "Choke Out", "xp": 100 },
+      { "id": "trial_12_challenge_2", "name": "Death's Door", "xp": 100 },
+      { "id": "trial_12_challenge_3", "name": "Hole in the Wall", "xp": 100 },
+      { "id": "trial_12_challenge_4", "name": "Pain Mode", "xp": 100 }
+    ]
+  },
+  {
+    "id": "13",
+    "name": "Halls of Shadowed Light",
+    "challenges": [
+      { "id": "trial_13_challenge_1", "name": "Gathering Supplies", "xp": 100 },
+      {
+        "id": "trial_13_challenge_2",
+        "name": "Second Pair of Eyes",
+        "xp": 100
+      },
+      { "id": "trial_13_challenge_3", "name": "Tiny Escape Route", "xp": 100 },
+      { "id": "trial_13_challenge_4", "name": "The Final Beast", "xp": 100 }
+    ]
+  },
+  {
+    "id": "14",
+    "name": "No-Clipping into Wonderland",
+    "challenges": [
+      {
+        "id": "trial_14_challenge_1",
+        "name": "The Allure of the Unreal",
+        "xp": 100
+      },
+      { "id": "trial_14_challenge_2", "name": "Just Made It", "xp": 100 },
+      {
+        "id": "trial_14_challenge_3",
+        "name": "Gathering Armaments",
+        "xp": 100
+      },
+      {
+        "id": "trial_14_challenge_4",
+        "name": "Battle Through the Dark and Light",
+        "xp": 100
+      }
+    ]
+  },
+  {
+    "id": "15",
+    "name": "Scarlett, Otherworldly Warlord",
+    "challenges": [
+      {
+        "id": "trial_15_challenge_1",
+        "name": "Make Peace, Not War!",
+        "xp": 100
+      },
+      { "id": "trial_15_challenge_2", "name": "Strategic Strike", "xp": 100 },
+      { "id": "trial_15_challenge_3", "name": "I Am Your Omega", "xp": 100 },
+      {
+        "id": "trial_15_challenge_4",
+        "name": "Battlefield Tactics",
+        "xp": 100
+      },
+      {
+        "id": "trial_15_challenge_5",
+        "name": "Time To Face Gravity!",
+        "xp": 100
+      },
+      {
+        "id": "trial_15_challenge_6",
+        "name": "For me, it was Tuesday.",
+        "xp": 100
+      },
+      {
+        "id": "trial_15_challenge_7",
+        "name": "I Am Your Gamemaster!",
+        "xp": 100
+      },
+      { "id": "trial_15_challenge_8", "name": "I Hate Chess", "xp": 100 },
+      { "id": "trial_15_challenge_9", "name": "Coup de Grace", "xp": 100 }
+    ]
+  },
+
+  {
+    "id": "16",
+    "name": "Have You Seen These Dogs?",
+    "challenges": [
+      { "id": "trial_16_challenge_1", "name": "Spoiled Rotten", "xp": 100 },
+      { "id": "trial_16_challenge_2", "name": "Tuckered Out", "xp": 100 },
+      { "id": "trial_16_challenge_3", "name": "Thanks, Neighbor!", "xp": 100 },
+      {
+        "id": "trial_16_challenge_4",
+        "name": "The Neighborhood Watch",
+        "xp": 100
+      },
+      {
+        "id": "trial_16_challenge_5",
+        "name": "Microchip Apprentice",
+        "xp": 100
+      },
+      { "id": "trial_16_challenge_6", "name": "Microchip Wizard", "xp": 100 },
+      {
+        "id": "trial_16_challenge_7",
+        "name": "Hey, food's still warm!",
+        "xp": 100
+      },
+      {
+        "id": "trial_16_challenge_8",
+        "name": "Well, I do have a microwave.",
+        "xp": 100
+      },
+      {
+        "id": "trial_16_challenge_9",
+        "name": "…At least the coffee's warm.",
+        "xp": 100
+      }
+    ]
+  },
+  {
+    "id": "17",
+    "name": "The Doctor is In",
+    "challenges": [
+      {
+        "id": "trial_17_challenge_1",
+        "name": "The Smell of Napalm",
+        "xp": 100
+      },
+      { "id": "trial_17_challenge_2", "name": "Memories of Arklay", "xp": 100 },
+      { "id": "trial_17_challenge_3", "name": "First to Aid…", "xp": 100 },
+      { "id": "trial_17_challenge_4", "name": "…Last to Die", "xp": 100 },
+      { "id": "trial_17_challenge_5", "name": "I Choose You!", "xp": 100 },
+      { "id": "trial_17_challenge_6", "name": "Vaccine Testing", "xp": 100 },
+      { "id": "trial_17_challenge_7", "name": "Bakteria Trainer", "xp": 100 },
+      { "id": "trial_17_challenge_8", "name": "Secure the Sample", "xp": 100 },
+      {
+        "id": "trial_17_challenge_9",
+        "name": "I Took My Vitamins!",
+        "xp": 100
+      },
+      {
+        "id": "trial_17_challenge_10",
+        "name": "The Valentine Challenge",
+        "xp": 100
+      }
+    ]
+  },
+  {
+    "id": "18",
+    "name": "The Parties Always Greener on the Other Side",
+    "challenges": [
+      { "id": "trial_18_challenge_1", "name": "A Mean Serve", "xp": 100 },
+      { "id": "trial_18_challenge_2", "name": "Game, Set, Match", "xp": 100 },
+      {
+        "id": "trial_18_challenge_3",
+        "name": "The Wimbledon Champ",
+        "xp": 100
+      },
+      {
+        "id": "trial_18_challenge_4",
+        "name": "Bribing the Bouncer",
+        "xp": 100
+      },
+      { "id": "trial_18_challenge_5", "name": "A Mosh Pit for Two", "xp": 100 },
+      { "id": "trial_18_challenge_6", "name": "There Was a Party?", "xp": 100 },
+      {
+        "id": "trial_18_challenge_7",
+        "name": "I Brought The Snacks!",
+        "xp": 100
+      },
+      { "id": "trial_18_challenge_8", "name": "BYOB", "xp": 100 },
+      { "id": "trial_18_challenge_9", "name": "Fight Response", "xp": 100 },
+      { "id": "trial_18_challenge_10", "name": "Flight Response", "xp": 100 },
+      {
+        "id": "trial_18_challenge_11",
+        "name": "…And Party Every Day",
+        "xp": 100
+      }
+    ]
+  },
+  {
+    "id": "19",
+    "name": "Lights in the Darkness",
+    "challenges": [
+      { "id": "trial_19_challenge_1", "name": "Power of the Cube", "xp": 100 },
+      { "id": "trial_19_challenge_2", "name": "Fearsome Foes", "xp": 100 },
+      {
+        "id": "trial_19_challenge_3",
+        "name": "Deeply Darkly Drained",
+        "xp": 100
+      },
+      {
+        "id": "trial_19_challenge_4",
+        "name": "Through the Darkness",
+        "xp": 100
+      },
+      { "id": "trial_19_challenge_5", "name": "Cover Up", "xp": 100 }
+    ]
+  },
+  {
+    "id": "20",
+    "name": "Battle for the Backrooms",
+    "challenges": [
+      {
+        "id": "trial_20_challenge_1",
+        "name": "Gift from an Unexpected Source",
+        "xp": 100
+      },
+      { "id": "trial_20_challenge_2", "name": "Helping Hand", "xp": 100 },
+      {
+        "id": "trial_20_challenge_3",
+        "name": "Jack of all Weapons",
+        "xp": 100
+      },
+      { "id": "trial_20_challenge_4", "name": "Powerful Friend", "xp": 100 }
+    ]
+  },
+  {
+    "id": "21",
+    "name": "Fungal Warfare",
+    "challenges": [
+      { "id": "trial_21_challenge_1", "name": "Unstoppable Spread", "xp": 100 },
+      { "id": "trial_21_challenge_2", "name": "Fungus Among Us", "xp": 100 },
+      {
+        "id": "trial_21_challenge_3",
+        "name": "Sweating out the Fever",
+        "xp": 100
+      }
+    ]
+  },
+  {
+    "id": "22",
+    "name": "Land of the Ancients",
+    "challenges": [
+      {
+        "id": "trial_22_challenge_1",
+        "name": "The Darkness and the Light",
+        "xp": 100
+      },
+      {
+        "id": "trial_22_challenge_2",
+        "name": "The Ancient One Awaits",
+        "xp": 100
+      },
+      {
+        "id": "trial_22_challenge_3",
+        "name": "Finding the Shrinking Elixir",
+        "xp": 100
+      },
+      {
+        "id": "trial_22_challenge_4",
+        "name": "Just Squeezed Through",
+        "xp": 100
+      }
+    ]
+  },
+  {
+    "id": "23",
+    "name": "Beauty and the Beast",
+    "challenges": [
+      {
+        "id": "trial_23_challenge_1",
+        "name": "Facing down the Enforcer",
+        "xp": 100
+      },
+      { "id": "trial_23_challenge_2", "name": "Valuable Exchange", "xp": 100 },
+      { "id": "trial_23_challenge_3", "name": "Taming Memories", "xp": 100 },
+      {
+        "id": "trial_23_challenge_4",
+        "name": "Beating back the Beast",
+        "xp": 100
+      }
+    ]
+  },
+  {
+    "id": "24",
+    "name": "Backrooms Overdrive",
+    "challenges": [
+      { "id": "trial_24_challenge_1", "name": "Back from the Void", "xp": 100 },
+      {
+        "id": "trial_24_challenge_2",
+        "name": "Lost into the Service Bays",
+        "xp": 100
+      },
+      { "id": "trial_24_challenge_3", "name": "Legendary Drive", "xp": 100 }
+    ]
+  },
+  {
+    "id": "25",
+    "name": "Horrors at the Pit Stop",
+    "challenges": [
+      {
+        "id": "trial_25_challenge_1",
+        "name": "Pit Stop at the Rest Area",
+        "xp": 100
+      },
+      {
+        "id": "trial_25_challenge_2",
+        "name": "Fair Trade for Power",
+        "xp": 100
+      },
+      {
+        "id": "trial_25_challenge_3",
+        "name": "Right Place, Wrong Time",
+        "xp": 100
+      }
+    ]
+  },
+
+  {
+    "id": "26",
+    "name": "The Dread at the Rest Area",
+    "challenges": [
+      {
+        "id": "trial_26_challenge_1",
+        "name": "No Rest for the Wicked",
+        "xp": 100
+      },
+      {
+        "id": "trial_26_challenge_2",
+        "name": "Glove Compartment Discovery!",
+        "xp": 100
+      },
+      { "id": "trial_26_challenge_3", "name": "Healing Helium", "xp": 100 },
+      { "id": "trial_26_challenge_4", "name": "Dead End Illusions", "xp": 100 }
+    ]
+  },
+  {
+    "id": "27",
+    "name": "The Lost",
+    "challenges": [
+      { "id": "trial_27_challenge_1", "name": "The Curse", "xp": 100 },
+      { "id": "trial_27_challenge_2", "name": "Gift for Doll Face", "xp": 100 },
+      { "id": "trial_27_challenge_3", "name": "Feeding the Hound", "xp": 100 },
+      {
+        "id": "trial_27_challenge_4",
+        "name": "Clocksmith's Revenge II",
+        "xp": 100
+      },
+      { "id": "trial_27_challenge_5", "name": "Mirror Murderer", "xp": 100 }
+    ]
+  },
+  {
+    "id": "28",
+    "name": "The Clocksmith's Wrath",
+    "challenges": [
+      {
+        "id": "trial_28_challenge_1",
+        "name": "Close 2 Space Portals with the B.S.C.O.S. Device",
+        "xp": 100
+      },
+      {
+        "id": "trial_28_challenge_2",
+        "name": "Find and Defeat the Clocksmith",
+        "xp": 100
+      },
+      {
+        "id": "trial_28_challenge_3",
+        "name": "Escape with Painite Gem and Aiden as Companion",
+        "xp": 100
+      }
+    ]
+  },
+  {
+    "id": "29",
+    "name": "The Fractured Way Out",
+    "challenges": [
+      {
+        "id": "trial_29_challenge_1",
+        "name": "Defeat the Enforcer",
+        "xp": 100
+      },
+      {
+        "id": "trial_29_challenge_2",
+        "name": "Pack Rat Path: Tame the Ancient Wyrm using Memory Fluid and escape via the Golden Exit",
+        "xp": 100
+      },
+      {
+        "id": "trial_29_challenge_3",
+        "name": "Alia’s Enforcer Path: Find the Key Card, access the Control Room, and escape via the Golden Exit",
+        "xp": 100
+      }
+    ]
+  },
+  {
+    "id": "30",
+    "name": "The Endless Yellow Gauntlet",
+    "challenges": [
+      {
+        "id": "trial_30_challenge_1",
+        "name": "Violent Re-arrangement: Discard an item or lose 5 Sanity each time you Deck Out",
+        "xp": 100
+      },
+      {
+        "id": "trial_30_challenge_2",
+        "name": "Chew on This!: Use Dumb Gum to discard a Red Light or higher entity from the Field of Play",
+        "xp": 100
+      },
+      {
+        "id": "trial_30_challenge_3",
+        "name": "Two Birds: Use Death Moth Jelly to conceal a Hound and trade it to Arch Raven for items",
+        "xp": 100
+      },
+      {
+        "id": "trial_30_challenge_4",
+        "name": "Blind Leading the Blind: Defeat the Ancient Faceling in a Dark Hall using the Flash Sphere, then shuffle Golden Stairs into the Pull Pile",
+        "xp": 100
+      }
+    ]
+  },
+  {
+    "id": "31",
+    "name": "Defying the Gatekeeper",
+    "challenges": [
+      {
+        "id": "trial_31_challenge_1",
+        "name": "Amplified Agents: All Lost Agents have +2 Health during this scenario",
+        "xp": 100
+      },
+      {
+        "id": "trial_31_challenge_2",
+        "name": "Pinged to Death: Defeat at least 3 Lost Agents using only Tennis Balls, then shuffle Conductor into your Deck in Hand",
+        "xp": 100
+      },
+      {
+        "id": "trial_31_challenge_3",
+        "name": "Sweet Revenge: Defeat the Conductor with Crimson Knight as your Companion",
+        "xp": 100
+      },
+      {
+        "id": "trial_31_challenge_4",
+        "name": "Rise of the Ancient One: Defeat the Ancient Conductor using at least 3 Tennis Balls, then shuffle Golden Stairs into your Deck in Hand",
+        "xp": 100
+      }
+    ]
+  },
+  {
+    "id": "32",
+    "name": "The Sacrificial Moon",
+    "challenges": [
+      { "id": "trial_32_challenge_1", "name": "Challenge", "xp": 100 },
+      { "id": "trial_32_challenge_2", "name": "Bonus Challenge", "xp": 100 }
+    ]
+  },
+  {
+    "id": "33",
+    "name": "The Lot That Loops",
+    "challenges": [
+      { "id": "trial_33_challenge_1", "name": "Wayfound x2", "xp": 100 },
+      { "id": "trial_33_challenge_2", "name": "Shop Til you Drop", "xp": 100 },
+      { "id": "trial_33_challenge_3", "name": "Trunk Run x4", "xp": 100 }
+    ]
+  }
+]
