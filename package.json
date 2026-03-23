@@ -3,7 +3,7 @@
   "version": "0.0.12",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --c development",
+    "start": "ng serve --c development --ssl",
     "hot-start": "ng serve --hmr",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
@@ -11,7 +11,8 @@
     "test:once": "ng test --browsers=ChromeHeadless --watch=false",
     "lint": "ng lint --fix",
     "format": "npx prettier src/**/*.{js,jsx,ts,tsx,html,css,scss} --write",
-    "deploy:host": "npx firebase deploy --only hosting",
+    "deploy:host": "npx firebase deploy --only hosting:backrooms-tcg-deckbuilder --project default",
+    "deploy:dev": "npx firebase deploy --only hosting:backrooms-tcg-dev --project dev",
     "sentry:sourcemaps": "sentry-cli sourcemaps inject --org devshareacademy --project backroomstcg-deckbuilder ./dist && sentry-cli sourcemaps upload --org devshareacademy --project backroomstcg-deckbuilder ./dist"
   },
   "private": true,

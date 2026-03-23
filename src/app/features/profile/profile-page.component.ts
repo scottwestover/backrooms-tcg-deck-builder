@@ -102,6 +102,11 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
       this.authService.authChange.pipe(
         tap(() => this.changeURL()),
         switchMap(() => {
+          if (!this.authService.userData) {
+            this.editable = false;
+            return [];
+          }
+
           this.editable = true;
           return this.backroomsBackendService.getSave(
             this.authService.userData!.uid,

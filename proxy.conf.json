@@ -1,0 +1,8 @@
+{
+  "/__/auth": {
+    "target": "https://backrooms-tcg-dev.firebaseapp.com",
+    "secure": true,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  }
+}

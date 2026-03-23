@@ -2,7 +2,9 @@ export const environment = {
   production: false,
   firebaseConfig: {
     apiKey: 'AIzaSyBLuyQouuUp4XJlFHFKVWm65YmI1U7CFXM',
-    authDomain: 'backrooms-tcg-dev.firebaseapp.com',
+    // authDomain: 'backrooms-tcg-dev.firebaseapp.com',
+    // authDomain: 'backrooms-tcg-dev.web.app',
+    authDomain: 'localhost:4200',
     projectId: 'backrooms-tcg-dev',
     storageBucket: 'backrooms-tcg-dev.firebasestorage.app',
     messagingSenderId: '270408846436',
