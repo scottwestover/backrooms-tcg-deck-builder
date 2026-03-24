@@ -89,7 +89,6 @@ export function createProfileEmbed(discordUser) {
       {
         name: '🔥 **Stats**',
         value:
-          `Total XP: ${totalXp}\n` +
           `Total Challenges Completed: ${challengesCompleted}\n` +
           `Total Trials Completed: ${fullCompletions}`,
         inline: false,

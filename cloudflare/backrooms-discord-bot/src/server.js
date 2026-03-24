@@ -35,6 +35,7 @@ import {
 } from './lib/gamification.js';
 import { createProfileEmbed } from './lib/profile.js';
 import trials from '../data/wander-trials.json' assert { type: 'json' };
+import { getDiscordUserId, getDiscordUserName } from './lib/discord.js';
 
 class JsonResponse extends Response {
   constructor(body, init) {
@@ -195,7 +196,7 @@ router.post('/', async (request, env) => {
         });
       }
       case PROFILE_COMMAND.name.toLowerCase(): {
-        const discordId = interaction.member.user.id;
+        const discordId = getDiscordUserId(interaction);
         const discordUser = await getDiscordUser(discordId, env);
 
         if (!discordUser) {
@@ -248,14 +249,14 @@ router.post('/', async (request, env) => {
         selectedChallengeIds.includes(challenge.id)
       );
 
-      const discordId = interaction.member.user.id;
+      const discordId = getDiscordUserId(interaction);
       const discordUser = await getDiscordUser(discordId, env);
       
       const results = calculateTrialResults(
         discordUser,
         trial,
         completedChallenges,
-        interaction.member.user.username,
+        getDiscordUserName(interaction),
       );
       // console.log('Trial results:', JSON.stringify(results, null, 2));
       console.log('recieved trial results');
