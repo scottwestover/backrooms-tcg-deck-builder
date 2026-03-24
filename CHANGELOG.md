@@ -19,6 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - New Aquazone preview cards [3f39da6](https://github.com/scottwestover/backrooms-tcg-deck-builder/commit/3f39da60cd280c0d20b73a39a6237fa3819842ab).
 - Feburary 2026 Promo Card "Nightmare" [767ba33](https://github.com/scottwestover/backrooms-tcg-deck-builder/commit/767ba3342d4c7acb77b6a1320ce04b326fb84a2f).
 - March 2026 Promo Card "Polluted Pools" [767ba33](https://github.com/scottwestover/backrooms-tcg-deck-builder/commit/767ba3342d4c7acb77b6a1320ce04b326fb84a2f).
+- Added app version to home page footer .
 
 ### Changed
 

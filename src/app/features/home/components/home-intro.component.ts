@@ -1,6 +1,7 @@
 import { AsyncPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { DividerModule } from 'primeng/divider';
+import { version } from '../../../version';
 
 @Component({
   selector: 'backrooms-home-intro',
@@ -99,6 +100,10 @@ import { DividerModule } from 'primeng/divider';
         produced, endorsed, supported, or affiliated with BACKROOMS TCG LLC.
       </p>
     </h2>
+    <h2
+      class="mt-1 text-center text-[#e2e4e6] text-sm sm:text-base spacer pb-1">
+      <p>App Version: {{ appVersion }}</p>
+    </h2>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
@@ -106,6 +111,7 @@ import { DividerModule } from 'primeng/divider';
   styleUrls: ['./home-intro.component.scss'],
 })
 export class HomeIntroComponent {
+  appVersion: string = version;
   faq = [];
   images = [
     {

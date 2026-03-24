@@ -3,9 +3,10 @@
   "version": "0.0.13",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --c development --ssl",
+    "write:version": "node scripts/write-version.js",
+    "start": "npm run write:version && ng serve --c development --ssl",
     "hot-start": "ng serve --hmr",
-    "build": "ng build",
+    "build": "npm run write:version && ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "test:once": "ng test --browsers=ChromeHeadless --watch=false",
