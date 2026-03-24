@@ -149,6 +149,21 @@ This repo is based on the Digimon Card App repo found here: <a target="_blank" h
 
 To deploy the latest changes:
 
-1. build the project: `pnpm build`
-2. update `src/environments/environment.prod.ts` with the service account json for the firebase project
+1. update `src/environments/environment.prod.ts` with the service account json for the firebase project
+2. build the project: `pnpm build`
 3. run `pnpm deploy:host` to use the firebase cli to deploy directly to firebase
+
+### Dev Deployment
+
+To deploy to the dev environment, follow the same steps as above, but use the service account json for the dev firebase project.
+
+### Automated Deployments
+
+The repo is setup to automatically deploy new changes to the production environment by using GitHub Actions. This requires two secrets to be configured in the GitHub repository:
+
+- `FIREBASE_SERVICE_ACCOUNT_BACKROOMS_TCG_DECKBUILDER`
+- `FIREBASE_CONFIG`
+
+The `FIREBASE_SERVICE_ACCOUNT_BACKROOMS_TCG_DECKBUILDER` is the service account key from the Google Cloud Console: API & Credentials page.
+
+The `FIREBASE_CONFIG` is the just the content from the `src/environments/environment.prod.ts` file.

@@ -7,14 +7,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+## [0.0.13] - 2026-03-23
+
 ### Added
 
 - Added new section to the help page with content on how to create and manage custom challenges [708ec3e](https://github.com/scottwestover/backrooms-tcg-deck-builder/commit/708ec3e978561cd411697789444ab195da5c9ea3).
 - Added new unit tests for components in the help page [708ec3e](https://github.com/scottwestover/backrooms-tcg-deck-builder/commit/708ec3e978561cd411697789444ab195da5c9ea3).
 - Added new challenges to the app [d0c4df9](https://github.com/scottwestover/backrooms-tcg-deck-builder/commit/d0c4df999bddc107df2660bf5cd2f0df6c5537ee).
-- December 2025 Promo Card "Enoch's Drift" .
-- January 2026 Promo Card "Pool Guard" .
-- New Aquazone preview cards .
+- December 2025 Promo Card "Enoch's Drift" [3f39da6](https://github.com/scottwestover/backrooms-tcg-deck-builder/commit/3f39da60cd280c0d20b73a39a6237fa3819842ab).
+- January 2026 Promo Card "Pool Guard" [3f39da6](https://github.com/scottwestover/backrooms-tcg-deck-builder/commit/3f39da60cd280c0d20b73a39a6237fa3819842ab).
+- New Aquazone preview cards [3f39da6](https://github.com/scottwestover/backrooms-tcg-deck-builder/commit/3f39da60cd280c0d20b73a39a6237fa3819842ab).
+- Feburary 2026 Promo Card "Nightmare" [767ba33](https://github.com/scottwestover/backrooms-tcg-deck-builder/commit/767ba3342d4c7acb77b6a1320ce04b326fb84a2f).
+- March 2026 Promo Card "Polluted Pools" [767ba33](https://github.com/scottwestover/backrooms-tcg-deck-builder/commit/767ba3342d4c7acb77b6a1320ce04b326fb84a2f).
+
+### Changed
+
+- Updated app to use redirect login flow instead of the pop up flow. This was done to address issues on mobile were users reported login errors. The errors were due to mobile browsers blocking pop up login flows due to the cross domain requests and some iframe requests being blocked [53719c8](https://github.com/scottwestover/backrooms-tcg-deck-builder/commit/53719c8078b03db23ade4c9c7bed17bd612d13a3).
+
+### Fixed
+
+- Fixed bug on profile page were if you log out the app will throw an error. This is due to the unsafe assertion when we go to fetch the users profile from firestore. There is now a safeguard check to make sure the user data is found in the store before doing the lookup [53719c8](https://github.com/scottwestover/backrooms-tcg-deck-builder/commit/53719c8078b03db23ade4c9c7bed17bd612d13a3).
+- Updated CI pipeline to work with new firebase config file that supports dev and production environments. This required setting the target we are attempting to deploy to [ed59342](https://github.com/scottwestover/backrooms-tcg-deck-builder/commit/ed593426054d5de913a40ec9b7087a6aae25ba99).
 
 ## [0.0.12] - 2025-12-24
 
