@@ -41,3 +41,4 @@ jobs:
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_BACKROOMS_TCG_DECKBUILDER }}'
           channelId: live
           projectId: backrooms-tcg-deckbuilder
+          target: backrooms-tcg-deckbuilder
