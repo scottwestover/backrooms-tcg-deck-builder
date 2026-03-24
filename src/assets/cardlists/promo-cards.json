@@ -878,5 +878,49 @@
     "notes": "-",
     "version": "Normal",
     "cardType": "Entity"
+  },
+  {
+    "id": "P-041",
+    "name": {
+      "english": "Nightmare"
+    },
+    "rarity": "PURE",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/promo/P-041.webp",
+    "illustrator": "-",
+    "cardNumber": "99041",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "P-042",
+    "name": {
+      "english": "Polluted Pools"
+    },
+    "rarity": "RARE",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/promo/P-042.webp",
+    "illustrator": "-",
+    "cardNumber": "99042",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Room"
   }
 ]

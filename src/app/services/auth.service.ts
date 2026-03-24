@@ -47,10 +47,13 @@ export class AuthService {
     return this.AuthLogin(provider, saveStore);
   }
 
-  AuthLogin(provider: any, saveStore: any) {
-    return this.afAuth
-      .signInWithPopup(provider)
-      .then((result: UserCredential) => {
+  handleRedirect(saveStore: any) {
+    this.afAuth
+      .getRedirectResult()
+      .then((result) => {
+        if (!result.user) {
+          return;
+        }
         this.SetUserData(result.user, saveStore);
         this.messageService.add({
           severity: 'success',
@@ -65,6 +68,16 @@ export class AuthService {
           detail: 'There was an failure with your Login. Please try again!',
         });
       });
+  }
+
+  AuthLogin(provider: any, saveStore: any) {
+    return this.afAuth.signInWithRedirect(provider).catch((error) => {
+      this.messageService.add({
+        severity: 'error',
+        summary: 'Login Failure!',
+        detail: 'There was an failure with your Login. Please try again!',
+      });
+    });
   }
 
   LogOut(saveStore: any) {

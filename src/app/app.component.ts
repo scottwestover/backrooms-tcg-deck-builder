@@ -5,6 +5,7 @@ import {
   effect,
   inject,
   signal,
+  OnInit,
 } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { BlockUIModule } from 'primeng/blockui';
@@ -24,6 +25,7 @@ import { FilterStore } from './store/filter.store';
 import { SaveStore } from './store/save.store';
 import { WebsiteStore } from './store/website.store';
 import { LOCAL_STORAGE_KEY } from './config';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'backrooms-root',
@@ -75,13 +77,14 @@ import { LOCAL_STORAGE_KEY } from './config';
     DialogComponent,
   ],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   backroomCardStore = inject(BackroomsCardStore);
   saveStore = inject(SaveStore);
   filterStore = inject(FilterStore);
   websiteStore = inject(WebsiteStore);
 
   authService = inject(AuthService);
+  messageService = inject(MessageService);
   backendService = inject(BackroomsBackendService);
 
   saveLoaded = signal(false);
@@ -149,6 +152,10 @@ export class AppComponent {
       },
       false,
     );
+  }
+
+  ngOnInit(): void {
+    this.authService.handleRedirect(this.saveStore);
   }
 
   private updateDatabase(): void {
