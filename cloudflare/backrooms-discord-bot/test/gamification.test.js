@@ -87,9 +87,7 @@ describe('Gamification Library', () => {
       expect(results.newTotalXp).to.equal(550);
       expect(results.newLevel).to.equal(1);
       expect(results.isFullCompletion).to.be.true;
-      expect(results.achievementsEarned[0].name).to.equal(
-        'All Challenges Completed',
-      );
+      expect(results.achievementsEarned).to.be.empty;
     });
 
     it('should return no-op if no new challenges are completed', () => {

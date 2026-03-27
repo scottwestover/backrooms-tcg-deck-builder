@@ -11,20 +11,15 @@ export function getDiscordUserId(interaction) {
 }
 
 export function getDiscordUserName(interaction) {
-    const displayName = interaction.member.nick || interaction.member.user.global_name || member.user.username;
-    if (displayName) {
-        return displayName;
+    if (!interaction) {
+        return undefined;
     }
-
     // if invoked in a server context
     if (interaction && interaction.member && interaction.member.nick) {
         return interaction.member.nick;
     }
-    if (interaction && interaction.member && interaction.member.global_name) {
-        return interaction.member.global_name;
-    }
-    if (interaction && interaction.member && interaction.member.user && interaction.member.user.username) {
-        return interaction.member.user.username;
+    if (interaction && interaction.member && interaction.member.user) {
+        return interaction.member.user.global_name || interaction.member.user.username
     }
     // if invoked directly
     if (interaction && interaction.user && interaction.user.username) {
