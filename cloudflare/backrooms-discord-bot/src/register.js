@@ -3,6 +3,8 @@ import {
   DECK_RANDOM_COMMAND,
   COMPLETE_TRIAL_COMMAND,
   PROFILE_COMMAND,
+  LIST_SCENARIOS_COMMAND,
+  SCENARIO_CHALLENGES_COMMAND,
 } from './commands.js';
 import dotenv from 'dotenv';
 import process from 'node:process';
@@ -44,6 +46,8 @@ const response = await fetch(url, {
     INVITE_COMMAND,
     COMPLETE_TRIAL_COMMAND,
     PROFILE_COMMAND,
+    LIST_SCENARIOS_COMMAND,
+    SCENARIO_CHALLENGES_COMMAND,
   ]),
 });
 

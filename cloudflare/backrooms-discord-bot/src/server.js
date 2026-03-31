@@ -16,6 +16,8 @@ import {
   INVITE_COMMAND,
   COMPLETE_TRIAL_COMMAND,
   PROFILE_COMMAND,
+  LIST_SCENARIOS_COMMAND,
+  SCENARIO_CHALLENGES_COMMAND,
 } from './commands.js';
 import {
   generateDeck,
@@ -36,6 +38,14 @@ import {
 import { createProfileEmbed } from './lib/profile.js';
 import trials from '../data/wander-trials.json' assert { type: 'json' };
 import { getDiscordUserId, getDiscordUserName } from './lib/discord.js';
+
+// Create a service object for Firestore operations to enable easier mocking
+const firestoreService = {
+  getWanderTrialByName,
+  getDiscordUser,
+  updateDiscordUser,
+  serializeFirestoreDocument,
+};
 
 class JsonResponse extends Response {
   constructor(body, init) {
@@ -82,6 +92,42 @@ router.post('/', async (request, env) => {
   if (interaction.type === InteractionType.PING) {
     console.log('Handling PING request.');
     return new JsonResponse({ type: InteractionResponseType.PONG });
+  }
+
+  if (interaction.type === InteractionType.APPLICATION_COMMAND_AUTOCOMPLETE) {
+    // console.log('Incoming AUTOCOMPLETE interaction:', JSON.stringify(interaction, null, 2));
+    console.log('Handling AUTOCOMPLETE request.');
+    try {
+      const { name, options } = interaction.data;
+      const focusedOption = options.find((option) => option.focused);
+
+      if (!focusedOption) {
+        console.error('No focused option found in autocomplete interaction.');
+        return new JsonResponse({ type: InteractionResponseType.PONG });
+      }
+
+      if (name === SCENARIO_CHALLENGES_COMMAND.name && focusedOption.name === 'scenario-name') {
+        const searchValue = focusedOption.value.toLowerCase();
+        const filteredTrials = trials.filter((trial) =>
+          trial.name.toLowerCase().includes(searchValue)
+        );
+        const choices = filteredTrials.map((trial) => ({
+          name: trial.name,
+          value: trial.name,
+        })).slice(0, 25); // Limit to 25 choices
+
+        return new JsonResponse({
+          type: InteractionResponseType.APPLICATION_COMMAND_AUTOCOMPLETE_RESULT,
+          data: { choices },
+        });
+      }
+    } catch (error) {
+      console.error('Error during autocomplete:', error);
+      return new JsonResponse({
+        type: InteractionResponseType.APPLICATION_COMMAND_AUTOCOMPLETE_RESULT,
+        data: { choices: [] }, // Return empty choices on error
+      });
+    }
   }
 
   if (interaction.type === InteractionType.APPLICATION_COMMAND) {
@@ -197,7 +243,7 @@ router.post('/', async (request, env) => {
       }
       case PROFILE_COMMAND.name.toLowerCase(): {
         const discordId = getDiscordUserId(interaction);
-        const discordUser = await getDiscordUser(discordId, env);
+        const discordUser = await firestoreService.getDiscordUser(discordId, env);
 
         if (!discordUser) {
           return new JsonResponse({
@@ -210,6 +256,62 @@ router.post('/', async (request, env) => {
         }
 
         const embed = createProfileEmbed(discordUser);
+        return new JsonResponse({
+          type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+          data: {
+            embeds: [embed],
+          },
+        });
+      }
+      case LIST_SCENARIOS_COMMAND.name.toLowerCase(): {
+        const scenarioNames = trials.map((trial) => trial.name);
+        const description = scenarioNames.join('\n');
+
+        return new JsonResponse({
+          type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+          data: {
+            embeds: [{ title: 'Available Wander Trials', description, color: 0xfeb737 }],
+          },
+        });
+      }
+      case SCENARIO_CHALLENGES_COMMAND.name.toLowerCase(): {
+        const scenarioName = getOption(interaction.data.options, 'scenario-name');
+
+        const scenario = trials.find(
+          (t) => t.name.toLowerCase() === scenarioName.toLowerCase(),
+        );
+
+        if (!scenario) {
+          return new JsonResponse({
+            type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+            data: {
+              content: `Scenario "${scenarioName}" not found.`,
+              flags: InteractionResponseFlags.EPHEMERAL,
+            },
+          });
+        }
+
+        const discordId = getDiscordUserId(interaction);
+        const discordUser = await firestoreService.getDiscordUser(discordId, env);
+
+        const completedChallengeIds = discordUser?.trials?.[scenario.id]?.completedChallenges || [];
+
+        const fields = scenario.challenges.map((challenge) => {
+          const isCompleted = completedChallengeIds.includes(challenge.id);
+          const status = isCompleted ? '✅ Completed' : '❌ Not Completed';
+          return {
+            name: challenge.name,
+            value: status,
+            inline: true,
+          };
+        });
+
+        const embed = {
+          title: `${scenario.name} Challenges`,
+          color: 0xfeb737,
+          fields: fields,
+        };
+
         return new JsonResponse({
           type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
           data: {
@@ -250,7 +352,7 @@ router.post('/', async (request, env) => {
       );
 
       const discordId = getDiscordUserId(interaction);
-      const discordUser = await getDiscordUser(discordId, env);
+      const discordUser = await firestoreService.getDiscordUser(discordId, env);
       
       const results = calculateTrialResults(
         discordUser,
@@ -261,8 +363,8 @@ router.post('/', async (request, env) => {
       // console.log('Trial results:', JSON.stringify(results, null, 2));
       console.log('recieved trial results');
 
-      const serializedUser = serializeFirestoreDocument(results.updatedUser);
-      await updateDiscordUser(discordId, serializedUser, env);
+      const serializedUser = firestoreService.serializeFirestoreDocument(results.updatedUser);
+      await firestoreService.updateDiscordUser(discordId, serializedUser, env);
       const embed = createTrialResponseEmbed(results);
 
       return new JsonResponse({
@@ -300,6 +402,7 @@ async function verifyDiscordRequest(request, env) {
 const server = {
   verifyDiscordRequest,
   fetch: router.fetch,
+  firestoreService, // Expose firestoreService for testing
 };
 
 export default server;

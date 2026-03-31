@@ -48,3 +48,22 @@ export const PROFILE_COMMAND = {
   name: 'profile',
   description: 'View your profile.',
 };
+
+export const LIST_SCENARIOS_COMMAND = {
+  name: 'list-scenarios',
+  description: 'List all available wander trials (scenarios).',
+};
+
+export const SCENARIO_CHALLENGES_COMMAND = {
+  name: 'scenario-challenges',
+  description: 'View challenges for a specific scenario and their completion status.',
+  options: [
+    {
+      name: 'scenario-name',
+      description: 'The name of the scenario.',
+      type: 3, // String type
+      required: true,
+      autocomplete: true,
+    },
+  ],
+};

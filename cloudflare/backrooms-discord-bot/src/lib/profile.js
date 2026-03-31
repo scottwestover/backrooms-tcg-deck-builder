@@ -12,7 +12,7 @@ const MAX_TRIALS_TO_DISPLAY = 5;
  * @param {object} discordUser The user object from Firestore.
  * @returns {object} A Discord embed object.
  */
-export function createProfileEmbed(discordUser) {
+export function createProfileEmbed(discordUser, trialsData = trials) {
   const { username, totalXp, level, trials: userTrials } = discordUser;
 
   // Basic Info
@@ -49,7 +49,7 @@ export function createProfileEmbed(discordUser) {
       .sort(([, a], [, b]) => b.completedAt - a.completedAt)
       .slice(0, MAX_TRIALS_TO_DISPLAY)
       .map(([trialId, progress]) => {
-        const trial = trials.find((t) => t.id === trialId);
+        const trial = trialsData.find((t) => t.id === trialId);
         if (!trial) return '';
 
         const challengeCount = trial.challenges.length;
