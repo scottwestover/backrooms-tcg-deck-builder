@@ -243,9 +243,11 @@ router.post('/', async (request, env) => {
       }
       case PROFILE_COMMAND.name.toLowerCase(): {
         const discordId = getDiscordUserId(interaction);
+        console.log(`attempting to connect to firestore for user id: ${discordId}`);
         const discordUser = await firestoreService.getDiscordUser(discordId, env);
 
         if (!discordUser) {
+          console.log('no discord user found in firestore');
           return new JsonResponse({
             type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
             data: {
@@ -254,6 +256,7 @@ router.post('/', async (request, env) => {
             },
           });
         }
+        console.log('recieved discord user from firestore');
 
         const embed = createProfileEmbed(discordUser);
         return new JsonResponse({
@@ -274,6 +277,7 @@ router.post('/', async (request, env) => {
           },
         });
       }
+
       case SCENARIO_CHALLENGES_COMMAND.name.toLowerCase(): {
         const scenarioName = getOption(interaction.data.options, 'scenario-name');
 
@@ -292,7 +296,9 @@ router.post('/', async (request, env) => {
         }
 
         const discordId = getDiscordUserId(interaction);
+        console.log(`attempting to connect to firestore for user id: ${discordId}`);
         const discordUser = await firestoreService.getDiscordUser(discordId, env);
+        console.log('recieved discord user from firestore');
 
         const completedChallengeIds = discordUser?.trials?.[scenario.id]?.completedChallenges || [];
 
@@ -311,6 +317,8 @@ router.post('/', async (request, env) => {
           color: 0xfeb737,
           fields: fields,
         };
+
+        console.log('created embed for scenario challenges');
 
         return new JsonResponse({
           type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
@@ -352,7 +360,9 @@ router.post('/', async (request, env) => {
       );
 
       const discordId = getDiscordUserId(interaction);
+      console.log(`attempting to connect to firestore for user id: ${discordId}`);
       const discordUser = await firestoreService.getDiscordUser(discordId, env);
+      console.log('recieved discord user from firestore');
       
       const results = calculateTrialResults(
         discordUser,

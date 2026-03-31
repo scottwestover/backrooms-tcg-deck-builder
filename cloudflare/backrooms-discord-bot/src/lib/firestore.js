@@ -174,16 +174,22 @@ export async function getWanderTrialByName(name) {
  * @returns {Promise<object|null>}
  */
 export async function getDiscordUser(discordId, env) {
-  const response = await firestoreFetch(`discordUsers/${discordId}`, {}, env);
-  if (response.status === 404) {
-    return null; // User doesn't exist yet
+  try {
+    const response = await firestoreFetch(`discordUsers/${discordId}`, {}, env);
+    if (response.status === 404) {
+      return null; // User doesn't exist yet
+    }
+    if (!response.ok) {
+      console.error(`Error fetching user: ${response.status} ${response.statusText}`);
+      const error = await response.text();
+      throw new Error(`Failed to get user: ${error}`);
+    }
+    const rawDoc = await response.json();
+    return parseFirestoreDocument(rawDoc); // Parse the raw Firestore document
+  } catch (error) {
+    console.error('Error fetching user:', error);
+    throw error;
   }
-  if (!response.ok) {
-    const error = await response.text();
-    throw new Error(`Failed to get user: ${error}`);
-  }
-  const rawDoc = await response.json();
-  return parseFirestoreDocument(rawDoc); // Parse the raw Firestore document
 }
 
 /**

@@ -126,4 +126,5 @@ The credentials in `.dev.vars` are only applied locally. The production service 
 $ wrangler secret put DISCORD_TOKEN
 $ wrangler secret put DISCORD_PUBLIC_KEY
 $ wrangler secret put DISCORD_APPLICATION_ID
+$ wrangler secret put FIRESTORE_SA_JSON
 ```
