@@ -17,7 +17,12 @@ describe('Gamification Library', () => {
   describe('calculateTrialResults', () => {
     it('should process a first-time completion for a new user', () => {
       const completed = [mockTrial.challenges[0]]; // Complete C1
-      const results = calculateTrialResults(null, mockTrial, completed, username);
+      const results = calculateTrialResults(
+        null,
+        mockTrial,
+        completed,
+        username,
+      );
 
       expect(results.isNoOp).to.be.undefined;
       expect(results.xpGained).to.equal(100 + 50); // 100 for C1 + 50 participation
@@ -90,12 +95,19 @@ describe('Gamification Library', () => {
       expect(results.achievementsEarned).to.be.empty;
     });
 
-    it('should return no-op if no new challenges are completed', () => {
+    it('should return no-op if no new challenges are completed but preserve user data', () => {
       const existingUser = {
+        username: username,
         totalXp: 150,
+        level: 0,
         trials: {
           [mockTrial.id]: {
+            completedScenario: true,
             completedChallenges: ['c1'],
+          },
+          other_trial: {
+            completedScenario: true,
+            completedChallenges: ['x1'],
           },
         },
       };
@@ -108,6 +120,18 @@ describe('Gamification Library', () => {
       );
 
       expect(results.isNoOp).to.be.true;
+      expect(results.updatedUser).to.exist;
+      expect(results.updatedUser.username).to.equal(existingUser.username);
+      expect(results.updatedUser.totalXp).to.equal(existingUser.totalXp);
+      expect(results.updatedUser.level).to.equal(existingUser.level);
+      // Ensure other trials are preserved
+      expect(results.updatedUser.trials['other_trial']).to.deep.equal(
+        existingUser.trials['other_trial'],
+      );
+      // Ensure the current trial's progress is also preserved
+      expect(results.updatedUser.trials[mockTrial.id]).to.deep.equal(
+        existingUser.trials[mockTrial.id],
+      );
     });
   });
 });

@@ -48,10 +48,16 @@ describe('createProfileEmbed', () => {
     const embed = createProfileEmbed(discordUser, mockTrials);
 
     expect(embed.title).to.equal("🎮 **TestUser's Profile**");
-    expect(embed.description).to.equal('**Level 0 | 0 XP**\n░░░░░░░░░░ 0% to next level');
-    expect(embed.fields[0].value).to.equal('🏅 Scenario Participation: 0\n🥇 All Challenges Completed: 0');
+    expect(embed.description).to.equal(
+      '**Level 0 | 0 XP**\n░░░░░░░░░░ 0% to next level',
+    );
+    expect(embed.fields[0].value).to.equal(
+      '🏅 Scenario Participation: 0\n🥇 All Challenges Completed: 0',
+    );
     expect(embed.fields[1].value).to.equal('No trials attempted yet.');
-    expect(embed.fields[2].value).to.equal('Total Challenges Completed: 0\nTotal Trials Completed: 0');
+    expect(embed.fields[2].value).to.equal(
+      'Total Challenges Completed: 0\nTotal Trials Completed: 0',
+    );
   });
 
   it('should create a profile embed for a user with completed and partially completed trials', () => {
@@ -76,11 +82,21 @@ describe('createProfileEmbed', () => {
     const embed = createProfileEmbed(discordUser, mockTrials);
 
     expect(embed.title).to.equal("🎮 **TrialMaster's Profile**");
-    expect(embed.description).to.equal('**Level 2 | 1200 XP**\n▓▓▓▓░░░░░░ 40% to next level');
-    expect(embed.fields[0].value).to.equal('🏅 Scenario Participation: 2\n🥇 All Challenges Completed: 1');
-    expect(embed.fields[1].value).to.include('- The First Trial: 3/3 challenges completed ✅');
-    expect(embed.fields[1].value).to.include('- The Second Trial: 1/2 challenges completed');
-    expect(embed.fields[2].value).to.equal('Total Challenges Completed: 4\nTotal Trials Completed: 1');
+    expect(embed.description).to.equal(
+      '**Level 2 | 1200 XP**\n▓▓▓▓░░░░░░ 40% to next level',
+    );
+    expect(embed.fields[0].value).to.equal(
+      '🏅 Scenario Participation: 2\n🥇 All Challenges Completed: 1',
+    );
+    expect(embed.fields[1].value).to.include(
+      '- The First Trial: 3/3 challenges completed ✅',
+    );
+    expect(embed.fields[1].value).to.include(
+      '- The Second Trial: 1/2 challenges completed',
+    );
+    expect(embed.fields[2].value).to.equal(
+      'Total Challenges Completed: 4\nTotal Trials Completed: 1',
+    );
   });
 
   it('should handle more than MAX_TRIALS_TO_DISPLAY trials', () => {
@@ -89,12 +105,36 @@ describe('createProfileEmbed', () => {
       totalXp: 5000,
       level: 10,
       trials: {
-        trial1: { completedChallenges: ['c'], allChallengesCompleted: true, completedAt: 1 },
-        trial2: { completedChallenges: ['c'], allChallengesCompleted: true, completedAt: 2 },
-        trial3: { completedChallenges: ['c'], allChallengesCompleted: true, completedAt: 3 },
-        trial4: { completedChallenges: ['c'], allChallengesCompleted: true, completedAt: 4 },
-        trial5: { completedChallenges: ['c'], allChallengesCompleted: true, completedAt: 5 },
-        trial6: { completedChallenges: ['c'], allChallengesCompleted: true, completedAt: 6 },
+        trial1: {
+          completedChallenges: ['c'],
+          allChallengesCompleted: true,
+          completedAt: 1,
+        },
+        trial2: {
+          completedChallenges: ['c'],
+          allChallengesCompleted: true,
+          completedAt: 2,
+        },
+        trial3: {
+          completedChallenges: ['c'],
+          allChallengesCompleted: true,
+          completedAt: 3,
+        },
+        trial4: {
+          completedChallenges: ['c'],
+          allChallengesCompleted: true,
+          completedAt: 4,
+        },
+        trial5: {
+          completedChallenges: ['c'],
+          allChallengesCompleted: true,
+          completedAt: 5,
+        },
+        trial6: {
+          completedChallenges: ['c'],
+          allChallengesCompleted: true,
+          completedAt: 6,
+        },
       },
     };
 

@@ -73,7 +73,7 @@ describe('Fuzzy Matching Configuration', () => {
     const fuse = new Fuse(mockItems, fuseOptions);
     const results = fuse.search('Challenge');
     // Expecting to find both 'Level 1 Challenge' and 'Challenge 101' but the order may vary based on score
-    const matchedNames = results.map(r => r.item.name);
+    const matchedNames = results.map((r) => r.item.name);
     expect(matchedNames).to.include('Level 1 Challenge');
     expect(matchedNames).to.include('Challenge 101');
     expect(results).to.have.lengthOf(2);

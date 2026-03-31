@@ -2,7 +2,6 @@
  * This library contains the core logic for the Wander Trials gamification system.
  */
 
-const BASE_XP_PER_CHALLENGE = 100;
 const SCENARIO_PARTICIPATION_BONUS = 50;
 const FULL_COMPLETION_BONUS = 150;
 const XP_PER_LEVEL = 500;
@@ -14,7 +13,7 @@ export function calculateTrialResults(
   discordUser,
   trial,
   completedChallenges,
-  username
+  username,
 ) {
   const now = new Date();
 
@@ -37,28 +36,32 @@ export function calculateTrialResults(
 
   // 2. Determine newly completed challenges (based on IDs)
   const newlyCompletedChallenges = completedChallenges.filter(
-    (c) => !previouslyCompletedIds.includes(c.id)
+    (c) => !previouslyCompletedIds.includes(c.id),
   );
 
   if (newlyCompletedChallenges.length === 0) {
     // If no new challenges were completed, return a no-op result
+    // Ensure that the original user object is still returned to prevent data loss
     return {
       isNoOp: true,
+      updatedUser: user, // Return the original user object
       trialName: trial.name,
       // Provide previously completed challenges for the embed message
       previouslyCompleted: trial.challenges.filter((c) =>
-        previouslyCompletedIds.includes(c.id)
+        previouslyCompletedIds.includes(c.id),
       ),
       allTrialChallenges: trial.challenges,
     };
   }
-
   // 3. Calculate XP
   let xpGained = 0;
   const achievements = [];
 
   // XP for newly completed challenges
-  const challengeXp = newlyCompletedChallenges.reduce((sum, c) => sum + c.xp, 0);
+  const challengeXp = newlyCompletedChallenges.reduce(
+    (sum, c) => sum + c.xp,
+    0,
+  );
   xpGained += challengeXp;
 
   // Scenario participation bonus (first time completing any challenge in this trial)
@@ -73,11 +76,14 @@ export function calculateTrialResults(
   // Check for full completion bonus
   const allChallengeIdsInTrial = trial.challenges.map((c) => c.id);
   const finalCompletedIds = [
-    ...new Set([...previouslyCompletedIds, ...newlyCompletedChallenges.map((c) => c.id)]),
+    ...new Set([
+      ...previouslyCompletedIds,
+      ...newlyCompletedChallenges.map((c) => c.id),
+    ]),
   ]; // Use Set to ensure unique IDs
 
   const isFullCompletion = allChallengeIdsInTrial.every((id) =>
-    finalCompletedIds.includes(id)
+    finalCompletedIds.includes(id),
   );
 
   if (isFullCompletion && !trialProgress.allChallengesCompleted) {
@@ -117,7 +123,7 @@ export function calculateTrialResults(
     newLevel,
     newlyCompletedChallenges,
     previouslyCompletedChallenges: trial.challenges.filter((c) =>
-      previouslyCompletedIds.includes(c.id)
+      previouslyCompletedIds.includes(c.id),
     ),
     allTrialChallenges: trial.challenges,
     isFullCompletion,
@@ -133,9 +139,7 @@ export function createTrialResponseEmbed(results) {
   if (results.isNoOp) {
     const description =
       'You already submitted these challenges. Keep going!\n\n' +
-      results.previouslyCompleted
-        .map((c) => `✅ ${c.name}`)
-        .join('\n');
+      results.previouslyCompleted.map((c) => `✅ ${c.name}`).join('\n');
     return {
       title: `"${results.trialName}" — No New Progress`,
       description,
@@ -155,12 +159,12 @@ export function createTrialResponseEmbed(results) {
   };
 
   const achievementStrings = results.achievementsEarned.map(
-    (a) => `🏅 ${a.name} (+${a.xp} XP)`
+    (a) => `🏅 ${a.name} (+${a.xp} XP)`,
   );
 
   if (results.isFullCompletion) {
     achievementStrings.push(
-      `🏅 All Challenges Completed (+${FULL_COMPLETION_BONUS} XP)`
+      `🏅 All Challenges Completed (+${FULL_COMPLETION_BONUS} XP)`,
     );
   } else {
     achievementStrings.push('❌ All Challenges Completed (locked)');
@@ -173,7 +177,7 @@ export function createTrialResponseEmbed(results) {
   };
 
   const remainingChallenges = results.allTrialChallenges.filter(
-    (c) => !allCompleted.map((ac) => ac.id).includes(c.id)
+    (c) => !allCompleted.map((ac) => ac.id).includes(c.id),
   );
   const remainingField = {
     name: '⏳ Remaining Challenges',
@@ -186,7 +190,7 @@ export function createTrialResponseEmbed(results) {
 
   const xpForNextLevel = (results.newLevel + 1) * XP_PER_LEVEL;
   const progressPercent = Math.floor(
-    (results.newTotalXp / xpForNextLevel) * 100
+    (results.newTotalXp / xpForNextLevel) * 100,
   );
   const progressBar =
     '▓'.repeat(Math.floor(progressPercent / 10)) +

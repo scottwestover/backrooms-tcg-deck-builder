@@ -7,14 +7,14 @@ describe('Discord Utility Functions', () => {
     it('should return the user ID from a server interaction', () => {
       const interaction = {
         member: { user: { id: 'serverUserId123' } },
-        user: { id: 'dmUserId456' } // This should be ignored in server context
+        user: { id: 'dmUserId456' }, // This should be ignored in server context
       };
       expect(getDiscordUserId(interaction)).to.equal('serverUserId123');
     });
 
     it('should return the user ID from a direct message interaction', () => {
       const interaction = {
-        user: { id: 'dmUserId456' }
+        user: { id: 'dmUserId456' },
       };
       expect(getDiscordUserId(interaction)).to.equal('dmUserId456');
     });
@@ -22,7 +22,7 @@ describe('Discord Utility Functions', () => {
     it('should return undefined if no user ID is found', () => {
       const interaction = {
         member: { user: {} },
-        user: {}
+        user: {},
       };
       expect(getDiscordUserId(interaction)).to.be.undefined;
     });
@@ -39,16 +39,21 @@ describe('Discord Utility Functions', () => {
   describe('getDiscordUserName', () => {
     it('should return the nick from a server interaction', () => {
       const interaction = {
-        member: { nick: 'ServerNick', user: { global_name: 'ServerGlobalName', username: 'ServerUsername' } },
-        user: { username: 'DMUsername' }
+        member: {
+          nick: 'ServerNick',
+          user: { global_name: 'ServerGlobalName', username: 'ServerUsername' },
+        },
+        user: { username: 'DMUsername' },
       };
       expect(getDiscordUserName(interaction)).to.equal('ServerNick');
     });
 
     it('should return the global_name from a server interaction if nick is missing', () => {
       const interaction = {
-        member: { user: { global_name: 'ServerGlobalName', username: 'ServerUsername' } },
-        user: { username: 'DMUsername' }
+        member: {
+          user: { global_name: 'ServerGlobalName', username: 'ServerUsername' },
+        },
+        user: { username: 'DMUsername' },
       };
       expect(getDiscordUserName(interaction)).to.equal('ServerGlobalName');
     });
@@ -56,14 +61,14 @@ describe('Discord Utility Functions', () => {
     it('should return the username from a server interaction if nick and global_name are missing', () => {
       const interaction = {
         member: { user: { username: 'ServerUsername' } },
-        user: { username: 'DMUsername' }
+        user: { username: 'DMUsername' },
       };
       expect(getDiscordUserName(interaction)).to.equal('ServerUsername');
     });
 
     it('should return the username from a direct message interaction', () => {
       const interaction = {
-        user: { username: 'DMUsername' }
+        user: { username: 'DMUsername' },
       };
       expect(getDiscordUserName(interaction)).to.equal('DMUsername');
     });
@@ -71,7 +76,7 @@ describe('Discord Utility Functions', () => {
     it('should return undefined if no username is found', () => {
       const interaction = {
         member: { user: {} },
-        user: {}
+        user: {},
       };
       expect(getDiscordUserName(interaction)).to.be.undefined;
     });

@@ -1,6 +1,9 @@
 import { expect } from 'chai';
 import { describe, it } from 'mocha';
-import { parseFirestoreDocument, serializeFirestoreDocument } from '../src/lib/firestore.js';
+import {
+  parseFirestoreDocument,
+  serializeFirestoreDocument,
+} from '../src/lib/firestore.js';
 
 describe('Firestore Utilities', () => {
   describe('parseFirestoreDocument', () => {
@@ -18,7 +21,10 @@ describe('Firestore Utilities', () => {
                       completedScenario: { booleanValue: true },
                       completedChallenges: {
                         arrayValue: {
-                          values: [{ stringValue: 'c1' }, { stringValue: 'c2' }],
+                          values: [
+                            { stringValue: 'c1' },
+                            { stringValue: 'c2' },
+                          ],
                         },
                       },
                       completedAt: { timestampValue: '2026-03-18T10:00:00Z' },
@@ -145,7 +151,10 @@ describe('Firestore Utilities', () => {
                       completedAt: { timestampValue: now.toISOString() },
                       completedChallenges: {
                         arrayValue: {
-                          values: [{ stringValue: 'c1' }, { stringValue: 'c2' }],
+                          values: [
+                            { stringValue: 'c1' },
+                            { stringValue: 'c2' },
+                          ],
                         },
                       },
                     },
@@ -178,7 +187,9 @@ describe('Firestore Utilities', () => {
     it('should handle empty objects', () => {
       const flatJsObject = {};
       const expectedSerialized = { fields: {} };
-      expect(serializeFirestoreDocument(flatJsObject)).to.deep.equal(expectedSerialized);
+      expect(serializeFirestoreDocument(flatJsObject)).to.deep.equal(
+        expectedSerialized,
+      );
     });
 
     it('should handle nested empty objects and arrays', () => {
@@ -192,7 +203,9 @@ describe('Firestore Utilities', () => {
           emptyArray: { arrayValue: { values: [] } },
         },
       };
-      expect(serializeFirestoreDocument(flatJsObject)).to.deep.equal(expectedSerialized);
+      expect(serializeFirestoreDocument(flatJsObject)).to.deep.equal(
+        expectedSerialized,
+      );
     });
   });
 });

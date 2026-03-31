@@ -18,6 +18,8 @@ import {
   PROFILE_COMMAND,
   LIST_SCENARIOS_COMMAND,
   SCENARIO_CHALLENGES_COMMAND,
+  HELP_COMMAND,
+  GETTING_STARTED_COMMAND,
 } from './commands.js';
 import {
   generateDeck,
@@ -324,6 +326,93 @@ router.post('/', async (request, env) => {
           type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
           data: {
             embeds: [embed],
+          },
+        });
+      }
+      case HELP_COMMAND.name.toLowerCase(): {
+        const embed = {
+          title: 'Bot Commands Help',
+          description: 'Here are the available commands:',
+          color: 0xfeb737,
+          fields: [
+            {
+              name: '/profile',
+              value: 'View your XP, level, and progress.',
+              inline: false,
+            },
+            {
+              name: '/complete-trial',
+              value: 'Report completed challenges to earn XP and advance.',
+              inline: false,
+            },
+            {
+              name: '/list-scenarios',
+              value: 'See all available Wander Trials.',
+              inline: false,
+            },
+            {
+              name: '/scenario-challenges',
+              value: 'View challenges for a specific Wander Trial.',
+              inline: false,
+            },
+            {
+              name: '/deck-random',
+              value: 'Generate a random deck.',
+              inline: false,
+            },
+            {
+              name: '/getting-started',
+              value: 'Learn the basic flow of using this bot.',
+              inline: false,
+            },
+            {
+              name: '/invite',
+              value: 'Get an invite link to add the bot to your server.',
+              inline: false,
+            },
+          ],
+        };
+        return new JsonResponse({
+          type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+          data: {
+            embeds: [embed],
+            flags: InteractionResponseFlags.EPHEMERAL,
+          },
+        });
+      }
+      case GETTING_STARTED_COMMAND.name.toLowerCase(): {
+        const embed = {
+          title: 'Getting Started with the Wander Trials Bot',
+          description: 'Follow these steps to start your journey:\n\nFor more details about Wander Trials, check out the official document: [Wander Trials Doc](https://docs.google.com/document/d/1UHdZ43qDfh-i27358RGqHtEf-rdPQZhjm6skOA5mf7o/edit?usp=sharing)',
+          color: 0xfeb737,
+          fields: [
+            {
+              name: '1️⃣ Play a Wander Trial',
+              value: 'Engage in a Wander Trial game using the physical card game.',
+              inline: false,
+            },
+            {
+              name: '2️⃣ Complete Challenges',
+              value: 'As you play, aim to complete challenges within the trial.',
+              inline: false,
+            },
+            {
+              name: '3️⃣ Use /complete-trial',
+              value: 'Once your trial is done, use this command to report your completed challenges and earn XP.',
+              inline: false,
+            },
+            {
+              name: '4️⃣ Track your progress with /profile',
+              value: 'View your current level, XP, and achievements to see how far you\'ve come!',
+              inline: false,
+            },
+          ],
+        };
+        return new JsonResponse({
+          type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+          data: {
+            embeds: [embed],
+            flags: InteractionResponseFlags.EPHEMERAL,
           },
         });
       }

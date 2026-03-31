@@ -3,7 +3,6 @@ import { describe, it, beforeEach, afterEach } from 'mocha';
 import {
   InteractionResponseType,
   InteractionType,
-  verifyKey,
   InteractionResponseFlags,
   MessageComponentTypes,
 } from 'discord-interactions';
@@ -12,6 +11,8 @@ import {
   INVITE_COMMAND,
   LIST_SCENARIOS_COMMAND,
   SCENARIO_CHALLENGES_COMMAND,
+  HELP_COMMAND,
+  GETTING_STARTED_COMMAND,
 } from '../src/commands.js';
 import sinon from 'sinon';
 import server from '../src/server.js';
@@ -321,14 +322,12 @@ describe('Server', () => {
       expect(challenge3.value).to.equal('✅ Completed');
     });
 
-    it('should handle scenario-challenges command and display completed challenges', async () => {
+    it('should handle a help command interaction', async () => {
       const interaction = {
         type: InteractionType.APPLICATION_COMMAND,
         data: {
-          name: SCENARIO_CHALLENGES_COMMAND.name,
-          options: [{ name: 'scenario-name', value: 'Shades Of An Artist' }],
+          name: HELP_COMMAND.name,
         },
-        member: { user: { id: 'testuser123' } },
       };
 
       const request = {
@@ -336,112 +335,145 @@ describe('Server', () => {
         url: new URL('/', 'http://discordo.example'),
       };
 
-      // Mock getDiscordUser to return a user with some completed challenges
-      sandbox.stub(server.firestoreService, 'getDiscordUser').resolves({
-        trials: {
-          2: {
-            completedChallenges: ['trial_2_challenge_1', 'trial_2_challenge_3'],
-          },
+      verifyDiscordRequestStub.resolves({
+        isValid: true,
+        interaction: interaction,
+      });
+
+      const response = await server.fetch(request, mockEnv);
+      const body = await response.json();
+      expect(body.type).to.equal(
+        InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+      );
+      expect(body.data.embeds[0].title).to.equal('Bot Commands Help');
+      expect(body.data.embeds[0].fields).to.be.an('array');
+      expect(body.data.embeds[0].fields).to.have.lengthOf(7); // Check number of commands listed
+      expect(body.data.flags).to.equal(InteractionResponseFlags.EPHEMERAL);
+    });
+
+    it('should handle a getting-started command interaction', async () => {
+      const interaction = {
+        type: InteractionType.APPLICATION_COMMAND,
+        data: {
+          name: GETTING_STARTED_COMMAND.name,
         },
+      };
+
+      const request = {
+        method: 'POST',
+        url: new URL('/', 'http://discordo.example'),
+      };
+
+      verifyDiscordRequestStub.resolves({
+        isValid: true,
+        interaction: interaction,
       });
 
-      it('should handle a COMPLETE_TRIAL_COMMAND when trial is found', async () => {
-        const interaction = {
-          type: InteractionType.APPLICATION_COMMAND,
-          data: {
-            name: 'complete-trial',
-            options: [
-              { name: 'trial-name', value: 'Entities From Outer Space' },
-            ],
-          },
-        };
+      const response = await server.fetch(request, mockEnv);
+      const body = await response.json();
+      expect(body.type).to.equal(
+        InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+      );
+      expect(body.data.embeds[0].title).to.equal(
+        'Getting Started with the Wander Trials Bot',
+      );
+      expect(body.data.embeds[0].fields).to.be.an('array');
+      expect(body.data.embeds[0].fields).to.have.lengthOf(4); // Check number of steps
+      expect(body.data.flags).to.equal(InteractionResponseFlags.EPHEMERAL);
+    });
 
-        const request = {
-          method: 'POST',
-          url: new URL('/', 'http://discordo.example'),
-        };
+    it('should handle a COMPLETE_TRIAL_COMMAND when trial is found', async () => {
+      const interaction = {
+        type: InteractionType.APPLICATION_COMMAND,
+        data: {
+          name: 'complete-trial',
+          options: [{ name: 'trial-name', value: 'Entities From Outer Space' }],
+        },
+      };
 
-        verifyDiscordRequestStub.resolves({
-          isValid: true,
-          interaction: interaction,
-        });
+      const request = {
+        method: 'POST',
+        url: new URL('/', 'http://discordo.example'),
+      };
 
-        const response = await server.fetch(request, mockEnv);
-        const body = await response.json();
-        expect(body.type).to.equal(
-          InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
-        );
-        expect(body.data.content).to.include(
-          'Found trial: **Entities From Outer Space**',
-        );
-        expect(body.data.flags).to.equal(InteractionResponseFlags.EPHEMERAL);
-        expect(body.data.components[0].type).to.equal(
-          MessageComponentTypes.ACTION_ROW,
-        );
-        expect(body.data.components[0].components[0].type).to.equal(
-          MessageComponentTypes.STRING_SELECT,
-        );
-        expect(body.data.components[0].components[0].custom_id).to.equal(
-          'select_challenges_1',
-        );
-        expect(body.data.components[0].components[0].options).to.have.lengthOf(
-          3,
-        );
+      verifyDiscordRequestStub.resolves({
+        isValid: true,
+        interaction: interaction,
       });
 
-      it('should handle a COMPLETE_TRIAL_COMMAND when trial is NOT found', async () => {
-        const interaction = {
-          type: InteractionType.APPLICATION_COMMAND,
-          data: {
-            name: 'complete-trial',
-            options: [{ name: 'trial-name', value: 'NonExistent Trial' }],
-          },
-        };
+      const response = await server.fetch(request, mockEnv);
+      const body = await response.json();
+      expect(body.type).to.equal(
+        InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+      );
+      expect(body.data.content).to.include(
+        'Found trial: **Entities From Outer Space**',
+      );
+      expect(body.data.flags).to.equal(InteractionResponseFlags.EPHEMERAL);
+      expect(body.data.components[0].type).to.equal(
+        MessageComponentTypes.ACTION_ROW,
+      );
+      expect(body.data.components[0].components[0].type).to.equal(
+        MessageComponentTypes.STRING_SELECT,
+      );
+      expect(body.data.components[0].components[0].custom_id).to.equal(
+        'select_challenges_1',
+      );
+      expect(body.data.components[0].components[0].options).to.have.lengthOf(3);
+    });
 
-        const request = {
-          method: 'POST',
-          url: new URL('/', 'http://discordo.example'),
-        };
+    it('should handle a COMPLETE_TRIAL_COMMAND when trial is NOT found', async () => {
+      const interaction = {
+        type: InteractionType.APPLICATION_COMMAND,
+        data: {
+          name: 'complete-trial',
+          options: [{ name: 'trial-name', value: 'NonExistent Trial' }],
+        },
+      };
 
-        verifyDiscordRequestStub.resolves({
-          isValid: true,
-          interaction: interaction,
-        });
+      const request = {
+        method: 'POST',
+        url: new URL('/', 'http://discordo.example'),
+      };
 
-        const response = await server.fetch(request, mockEnv);
-        const body = await response.json();
-        expect(body.type).to.equal(
-          InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
-        );
-        expect(body.data.content).to.equal(
-          'Trial "NonExistent Trial" not found.',
-        );
-        expect(body.data.flags).to.equal(InteractionResponseFlags.EPHEMERAL);
+      verifyDiscordRequestStub.resolves({
+        isValid: true,
+        interaction: interaction,
       });
 
-      it('should handle an unknown command interaction', async () => {
-        const interaction = {
-          type: InteractionType.APPLICATION_COMMAND,
-          data: {
-            name: 'unknown',
-          },
-        };
+      const response = await server.fetch(request, mockEnv);
+      const body = await response.json();
+      expect(body.type).to.equal(
+        InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+      );
+      expect(body.data.content).to.equal(
+        'Trial "NonExistent Trial" not found.',
+      );
+      expect(body.data.flags).to.equal(InteractionResponseFlags.EPHEMERAL);
+    });
 
-        const request = {
-          method: 'POST',
-          url: new URL('/', 'http://discordo.example'),
-        };
+    it('should handle an unknown command interaction', async () => {
+      const interaction = {
+        type: InteractionType.APPLICATION_COMMAND,
+        data: {
+          name: 'unknown',
+        },
+      };
 
-        verifyDiscordRequestStub.resolves({
-          isValid: true,
-          interaction: interaction,
-        });
+      const request = {
+        method: 'POST',
+        url: new URL('/', 'http://discordo.example'),
+      };
 
-        const response = await server.fetch(request, mockEnv);
-        const body = await response.json();
-        expect(response.status).to.equal(400);
-        expect(body.error).to.equal('Unknown Type');
+      verifyDiscordRequestStub.resolves({
+        isValid: true,
+        interaction: interaction,
       });
+
+      const response = await server.fetch(request, mockEnv);
+      const body = await response.json();
+      expect(response.status).to.equal(400);
+      expect(body.error).to.equal('Unknown Type');
     });
 
     describe('All other routes', () => {

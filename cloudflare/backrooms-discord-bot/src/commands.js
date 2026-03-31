@@ -56,7 +56,8 @@ export const LIST_SCENARIOS_COMMAND = {
 
 export const SCENARIO_CHALLENGES_COMMAND = {
   name: 'scenario-challenges',
-  description: 'View challenges for a specific scenario and their completion status.',
+  description:
+    'View challenges for a specific scenario and their completion status.',
   options: [
     {
       name: 'scenario-name',
@@ -66,4 +67,14 @@ export const SCENARIO_CHALLENGES_COMMAND = {
       autocomplete: true,
     },
   ],
+};
+
+export const HELP_COMMAND = {
+  name: 'help',
+  description: 'Get help with bot commands.',
+};
+
+export const GETTING_STARTED_COMMAND = {
+  name: 'getting-started',
+  description: 'Learn how to get started with the bot.',
 };

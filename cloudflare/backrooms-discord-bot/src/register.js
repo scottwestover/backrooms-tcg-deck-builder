@@ -5,6 +5,8 @@ import {
   PROFILE_COMMAND,
   LIST_SCENARIOS_COMMAND,
   SCENARIO_CHALLENGES_COMMAND,
+  HELP_COMMAND,
+  GETTING_STARTED_COMMAND,
 } from './commands.js';
 import dotenv from 'dotenv';
 import process from 'node:process';
@@ -48,6 +50,8 @@ const response = await fetch(url, {
     PROFILE_COMMAND,
     LIST_SCENARIOS_COMMAND,
     SCENARIO_CHALLENGES_COMMAND,
+    HELP_COMMAND,
+    GETTING_STARTED_COMMAND,
   ]),
 });
 

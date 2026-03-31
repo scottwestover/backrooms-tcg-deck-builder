@@ -10,7 +10,7 @@ let accessTokenCache = {
 async function getSignedJwt(serviceAccount) {
   const privateKey = await jose.importPKCS8(
     serviceAccount.private_key,
-    'RS256'
+    'RS256',
   );
 
   const jwt = await new jose.SignJWT({
@@ -107,7 +107,8 @@ export function parseValue(value) {
     return value.arrayValue.values
       ? value.arrayValue.values.map(parseValue)
       : [];
-  if (value.mapValue !== undefined) return parseFirestoreDocument(value.mapValue);
+  if (value.mapValue !== undefined)
+    return parseFirestoreDocument(value.mapValue);
   if (value.timestampValue !== undefined) return new Date(value.timestampValue);
   // Handle other types as needed
   return undefined;
@@ -161,9 +162,7 @@ export function serializeFirestoreDocument(obj) {
  * @returns {Promise<object|null>}
  */
 export async function getWanderTrialByName(name) {
-  const trial = trials.find(
-    (t) => t.name.toLowerCase() === name.toLowerCase()
-  );
+  const trial = trials.find((t) => t.name.toLowerCase() === name.toLowerCase());
   return trial || null;
 }
 
@@ -180,7 +179,9 @@ export async function getDiscordUser(discordId, env) {
       return null; // User doesn't exist yet
     }
     if (!response.ok) {
-      console.error(`Error fetching user: ${response.status} ${response.statusText}`);
+      console.error(
+        `Error fetching user: ${response.status} ${response.statusText}`,
+      );
       const error = await response.text();
       throw new Error(`Failed to get user: ${error}`);
     }
@@ -208,7 +209,7 @@ export async function updateDiscordUser(discordId, data, env) {
       method: 'PATCH',
       body: JSON.stringify(data),
     },
-    env
+    env,
   );
 
   if (!response.ok) {
