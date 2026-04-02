@@ -29,6 +29,11 @@ export function calculateTrialResults(
         version: 1, // Start with version 1
       };
 
+  // Capture old state for milestone detection
+  const oldLevel = user.level;
+  const oldFullCompletionStatus =
+    user.trials[trial.id]?.allChallengesCompleted || false;
+
   // Get previous progress for this trial
   // Default to empty object if trial progress doesn't exist yet
   const trialProgress = user.trials[trial.id] || {};
@@ -51,6 +56,11 @@ export function calculateTrialResults(
         previouslyCompletedIds.includes(c.id),
       ),
       allTrialChallenges: trial.challenges,
+      username: user.username, // Include username even for no-op
+      oldLevel: oldLevel,
+      oldFullCompletionStatus: oldFullCompletionStatus,
+      isLevelUp: false, // No level up in no-op
+      isTrialFullyCompleted: false, // No new full completion in no-op
     };
   }
   // 3. Calculate XP
@@ -115,6 +125,10 @@ export function calculateTrialResults(
     },
   };
 
+  // Milestone detection
+  const isLevelUp = newLevel > oldLevel;
+  const isTrialFullyCompleted = isFullCompletion && !oldFullCompletionStatus;
+
   // Prepare data for the embed
   return {
     updatedUser, // This is now a flattened JS object
@@ -129,6 +143,10 @@ export function calculateTrialResults(
     isFullCompletion,
     achievementsEarned: achievements,
     trialName: trial.name,
+    username: user.username, // Include username for announcements
+    oldLevel: oldLevel,
+    isLevelUp: isLevelUp,
+    isTrialFullyCompleted: isTrialFullyCompleted,
   };
 }
 
@@ -188,10 +206,9 @@ export function createTrialResponseEmbed(results) {
     inline: false,
   };
 
-  const xpForNextLevel = (results.newLevel + 1) * XP_PER_LEVEL;
-  const progressPercent = Math.floor(
-    (results.newTotalXp / xpForNextLevel) * 100,
-  );
+  const xpForCurrentLevelStart = results.newLevel * XP_PER_LEVEL;
+  const xpIntoCurrentLevel = results.newTotalXp - xpForCurrentLevelStart;
+  const progressPercent = Math.floor((xpIntoCurrentLevel / XP_PER_LEVEL) * 100);
   const progressBar =
     '▓'.repeat(Math.floor(progressPercent / 10)) +
     '░'.repeat(10 - Math.floor(progressPercent / 10));
@@ -199,7 +216,7 @@ export function createTrialResponseEmbed(results) {
   const progressField = {
     name: '🔥 XP & Level',
     value:
-      `Run: ${results.xpGained} XP | Total: ${results.newTotalXp} / ${xpForNextLevel} XP\n` +
+      `Run: ${results.xpGained} XP | Total: ${results.newTotalXp} / ${(results.newLevel + 1) * XP_PER_LEVEL} XP\n` +
       `Level Progress: ${progressBar} ${progressPercent}%`,
     inline: false,
   };

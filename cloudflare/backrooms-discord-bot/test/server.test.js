@@ -16,6 +16,8 @@ import {
 } from '../src/commands.js';
 import sinon from 'sinon';
 import server from '../src/server.js';
+import trials from '../data/wander-trials.json' assert { type: 'json' };
+import { calculateTrialResults } from '../src/lib/gamification.js';
 
 describe('Server', () => {
   let sandbox;
@@ -474,6 +476,283 @@ describe('Server', () => {
       const body = await response.json();
       expect(response.status).to.equal(400);
       expect(body.error).to.equal('Unknown Type');
+    });
+
+    describe('Community Achievement Announcements', () => {
+      let updateDiscordUserStub;
+      let fetchStub;
+
+      const mockTrial = {...trials[0]};
+
+      beforeEach(() => {
+        // Stubs for functions called in the server
+        updateDiscordUserStub = sandbox.stub(
+          server.firestoreService,
+          'updateDiscordUser',
+        );
+        sandbox
+          .stub(server.firestoreService, 'serializeFirestoreDocument')
+          .returnsArg(0); // Return the object as is
+
+        // Mock global.fetch for Discord API calls
+        fetchStub = sandbox.stub(global, 'fetch').resolves({
+          ok: true,
+          status: 200,
+          json: () => Promise.resolve({}),
+        });
+
+        // Add announcement specific env variables
+        mockEnv.ANNOUNCEMENT_CHANNEL_ID = 'mock-announcement-channel-id';
+        mockEnv.SUPPORTED_DISCORD_SERVER_ID = 'mock-guild-id';
+        mockEnv.DISCORD_TOKEN = 'mock-discord-token';
+      });
+
+      afterEach(() => {
+        sandbox.restore();
+      });
+
+      it('should send a level-up announcement when isLevelUp is true', async () => {
+        sandbox
+          .stub(server.firestoreService, 'getDiscordUser')
+          .resolves({ username: 'testuser', totalXp: 400, level: 0, trials: {} });
+
+        const interaction = {
+          type: InteractionType.MESSAGE_COMPONENT,
+          data: {
+            custom_id: `select_challenges_${mockTrial.id}`,
+            values: [mockTrial.challenges[0].id],
+          },
+          member: { user: { id: 'testuser123' } },
+          guild_id: 'mock-guild-id',
+        };
+        const request = {
+          method: 'POST',
+          url: new URL('/', 'http://discordo.example'),
+        };
+
+        verifyDiscordRequestStub.resolves({
+          isValid: true,
+          interaction: interaction,
+        });
+
+        await server.fetch(request, mockEnv);
+
+        expect(fetchStub.calledOnce).to.be.true;
+        const [url, options] = fetchStub.getCall(0).args;
+        expect(url).to.include(
+          `/channels/${mockEnv.ANNOUNCEMENT_CHANNEL_ID}/messages`,
+        );
+        expect(options.method).to.equal('POST');
+        expect(options.headers.Authorization).to.equal(
+          `Bot ${mockEnv.DISCORD_TOKEN}`,
+        );
+        const body = JSON.parse(options.body);
+        expect(body.embeds[0].title).to.include('⬆️ testuser reached Level 1!');
+        expect(body.embeds[0].description).to.include('Total XP: 550');
+      });
+
+      it('should send a full trial completion announcement when isTrialFullyCompleted is true', async () => {
+                sandbox
+          .stub(server.firestoreService, 'getDiscordUser')
+          .resolves({ username: 'testuser', totalXp: 500, level: 1, trials: {
+            '1': {
+              completedChallenges: [mockTrial.challenges[0].id, mockTrial.challenges[1].id]
+            },
+          } });
+
+        const interaction = {
+          type: InteractionType.MESSAGE_COMPONENT,
+          data: {
+            custom_id: `select_challenges_${mockTrial.id}`,
+            values: [mockTrial.challenges[0].id, mockTrial.challenges[1].id, mockTrial.challenges[2].id],
+          },
+          member: { user: { id: 'testuser123' } },
+          guild_id: 'mock-guild-id',
+        };
+        const request = {
+          method: 'POST',
+          url: new URL('/', 'http://discordo.example'),
+        };
+
+        verifyDiscordRequestStub.resolves({
+          isValid: true,
+          interaction: interaction,
+        });
+
+        await server.fetch(request, mockEnv);
+
+        expect(fetchStub.calledOnce).to.be.true;
+        const [url, options] = fetchStub.getCall(0).args;
+        expect(url).to.include(
+          `/channels/${mockEnv.ANNOUNCEMENT_CHANNEL_ID}/messages`,
+        );
+        expect(options.method).to.equal('POST');
+        expect(options.headers.Authorization).to.equal(
+          `Bot ${mockEnv.DISCORD_TOKEN}`,
+        );
+        const body = JSON.parse(options.body);
+        expect(body.embeds[0].title).to.include(
+          `🏆 testuser completed all challenges in "${mockTrial.name}"!`,
+        );
+        expect(body.embeds[0].description).to.include(
+          'Wander Trial fully cleared!',
+        );
+      });
+
+      it('should send both level-up and full trial completion announcements when both are true', async () => {
+                        sandbox
+          .stub(server.firestoreService, 'getDiscordUser')
+          .resolves({ username: 'testuser', totalXp: 0, level: 0, trials: {} });
+        const interaction = {
+          type: InteractionType.MESSAGE_COMPONENT,
+          data: {
+            custom_id: `select_challenges_${mockTrial.id}`,
+            values: [mockTrial.challenges[0].id, mockTrial.challenges[1].id, mockTrial.challenges[2].id],
+          },
+          member: { user: { id: 'testuser123' } },
+          guild_id: 'mock-guild-id',
+        };
+
+        const request = {
+          method: 'POST',
+          url: new URL('/', 'http://discordo.example'),
+        };
+
+        verifyDiscordRequestStub.resolves({
+          isValid: true,
+          interaction: interaction,
+        });
+
+        await server.fetch(request, mockEnv);
+
+        expect(fetchStub.calledTwice).to.be.true;
+
+        // Check first call (Level Up)
+        const [url1, options1] = fetchStub.getCall(0).args;
+        expect(url1).to.include(
+          `/channels/${mockEnv.ANNOUNCEMENT_CHANNEL_ID}/messages`,
+        );
+        const body1 = JSON.parse(options1.body);
+        expect(body1.embeds[0].title).to.include(
+          '⬆️ testuser reached Level 1!',
+        );
+
+        // Check second call (Trial Completion)
+        const [url2, options2] = fetchStub.getCall(1).args;
+        expect(url2).to.include(
+          `/channels/${mockEnv.ANNOUNCEMENT_CHANNEL_ID}/messages`,
+        );
+        const body2 = JSON.parse(options2.body);
+        expect(body2.embeds[0].title).to.include(
+          `🏆 testuser completed all challenges in "${mockTrial.name}"!`,
+        );
+      });
+
+      it('should not send announcements if ANNOUNCEMENT_CHANNEL_ID is not set', async () => {
+        const interaction = {
+          type: InteractionType.MESSAGE_COMPONENT,
+          data: {
+            custom_id: `select_challenges_${mockTrial.id}`,
+            values: ['c1'],
+          },
+          member: { user: { id: 'testuser123' } },
+          guild_id: 'mock-guild-id',
+        };
+
+        const request = {
+          method: 'POST',
+          url: new URL('/', 'http://discordo.example'),
+        };
+
+        verifyDiscordRequestStub.resolves({
+          isValid: true,
+          interaction: interaction,
+        });
+        mockEnv.ANNOUNCEMENT_CHANNEL_ID = undefined; // Unset the channel ID
+
+        await server.fetch(request, mockEnv);
+
+        expect(fetchStub.called).to.be.false;
+      });
+
+      it('should not send announcements if SUPPORTED_DISCORD_SERVER_ID is not set', async () => {
+        const interaction = {
+          type: InteractionType.MESSAGE_COMPONENT,
+          data: {
+            custom_id: `select_challenges_${mockTrial.id}`,
+            values: ['c1'],
+          },
+          member: { user: { id: 'testuser123' } },
+          guild_id: 'mock-guild-id',
+        };
+
+        const request = {
+          method: 'POST',
+          url: new URL('/', 'http://discordo.example'),
+        };
+
+        verifyDiscordRequestStub.resolves({
+          isValid: true,
+          interaction: interaction,
+        });
+        mockEnv.SUPPORTED_DISCORD_SERVER_ID = undefined; // Unset the server ID
+
+        await server.fetch(request, mockEnv);
+
+        expect(fetchStub.called).to.be.false;
+      });
+
+      it('should not send announcements if guild_id does not match SUPPORTED_DISCORD_SERVER_ID', async () => {
+        const interaction = {
+          type: InteractionType.MESSAGE_COMPONENT,
+          data: {
+            custom_id: `select_challenges_${mockTrial.id}`,
+            values: ['c1'],
+          },
+          member: { user: { id: 'testuser123' } },
+          guild_id: 'other-guild-id', // Mismatched guild ID
+        };
+
+        const request = {
+          method: 'POST',
+          url: new URL('/', 'http://discordo.example'),
+        };
+
+        verifyDiscordRequestStub.resolves({
+          isValid: true,
+          interaction: interaction,
+        });
+
+        await server.fetch(request, mockEnv);
+
+        expect(fetchStub.called).to.be.false;
+      });
+
+      it('should not send announcements if neither milestone is met', async () => {
+        const interaction = {
+          type: InteractionType.MESSAGE_COMPONENT,
+          data: {
+            custom_id: `select_challenges_${mockTrial.id}`,
+            values: ['c1'],
+          },
+          member: { user: { id: 'testuser123' } },
+          guild_id: 'mock-guild-id',
+        };
+
+        const request = {
+          method: 'POST',
+          url: new URL('/', 'http://discordo.example'),
+        };
+
+        verifyDiscordRequestStub.resolves({
+          isValid: true,
+          interaction: interaction,
+        });
+
+        await server.fetch(request, mockEnv);
+
+        expect(fetchStub.called).to.be.false;
+      });
     });
 
     describe('All other routes', () => {

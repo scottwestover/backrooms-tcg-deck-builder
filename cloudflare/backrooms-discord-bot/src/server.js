@@ -39,7 +39,13 @@ import {
 } from './lib/gamification.js';
 import { createProfileEmbed } from './lib/profile.js';
 import trials from '../data/wander-trials.json' assert { type: 'json' };
-import { getDiscordUserId, getDiscordUserName } from './lib/discord.js';
+import {
+  getDiscordUserId,
+  getDiscordUserName,
+  sendDiscordMessage,
+  createLevelUpEmbed,
+  createTrialCompletionEmbed,
+} from './lib/discord.js';
 
 // Create a service object for Firestore operations to enable easier mocking
 const firestoreService = {
@@ -466,6 +472,35 @@ router.post('/', async (request, env) => {
       await firestoreService.updateDiscordUser(discordId, serializedUser, env);
       const embed = createTrialResponseEmbed(results);
 
+      // --- Community Achievement Announcements --- //
+      const announcementChannelId = env.ANNOUNCEMENT_CHANNEL_ID;
+      const supportedDiscordServerId = env.SUPPORTED_DISCORD_SERVER_ID;
+      const guildId = interaction.guild_id; // Get the guild ID from the interaction
+
+      if (announcementChannelId && supportedDiscordServerId && guildId === supportedDiscordServerId) {
+        if (results.isLevelUp) {
+          console.log('level up announcement message');
+          const levelUpEmbed = createLevelUpEmbed(
+            results.username,
+            results.newLevel,
+            results.newTotalXp,
+          );
+          await sendDiscordMessage(announcementChannelId, levelUpEmbed, env);
+        }
+
+        if (results.isTrialFullyCompleted) {
+          console.log('trial complete announcement message');
+          const trialCompletionEmbed = createTrialCompletionEmbed(
+            results.username,
+            results.trialName,
+          );
+          await sendDiscordMessage(announcementChannelId, trialCompletionEmbed, env);
+        }
+      } else {
+        console.log('not attempting to send announcement message');
+      }
+      // --- End Community Achievement Announcements --- //
+
       return new JsonResponse({
         type: InteractionResponseType.UPDATE_MESSAGE,
         data: {
@@ -502,6 +537,7 @@ const server = {
   verifyDiscordRequest,
   fetch: router.fetch,
   firestoreService, // Expose firestoreService for testing
+  trials, // Expose trials for testing
 };
 
 export default server;

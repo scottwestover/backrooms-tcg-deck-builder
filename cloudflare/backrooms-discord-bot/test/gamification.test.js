@@ -1,6 +1,9 @@
 import { expect } from 'chai';
 import { describe, it } from 'mocha';
-import { calculateTrialResults } from '../src/lib/gamification.js';
+import {
+  calculateTrialResults,
+  createTrialResponseEmbed,
+} from '../src/lib/gamification.js';
 
 describe('Gamification Library', () => {
   const mockTrial = {
@@ -32,6 +35,8 @@ describe('Gamification Library', () => {
       expect(results.achievementsEarned[0].name).to.equal(
         'Scenario Participation',
       );
+      expect(results.isLevelUp).to.be.false;
+      expect(results.isTrialFullyCompleted).to.be.false;
 
       const userTrials = results.updatedUser.trials;
       expect(userTrials[mockTrial.id]).to.exist;
@@ -40,7 +45,7 @@ describe('Gamification Library', () => {
       expect(progress.completedChallenges).to.deep.equal(['c1']);
     });
 
-    it('should process a subsequent completion', () => {
+    it('should process a subsequent completion without level up or full trial completion', () => {
       const existingUser = {
         username: username,
         totalXp: 150,
@@ -49,6 +54,7 @@ describe('Gamification Library', () => {
           [mockTrial.id]: {
             completedScenario: true,
             completedChallenges: ['c1'],
+            allChallengesCompleted: false,
           },
         },
       };
@@ -63,20 +69,23 @@ describe('Gamification Library', () => {
       expect(results.xpGained).to.equal(100); // Just 100 for C2
       expect(results.newTotalXp).to.equal(250);
       expect(results.achievementsEarned).to.be.empty;
+      expect(results.isLevelUp).to.be.false;
+      expect(results.isTrialFullyCompleted).to.be.false;
 
       const progress = results.updatedUser.trials[mockTrial.id];
       expect(progress.completedChallenges).to.have.members(['c1', 'c2']);
     });
 
-    it('should award a full completion bonus', () => {
+    it('should award a full completion bonus and detect level up and full trial completion', () => {
       const existingUser = {
         username: username,
-        totalXp: 250,
+        totalXp: 250, // 250 XP is below 500 XP_PER_LEVEL for level 1
         level: 0,
         trials: {
           [mockTrial.id]: {
             completedScenario: true,
             completedChallenges: ['c1', 'c2'],
+            allChallengesCompleted: false, // Not fully completed yet
           },
         },
       };
@@ -93,6 +102,43 @@ describe('Gamification Library', () => {
       expect(results.newLevel).to.equal(1);
       expect(results.isFullCompletion).to.be.true;
       expect(results.achievementsEarned).to.be.empty;
+      expect(results.isLevelUp).to.be.true;
+      expect(results.isTrialFullyCompleted).to.be.true;
+
+      const progress = results.updatedUser.trials[mockTrial.id];
+      expect(progress.allChallengesCompleted).to.be.true;
+    });
+
+    it('should not detect full trial completion if already completed', () => {
+      const existingUser = {
+        username: username,
+        totalXp: 550,
+        level: 1,
+        trials: {
+          [mockTrial.id]: {
+            completedScenario: true,
+            completedChallenges: ['c1', 'c2', 'c3'],
+            allChallengesCompleted: true, // Already fully completed
+          },
+        },
+      };
+      // Re-submit the same challenges (no new challenges, but simulates re-submission)
+      const completed = [
+        mockTrial.challenges[0],
+        mockTrial.challenges[1],
+        mockTrial.challenges[2],
+      ];
+      const results = calculateTrialResults(
+        existingUser,
+        mockTrial,
+        completed,
+        username,
+      );
+
+      expect(results.isNoOp).to.be.true;
+      expect(results.updatedUser.totalXp).to.equal(existingUser.totalXp); // No XP gain
+      expect(results.isLevelUp).to.be.false;
+      expect(results.isTrialFullyCompleted).to.be.false;
     });
 
     it('should return no-op if no new challenges are completed but preserve user data', () => {
@@ -132,6 +178,42 @@ describe('Gamification Library', () => {
       expect(results.updatedUser.trials[mockTrial.id]).to.deep.equal(
         existingUser.trials[mockTrial.id],
       );
+      expect(results.isLevelUp).to.be.false; // No level up for no-op
+      expect(results.isTrialFullyCompleted).to.be.false; // No full completion for no-op
+    });
+  });
+
+  describe('createTrialResponseEmbed', () => {
+    it('should correctly format the progress bar for level progress', () => {
+      const mockResults = {
+        isNoOp: false,
+        xpGained: 150,
+        newTotalXp: 1050,
+        newLevel: 2,
+        newlyCompletedChallenges: [],
+        previouslyCompletedChallenges: [],
+        allTrialChallenges: [],
+        isFullCompletion: false,
+        achievementsEarned: [],
+        trialName: 'Test Trial',
+        username: 'testuser',
+        oldLevel: 1, // Simulating a level up from 1 to 2, or just being at level 2
+        isLevelUp: true,
+        isTrialFullyCompleted: false,
+      };
+
+      const embed = createTrialResponseEmbed(mockResults);
+      const progressField = embed.fields.find(
+        (field) => field.name === '🔥 XP & Level',
+      );
+
+      expect(progressField).to.exist;
+      expect(progressField.value).to.include(
+        'Run: 150 XP | Total: 1050 / 1500 XP',
+      );
+      // XP into current level (1050 - (2 * 500)) = 50
+      // Progress percent = (50 / 500) * 100 = 10%
+      expect(progressField.value).to.include('Level Progress: ▓░░░░░░░░░ 10%');
     });
   });
 });
