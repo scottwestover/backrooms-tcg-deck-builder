@@ -14,16 +14,12 @@ import { PageComponent } from '../shared/page.component';
   template: `
     <backrooms-page flex="col">
       <div
-        class="game-tools-container w-full max-w-md mx-auto px-4 py-8 flex flex-col items-center gap-8 min-h-screen">
+        class="game-tools-container w-full max-w-md mx-auto px-4 py-8 flex flex-col items-center gap-4 min-h-screen">
         <div class="header-section text-center">
           <h1
-            class="text-3xl font-black text-[#FFD54F] uppercase tracking-widest text-shadow">
-            Backrooms TCG
-          </h1>
-          <h2
-            class="text-xl font-bold text-[#e2e4e6] uppercase tracking-wider text-shadow">
+            class="text-3xl font-black text-[#e2e4e6] uppercase tracking-widest text-shadow">
             Game Tools
-          </h2>
+          </h1>
         </div>
 
         <!-- Sanity Tracker -->
