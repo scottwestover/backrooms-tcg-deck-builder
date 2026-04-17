@@ -135,6 +135,20 @@ import { FilterButtonComponent } from '../filter/filter-button.component';
           Help
         </button>
       </li>
+
+      <li
+        class="flex flex-col items-center group cursor-pointer"
+        [ngClass]="getNavigationBorder('/game-tools')"
+        (click)="router.navigateByUrl('/game-tools')">
+        <i
+          class="pi pi-hammer group-hover:text-[#FFD54F]"
+          style="font-size: 1.5rem"></i>
+        <button
+          style="font-size:smaller"
+          class="p-2 group-hover:text-[#FFD54F]">
+          Game Tools
+        </button>
+      </li>
     </ul>
 
     <div
@@ -320,6 +334,15 @@ export class NavLinksComponent implements OnInit, OnDestroy {
         'text-[#e2e4e6]': !this.route.includes(route),
       };
     } else if (route === '/challenges') {
+      return {
+        'border-l-[3px] border-white':
+          this.route.includes(route) && this.sidebar,
+        'border-b-[3px] lg:border-b-0 lg:border-l-[3px] border-white':
+          this.route.includes(route) && !this.sidebar,
+        'text-[#ffd54f]': this.route.includes(route),
+        'text-[#e2e4e6]': !this.route.includes(route),
+      };
+    } else if (route === '/game-tools') {
       return {
         'border-l-[3px] border-white':
           this.route.includes(route) && this.sidebar,

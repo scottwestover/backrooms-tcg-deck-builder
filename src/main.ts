@@ -54,6 +54,7 @@ import { DeckbuilderPageComponent } from './app/features/deckbuilder/deckbuilder
 import { HelpPageComponent } from './app/features/help/help-page.component';
 import { DecksPageComponent } from './app/features/decks/decks-page.component';
 import { HomePageComponent } from './app/features/home/home-page.component';
+import { GameToolsPageComponent } from './app/features/game-tools/game-tools-page.component';
 import { ProfilePageComponent } from './app/features/profile/profile-page.component';
 import { RandomizerPageComponent } from './app/features/randomizer/randomizer-page.component';
 import { ChallengesPageComponent } from './app/features/challenges/challenges-page.component';
@@ -67,6 +68,10 @@ const routes: Routes = [
   {
     path: 'challenges',
     component: ChallengesPageComponent,
+  },
+  {
+    path: 'game-tools',
+    component: GameToolsPageComponent,
   },
   {
     path: 'randomizer',

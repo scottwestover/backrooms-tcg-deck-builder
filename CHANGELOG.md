@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+### Added
+
+- Added new game tools page that includes a sanity tracker and a coin flip tool.
+
 ## [0.0.13] - 2026-03-23
 
 ### Added
