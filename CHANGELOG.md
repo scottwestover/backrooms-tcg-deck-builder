@@ -7,9 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+- No changes.
+
+## [0.0.14] - 2026-04-17
+
 ### Added
 
-- Added new game tools page that includes a sanity tracker and a coin flip tool.
+- Added new game tools page that includes a sanity tracker and a coin flip tool [aff20b8](https://github.com/scottwestover/backrooms-tcg-deck-builder/commit/aff20b8ef00aeced91ffe6622f0b8232c700ba7b).
 
 ## [0.0.13] - 2026-03-23
 

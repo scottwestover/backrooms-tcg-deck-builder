@@ -1,6 +1,6 @@
 {
   "name": "backrooms-tcg-deck-builder",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "scripts": {
     "ng": "ng",
     "write:version": "node scripts/write-version.js",
