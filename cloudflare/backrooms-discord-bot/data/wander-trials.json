@@ -606,5 +606,13 @@
       { "id": "trial_33_challenge_2", "name": "Shop Til you Drop", "xp": 100 },
       { "id": "trial_33_challenge_3", "name": "Trunk Run x4", "xp": 100 }
     ]
+  },
+  {
+    "id": "34",
+    "name": "Union of the Light",
+    "challenges": [
+      { "id": "trial_34_challenge_1", "name": "Wayfound x2", "xp": 100 },
+      { "id": "trial_34_challenge_2", "name": "The Plan", "xp": 100 }
+    ]
   }
 ]
