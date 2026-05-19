@@ -50,7 +50,7 @@
   {
     "id": "AZ-003",
     "name": {
-      "english": "Darkened Poolrooms"
+      "english": "Darkened Pools"
     },
     "rarity": "COMMON",
     "types": [
@@ -72,9 +72,369 @@
     "cardType": "Room"
   },
   {
+    "id": "AZ-004",
+    "name": {
+      "english": "Water Slide"
+    },
+    "rarity": "COMMON",
+    "types": [
+      "ROOM"
+    ],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-004.webp",
+    "illustrator": "-",
+    "cardNumber": "3004",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Room"
+  },
+  {
+    "id": "AZ-005",
+    "name": {
+      "english": "Lazy River"
+    },
+    "rarity": "COMMON",
+    "types": [
+      "ROOM"
+    ],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-005.webp",
+    "illustrator": "-",
+    "cardNumber": "3005",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Room"
+  },
+  {
+    "id": "AZ-006",
+    "name": {
+      "english": "Drainage Hollow"
+    },
+    "rarity": "COMMON",
+    "types": [
+      "ROOM"
+    ],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-006.webp",
+    "illustrator": "-",
+    "cardNumber": "3006",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Room"
+  },
+  {
+    "id": "AZ-007",
+    "name": {
+      "english": "Apodyterium"
+    },
+    "rarity": "UNCOMMON",
+    "types": [
+      "ROOM"
+    ],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-007.webp",
+    "illustrator": "-",
+    "cardNumber": "3007",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Room"
+  },
+  {
+    "id": "AZ-008",
+    "name": {
+      "english": "Abandoned Pool"
+    },
+    "rarity": "UNCOMMON",
+    "types": [
+      "ROOM"
+    ],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-008.webp",
+    "illustrator": "-",
+    "cardNumber": "3008",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Room"
+  },
+  {
+    "id": "AZ-009",
+    "name": {
+      "english": "Dry Room"
+    },
+    "rarity": "UNCOMMON",
+    "types": [
+      "ROOM"
+    ],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-009.webp",
+    "illustrator": "-",
+    "cardNumber": "3009",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Room"
+  },
+  {
+    "id": "AZ-010",
+    "name": {
+      "english": "Spiral Staircase"
+    },
+    "rarity": "UNCOMMON",
+    "types": [
+      "ROOM"
+    ],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-010.webp",
+    "illustrator": "-",
+    "cardNumber": "3010",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Room"
+  },
+  {
+    "id": "AZ-011",
+    "name": {
+      "english": "Murky Pool"
+    },
+    "rarity": "UNCOMMON",
+    "types": [
+      "ROOM"
+    ],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-011.webp",
+    "illustrator": "-",
+    "cardNumber": "3011",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Room"
+  },
+  {
+    "id": "AZ-012",
+    "name": {
+      "english": "Skylights"
+    },
+    "rarity": "RARE",
+    "types": [
+      "ROOM"
+    ],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-012.webp",
+    "illustrator": "-",
+    "cardNumber": "3012",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Room"
+  },
+  {
+    "id": "AZ-013",
+    "name": {
+      "english": "Waterfall"
+    },
+    "rarity": "RARE",
+    "types": [
+      "ROOM"
+    ],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-013.webp",
+    "illustrator": "-",
+    "cardNumber": "3013",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Room"
+  },
+  {
+    "id": "AZ-014",
+    "name": {
+      "english": "Aquarium Cafe"
+    },
+    "rarity": "RARE",
+    "types": [
+      "ROOM"
+    ],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-014.webp",
+    "illustrator": "-",
+    "cardNumber": "3014",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Room"
+  },
+  {
+    "id": "AZ-015",
+    "name": {
+      "english": "Dream Pool"
+    },
+    "rarity": "HYPER",
+    "types": [
+      "ROOM"
+    ],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-015.webp",
+    "illustrator": "-",
+    "cardNumber": "3015",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Room"
+  },
+  {
+    "id": "AZ-016",
+    "name": {
+      "english": "Almond Water Pool"
+    },
+    "rarity": "HYPER",
+    "types": [
+      "ROOM"
+    ],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-016.webp",
+    "illustrator": "-",
+    "cardNumber": "3016",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Room"
+  },
+  {
+    "id": "AZ-017",
+    "name": {
+      "english": "Sacrificial Fountain"
+    },
+    "rarity": "PURE",
+    "types": [
+      "ROOM"
+    ],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-017.webp",
+    "illustrator": "-",
+    "cardNumber": "3017",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Room"
+  },
+  {
+    "id": "AZ-018",
+    "name": {
+      "english": "Death Slides"
+    },
+    "rarity": "VOID",
+    "types": [
+      "ROOM"
+    ],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-018.webp",
+    "illustrator": "-",
+    "cardNumber": "3018",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Room"
+  },
+  {
     "id": "AZ-019",
     "name": {
-      "english": "Water Level Rises"
+      "english": "Hazard Water Rises"
     },
     "rarity": "COMMON",
     "types": [
@@ -93,8 +453,80 @@
     "illustrator": "-",
     "cardNumber": "3019",
     "notes": "-",
-    "version": "Normal",
+    "version": "Full Art",
     "cardType": "Room"
+  },
+  {
+    "id": "AZ-020",
+    "name": {
+      "english": "Golden Slide"
+    },
+    "rarity": "COMMON",
+    "types": [
+      "OUTCOME"
+    ],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-020.webp",
+    "illustrator": "-",
+    "cardNumber": "3020",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Outcome"
+  },
+  {
+    "id": "AZ-021",
+    "name": {
+      "english": "Swirling Void"
+    },
+    "rarity": "COMMON",
+    "types": [
+      "OUTCOME"
+    ],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-021.webp",
+    "illustrator": "-",
+    "cardNumber": "3021",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Outcome"
+  },
+    {
+    "id": "AZ-022",
+    "name": {
+      "english": "???"
+    },
+    "rarity": "COMMON",
+    "types": [
+      "OUTCOME"
+    ],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-022.webp",
+    "illustrator": "-",
+    "cardNumber": "3022",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Outcome"
   },
   {
     "id": "AZ-023",
@@ -121,7 +553,7 @@
   {
     "id": "AZ-024",
     "name": {
-      "english": "Faceling Irei"
+      "english": "Water Faceling"
     },
     "rarity": "UNCOMMON",
     "types": [],
@@ -141,9 +573,317 @@
     "cardType": "Entity"
   },
   {
+    "id": "AZ-025",
+    "name": {
+      "english": "Kalunga Coil"
+    },
+    "rarity": "COMMON",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-025.webp",
+    "illustrator": "-",
+    "cardNumber": "3025",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "AZ-026",
+    "name": {
+      "english": "Deep Sea Frowner"
+    },
+    "rarity": "COMMON",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-026.webp",
+    "illustrator": "-",
+    "cardNumber": "3026",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "AZ-027",
+    "name": {
+      "english": "Pixelle"
+    },
+    "rarity": "COMMON",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-027.webp",
+    "illustrator": "-",
+    "cardNumber": "3027",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "AZ-028",
+    "name": {
+      "english": "Foams"
+    },
+    "rarity": "COMMON",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-028.webp",
+    "illustrator": "-",
+    "cardNumber": "3028",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "AZ-029",
+    "name": {
+      "english": "Aqua Skits"
+    },
+    "rarity": "COMMON",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-029.webp",
+    "illustrator": "-",
+    "cardNumber": "3029",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "AZ-030",
+    "name": {
+      "english": "Shadow Sighton"
+    },
+    "rarity": "RARE",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-030.webp",
+    "illustrator": "-",
+    "cardNumber": "3030",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "AZ-031",
+    "name": {
+      "english": "Hazard Crab"
+    },
+    "rarity": "COMMON",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-031.webp",
+    "illustrator": "-",
+    "cardNumber": "3031",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "AZ-032",
+    "name": {
+      "english": "Robert Ducky"
+    },
+    "rarity": "UNCOMMON",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-032.webp",
+    "illustrator": "-",
+    "cardNumber": "3032",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "AZ-033",
+    "name": {
+      "english": "Mauling Squid"
+    },
+    "rarity": "UNCOMMON",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-033.webp",
+    "illustrator": "-",
+    "cardNumber": "3033",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "AZ-034",
+    "name": {
+      "english": "Bullforg Man"
+    },
+    "rarity": "UNCOMMON",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-034.webp",
+    "illustrator": "-",
+    "cardNumber": "3034",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "AZ-035",
+    "name": {
+      "english": "Inflatable Shark"
+    },
+    "rarity": "UNCOMMON",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-035.webp",
+    "illustrator": "-",
+    "cardNumber": "3035",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "AZ-036",
+    "name": {
+      "english": "Sea Urchin"
+    },
+    "rarity": "UNCOMMON",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-036.webp",
+    "illustrator": "-",
+    "cardNumber": "3036",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "AZ-037",
+    "name": {
+      "english": "Mercy"
+    },
+    "rarity": "RARE",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-037.webp",
+    "illustrator": "-",
+    "cardNumber": "3037",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "AZ-038",
+    "name": {
+      "english": "Tsushigomo"
+    },
+    "rarity": "RARE",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-038.webp",
+    "illustrator": "-",
+    "cardNumber": "3038",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
     "id": "AZ-039",
     "name": {
-      "english": "Baktéria Maris"
+      "english": "Bakteria Maris"
     },
     "rarity": "HYPER",
     "types": [],
@@ -161,6 +901,332 @@
     "notes": "-",
     "version": "Normal",
     "cardType": "Entity"
+  },
+  {
+    "id": "AZ-040",
+    "name": {
+      "english": "Pack Rat"
+    },
+    "rarity": "HYPER",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-040.webp",
+    "illustrator": "-",
+    "cardNumber": "3040",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "AZ-041",
+    "name": {
+      "english": "Josan the Lifeguard"
+    },
+    "rarity": "HYPER",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-041.webp",
+    "illustrator": "-",
+    "cardNumber": "3041",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "AZ-042",
+    "name": {
+      "english": "Barruk the Alligator"
+    },
+    "rarity": "PURE",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-042.webp",
+    "illustrator": "-",
+    "cardNumber": "3042",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "AZ-043",
+    "name": {
+      "english": "Armored Millipede"
+    },
+    "rarity": "VOID",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-043.webp",
+    "illustrator": "-",
+    "cardNumber": "3043",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "AZ-044",
+    "name": {
+      "english": "Water Sentinel"
+    },
+    "rarity": "SHATTERED",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-044.webp",
+    "illustrator": "-",
+    "cardNumber": "3044",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity"
+  },
+  {
+    "id": "AZ-045",
+    "name": {
+      "english": "Chashew Water"
+    },
+    "rarity": "COMMON",
+    "types": [
+      "ITEM"
+    ],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-045.webp",
+    "illustrator": "-",
+    "cardNumber": "3045",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Item"
+  },
+  {
+    "id": "AZ-046",
+    "name": {
+      "english": "Foam Sword"
+    },
+    "rarity": "COMMON",
+    "types": [
+      "ITEM"
+    ],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-046.webp",
+    "illustrator": "-",
+    "cardNumber": "3046",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Item"
+  },
+  {
+    "id": "AZ-047",
+    "name": {
+      "english": "Day Bright Spray"
+    },
+    "rarity": "COMMON",
+    "types": [
+      "ITEM"
+    ],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-047.webp",
+    "illustrator": "-",
+    "cardNumber": "3047",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Item"
+  },
+  {
+    "id": "AZ-048",
+    "name": {
+      "english": "Pool Cat"
+    },
+    "rarity": "COMMON",
+    "types": [
+      "ITEM"
+    ],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-048.webp",
+    "illustrator": "-",
+    "cardNumber": "3048",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Item"
+  },
+  {
+    "id": "AZ-049",
+    "name": {
+      "english": "Pool Ladder"
+    },
+    "rarity": "COMMON",
+    "types": [
+      "ITEM"
+    ],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-049.webp",
+    "illustrator": "-",
+    "cardNumber": "3049",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Item"
+  },
+  {
+    "id": "AZ-050",
+    "name": {
+      "english": "Mirrored Life Jacket"
+    },
+    "rarity": "UNCOMMON",
+    "types": [
+      "ITEM"
+    ],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-050.webp",
+    "illustrator": "-",
+    "cardNumber": "3050",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Item"
+  },
+  {
+    "id": "AZ-051",
+    "name": {
+      "english": "???"
+    },
+    "rarity": "UNCOMMON",
+    "types": [
+      "ITEM"
+    ],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-051.webp",
+    "illustrator": "-",
+    "cardNumber": "3051",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Item"
+  },
+  {
+    "id": "AZ-052",
+    "name": {
+      "english": "Lifebound Shrooms"
+    },
+    "rarity": "UNCOMMON",
+    "types": [
+      "ITEM"
+    ],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-052.webp",
+    "illustrator": "-",
+    "cardNumber": "3052",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Item"
+  },
+  {
+    "id": "AZ-053",
+    "name": {
+      "english": "Hydor's Bind"
+    },
+    "rarity": "UNCOMMON",
+    "types": [
+      "ITEM"
+    ],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-053.webp",
+    "illustrator": "-",
+    "cardNumber": "3053",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Item"
   },
   {
     "id": "AZ-054",
@@ -184,6 +1250,842 @@
     "cardNumber": "3054",
     "notes": "-",
     "version": "Normal",
+    "cardType": "Item"
+  },
+  {
+    "id": "AZ-055",
+    "name": {
+      "english": "Aqua Shrooms"
+    },
+    "rarity": "RARE",
+    "types": [
+      "ITEM"
+    ],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-055.webp",
+    "illustrator": "-",
+    "cardNumber": "3055",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Item"
+  },
+  {
+    "id": "AZ-056",
+    "name": {
+      "english": "Shroom Nectar"
+    },
+    "rarity": "RARE",
+    "types": [
+      "ITEM"
+    ],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-056.webp",
+    "illustrator": "-",
+    "cardNumber": "3056",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Item"
+  },
+  {
+    "id": "AZ-057",
+    "name": {
+      "english": "Whispher Shrooms"
+    },
+    "rarity": "RARE",
+    "types": [
+      "ITEM"
+    ],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-057.webp",
+    "illustrator": "-",
+    "cardNumber": "3057",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Item"
+  },
+  {
+    "id": "AZ-058",
+    "name": {
+      "english": "Grin and Groan"
+    },
+    "rarity": "HYPER",
+    "types": [
+      "ITEM"
+    ],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-058.webp",
+    "illustrator": "-",
+    "cardNumber": "3058",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Item"
+  },
+  {
+    "id": "AZ-059",
+    "name": {
+      "english": "Boomrang Bouy"
+    },
+    "rarity": "HYPER",
+    "types": [
+      "ITEM"
+    ],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-059.webp",
+    "illustrator": "-",
+    "cardNumber": "3059",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Item"
+  },
+  {
+    "id": "AZ-060",
+    "name": {
+      "english": "Tempest Sphere"
+    },
+    "rarity": "VOID",
+    "types": [
+      "ITEM"
+    ],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-060.webp",
+    "illustrator": "-",
+    "cardNumber": "3060",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Item"
+  },
+  {
+    "id": "AZ-061",
+    "name": {
+      "english": "Bottomless Poolrooms"
+    },
+    "rarity": "RARE",
+    "types": [
+      "ROOM"
+    ],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-061.webp",
+    "illustrator": "-",
+    "cardNumber": "3061",
+    "notes": "-",
+    "version": "Full Art",
+    "cardType": "Item"
+  },
+  {
+    "id": "AZ-062",
+    "name": {
+      "english": "Water Slides"
+    },
+    "rarity": "RARE",
+    "types": [
+      "ROOM"
+    ],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-062.webp",
+    "illustrator": "-",
+    "cardNumber": "3062",
+    "notes": "-",
+    "version": "Full Art",
+    "cardType": "Room"
+  },
+  {
+    "id": "AZ-063",
+    "name": {
+      "english": "Obscure Pool"
+    },
+    "rarity": "HYPER",
+    "types": [
+      "ROOM"
+    ],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-063.webp",
+    "illustrator": "-",
+    "cardNumber": "3063",
+    "notes": "-",
+    "version": "Full Art",
+    "cardType": "Room"
+  },
+  {
+    "id": "AZ-064",
+    "name": {
+      "english": "Radiant Skylights"
+    },
+    "rarity": "PURE",
+    "types": [
+      "ROOM"
+    ],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-064.webp",
+    "illustrator": "-",
+    "cardNumber": "3064",
+    "notes": "-",
+    "version": "Full Art",
+    "cardType": "Room"
+  },
+  {
+    "id": "AZ-065",
+    "name": {
+      "english": "Mighty Watrerfall"
+    },
+    "rarity": "PURE",
+    "types": [
+      "ROOM"
+    ],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-065.webp",
+    "illustrator": "-",
+    "cardNumber": "3065",
+    "notes": "-",
+    "version": "Full Art",
+    "cardType": "Room"
+  },
+  {
+    "id": "AZ-066",
+    "name": {
+      "english": "Overgrown Cafe"
+    },
+    "rarity": "PURE",
+    "types": [
+      "ROOM"
+    ],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-066.webp",
+    "illustrator": "-",
+    "cardNumber": "3066",
+    "notes": "-",
+    "version": "Full Art",
+    "cardType": "Room"
+  },
+  {
+    "id": "AZ-067",
+    "name": {
+      "english": "Transcendent Pool"
+    },
+    "rarity": "VOID",
+    "types": [
+      "ROOM"
+    ],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-067.webp",
+    "illustrator": "-",
+    "cardNumber": "3067",
+    "notes": "-",
+    "version": "Full Art",
+    "cardType": "Room"
+  },
+  {
+    "id": "AZ-068",
+    "name": {
+      "english": "Purified Fountain"
+    },
+    "rarity": "VOID",
+    "types": [
+      "ROOM"
+    ],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-068.webp",
+    "illustrator": "-",
+    "cardNumber": "3068",
+    "notes": "-",
+    "version": "Full Art",
+    "cardType": "Room"
+  },
+  {
+    "id": "AZ-069",
+    "name": {
+      "english": "Never Ending Slides"
+    },
+    "rarity": "VOID",
+    "types": [
+      "ROOM"
+    ],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-069.webp",
+    "illustrator": "-",
+    "cardNumber": "3069",
+    "notes": "-",
+    "version": "Full Art",
+    "cardType": "Room"
+  },
+  {
+    "id": "AZ-070",
+    "name": {
+      "english": "Golden Slide"
+    },
+    "rarity": "HYPER",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-070.webp",
+    "illustrator": "-",
+    "cardNumber": "3070",
+    "notes": "-",
+    "version": "Full Art",
+    "cardType": "Outcome"
+  },
+  {
+    "id": "AZ-071",
+    "name": {
+      "english": "Swirling Void"
+    },
+    "rarity": "HYPER",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-071.webp",
+    "illustrator": "-",
+    "cardNumber": "3071",
+    "notes": "-",
+    "version": "Full Art",
+    "cardType": "Outcome"
+  },
+  {
+    "id": "AZ-072",
+    "name": {
+      "english": "???"
+    },
+    "rarity": "HYPER",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-072.webp",
+    "illustrator": "-",
+    "cardNumber": "3072",
+    "notes": "-",
+    "version": "Full Art",
+    "cardType": "Outcome"
+  },
+  {
+    "id": "AZ-073",
+    "name": {
+      "english": "Lobby Dumbwaiter"
+    },
+    "rarity": "HYPER",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-073.webp",
+    "illustrator": "-",
+    "cardNumber": "3073",
+    "notes": "-",
+    "version": "Full Art",
+    "cardType": "Outcome"
+  },
+  {
+    "id": "AZ-074",
+    "name": {
+      "english": "Water Knight"
+    },
+    "rarity": "HYPER",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-074.webp",
+    "illustrator": "-",
+    "cardNumber": "3074",
+    "notes": "-",
+    "version": "Full Art",
+    "cardType": "Entity"
+  },
+  {
+    "id": "AZ-075",
+    "name": {
+      "english": "Foams"
+    },
+    "rarity": "HYPER",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-075.webp",
+    "illustrator": "-",
+    "cardNumber": "3075",
+    "notes": "-",
+    "version": "Full Art",
+    "cardType": "Entity"
+  },
+  {
+    "id": "AZ-076",
+    "name": {
+      "english": "Shadow Sighton"
+    },
+    "rarity": "PURE",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-076.webp",
+    "illustrator": "-",
+    "cardNumber": "3076",
+    "notes": "-",
+    "version": "Full Art",
+    "cardType": "Entity"
+  },
+  {
+    "id": "AZ-077",
+    "name": {
+      "english": "Mauling Squid"
+    },
+    "rarity": "PURE",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-077.webp",
+    "illustrator": "-",
+    "cardNumber": "3077",
+    "notes": "-",
+    "version": "Full Art",
+    "cardType": "Entity"
+  },
+  {
+    "id": "AZ-078",
+    "name": {
+      "english": "Mechanical Shark"
+    },
+    "rarity": "VOID",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-078.webp",
+    "illustrator": "-",
+    "cardNumber": "3078",
+    "notes": "-",
+    "version": "Full Art",
+    "cardType": "Entity"
+  },
+  {
+    "id": "AZ-079",
+    "name": {
+      "english": "Tsuchigumo"
+    },
+    "rarity": "HYPER",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-079.webp",
+    "illustrator": "-",
+    "cardNumber": "3079",
+    "notes": "-",
+    "version": "Full Art",
+    "cardType": "Entity"
+  },
+  {
+    "id": "AZ-080",
+    "name": {
+      "english": "Bakteria Maris"
+    },
+    "rarity": "VOID",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-080.webp",
+    "illustrator": "-",
+    "cardNumber": "3080",
+    "notes": "-",
+    "version": "Full Art",
+    "cardType": "Entity"
+  },
+  {
+    "id": "AZ-081",
+    "name": {
+      "english": "Pack Rat"
+    },
+    "rarity": "PURE",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-081.webp",
+    "illustrator": "-",
+    "cardNumber": "3081",
+    "notes": "-",
+    "version": "Full Art",
+    "cardType": "Entity"
+  },
+  {
+    "id": "AZ-082",
+    "name": {
+      "english": "Armored Millipese"
+    },
+    "rarity": "SHATTERED",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-082.webp",
+    "illustrator": "-",
+    "cardNumber": "3082",
+    "notes": "-",
+    "version": "Full Art",
+    "cardType": "Entity"
+  },
+  {
+    "id": "AZ-083",
+    "name": {
+      "english": "Water Sentinel"
+    },
+    "rarity": "SHATTERED",
+    "types": [],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-083.webp",
+    "illustrator": "-",
+    "cardNumber": "3083",
+    "notes": "-",
+    "version": "Full Art",
+    "cardType": "Entity"
+  },
+  {
+    "id": "AZ-084",
+    "name": {
+      "english": "Foam Sword"
+    },
+    "rarity": "HYPER",
+    "types": [
+      "ITEM"
+    ],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-084.webp",
+    "illustrator": "-",
+    "cardNumber": "3084",
+    "notes": "-",
+    "version": "Full Art",
+    "cardType": "Item"
+  },
+  {
+    "id": "AZ-085",
+    "name": {
+      "english": "Day Bright SPF 2000"
+    },
+    "rarity": "HYPER",
+    "types": [
+      "ITEM"
+    ],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-085.webp",
+    "illustrator": "-",
+    "cardNumber": "3085",
+    "notes": "-",
+    "version": "Full Art",
+    "cardType": "Item"
+  },
+  {
+    "id": "AZ-086",
+    "name": {
+      "english": "Almond Concentrate"
+    },
+    "rarity": "PURE",
+    "types": [
+      "ITEM"
+    ],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-086.webp",
+    "illustrator": "-",
+    "cardNumber": "3086",
+    "notes": "-",
+    "version": "Full Art",
+    "cardType": "Item"
+  },
+  {
+    "id": "AZ-087",
+    "name": {
+      "english": "Aqua Shrooms"
+    },
+    "rarity": "PURE",
+    "types": [
+      "ITEM"
+    ],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-087.webp",
+    "illustrator": "-",
+    "cardNumber": "3087",
+    "notes": "-",
+    "version": "Full Art",
+    "cardType": "Item"
+  },
+  {
+    "id": "AZ-088",
+    "name": {
+      "english": "Whisper Shrooms"
+    },
+    "rarity": "PURE",
+    "types": [
+      "ITEM"
+    ],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-088.webp",
+    "illustrator": "-",
+    "cardNumber": "3088",
+    "notes": "-",
+    "version": "Full Art",
+    "cardType": "Item"
+  },
+  {
+    "id": "AZ-089",
+    "name": {
+      "english": "Grin and Groan"
+    },
+    "rarity": "VOID",
+    "types": [
+      "ITEM"
+    ],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-089.webp",
+    "illustrator": "-",
+    "cardNumber": "3089",
+    "notes": "-",
+    "version": "Full Art",
+    "cardType": "Item"
+  },
+  {
+    "id": "AZ-090",
+    "name": {
+      "english": "Tempest Sphere"
+    },
+    "rarity": "SHATTERED",
+    "types": [
+      "ITEM"
+    ],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-090.webp",
+    "illustrator": "-",
+    "cardNumber": "3090",
+    "notes": "-",
+    "version": "Full Art",
     "cardType": "Item"
   }
 ]
