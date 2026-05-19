@@ -504,6 +504,30 @@
     "version": "Normal",
     "cardType": "Outcome"
   },
+    {
+    "id": "AZ-022",
+    "name": {
+      "english": "???"
+    },
+    "rarity": "COMMON",
+    "types": [
+      "OUTCOME"
+    ],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/aqua-zone/AZ-022.webp",
+    "illustrator": "-",
+    "cardNumber": "3022",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Outcome"
+  },
   {
     "id": "AZ-023",
     "name": {
@@ -1649,7 +1673,7 @@
     "health": "",
     "cardImage": "assets/images/cards/aqua-zone/AZ-072.webp",
     "illustrator": "-",
-    "cardNumber": "3071",
+    "cardNumber": "3072",
     "notes": "-",
     "version": "Full Art",
     "cardType": "Outcome"
