@@ -9,9 +9,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - No changes.
 
+## [0.0.15] - 2026-05-20
+
 ### Added
 
-- Added card images and card json for the aqua zone card set.
+- Added card images and card json for the aqua zone card set [5fd7c62](https://github.com/scottwestover/backrooms-tcg-deck-builder/commit/5fd7c62cb78e194dec848ff7d8d233bd37b34563).
 
 ## [0.0.14] - 2026-04-17
 
