@@ -1,10 +1,10 @@
-import { AsyncPipe, NgClass, NgForOf, NgIf, NgStyle } from '@angular/common';
 import {
   ChangeDetectorRef,
   Component,
   effect,
   HostListener,
   inject,
+  signal,
 } from '@angular/core';
 import { LazyLoadImageModule } from 'ng-lazyload-image';
 import { ButtonModule } from 'primeng/button';
@@ -16,12 +16,13 @@ import { WebsiteStore } from 'src/app/store/website.store';
 import { BackroomsCard, ColorMap, ICountCard, IDeck } from '../../../../models';
 import { DialogStore } from '../../../store/dialog.store';
 import { SaveStore } from '../../../store/save.store';
+import { NgStyle, NgIf, NgClass, AsyncPipe, NgForOf } from '@angular/common';
 
 @Component({
   selector: 'backrooms-view-card-dialog',
   template: `
     <div
-      class="h-full w-full min-w-full max-w-full overflow-x-hidden md:w-[700px] md:min-w-[700px] md:max-w-[700px]">
+      class="h-full w-full min-w-full max-w-full overflow-x-hidden md:w-[800px] md:min-w-[800px] md:max-w-[800px] lg:w-[1000px] lg:min-w-[1000px] lg:max-w-[1000px]">
       <div
         class="align-center min-h-10 mt-1 inline-flex w-full justify-between border-b border-slate-200"
         id="Header">
@@ -41,17 +42,6 @@ import { SaveStore } from '../../../store/save.store';
             id="Card-Type">
             {{ card.cardType }}
           </p>
-          <!-- <div
-            *ngIf="card.cardType === 'Digimon' || card.cardType === 'Digi-Egg'"
-            [ngStyle]="{ backgroundColor }"
-            class="inline-block rounded-full px-6 py-2.5 leading-tight shadow-md"
-            id="Digimon-Lv">
-            <p
-              class="font-bold leading-[5px] text-[#e2e4e6]"
-              [ngClass]="{ 'text-black': this.card.color === 'Yellow' }">
-              {{ card.cardLv }}
-            </p>
-          </div> -->
           <p
             [ngStyle]="{ color }"
             class="text-black-outline-xs hidden self-center font-bold lg:flex"
@@ -90,15 +80,29 @@ import { SaveStore } from '../../../store/save.store';
         </button>
       </div>
 
-      <div class="w-full flex-row md:flex" id="Image-Attributes">
-        <div class="w-full md:w-1/2">
+      <div
+        class="flex w-full flex-col items-center justify-center md:flex-row"
+        id="Image-Attributes">
+        <div
+          [ngClass]="{
+            'w-full': zoomed(),
+            'md:w-1/2': !zoomed()
+          }"
+          class="flex justify-center transition-all duration-300 ease-in-out">
           <img
+            (click)="zoomed.set(!zoomed())"
             [backroomsImgFallback]="png"
             alt="{{ imageAlt }}"
             defaultImage="assets/images/card-back.webp"
-            class="mx-auto my-5 max-w-[15rem] md:my-0 md:max-w-full" />
+            class="my-5 cursor-zoom-in transition-transform duration-300 md:my-0"
+            [ngClass]="{
+              'w-[120%] max-w-[none] scale-100 cursor-zoom-out': zoomed(),
+              'max-w-[15rem] md:max-w-full': !zoomed()
+            }" />
         </div>
-        <div class="md:max-w-1/2 w-full self-center md:w-1/2 md:pl-2">
+        <div
+          *ngIf="!zoomed()"
+          class="w-full self-center md:w-1/2 md:max-w-1/2 md:pl-2">
           <div
             *ngIf="inDeck()"
             class="my-0.5 flex w-full flex-row rounded-full border border-slate-200 backdrop-brightness-150"
@@ -127,50 +131,10 @@ import { SaveStore } from '../../../store/save.store';
               {{ collectionCard.count }}x
             </p>
           </div>
-
-          <!-- <div
-            *ngIf="card.type !== '-'"
-            class="my-0.5 flex w-full flex-row rounded-full border border-slate-200 backdrop-brightness-150"
-            id="Digimon-Type">
-            <p
-              [ngStyle]="{ color }"
-              class="text-black-outline-xs ml-1.5 text-lg font-extrabold">
-              Type
-            </p>
-            <p class="font-white ml-auto mr-1.5 font-bold leading-[1.7em]">
-              {{ card.type }}
-            </p>
-          </div> -->
-          <!-- <div
-            *ngIf="card.dp !== '-'"
-            class="my-0.5 flex w-full flex-row rounded-full border border-slate-200 backdrop-brightness-150"
-            id="Digimon-DP">
-            <p
-              [ngStyle]="{ color }"
-              class="text-black-outline-xs ml-1.5 text-lg font-extrabold">
-              DP
-            </p>
-            <p class="font-white ml-auto mr-1.5 font-bold leading-[1.7em]">
-              {{ card.dp }}
-            </p>
-          </div> -->
-          <!-- <div
-            *ngIf="card.playCost !== '-'"
-            class="my-0.5 flex w-full flex-row rounded-full border border-slate-200 backdrop-brightness-150"
-            id="Digimon-Play-Cost">
-            <p
-              [ngStyle]="{ color }"
-              class="text-black-outline-xs ml-1.5 text-lg font-extrabold">
-              Play Cost
-            </p>
-            <p class="font-white ml-auto mr-1.5 font-bold leading-[1.7em]">
-              {{ card.playCost }}
-            </p>
-          </div> -->
         </div>
       </div>
 
-      <div class="my-4 max-w-full" id="Notes">
+      <div *ngIf="!zoomed()" class="my-4 max-w-full" id="Notes">
         <div class="flex flex-col" id="Card-Notes">
           <p
             [ngStyle]="{ color }"
@@ -183,7 +147,7 @@ import { SaveStore } from '../../../store/save.store';
       </div>
 
       <div
-        *ngIf="card.illustrator !== ''"
+        *ngIf="card.illustrator !== '' && !zoomed()"
         class="my-4 max-w-full"
         id="Illustrator">
         <div class="flex flex-col" id="Card-Illustrator">
@@ -237,6 +201,8 @@ export class ViewCardDialogComponent {
   collectionMode = this.saveStore.collectionMode();
   collectionCard: ICountCard = { count: 0, id: 'BT1-001' };
 
+  zoomed = signal(false);
+
   loadCard = effect(() => {
     const collection = this.saveStore.collection();
     this.collectionCard = collection.find(
@@ -288,6 +254,7 @@ export class ViewCardDialogComponent {
       return;
     }
     this.card = newCard;
+    this.zoomed.set(false);
     this.setupView();
   }
 
@@ -303,6 +270,7 @@ export class ViewCardDialogComponent {
       return;
     }
     this.card = newCard;
+    this.zoomed.set(false);
     this.setupView();
   }
 

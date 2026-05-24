@@ -53,7 +53,7 @@ import { MyChallengesDialogComponent } from './dialogs/my-challenges-dialog.comp
       [modal]="true"
       [dismissableMask]="true"
       [resizable]="false"
-      styleClass="overflow-x-hidden">
+      styleClass="w-full h-full max-w-5xl">
       <backrooms-view-card-dialog></backrooms-view-card-dialog>
     </p-dialog>
 

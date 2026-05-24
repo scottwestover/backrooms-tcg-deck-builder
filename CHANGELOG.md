@@ -7,7 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
-- No changes.
+### Added
+
+- Enhanced card readability in the deckbuilder by increasing the card detail modal width and adding a click-to-zoom feature for card images.
+- Implemented automatic zoom reset when navigating between cards in the detail view.
 
 ## [0.0.15] - 2026-05-20
 
