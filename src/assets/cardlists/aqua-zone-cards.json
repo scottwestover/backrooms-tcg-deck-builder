@@ -21,7 +21,8 @@
     "cardNumber": "3001",
     "notes": "-",
     "version": "Normal",
-    "cardType": "Room"
+    "cardType": "Room",
+    "cardText": "The Watery Corridors of the Aqua Zone present both opportunities and dangers. If you hold 0 Hazards when you move here, add 1 Hazard to your Inventory. If you hold 2+ Hazards, lose 1 Sanity and 1 DiH, then discard a Hazard. (NA)"
   },
   {
     "id": "AZ-002",
@@ -45,12 +46,13 @@
     "cardNumber": "3002",
     "notes": "-",
     "version": "Normal",
-    "cardType": "Room"
+    "cardType": "Room",
+    "cardText": "The Aqua Zone twists and turns in ways which you would never expect. Keep your wits about you, Wanderer!  (NA)"
   },
   {
     "id": "AZ-003",
     "name": {
-      "english": "Darkened Pools"
+      "english": "Darkened Poolrooms"
     },
     "rarity": "COMMON",
     "types": [
@@ -69,7 +71,8 @@
     "cardNumber": "3003",
     "notes": "-",
     "version": "Normal",
-    "cardType": "Room"
+    "cardType": "Room",
+    "cardText": "Gain a Hazard when you move into this room. (NA)"
   },
   {
     "id": "AZ-004",
@@ -93,7 +96,8 @@
     "cardNumber": "3004",
     "notes": "-",
     "version": "Normal",
-    "cardType": "Room"
+    "cardType": "Room",
+    "cardText": "A opening spring forth from this strange and particular room. You cannot escape the eerie feeling of constantly being watched. There appears to be something poking out of the water, if you wish to attempt to grab it. You may lose Sanity equal to the damage of an Attack Item from the Discard Pile, then return the item to your Inventory. (NA)"
   },
   {
     "id": "AZ-005",
@@ -117,7 +121,8 @@
     "cardNumber": "3005",
     "notes": "-",
     "version": "Normal",
-    "cardType": "Room"
+    "cardType": "Room",
+    "cardText": "Instead of moving this room across the FOP, move it one space clockwise. You must also place the eligible Navigation Point clockwise from this card, if possible. (RatQueen)"
   },
   {
     "id": "AZ-006",
@@ -141,7 +146,8 @@
     "cardNumber": "3006",
     "notes": "-",
     "version": "Normal",
-    "cardType": "Room"
+    "cardType": "Room",
+    "cardText": "You stepped into a massive space with many tunnels sprawling in various directions around you. Which way is safest? Place 2 eligible Navigation Points clockwise and 2 counterclockwise from your Position Token, if possible. (ME19)"
   },
   {
     "id": "AZ-007",
@@ -165,7 +171,8 @@
     "cardNumber": "3007",
     "notes": "-",
     "version": "Normal",
-    "cardType": "Room"
+    "cardType": "Room",
+    "cardText": "Flip the Position Token, if it lands Gem side up and you hold less than 2 Hazards, search the Pull Pile for the first item then add it to your Inventory and gain a Hazard. If you hold 2+ Hazards, then search the Pull Pile for the first Unfriendly Entity and engage it immediately, discarding any engaged Entity. Compass side up allows you to search the Pull Pile for the first item and add it to your Inventory, then shuffle the Pull Pile. (NA)"
   },
   {
     "id": "AZ-008",
@@ -189,7 +196,8 @@
     "cardNumber": "3008",
     "notes": "-",
     "version": "Normal",
-    "cardType": "Room"
+    "cardType": "Room",
+    "cardText": "When you enter this room, you may skip drawing cards from the Pull Pile to discard 1 Hazard. Otherwise, draw from the Pull Pile and gain a Hazard, but don't lose Sanity from it. (ME19)"
   },
   {
     "id": "AZ-009",
@@ -213,7 +221,8 @@
     "cardNumber": "3009",
     "notes": "-",
     "version": "Normal",
-    "cardType": "Room"
+    "cardType": "Room",
+    "cardText": "You step out of the darkness and into a place of solitude. You take a moment to rest and catch your breath, but the air feels bone dry. When you enter this room the first time, discard a Hazard. This will apply only one time even if you have multiple copies of this room into the deck. Each time thereafter, discard 0-2 Hazards, then lose 3 Sanity for each Hazard discarded. When you move out of this room, place it at the bottom of the Pull Pile. (ME19/NA)"
   },
   {
     "id": "AZ-010",
@@ -237,7 +246,8 @@
     "cardNumber": "3010",
     "notes": "-",
     "version": "Normal",
-    "cardType": "Room"
+    "cardType": "Room",
+    "cardText": "The Spiral Staircase wraps around high into the air, presenting a quick route that puts distance between you and the Hazards of the Backrooms. When you enter the Spiral Staircase, discard 1 Hazard. Instead, you may choose to lose -10 Sanity to discard 2 Hazards and place an engaged Entity in the Discard Pile without flipping for a Gem. (NA/ME19)"
   },
   {
     "id": "AZ-011",
@@ -261,7 +271,8 @@
     "cardNumber": "3011",
     "notes": "-",
     "version": "Normal",
-    "cardType": "Room"
+    "cardType": "Room",
+    "cardText": "If there are 0-1 Unfriendly Entities on the FOP when this is revealed, search the PP for the first Unfriendly Entity and place it adjacent to this room. If your PT is adjacent and the other slot is occupied, the revealed Entity engages you, discarding any currently engaged Entity. If there are 2+ Unfriendly Entities on the FOP, you must engage one if you're unengaged. While in this room, Entities have +1 HP. (ME19)"
   },
   {
     "id": "AZ-012",
@@ -285,7 +296,8 @@
     "cardNumber": "3012",
     "notes": "-",
     "version": "Normal",
-    "cardType": "Room"
+    "cardType": "Room",
+    "cardText": "Discard a Hazard to gain +3 Sanity OR pay a Painite Gem to discard all Hazards from your Inventory, gain +2 Sanity per Hazard discarded. (ME19/NA)"
   },
   {
     "id": "AZ-013",
@@ -309,7 +321,8 @@
     "cardNumber": "3013",
     "notes": "-",
     "version": "Normal",
-    "cardType": "Room"
+    "cardType": "Room",
+    "cardText": "Gain a Hazard when this room is revealed on the FOP, then Bury the nearest item on the FOP from you under this Waterfall. If there are multiple items nearest to you, choose one. If there are no items on the FOP, choose an item from your Inventory to Bury instead. (NA)"
   },
   {
     "id": "AZ-014",
@@ -333,7 +346,8 @@
     "cardNumber": "3014",
     "notes": "-",
     "version": "Normal",
-    "cardType": "Room"
+    "cardType": "Room",
+    "cardText": "Search the PP for an Almond or Cashew Water and add it to your Inventory OR discard an item from your Inventory to search for 2 Almond or Cashew Waters instead. If any items were gained from this effect, place this room in the Discard Pile after moving from it. (ME19)"
   },
   {
     "id": "AZ-015",
@@ -357,7 +371,8 @@
     "cardNumber": "3015",
     "notes": "-",
     "version": "Normal",
-    "cardType": "Room"
+    "cardType": "Room",
+    "cardText": "While in this room, you can place an engaged Entity across the FOP from the Dream Pool. Discard any attached items. If the Entity is placed on an Outcome card or Portal, discard the Entity. (ME19)"
   },
   {
     "id": "AZ-016",
@@ -381,7 +396,8 @@
     "cardNumber": "3016",
     "notes": "-",
     "version": "Normal",
-    "cardType": "Room"
+    "cardType": "Room",
+    "cardText": "The Almond Water Pool feels just right as you dip your toes within. Choose any item from the Discard Pile and shuffle it into your Deck in Hand. If there's an Entity adjacent to this room on the FOP, place them in the Discard Pile. If this entity is Bakteria, place it in the PP instead. (NA)"
   },
   {
     "id": "AZ-017",
@@ -405,7 +421,8 @@
     "cardNumber": "3017",
     "notes": "-",
     "version": "Normal",
-    "cardType": "Room"
+    "cardType": "Room",
+    "cardText": "Something about the strange misshapen statue in this room creates a sudden unease. Purple water appears to flow out of the top at regular intervals. When you enter this room, search for the first green light Unfriendly Entity or above in your PP and if you don't find any, search in your DiH. It will automatically engage you. It has +2 DiH damage until it's defeated or unengaged. If you defeat it, gain an automatic Painite Gem. (NA)"
   },
   {
     "id": "AZ-018",
@@ -429,12 +446,13 @@
     "cardNumber": "3018",
     "notes": "-",
     "version": "Normal",
-    "cardType": "Room"
+    "cardType": "Room",
+    "cardText": "You discover four slides of all different colors with strange dark stains. Reveal the top 4 cards from the PP, then shuffle them facedown. Reveal one at random then shuffle the others into the PP. If an Entity is revealed, engage it immediately, discarding any currently engaged Entity. If a Room or Outcome is revealed, place it in any eligible position on the FOP. If it's a room, you MUST move into it the following round. If an item is revealed, add it to your inventory. (ME19/NA)"
   },
   {
     "id": "AZ-019",
     "name": {
-      "english": "Hazard Water Rises"
+      "english": "Water Level Rises"
     },
     "rarity": "COMMON",
     "types": [
@@ -454,7 +472,8 @@
     "cardNumber": "3019",
     "notes": "-",
     "version": "Full Art",
-    "cardType": "Room"
+    "cardType": "Room",
+    "cardText": "When you gain a Hazard, place it in your Inventory (occupied or not), then lose Sanity equal to the number of Hazards you have. Items covered by a Hazard cannot be used until the Hazard is discarded. Items may not be added to a slot occupied by a Hazard. Passive abilities from Companions and Wearable Items still function, but if there is a Hazard in their slot then you cannot discard them. If you gain a fifth Hazard, instead lose 5 DiH and 5 Sanity and discard the Hazard in the Hazard stack. (NA/ME19)"
   },
   {
     "id": "AZ-020",
@@ -478,7 +497,8 @@
     "cardNumber": "3020",
     "notes": "-",
     "version": "Normal",
-    "cardType": "Outcome"
+    "cardType": "Outcome",
+    "cardText": "The Golden Slide is like something out of a dream, it's gilded surface eschewing unspoken possibilities. When the water level is low enough, you can activate it with a Painite Gem and escape this aquatic nightmare. You must have a Painite Gem and a maximum of 1 Hazard card in your Inventory in order to safely exit the Aqua Zone to win. (NA/ME19)"
   },
   {
     "id": "AZ-021",
@@ -502,12 +522,14 @@
     "cardNumber": "3021",
     "notes": "-",
     "version": "Normal",
-    "cardType": "Outcome"
+    "cardType": "Outcome",
+    "cardText": "The vicious whirlpool thrashes mercilessly, threatening to consume any who come near. When this card appears on the FOP, take all items in your Inventory, shuffle them up and discard 1 randomly. Place all remaining items back into your Inventory. If you have no items, gain a Hazard.  (NA)"
   },
-    {
+  {
     "id": "AZ-022",
     "name": {
-      "english": "???"
+      "english": "???",
+      "tbd": "Mall Escalator"
     },
     "rarity": "COMMON",
     "types": [
@@ -526,7 +548,8 @@
     "cardNumber": "3022",
     "notes": "-",
     "version": "Normal",
-    "cardType": "Outcome"
+    "cardType": "Outcome",
+    "cardText": "Emerging from the depths of the Aqua Zone, a peculiar escalator juts up through the water. As the escalator rises past the ceiling, it leads you to a new place entirely. You are slowly transported to an open space filled with abandoned store fronts. Here, the Dead Mall eagerly awaits your arrival. Take all cards from your current deck, replace them with a Dead Mall deck and perform a new No-Clip Round. (NA)"
   },
   {
     "id": "AZ-023",
@@ -548,7 +571,8 @@
     "cardNumber": "3023",
     "notes": "-",
     "version": "Normal",
-    "cardType": "Outcome"
+    "cardType": "Outcome",
+    "cardText": "Boarding the Lobby Dumbwaiter, you watch as the watery depths slowly disappear from view. These views are regretably replaced by decrepit yellowed wallpaper of the Lobby Levels. When entering this Portal, you may temporarily carry one item card in your Inventory with you. Once this item is used, it must be placed back into the original deck out of play. Take all cards from your current deck, replace them with a Lobby Levels deck and perform a new No-Clip Round. (ME19)"
   },
   {
     "id": "AZ-024",
@@ -570,12 +594,13 @@
     "cardNumber": "3024",
     "notes": "-",
     "version": "Normal",
-    "cardType": "Entity"
+    "cardType": "Entity",
+    "cardText": "Water Faceling commands the room when submerged in water, providing it a boost of power and intense ferocity. This Entity is immune to edible and Concealment items. When you engage Water Faceling, gain a Hazard. This Entity deals +1 additional DiH damage for each Hazard you hold. If you gain a third Hazard while engaged with this Entity, place it in your inventory as a Companion, discarding any current Companion. You may use it as an Attack item to deal 4 damage, then discard. (ME19/NA)"
   },
   {
     "id": "AZ-025",
     "name": {
-      "english": "Kalunga Coil"
+      "english": "Kulunga Coil"
     },
     "rarity": "COMMON",
     "types": [],
@@ -592,7 +617,8 @@
     "cardNumber": "3025",
     "notes": "-",
     "version": "Normal",
-    "cardType": "Entity"
+    "cardType": "Entity",
+    "cardText": "This large reptile slips through the water, hiding in the shadows and waiting for an opportunity to strike unsuspecting victims. When this Entity is revealed on the Field of Play, gain a Hazard. Then, if you hold 2+ Hazards and are unengaged, immediately engage this Entity. Each round you're engaged with Kulunga Coil, choose to either lose 3 Sanity or 2 DiH. (NA)"
   },
   {
     "id": "AZ-026",
@@ -614,7 +640,8 @@
     "cardNumber": "3026",
     "notes": "-",
     "version": "Normal",
-    "cardType": "Entity"
+    "cardType": "Entity",
+    "cardText": "This Entity hides in murky waters as it wallows in despair. While Deep Sea Frowner is unengaged, flip the PT when an item is added to your inventory. Compass side up, place that item in the Discard Pile. When you defeat this Entity, it deals 3 DiH damage as it sends a blast of miasma at you in its last moments. Then, search the PP for an Abandoned Pool card and place it on top of the room you are currently in. If you cannot find one, search the Discard Pile instead. (NA)"
   },
   {
     "id": "AZ-027",
@@ -636,7 +663,8 @@
     "cardNumber": "3027",
     "notes": "-",
     "version": "Normal",
-    "cardType": "Entity"
+    "cardType": "Entity",
+    "cardText": "Pixelle may lead you to Aqua Shrooms. When revealed on the FOP, lose 5 Sanity and search your PP for an Aqua Shrooms and add it to your Inventory. If no Aqua Shrooms are found, gain a Hazard and add Pixelle to your Inventory as a Companion, discarding any current Companion. Pixelle has no ability and cannot be discarded until another Companion replaces them or you gain an Aqua Shrooms card. (HT)"
   },
   {
     "id": "AZ-028",
@@ -658,7 +686,8 @@
     "cardNumber": "3028",
     "notes": "-",
     "version": "Normal",
-    "cardType": "Entity"
+    "cardType": "Entity",
+    "cardText": "Foams are blind but have impeccable sense of sound and smell. When sensing life, they become aggravated and spring into action. While Foams is your Companion, you may choose to lose 5 Sanity to devour a green light or lower rarity Entity and attach that Entity to Foams. You may attach up to 2 Entities. Each attached Entity gives Foams +2 damage when used in combat. Once used, place Foams and all attached Entities into the Discard Pile. (NA)"
   },
   {
     "id": "AZ-029",
@@ -680,7 +709,8 @@
     "cardNumber": "3029",
     "notes": "-",
     "version": "Normal",
-    "cardType": "Entity"
+    "cardType": "Entity",
+    "cardText": "These small bugs are helplessly attracted to sources of water. Their numbers in the Aqua Zone are plentiful, providing an easy source of nutrition in cases of emergency. Upon engagement, add this Entity to your Inventory. You may choose to conceal an Entity on the FOP and gain +2 Sanity OR discard a Hazard from your Inventory and gain 2 cards from the Pull Pile to your DiH. Then, discard Aqua Skits. (NA)"
   },
   {
     "id": "AZ-030",
@@ -702,7 +732,8 @@
     "cardNumber": "3030",
     "notes": "-",
     "version": "Normal",
-    "cardType": "Entity"
+    "cardType": "Entity",
+    "cardText": "Shadow Sighton waits patiently in the darkness around any bend or turn throughout the Aqua Zone. Its unblinking eyes watch closely, catching sight of any movement. If you conceal another Entity while Shadow Sighton is unengaged, flip the Position Token. Gem side up, the Concealment item is blocked by Shadow Sighton, discarded, and he immediately engages you, discarding any currently engaged Entity. Shadow Sighton is immune to Concealment items. (NA)"
   },
   {
     "id": "AZ-031",
@@ -724,7 +755,8 @@
     "cardNumber": "3031",
     "notes": "-",
     "version": "Normal",
-    "cardType": "Entity"
+    "cardType": "Entity",
+    "cardText": "Twisted by the power of the Aqua Zone, these crabs snap their pincers shut with precision and efficiency. When revealed on the FOP, Bury an item from either your Inventory or the FOP underneath this Hazard Crab. When you engage this Entity and you have any items in your Inventory, gain a Hazard or choose to discard an item. (NA)"
   },
   {
     "id": "AZ-032",
@@ -746,7 +778,8 @@
     "cardNumber": "3032",
     "notes": "-",
     "version": "Normal",
-    "cardType": "Entity"
+    "cardType": "Entity",
+    "cardText": "Robert Ducky floats along the surface of the water with an expression frozen with glee. When you engage this Entity, gain +3 Sanity or return the top item card in the DP to your Inventory. Discard 1 Hazard. If you have no Hazards, add this to your Inventory as a Companion. If you were to gain a Hazard while Robert Ducky is your Companion, you may discard this and 1 Hazard in your Inventory instead. (NA)"
   },
   {
     "id": "AZ-033",
@@ -768,12 +801,13 @@
     "cardNumber": "3033",
     "notes": "-",
     "version": "Normal",
-    "cardType": "Entity"
+    "cardType": "Entity",
+    "cardText": "This powerful sea creature emerges swiftly from the depths of a dark pool. Its tentacles flail about as the water shifts wildly around you. When this Entity appears on the FOP, gain 2 Hazards. (NA)"
   },
   {
     "id": "AZ-034",
     "name": {
-      "english": "Bullforg Man"
+      "english": "Bullfrog Man"
     },
     "rarity": "UNCOMMON",
     "types": [],
@@ -790,7 +824,8 @@
     "cardNumber": "3034",
     "notes": "-",
     "version": "Normal",
-    "cardType": "Entity"
+    "cardType": "Entity",
+    "cardText": "You hear it before you see it\u2014wet, rubbery slaps echoing through the Aqua Zone. Bullfrog Man is coming, and he\u2019s hopping mad. At the start of each Movement Round, Bullfrog Man moves 1 space on the FOP toward your Position Token, taking the shortest path (clockwise or counterclockwise). If the next space has an Entity or Perm. Fix, he skips it. If he is adjacent to your PT after moving or enters your space, he engages you\u2014discarding any engaged Entity and all attached items. (ME19)"
   },
   {
     "id": "AZ-035",
@@ -812,7 +847,8 @@
     "cardNumber": "3035",
     "notes": "-",
     "version": "Normal",
-    "cardType": "Entity"
+    "cardType": "Entity",
+    "cardText": "You stumble upon an Inflatable Shark, its plastic jaws surprisingly sharp for a toy. Still, it feels quite dangerous. You may discard 1-2 Hazards from your Inventory to fill the Shark with water - however, it springs to life, engaging you as an Unfriendly Entity. Alternatively, you may spend a Painite Gem to fill it with air, gain 3 Sanity instead, then discard this Entity and one other Entity on the FOP.  (ME19/NA)"
   },
   {
     "id": "AZ-036",
@@ -834,7 +870,8 @@
     "cardNumber": "3036",
     "notes": "-",
     "version": "Normal",
-    "cardType": "Entity"
+    "cardType": "Entity",
+    "cardText": "Sea Urchin are on the hunt for energy and are especially responsive to Painite Gems. At the start of every Action Round, move this Entity 1 space toward you on the FOP, or 2 spaces if you have a Gem. If it stops on an Outcome Card, shuffle this Entity into the PP. Lose 1 DIH anytime Sea Urchin is adjacent to you on the FOP. If you don't have a Gem when you engage this Entity, it becomes Friendly. You may lose 4 Sanity to discard up to 2 Hazards along with the Sea Urchin. (NA)"
   },
   {
     "id": "AZ-037",
@@ -856,12 +893,13 @@
     "cardNumber": "3037",
     "notes": "-",
     "version": "Normal",
-    "cardType": "Entity"
+    "cardType": "Entity",
+    "cardText": "They hunt for weakened Wanderers to feed upon as they hover over pools of water. If you have 11 Sanity or less when Mercy is revealed on the FOP, engage it immediately if you're not already engaged. If you are engaged, gain a Hazard and engage Mercy immediately after you defeat the current Entity. When attacking, the first used Attack item is placed face down onto this Entity and does no damage. This Entity is immune to Concealment and Consumable Items.(NA)"
   },
   {
     "id": "AZ-038",
     "name": {
-      "english": "Tsushigomo"
+      "english": "Tsuchigumo"
     },
     "rarity": "RARE",
     "types": [],
@@ -878,7 +916,8 @@
     "cardNumber": "3038",
     "notes": "-",
     "version": "Normal",
-    "cardType": "Entity"
+    "cardType": "Entity",
+    "cardText": "When you engage Tsuchigumo, place the top card from the PP facedown underneath this Entity. When you defeat this Entity, reveal the PP card. If it\u2019s an Entity or item, discard the last Attack Item used, then lose -3 Sanity. Place the revealed card in the DP and do not replace the PP card afterwards. (NA)"
   },
   {
     "id": "AZ-039",
@@ -900,7 +939,8 @@
     "cardNumber": "3039",
     "notes": "-",
     "version": "Normal",
-    "cardType": "Entity"
+    "cardType": "Entity",
+    "cardText": "Bakteria returns to pursue any Wanderers who have the misfortune of being in its line of sight. This undying Entity is bolstered by the presence of those sane enough to seek the exit. If you have 11 Sanity or more after engaging it, Bakteria deals +3 DiH damage. If you have 10 Sanity or less, this Entity deals +2 DiH damage. When you defeat Bakteria, shuffle it back into the Pull Pile, then discard a Hazard from your Inventory. This Entity is immune to Concealment Items. (NA)"
   },
   {
     "id": "AZ-040",
@@ -922,7 +962,8 @@
     "cardNumber": "3040",
     "notes": "-",
     "version": "Normal",
-    "cardType": "Entity"
+    "cardType": "Entity",
+    "cardText": "The Pack Rat wanders through the murky depths of the Aqua Zone, its keen eyes keeping watch for danger and opportunity. When you engage this Entity, choose to either search the Pull Pile for the first 2 items and add them to your Inventory, or add Pack Rat to your Inventory as a Companion. While Pack Rat is your Companion, you may also place up to two items in the Inventory slot it occupies. If a Hazard is present in the Pack Rat slot, you can't use the items that he's carrying. (NA)"
   },
   {
     "id": "AZ-041",
@@ -944,7 +985,8 @@
     "cardNumber": "3041",
     "notes": "-",
     "version": "Normal",
-    "cardType": "Entity"
+    "cardType": "Entity",
+    "cardText": "Before he no-clipped during an innocent swim, he was just a lifeguard. Now, trapped within the Aqua Zone, he uses the skills he learned during his time in the waters above to survive. When taking DiH damage, place the DiH cards under Josan. At the end of each Action Round, if Josan has 5 or more cards under him, place him in the Discard Pile even if a Hazard is in his slot. Place all cards underneath him on the bottom of your DiH. (NA)"
   },
   {
     "id": "AZ-042",
@@ -966,7 +1008,8 @@
     "cardNumber": "3042",
     "notes": "-",
     "version": "Normal",
-    "cardType": "Entity"
+    "cardType": "Entity",
+    "cardText": "A monstrous force of nature, Barruk often hides just beneath the surface of the murky waters, waiting in anticipation for his next meal. When this Entity is revealed on the Field of Play, lose -4 Sanity. Lose -2 Sanity at the beginning of every Action Round while unengaged. When you engage him, search the PP for the first item and discard it. (NA)"
   },
   {
     "id": "AZ-043",
@@ -988,7 +1031,8 @@
     "cardNumber": "3043",
     "notes": "-",
     "version": "Normal",
-    "cardType": "Entity"
+    "cardType": "Entity",
+    "cardText": "Stalking through the dangerous waters, this Entity has plated scales to fend off most attacks. When this Entity appears on the FOP, gain a Hazard. Each Attack Item used deals a maximum of 1 damage. Each blow knocks off one of its armored plates, causing it to deal 1 less DIH for each damage it's taken. Lose -2 Sanity each time you attack this Entity. Only Attack Items are useful on Armored Millipede but it is immune to Liquid Attack Items. (ME19)"
   },
   {
     "id": "AZ-044",
@@ -1010,12 +1054,13 @@
     "cardNumber": "3044",
     "notes": "-",
     "version": "Normal",
-    "cardType": "Entity"
+    "cardType": "Entity",
+    "cardText": "Water Sentinels inhabit the deepest pools of the Aqua Zone, guarding them from those searching for coveted Painite Gems. After engagement, it pulls you deep into the pool with a powerful grip. For the first 2 Action Rounds, Water Sentinel deals +1 bonus DiH Damage. From the 3rd round onwards, lose -2 Sanity and take +2 bonus DiH damage each Action Round. It will grant a Painite Gem upon defeat. Besides Shroom Nectar, this Entity is immune to Consumable and Concealment Items. (ME19)"
   },
   {
     "id": "AZ-045",
     "name": {
-      "english": "Chashew Water"
+      "english": "Cashew Water"
     },
     "rarity": "COMMON",
     "types": [
@@ -1034,7 +1079,8 @@
     "cardNumber": "3045",
     "notes": "-",
     "version": "Normal",
-    "cardType": "Item"
+    "cardType": "Item",
+    "cardText": "This poisonous liquid has fooled many Entities and Wanderers that consume it, causing a burning effect upon contact and dealing poison damage. Deals 2 base damage when used against an Entity, then deals 1 damage each Round until defeated. (NA)"
   },
   {
     "id": "AZ-046",
@@ -1058,7 +1104,8 @@
     "cardNumber": "3046",
     "notes": "-",
     "version": "Normal",
-    "cardType": "Item"
+    "cardType": "Item",
+    "cardText": "What appears to be a children's toy is actually a potent weapon that is powered by the Aqua Zone. When using this Attack Item, you may spend 1 Sanity to flip the Position Token. If the result is Gem side up, deal +1 damage to the Entity. Perform this effect up to 3 times upon use. However, if you flip Compass side up, stop flipping and lose -3 Sanity. (Aurora)"
   },
   {
     "id": "AZ-047",
@@ -1082,7 +1129,8 @@
     "cardNumber": "3047",
     "notes": "-",
     "version": "Normal",
-    "cardType": "Item"
+    "cardType": "Item",
+    "cardText": "What appears to be a typical bottle of sunscreen actually holds a deadly secret: the chemicals within cause extreme acid damage upon contact with an Entity. If there are less than 20 cards in your DiH, deal +1 damage. If there are at least 20 cards in your DiH, deal +3 damage. (NA)"
   },
   {
     "id": "AZ-048",
@@ -1106,7 +1154,8 @@
     "cardNumber": "3048",
     "notes": "-",
     "version": "Normal",
-    "cardType": "Item"
+    "cardType": "Item",
+    "cardText": "This friendly beckoning cat statue seems to cozy up to the Wanderer who picks it up. When Pool Cat is added to your Inventory, gain +3 Sanity and discard a Hazard. Discard Pool Cat to add the top 3 Pull Pile cards to your DiH OR use it to avoid Sanity Loss when engaging an Entity. (NA)"
   },
   {
     "id": "AZ-049",
@@ -1130,7 +1179,8 @@
     "cardNumber": "3049",
     "notes": "-",
     "version": "Normal",
-    "cardType": "Item"
+    "cardType": "Item",
+    "cardText": "This sturdy pool ladder folds up for easy storage and unfolds just as quickly. This tool enables a speedy escape from the persistent rising waters of the Aqua Zone. Discard this item to discard a Hazard from your Inventory OR lose -5 Sanity and discard 2 Hazards. (NA)"
   },
   {
     "id": "AZ-050",
@@ -1154,12 +1204,14 @@
     "cardNumber": "3050",
     "notes": "-",
     "version": "Normal",
-    "cardType": "Item"
+    "cardType": "Item",
+    "cardText": "Equipping this item deals -2 DiH damage and -2 Sanity loss. While this item is in your Inventory, all Attack Items deal +1 additional damage. Alternatively, lose -2 Sanity when using the Attack item to deal +2 damage instead. When discarded, discard a Hazard from your Inventory. (NA)"
   },
   {
     "id": "AZ-051",
     "name": {
-      "english": "???"
+      "english": "???",
+      "tbd": "Almond Water"
     },
     "rarity": "UNCOMMON",
     "types": [
@@ -1178,7 +1230,8 @@
     "cardNumber": "3051",
     "notes": "-",
     "version": "Normal",
-    "cardType": "Item"
+    "cardType": "Item",
+    "cardText": "Use to restore +5 Sanity or conceal an Entity on the FOP. You may also combine Almond Water to create Almond Jelly, a sticky grey gel with potent abilities. Discard 2 Almond Waters from your Inventory to send 1 Entity from the FOP to the DP without flipping for a Painite Gem. (ME19)"
   },
   {
     "id": "AZ-052",
@@ -1202,7 +1255,8 @@
     "cardNumber": "3052",
     "notes": "-",
     "version": "Normal",
-    "cardType": "Item"
+    "cardType": "Item",
+    "cardText": "An ethereal light emanates from within these explosive Shrooms, providing a small boost of mental stability that can directly contribute to a Wanderer's moment of comfort. Use against an Entity to transmit a small amount of life into the Wanderer who wields it. If you defeat an Entity using this Shroom, you may choose to lose up to 4 Sanity to add that many cards from the PP to your DiH. (NA)"
   },
   {
     "id": "AZ-053",
@@ -1226,7 +1280,8 @@
     "cardNumber": "3053",
     "notes": "-",
     "version": "Normal",
-    "cardType": "Item"
+    "cardType": "Item",
+    "cardText": "When revealed on the FOP, gain a Hazard and you are forced to place this in your Inventory. The next time an Unfriendly Entity is revealed on the FOP, immediately engage it. This Entity deals +1 additional DiH damage each round. After defeating this Entity, also place this item in the Discard Pile. (NA)"
   },
   {
     "id": "AZ-054",
@@ -1250,7 +1305,8 @@
     "cardNumber": "3054",
     "notes": "-",
     "version": "Normal",
-    "cardType": "Item"
+    "cardType": "Item",
+    "cardText": "This mysterious ring shows a sigil in the shape of a dead tree, the family crest of some royal house of the past. There are strange sensations burning through your body while holding it in your hand, like the weight of a thousand souls hide within it. Choose to add the top 2 cards from the Pull Pile to your DiH then discard OR add this item to your Inventory and gain +2 Sanity each time an Entity is defeated. (NA)"
   },
   {
     "id": "AZ-055",
@@ -1274,7 +1330,8 @@
     "cardNumber": "3055",
     "notes": "-",
     "version": "Normal",
-    "cardType": "Item"
+    "cardType": "Item",
+    "cardText": "Aqua Shrooms grow underwater and can absorb large quantities of water for storage. The built up pressure causes them to blow up on impact, dealing explosive damage. Many Wanderers have exploited this feature for use as a weapon. Deal 3 damage plus an additional +1 damage for each Hazard in your Inventory. (ME19)"
   },
   {
     "id": "AZ-056",
@@ -1298,12 +1355,13 @@
     "cardNumber": "3056",
     "notes": "-",
     "version": "Normal",
-    "cardType": "Item"
+    "cardType": "Item",
+    "cardText": "Shroom Nectar is a potent attractant for many Entities. Use it to reinvigorate yourself to gain +3 Sanity, then use the remnants to Bury an Entity on the FOP by placing that Entity on the bottom of its current card stack on the FOP. (ME19)"
   },
   {
     "id": "AZ-057",
     "name": {
-      "english": "Whispher Shrooms"
+      "english": "Whisper Shrooms"
     },
     "rarity": "RARE",
     "types": [
@@ -1322,7 +1380,8 @@
     "cardNumber": "3057",
     "notes": "-",
     "version": "Normal",
-    "cardType": "Item"
+    "cardType": "Item",
+    "cardText": "The sound around you dampens as you hold these Shrooms, effectively creating an opportunity for safe passage through these terrifying watery corridors. Use this item to conceal an Entity on the FOP. Then, reveal the top 3 cards of your Deck in Hand and place them back on top of your Deck in Hand in any order you wish. (NA)"
   },
   {
     "id": "AZ-058",
@@ -1346,12 +1405,13 @@
     "cardNumber": "3058",
     "notes": "-",
     "version": "Normal",
-    "cardType": "Item"
+    "cardType": "Item",
+    "cardText": "This knife has suspicious carvings of faces along the handle. Faint laughter and groaning can be heard as you pick it up. Upon closer inspection, there appears a second blade behind the first. Both blades make contact in quick succession when used in combat, dealing extensive physical damage. Once discarded and until the end of your next Action Round, you may lose 4 Sanity to return the Grin-and-Groan to your Inventory. (NA)"
   },
   {
     "id": "AZ-059",
     "name": {
-      "english": "Boomrang Bouy"
+      "english": "Boomerang Bouy"
     },
     "rarity": "HYPER",
     "types": [
@@ -1370,7 +1430,8 @@
     "cardNumber": "3059",
     "notes": "-",
     "version": "Normal",
-    "cardType": "Item"
+    "cardType": "Item",
+    "cardText": "This colorful buoy is a powerful asset in the Aqua Zone with the ability to return to you after use. You may use the Boomerang Buoy to conceal an Entity on the FOP. When this item is uncovered and would be discarded, you may spend 3 Sanity to return it to your Inventory. Otherwise, discard as usual. (NA)"
   },
   {
     "id": "AZ-060",
@@ -1394,7 +1455,8 @@
     "cardNumber": "3060",
     "notes": "-",
     "version": "Normal",
-    "cardType": "Item"
+    "cardType": "Item",
+    "cardText": "A torrential ocean flows from within this mysterious sphere. Choose to either lose -5 Sanity to discard the next Hazard you gain, then place this card into the DP. OR, lose -8 Sanity to gain a Hazard, then shuffle the top card of each space on the FOP back into the Pull Pile except for your room. Then, place a card from the PP on every space of the FOP starting from your Position token and going clockwise. OR, lose -15 Sanity to discard all Entities on the FOP. (ME19/NA)"
   },
   {
     "id": "AZ-061",
@@ -1418,7 +1480,8 @@
     "cardNumber": "3061",
     "notes": "-",
     "version": "Full Art",
-    "cardType": "Item"
+    "cardType": "Item",
+    "cardText": "Gain 2 Hazards, then search your PP for the first Shroom card and add it to your inventory. If you don't find any, search in your DiH."
   },
   {
     "id": "AZ-062",
@@ -1442,7 +1505,8 @@
     "cardNumber": "3062",
     "notes": "-",
     "version": "Full Art",
-    "cardType": "Room"
+    "cardType": "Room",
+    "cardText": "Perform another Movement Round after moving into this room."
   },
   {
     "id": "AZ-063",
@@ -1466,7 +1530,8 @@
     "cardNumber": "3063",
     "notes": "-",
     "version": "Full Art",
-    "cardType": "Room"
+    "cardType": "Room",
+    "cardText": "Within this black pool composed of liquid darkness resides an inordinately powerful Entity. After moving into this room, search the PP for the first Unfriendly Entity with Purple rarity or higher and engage it instantly, discarding any currently engaged Entity. Defeating it will grant an automatic Painite Gem."
   },
   {
     "id": "AZ-064",
@@ -1490,12 +1555,13 @@
     "cardNumber": "3064",
     "notes": "-",
     "version": "Full Art",
-    "cardType": "Room"
+    "cardType": "Room",
+    "cardText": "When this room is revealed on the FOP, discard 2 Hazards. The light rays are so strong in this room that if you're engaged with an Entity and end your movement in this room, that Entity takes 2 damage at the end of your Movement Round."
   },
   {
     "id": "AZ-065",
     "name": {
-      "english": "Mighty Watrerfall"
+      "english": "Mighty Waterfall"
     },
     "rarity": "PURE",
     "types": [
@@ -1514,7 +1580,8 @@
     "cardNumber": "3065",
     "notes": "-",
     "version": "Full Art",
-    "cardType": "Room"
+    "cardType": "Room",
+    "cardText": "When you enter this room, if you're engaged with an Entity, discard it and all attached items, then lose 4 DiH. Do not flip for the Gem."
   },
   {
     "id": "AZ-066",
@@ -1538,7 +1605,8 @@
     "cardNumber": "3066",
     "notes": "-",
     "version": "Full Art",
-    "cardType": "Room"
+    "cardType": "Room",
+    "cardText": "A lot of mushrooms and plants have grown inside this abandoned caf\u00e8, causing the air here to become toxic. After moving here, lose 1 DiH and search the PP for a Shroom item and add it to your Inventory. If you decide to stay and gather more Shrooms, lose 2 DiH and gain a Hazard instead, then search your PP for 2 Shrooms items instead."
   },
   {
     "id": "AZ-067",
@@ -1562,7 +1630,8 @@
     "cardNumber": "3067",
     "notes": "-",
     "version": "Full Art",
-    "cardType": "Room"
+    "cardType": "Room",
+    "cardText": "You catch sight of the stars and a far away galaxy reflecting in the water of the pool. When you enter this room, you can decide to perform a new No-Clip round, but discard the Transcendent Pool as well as any engaged Entity.  Place your Position Token into the first available room starting from 6 O'clock."
   },
   {
     "id": "AZ-068",
@@ -1586,7 +1655,8 @@
     "cardNumber": "3068",
     "notes": "-",
     "version": "Full Art",
-    "cardType": "Room"
+    "cardType": "Room",
+    "cardText": "The stone dolphin statue has a space for a gem: if you discard a Painite Gem in this room, you can reshuffle a Portal or a Permanent Fixture from the FOP into the PP, then gain +5 Sanity."
   },
   {
     "id": "AZ-069",
@@ -1610,7 +1680,8 @@
     "cardNumber": "3069",
     "notes": "-",
     "version": "Full Art",
-    "cardType": "Room"
+    "cardType": "Room",
+    "cardText": "Reveal the top 6 cards from the PP, then choose 2 to discard and shuffle the rest facedown. Reveal one at random then shuffle the others back into the PP. If an Entity is revealed, engage it immediately, discarding any currently engaged Entity. If a Room or Outcome is revealed, place it in any eligible position on the FOP; If it's a Room, you MUST move into it the following round. If an item is revealed, add it to your Inventory."
   },
   {
     "id": "AZ-070",
@@ -1632,7 +1703,8 @@
     "cardNumber": "3070",
     "notes": "-",
     "version": "Full Art",
-    "cardType": "Outcome"
+    "cardType": "Outcome",
+    "cardText": "The Golden Slide is like something out of a dream; It's gilded surface eschewing untold possibilities. When the water level is low enough, you can activate it with a Painite Gem and escape this aquatic nightmare. You must have a Painite Gem and a maximum of 1 Hazard card in your Inventory in order to safely exit the Aqua Zone to win."
   },
   {
     "id": "AZ-071",
@@ -1654,12 +1726,14 @@
     "cardNumber": "3071",
     "notes": "-",
     "version": "Full Art",
-    "cardType": "Outcome"
+    "cardType": "Outcome",
+    "cardText": "The vicious whirlpool thrashes mercilessly, threatening to consume any who come near. When this card appears on the FOP, take all items in your Inventory, shuffle them up and discard 1 randomly. Place all remaining items back into your Inventory. If you have no items, gain a Hazard."
   },
   {
     "id": "AZ-072",
     "name": {
-      "english": "???"
+      "english": "???",
+      "tbd": "Mall Escalator"
     },
     "rarity": "HYPER",
     "types": [],
@@ -1676,7 +1750,8 @@
     "cardNumber": "3072",
     "notes": "-",
     "version": "Full Art",
-    "cardType": "Outcome"
+    "cardType": "Outcome",
+    "cardText": "Emerging from the depths of the Aqua Zone, a peculiar escalator juts up through the water. As the escalator rises past the ceiling, it leads you to a new place entirely. You are slowly transported to an open space filled with abandoned store fronts. Here, the Dead Mall eagerly awaits your arrival. Take all cards from your current deck, replace them with a Dead Mall deck and perform a new No-Clip Round."
   },
   {
     "id": "AZ-073",
@@ -1698,7 +1773,8 @@
     "cardNumber": "3073",
     "notes": "-",
     "version": "Full Art",
-    "cardType": "Outcome"
+    "cardType": "Outcome",
+    "cardText": "Boarding the Lobby Dumbwaiter, you watch as the watery depths slowly disappear from view. These views are regrettably replaced by the decrepit yellowed wallpaper of the Lobby Levels. When entering this Portal, you may temporarily carry one item card in your Inventory with you. Once this item is used, it must be placed back into the original deck and out of play. Take all cards from your current deck, replace them with a Lobby Levels deck and perform a new No-Clip Round."
   },
   {
     "id": "AZ-074",
@@ -1720,7 +1796,8 @@
     "cardNumber": "3074",
     "notes": "-",
     "version": "Full Art",
-    "cardType": "Entity"
+    "cardType": "Entity",
+    "cardText": "When Water Knight is engaged, gain a Hazard. After defeating him, either discard him or give him a Painite Gem. If you do, remnants of his humanity spring forth, awakening his desire to find the exit. Add him to your Inventory as a Companion. His health and Damage remain the same. If you use him to deal damage against an Entity, he takes DIH damage in your place. When his health reaches 0, discard him."
   },
   {
     "id": "AZ-075",
@@ -1742,7 +1819,8 @@
     "cardNumber": "3075",
     "notes": "-",
     "version": "Full Art",
-    "cardType": "Entity"
+    "cardType": "Entity",
+    "cardText": "Foams are blind but have impeccable sense of sound and smell. When sensing life, they become aggravated and spring into action, and this one is especially aggressive. While Foams is your Companion, you may lose 7 Sanity to devour a red light or lower rarity Entity and attach it to Foams. You may attach up to 2 Entities, but if you attach a red light Entity, you can attach only one. Each attached Entity gives Foams +3 damage when used in combat. Once used, discard Foams and all attached Entities."
   },
   {
     "id": "AZ-076",
@@ -1764,7 +1842,8 @@
     "cardNumber": "3076",
     "notes": "-",
     "version": "Full Art",
-    "cardType": "Entity"
+    "cardType": "Entity",
+    "cardText": "Shadow Sighton waits patiently in the darkness around any bend or turn throughout the Aqua Zone. Its unblinking eyes watch closely, catching sight of any movement. If you conceal another Entity while Shadow Sighton is unengaged, flip the Position Token. Gem side up, the Concealment Item is blocked by Shadow Sighton, discarded, and he immediately engages you, discarding any currently engaged Entity. Shadow Sighton is immune to Concealment Items."
   },
   {
     "id": "AZ-077",
@@ -1786,7 +1865,8 @@
     "cardNumber": "3077",
     "notes": "-",
     "version": "Full Art",
-    "cardType": "Entity"
+    "cardType": "Entity",
+    "cardText": "This powerful sea creature emerges swiftly from the depths of a dark pool. Its tentacles flail about as the water shifts wildly around you. When this Entity appears on the FOP, gain two Hazards. This Mauling Squid is so big that you can hear its movement across multiple rooms, increasing your fear with every step: while he's on the FOP take 2 sanity damage at the start of every Action Round."
   },
   {
     "id": "AZ-078",
@@ -1808,7 +1888,8 @@
     "cardNumber": "3078",
     "notes": "-",
     "version": "Full Art",
-    "cardType": "Entity"
+    "cardType": "Entity",
+    "cardText": "Having Noclipped from another level, this Mechanical Shark is heavily damaged and running out of power, his Painite Core exposed and nearly exhausted. Giving him a Painite Gem upon engaging helps him survive longer. Discard all Hazards in your Inventory and gain +5 sanity, then put the Mechanical Shark in the Discard Pile. Otherwise, he sees you as an enemy and will attack you. Gain a Hazard upon engagement."
   },
   {
     "id": "AZ-079",
@@ -1830,7 +1911,8 @@
     "cardNumber": "3079",
     "notes": "-",
     "version": "Full Art",
-    "cardType": "Entity"
+    "cardType": "Entity",
+    "cardText": "When you engage Tsuchigumo, place the top 2 cards from the PP facedown underneath this Entity. When you would defeat this Entity, reveal both of the PP cards. If either one is an Entity or item, discard the last Attack item used, then lose -3 Sanity. If it's a Room card, gain a Hazard. Place the revealed cards in the DP and do not replace the PP cards afterwards."
   },
   {
     "id": "AZ-080",
@@ -1852,7 +1934,8 @@
     "cardNumber": "3080",
     "notes": "-",
     "version": "Full Art",
-    "cardType": "Entity"
+    "cardType": "Entity",
+    "cardText": "Bakteria returns to pursue any Wanderers who have the misfortune of being in its line of sight. This undying Entity is bolstered by the presence of those sane enough to seek the exit. If you have 11 Sanity or more, Bakteria deals +4 DiH damage. If you have 10 Sanity or less, this Entity deals +3 DiH damage. When you defeat Bakteria, shuffle it back into the Pull Pile, then gain a Hazard. After defeating it, you can flip 2 times for a Painite Gem. This Entity is immune to Concealment Items."
   },
   {
     "id": "AZ-081",
@@ -1874,12 +1957,13 @@
     "cardNumber": "3081",
     "notes": "-",
     "version": "Full Art",
-    "cardType": "Entity"
+    "cardType": "Entity",
+    "cardText": "The Pack Rat wanders through the murky depths of the Aqua Zone, its keen eyes keeping watch for danger and opportunity. When you engage this Entity, choose to either search the Pull Pile for the first 2 items and add them to your Inventory or add Pack Rat to your Inventory as a Companion. While Pack Rat is your Companion, you may also place up to 3 items in the Inventory slot it occupies. If a Hazard is present in the Pack Rat slot, you can't use the items that he's carrying."
   },
   {
     "id": "AZ-082",
     "name": {
-      "english": "Armored Millipese"
+      "english": "Armored Millipede"
     },
     "rarity": "SHATTERED",
     "types": [],
@@ -1896,7 +1980,8 @@
     "cardNumber": "3082",
     "notes": "-",
     "version": "Full Art",
-    "cardType": "Entity"
+    "cardType": "Entity",
+    "cardText": "Stalking through the dangerous waters, this Entity has plated scales to fend off most attacks. When this Entity appears on the FOP, gain 2 Hazards. Each Attack item used deals a maximum of 1 damage. Each blow knocks off one of its armored plates, causing it to deal 1 less DiH for each damage it's taken. Lose -3 Sanity each time you attack this Entity. Only Attack items are useful on Armored Millipede but it is immune to Liquid Attack items."
   },
   {
     "id": "AZ-083",
@@ -1918,7 +2003,8 @@
     "cardNumber": "3083",
     "notes": "-",
     "version": "Full Art",
-    "cardType": "Entity"
+    "cardType": "Entity",
+    "cardText": "Upon engagement, look at the first 3 cards of your PP, gain 1 Hazard for every room you reveal, then reshuffle them into the PP. It will take one less damage for each Hazard that you have in your Inventory. If you reach 4 Hazards while engaged with the Water Sentinel \u03b1, it instantly kills you, causing you to lose the game. If you manage to beat it, you win the game automatically. It cannot be concealed."
   },
   {
     "id": "AZ-084",
@@ -1942,7 +2028,8 @@
     "cardNumber": "3084",
     "notes": "-",
     "version": "Full Art",
-    "cardType": "Item"
+    "cardType": "Item",
+    "cardText": "When using this Attack item, you may spend 2 Sanity to flip the Position Token. If the result is Gem side up, deal +2 damage to the Entity. Perform this effect up to 3 times upon use. However, if you flip Compass side up, stop flipping and lose -5 Sanity."
   },
   {
     "id": "AZ-085",
@@ -1966,7 +2053,8 @@
     "cardNumber": "3085",
     "notes": "-",
     "version": "Full Art",
-    "cardType": "Item"
+    "cardType": "Item",
+    "cardText": "What appears to be a typical bottle of sunscreen actually holds a deadly secret: the chemicals within cause extreme acid damage upon contact with an Entity. If there are less than 20 cards in your DiH, deal +2 damage. If there are at least 20 cards in your DiH, deal +4 damage."
   },
   {
     "id": "AZ-086",
@@ -1990,7 +2078,8 @@
     "cardNumber": "3086",
     "notes": "-",
     "version": "Full Art",
-    "cardType": "Item"
+    "cardType": "Item",
+    "cardText": "Use to restore +7 Sanity or Bury an Entity on the FOP (placing that Entity on the bottom of its current card stack on the FOP), then flip your Position Token: Gem side up, you can keep this item to use it one more time, but then you must discard it. Compass side up, discard this item."
   },
   {
     "id": "AZ-087",
@@ -2014,7 +2103,8 @@
     "cardNumber": "3087",
     "notes": "-",
     "version": "Full Art",
-    "cardType": "Item"
+    "cardType": "Item",
+    "cardText": "Aqua Shrooms grow underwater and can absorb large quantities of water for storage. The built up pressure causes them to explode upon impact, dealing explosive liquid damage. Many Wanderers have exploited this feature for use as a weapon. Deal 4 damage plus an additional +1 damage for each Hazard in your Inventory."
   },
   {
     "id": "AZ-088",
@@ -2038,7 +2128,8 @@
     "cardNumber": "3088",
     "notes": "-",
     "version": "Full Art",
-    "cardType": "Item"
+    "cardType": "Item",
+    "cardText": "Use this item to conceal an Entity on the FOP. Then, reveal the top cards of the PP until you find a positive Sanity Room and place it next to your Position Token. Permanent Fixtures, Portals and Non-Concealable Entities may not be covered."
   },
   {
     "id": "AZ-089",
@@ -2062,7 +2153,8 @@
     "cardNumber": "3089",
     "notes": "-",
     "version": "Full Art",
-    "cardType": "Item"
+    "cardType": "Item",
+    "cardText": "This knife has suspicious carvings of faces along the handle. Faint laughter and groaning can be heard as you pick it up. Upon closer inspection, there appears a second blade behind the first. Both blades make contact in quick succession when used in combat, dealing extensive physical damage. Once discarded and until the end of your next Action Round, you may lose 5 Sanity to return the Grin-and-Groan EX to your Inventory."
   },
   {
     "id": "AZ-090",
@@ -2086,6 +2178,7 @@
     "cardNumber": "3090",
     "notes": "-",
     "version": "Full Art",
-    "cardType": "Item"
+    "cardType": "Item",
+    "cardText": "You can discard this item to discard all the Entities on your FOP, or you can discard this item and a Painite Gem to search for the Golden Slide, first in your PP, then in your DiH, and place it at the 6 o'clock position. You can cover up any card with this effect."
   }
 ]
