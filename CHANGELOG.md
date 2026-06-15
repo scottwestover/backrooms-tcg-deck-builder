@@ -7,9 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+- None
+
+## [0.0.17] - 2026-06-15
+
 ### Added
 
 - Preview cards from Dead Malls set.
+
+### Fixed
+
+- Fixed new aqua zone level images that were in png format and wrong size.
 
 ## [0.0.16] - 2026-06-15
 
