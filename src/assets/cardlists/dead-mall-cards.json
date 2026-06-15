@@ -1,0 +1,52 @@
+[
+  {
+    "id": "DM-026",
+    "name": {
+      "english": "Fire Faceling"
+    },
+    "rarity": "UNCOMMON",
+    "types": [
+      "ENTITY"
+    ],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/dead-mall/DM-026.webp",
+    "illustrator": "-",
+    "cardNumber": "4026",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity",
+    "cardText": ""
+  },
+  {
+    "id": "DM-050",
+    "name": {
+      "english": "Mr. Freeman"
+    },
+    "rarity": "HYPER",
+    "types": [
+      "ENTITY"
+    ],
+    "ccs": {
+      "type": "",
+      "value": ""
+    },
+    "navigationPoints": "",
+    "sanityPoints": "",
+    "attackDamage": "",
+    "health": "",
+    "cardImage": "assets/images/cards/dead-mall/DM-050.webp",
+    "illustrator": "-",
+    "cardNumber": "4050",
+    "notes": "-",
+    "version": "Normal",
+    "cardType": "Entity",
+    "cardText": ""
+  }
+]

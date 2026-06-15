@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+### Added
+
+- Preview cards from Dead Malls set.
+
 ## [0.0.16] - 2026-06-15
 
 ### Added
