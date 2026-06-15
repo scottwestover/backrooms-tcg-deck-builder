@@ -528,10 +528,9 @@
   {
     "id": "AZ-022",
     "name": {
-      "english": "???",
-      "tbd": "Mall Escalator"
+      "english": "Dead Mall Levels Escalator"
     },
-    "rarity": "COMMON",
+    "rarity": "RARE",
     "types": [
       "OUTCOME"
     ],
@@ -1210,8 +1209,7 @@
   {
     "id": "AZ-051",
     "name": {
-      "english": "???",
-      "tbd": "Almond Water"
+      "english": "Almond Water"
     },
     "rarity": "UNCOMMON",
     "types": [
@@ -1732,10 +1730,9 @@
   {
     "id": "AZ-072",
     "name": {
-      "english": "???",
-      "tbd": "Mall Escalator"
+      "english": "Dead Mall Levels Escalator"
     },
-    "rarity": "HYPER",
+    "rarity": "PURE",
     "types": [],
     "ccs": {
       "type": "",
