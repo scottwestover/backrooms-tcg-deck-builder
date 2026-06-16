@@ -216,18 +216,59 @@ export class ExportDeckDialogComponent implements OnInit {
 
   private setExportTypeText(): void {
     this.deckText = '// Backrooms TCG DeckList\n\n';
-    this.deck.cards.forEach((card) => {
-      const backroomCard = this.backroomCardStore.cardsMap().get(card.id);
-      if (backroomCard) {
-        if (this.normalOrder) {
-          this.deckText += `${card.id.replace('ST0', 'ST')} ${backroomCard?.name
-            .english} ${card.count}\n`;
-        } else {
-          this.deckText += `${card.count} ${backroomCard?.name
-            .english} ${card.id.replace('ST0', 'ST')}\n`;
-        }
+
+    const categories = [
+      { name: 'Item', plural: 'Items' },
+      { name: 'Outcome', plural: 'Outcomes' },
+      { name: 'Entity', plural: 'Entities' },
+      { name: 'Room', plural: 'Rooms' },
+    ];
+
+    categories.forEach((category) => {
+      const cardsInCategory = this.deck.cards.filter((card) => {
+        const backroomCard = this.backroomCardStore.cardsMap().get(card.id);
+        return backroomCard?.cardType === category.name;
+      });
+
+      if (cardsInCategory.length > 0) {
+        this.deckText += `// ${category.plural}\n`;
+        cardsInCategory.forEach((card) => {
+          const backroomCard = this.backroomCardStore.cardsMap().get(card.id);
+          if (backroomCard) {
+            if (this.normalOrder) {
+              this.deckText += `${card.id.replace('ST0', 'ST')} ${backroomCard
+                ?.name.english} ${card.count}\n`;
+            } else {
+              this.deckText += `${card.count} ${backroomCard?.name
+                .english} ${card.id.replace('ST0', 'ST')}\n`;
+            }
+          }
+        });
+        this.deckText += '\n';
       }
     });
+
+    const otherCards = this.deck.cards.filter((card) => {
+      const backroomCard = this.backroomCardStore.cardsMap().get(card.id);
+      return !categories.find((cat) => cat.name === backroomCard?.cardType);
+    });
+
+    if (otherCards.length > 0) {
+      this.deckText += `// others\n`;
+      otherCards.forEach((card) => {
+        const backroomCard = this.backroomCardStore.cardsMap().get(card.id);
+        if (backroomCard) {
+          if (this.normalOrder) {
+            this.deckText += `${card.id.replace('ST0', 'ST')} ${backroomCard
+              ?.name.english} ${card.count}\n`;
+          } else {
+            this.deckText += `${card.count} ${backroomCard?.name
+              .english} ${card.id.replace('ST0', 'ST')}\n`;
+          }
+        }
+      });
+      this.deckText += '\n';
+    }
   }
 
   private generateCanvas(canvas?: HTMLCanvasElement): void {

@@ -7,7 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
-- None
+### Added
+
+- Enhanced deck list export to organize cards by type and to include comments on the card categories.
 
 ## [0.0.18] - 2026-06-15
 

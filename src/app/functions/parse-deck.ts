@@ -48,6 +48,9 @@ function isValidNumberPNumber(str: string): boolean {
 }
 
 function parseLine(line: string, allCards: BackroomsCard[]): IDeckCard | null {
+  if (line.trim().startsWith('//')) {
+    return null;
+  }
   let lineSplit: string[] = line.replace(/  +/g, ' ').split(' '); // Split the line by spaces and remove extra spaces
   const cardLine: boolean = /\d/.test(line); // Check if the line contains a number
 
