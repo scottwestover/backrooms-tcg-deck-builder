@@ -31,19 +31,19 @@ import { BackroomsCardStore } from '../../../store/backrooms-card.store';
         #Canvas
         id="Canvas"
         width="640"
-        height="360"
+        [height]="canvasHeight"
         (contextmenu)="downloadImage()"></canvas>
       <canvas
         #HDCanvas
         id="HDCanvas"
         width="1920"
-        height="1080"
+        [height]="canvasHeight * 3"
         class="hidden"></canvas>
       <canvas
         #TTSCanvas
         id="TTS"
         width="7440"
-        height="6240"
+        [height]="ttsHeight"
         class="hidden"></canvas>
       <!-- <p-selectButton
         class="Colors mt-3"
@@ -119,6 +119,9 @@ export class ExportDeckDialogComponent implements OnInit {
   selectedColor = 'Yellow';
 
   normalOrder = true;
+
+  canvasHeight = 360;
+  ttsHeight = 6240;
 
   setExport = effect(() => {
     this.deck = this.dialogStore.exportDeck().deck;
@@ -295,7 +298,7 @@ export class ExportDeckDialogComponent implements OnInit {
       x: 0,
       y: 0,
       sw: 640,
-      sh: 360,
+      sh: this.canvasHeight,
     });
   }
 
@@ -400,7 +403,7 @@ export class ExportDeckDialogComponent implements OnInit {
       x: 0,
       y: 0,
       sw: 7440,
-      sh: 6240,
+      sh: this.ttsHeight,
     });
   }
 
@@ -490,5 +493,20 @@ export class ExportDeckDialogComponent implements OnInit {
       id: card.id,
       count: card.count,
     }));
+
+    const cardCount = this.deck.cards.length;
+    let y = 50;
+    if (cardCount <= 9) {
+      y += 95;
+    } else if (cardCount <= 18) {
+      y += 47;
+    }
+    const rowCount = Math.ceil(cardCount / 9);
+    this.canvasHeight = Math.max(360, y + (rowCount - 1) * 95 + 120);
+
+    let totalCards = 0;
+    this.deck.cards.forEach((card) => (totalCards += card.count));
+    const ttsRows = Math.ceil(totalCards / 10);
+    this.ttsHeight = Math.max(6240, ttsRows * 1040);
   }
 }

@@ -9,6 +9,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - None
 
+## [0.0.18] - 2026-06-15
+
+### Added
+
+- Enhanced image generation logic to be based off number of cards that are being rendered in the image instead of hard coded dimensions.
+
 ## [0.0.17] - 2026-06-15
 
 ### Added
