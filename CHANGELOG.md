@@ -7,33 +7,37 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+## [0.0.19] - 2026-07-13
+
 ### Added
 
-- Enhanced deck list export to organize cards by type and to include comments on the card categories.
+- Enhanced deck list export to organize cards by type and to include comments on the card categories [581af49](https://github.com/scottwestover/backrooms-tcg-deck-builder/commit/581af49f30e13f7f8aec526f214058d8b2bf6f8b).
+- Aqua zone challenges [6074d74](https://github.com/scottwestover/backrooms-tcg-deck-builder/commit/6074d74f9cfc65db757f735049807eed9d5fc9ca).
+- Updated challenge randomizer to have filter option for aqua zone challenges.
 
 ## [0.0.18] - 2026-06-15
 
 ### Added
 
-- Enhanced image generation logic to be based off number of cards that are being rendered in the image instead of hard coded dimensions.
+- Enhanced image generation logic to be based off number of cards that are being rendered in the image instead of hard coded dimensions [a3a2a0d](https://github.com/scottwestover/backrooms-tcg-deck-builder/commit/a3a2a0d34026afe3408b1818d5d5da8b336d505e).
 
 ## [0.0.17] - 2026-06-15
 
 ### Added
 
-- Preview cards from Dead Malls set.
+- Preview cards from Dead Malls set [477b03f](https://github.com/scottwestover/backrooms-tcg-deck-builder/commit/477b03f50d62608c918a87ae4f99ee82a1472a4d).
 
 ### Fixed
 
-- Fixed new aqua zone level images that were in png format and wrong size.
+- Fixed new aqua zone level images that were in png format and wrong size [98ec3d9](https://github.com/scottwestover/backrooms-tcg-deck-builder/commit/98ec3d9d6ab9f9e86d0fea7b899c408da966efdd).
 
 ## [0.0.16] - 2026-06-15
 
 ### Added
 
-- Enhanced card readability in the deckbuilder by increasing the card detail modal width and adding a click-to-zoom feature for card images.
-- Implemented automatic zoom reset when navigating between cards in the detail view.
-- Added missing aqua zone level cards for Almond Water and Dead Malls Escalator.
+- Enhanced card readability in the deckbuilder by increasing the card detail modal width and adding a click-to-zoom feature for card images [8d832f8](https://github.com/scottwestover/backrooms-tcg-deck-builder/commit/8d832f83d4e9b8f3a4c42fe2c567fd5c7391acc0).
+- Implemented automatic zoom reset when navigating between cards in the detail view [8d832f8](https://github.com/scottwestover/backrooms-tcg-deck-builder/commit/8d832f83d4e9b8f3a4c42fe2c567fd5c7391acc0).
+- Added missing aqua zone level cards for Almond Water and Dead Malls Escalator [a1b0af5](https://github.com/scottwestover/backrooms-tcg-deck-builder/commit/a1b0af5dea284b5eed617e04b2825981ea0172d6).
 
 ## [0.0.15] - 2026-05-20
 

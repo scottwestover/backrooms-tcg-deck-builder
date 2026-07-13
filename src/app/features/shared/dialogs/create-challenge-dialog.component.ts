@@ -54,7 +54,7 @@ import { Observable } from 'rxjs';
           <p-dropdown
             id="type"
             formControlName="type"
-            [options]="['GENERIC', 'CAR_PARK', 'LOBBY_LEVEL']"
+            [options]="['GENERIC', 'CAR_PARK', 'LOBBY_LEVEL', 'AQUA_ZONE']"
             placeholder="Select a Type"
             appendTo="body"></p-dropdown>
         </div>
