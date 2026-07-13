@@ -1710,5 +1710,453 @@
         "description": "Whenever you lose DIH to an Entity while engaged, your Sanity drops by the same amount. Every engagement in this place drains both your mind and your body. Prepare yourself to suffer, but through suffering, find your salvation!",
         "creator": "BigTasty",
         "type": "GENERIC"
+    },
+        {
+        "id": 215,
+        "name": "Hazard Removal (Lv1)",
+        "difficulty": 1,
+        "description": "Enter a Watery Corridor with at least 3 Hazards and Lose Sanity and Deck in Hand to discard a Hazard.",
+        "creator": "NowayArtemus",
+        "type": "AQUA_ZONE"
+    },
+    {
+        "id": 216,
+        "name": "Vertical Escape (Lv1)",
+        "difficulty": 1,
+        "description": "After entering the Spiral Staircase, spend the Sanity to place an engaged Entity into the Discard Pile.",
+        "creator": "NowayArtemus",
+        "type": "AQUA_ZONE"
+    },
+    {
+        "id": 217,
+        "name": "Murked (Lv1)",
+        "difficulty": 1,
+        "description": "Defeat an Entity while in the Murky Pool.",
+        "creator": "NowayArtemus",
+        "type": "AQUA_ZONE"
+    },
+    {
+        "id": 218,
+        "name": "Lootin' Lockers (Lv1)",
+        "difficulty": 1,
+        "description": "Gain an Item in the Apodyterium.",
+        "creator": "NowayArtemus",
+        "type": "AQUA_ZONE"
+    },
+    {
+        "id": 219,
+        "name": "Quick Evasion (Lv1)",
+        "difficulty": 1,
+        "description": "Send an Entity to the Discard Pile after entering the Almond Water Pool.",
+        "creator": "NowayArtemus",
+        "type": "AQUA_ZONE"
+    },
+    {
+        "id": 220,
+        "name": "Dream Works (Lv1)",
+        "difficulty": 1,
+        "description": "Disengage an Entity after entering the Dream pools.",
+        "creator": "NowayArtemus",
+        "type": "AQUA_ZONE"
+    },
+    {
+        "id": 221,
+        "name": "Buried Treasure (Lv1)",
+        "difficulty": 1,
+        "description": "Engage a Hazard Crab and pick up the item that was Buried under it.",
+        "creator": "NowayArtemus",
+        "type": "AQUA_ZONE"
+    },
+    {
+        "id": 222,
+        "name": "Smiling Ally (Lv1)",
+        "difficulty": 1,
+        "description": "Gain Robert Ducky as a Companion.",
+        "creator": "NowayArtemus",
+        "type": "AQUA_ZONE"
+    },
+    {
+        "id": 223,
+        "name": "Hopping Mad (Lv1)",
+        "difficulty": 1,
+        "description": "Engage Bullfrog Man by having him move onto or next to your FOP space.",
+        "creator": "NowayArtemus",
+        "type": "AQUA_ZONE"
+    },
+    {
+        "id": 224,
+        "name": "Urchin's Relief (Lv1)",
+        "difficulty": 1,
+        "description": "Discard 2 Hazards when you engage the Sea Urchin.",
+        "creator": "NowayArtemus",
+        "type": "AQUA_ZONE"
+    },
+    {
+        "id": 225,
+        "name": "Shroom Vampire (Lv1)",
+        "difficulty": 1,
+        "description": "Gain 4 cards from the Pull Pile after defeating an Entity with the Lifebound Shrooms.",
+        "creator": "NowayArtemus",
+        "type": "AQUA_ZONE"
+    },
+    {
+        "id": 226,
+        "name": "Bathed in Acid (Lv1)",
+        "difficulty": 1,
+        "description": "Deal 4 Damage in a single attack with the Day Bright Spray.",
+        "creator": "NowayArtemus",
+        "type": "AQUA_ZONE"
+    },
+    {
+        "id": 227,
+        "name": "Ladder to Land (Lv1)",
+        "difficulty": 1,
+        "description": "Discard a Hazard with the Pool Ladder.",
+        "creator": "NowayArtemus",
+        "type": "AQUA_ZONE"
+    },
+    {
+        "id": 228,
+        "name": "Cool Cat (Lv1)",
+        "difficulty": 1,
+        "description": "Discard the Pool Cat to avoid losing Sanity from an Entity engagement.",
+        "creator": "NowayArtemus",
+        "type": "AQUA_ZONE"
+    },
+    {
+        "id": 229,
+        "name": "Return Flight (Lv1)",
+        "difficulty": 1,
+        "description": "Return Grin-and-Groan to your Inventory in the same round it was discarded.",
+        "creator": "NowayArtemus",
+        "type": "AQUA_ZONE"
+    },
+    {
+        "id": 230,
+        "name": "It Always Comes Back (Lv1)",
+        "difficulty": 1,
+        "description": "Return the Boomerang Buoy to your Inventory once it leaves the FOP.",
+        "creator": "NowayArtemus",
+        "type": "AQUA_ZONE"
+    },
+    {
+        "id": 231,
+        "name": "Take that! (Lv1)",
+        "difficulty": 1,
+        "description": "Defeat an Entity with only the Foam Sword.",
+        "creator": "NowayArtemus",
+        "type": "AQUA_ZONE"
+    },
+    {
+        "id": 232,
+        "name": "Ambush! (Lv1)",
+        "difficulty": 1,
+        "description": "Become engaged with an Entity from the Apodyterium's effect.",
+        "creator": "NowayArtemus",
+        "type": "AQUA_ZONE"
+    },
+    {
+        "id": 233,
+        "name": "Turning Point (Lv1)",
+        "difficulty": 1,
+        "description": "Have at least 3 Turn Arcades on the Field of Play at the start of the Movement Round.",
+        "creator": "NowayArtemus",
+        "type": "AQUA_ZONE"
+    },
+    {
+        "id": 234,
+        "name": "Slipped Right By (Lv1)",
+        "difficulty": 1,
+        "description": "Conceal Bull Frog Man while it's 2 or less spaces away from you on the FOP.",
+        "creator": "NowayArtemus",
+        "type": "AQUA_ZONE"
+    },
+        {
+        "id": 234,
+        "name": "Fountain of Blood (Lv2)",
+        "difficulty": 2,
+        "description": "Engage and Defeat an Entity in the Sacrificial Fountain Room.",
+        "creator": "NowayArtemus",
+        "type": "AQUA_ZONE"
+    },
+    {
+        "id": 235,
+        "name": "To the Death! (Lv2)",
+        "difficulty": 2,
+        "description": "Become engaged with a Green light or higher Entity when visiting the Death Slides.",
+        "creator": "NowayArtemus",
+        "type": "AQUA_ZONE"
+    },
+    {
+        "id": 236,
+        "name": "Danger Level Rising (Lv2)",
+        "difficulty": 2,
+        "description": "Gain a 4th Hazard by entering a Darkened Poolroom.",
+        "creator": "NowayArtemus",
+        "type": "AQUA_ZONE"
+    },
+    {
+        "id": 237,
+        "name": "Slide of Pain (Lv2)",
+        "difficulty": 2,
+        "description": "Retrieve an Attack Item to your Inventory that deals at least 4 Damage after moving into the Water Slide.",
+        "creator": "NowayArtemus",
+        "type": "AQUA_ZONE"
+    },
+    {
+        "id": 238,
+        "name": "All Dried Up (Lv2)",
+        "difficulty": 2,
+        "description": "Discard at least 2 Hazards after entering the Dry Room.",
+        "creator": "NowayArtemus",
+        "type": "AQUA_ZONE"
+    },
+    {
+        "id": 239,
+        "name": "Water Works (Lv2)",
+        "difficulty": 2,
+        "description": "Add an Almond Water and a Cashew Water to your Inventory from visiting the Aquarium Cafe.",
+        "creator": "NowayArtemus",
+        "type": "AQUA_ZONE"
+    },
+    {
+        "id": 240,
+        "name": "Enemies to Friends (Lv2)",
+        "difficulty": 2,
+        "description": "Gain the Water Faceling as a Companion.",
+        "creator": "NowayArtemus",
+        "type": "AQUA_ZONE"
+    },
+    {
+        "id": 241,
+        "name": "The Power of Foam (Lv2)",
+        "difficulty": 2,
+        "description": "Have Foams absorb 2 Entities, then use it to defeat an Entity.",
+        "creator": "NowayArtemus",
+        "type": "AQUA_ZONE"
+    },
+    {
+        "id": 242,
+        "name": "Goalie Energy (Lv2)",
+        "difficulty": 2,
+        "description": "Have Shadow Sighton block and discard a Concealment item.",
+        "creator": "NowayArtemus",
+        "type": "AQUA_ZONE"
+    },
+    {
+        "id": 243,
+        "name": "Josan the Tank (Lv2)",
+        "difficulty": 2,
+        "description": "Have at least 7 cards under Josan the Lifeguard at the end of an Action Round.",
+        "creator": "NowayArtemus",
+        "type": "AQUA_ZONE"
+    },
+    {
+        "id": 244,
+        "name": "Not just a Toy (Lv2)",
+        "difficulty": 2,
+        "description": "Deal at least 4 Damage using the Foam Sword in a single attack.",
+        "creator": "NowayArtemus",
+        "type": "AQUA_ZONE"
+    },
+    {
+        "id": 245,
+        "name": "Lost in the Sauce (Lv2)",
+        "difficulty": 2,
+        "description": "Discard 2 Almond Waters to discard a Red Light or higher Entity from the FOP.",
+        "creator": "NowayArtemus",
+        "type": "AQUA_ZONE"
+    },
+    {
+        "id": 246,
+        "name": "Aqua Bazooka (Lv2)",
+        "difficulty": 2,
+        "description": "Have 3 Hazards when you use the Aqua Shrooms.",
+        "creator": "NowayArtemus",
+        "type": "AQUA_ZONE"
+    },
+    {
+        "id": 247,
+        "name": "Buried Alive (Lv2)",
+        "difficulty": 2,
+        "description": "Use Shroom Nectar on 2 different Entities.",
+        "creator": "NowayArtemus",
+        "type": "AQUA_ZONE"
+    },
+    {
+        "id": 248,
+        "name": "Lockers of Destiny (Lv2)",
+        "difficulty": 2,
+        "description": "Find at least 2 Items in the Apodyterium.",
+        "creator": "NowayArtemus",
+        "type": "AQUA_ZONE"
+    },
+    {
+        "id": 249,
+        "name": "Life Line (Lv2)",
+        "difficulty": 2,
+        "description": "Lose 5 Sanity to discard 2 Hazards with the Pool Ladder. Do this twice before escaping.",
+        "creator": "NowayArtemus",
+        "type": "AQUA_ZONE"
+    },
+    {
+        "id": 250,
+        "name": "Saving the Life Saver (Lv2)",
+        "difficulty": 2,
+        "description": "Enter the Golden Slide while Josan has 4 cards under him.",
+        "creator": "NowayArtemus",
+        "type": "AQUA_ZONE"
+    },
+    {
+        "id": 251,
+        "name": "Toxic Tag Along (Lv2)",
+        "difficulty": 2,
+        "description": "Gain Pixelle as a Companion, then discard it by picking up another Companion.",
+        "creator": "NowayArtemus",
+        "type": "AQUA_ZONE"
+    },
+        {
+        "id": 252,
+        "name": "Skits for Days (Lv3)",
+        "difficulty": 3,
+        "description": "Use Aqua Skits to conceal an Entity, discard a Hazard, and gain 3 cards from the Pull Pile.",
+        "creator": "NowayArtemus",
+        "type": "AQUA_ZONE"
+    },
+    {
+        "id": 253,
+        "name": "Banishment by Shark (Lv3)",
+        "difficulty": 3,
+        "description": "Spend a Painite Gem when engaging the Inflatable Shark  to discard a Red Light or higher entity from the FOP.",
+        "creator": "NowayArtemus",
+        "type": "AQUA_ZONE"
+    },
+    {
+        "id": 254,
+        "name": "No Mercy (Lv3)",
+        "difficulty": 3,
+        "description": "Have Mercy automatically engage you when you have less than 12 Health, and defeat it.",
+        "creator": "NowayArtemus",
+        "type": "AQUA_ZONE"
+    },
+    {
+        "id": 255,
+        "name": "Arachnid Revival (Lv3)",
+        "difficulty": 3,
+        "description": "Defeat a Tsuchigumo after it reveals an entity or item upon defeat and discards the last used Attack item.",
+        "creator": "NowayArtemus",
+        "type": "AQUA_ZONE"
+    },
+    {
+        "id": 256,
+        "name": "Alligator to Ashes (Lv3)",
+        "difficulty": 3,
+        "description": "Defeat Barruk the Alligator using only Cashew Water and/or Day Bright Spray.",
+        "creator": "NowayArtemus",
+        "type": "AQUA_ZONE"
+    },
+    {
+        "id": 257,
+        "name": "Impeding the Centipede (Lv3)",
+        "difficulty": 3,
+        "description": "Defeat the Centipede with 10 or less Sanity remaining.",
+        "creator": "NowayArtemus",
+        "type": "AQUA_ZONE"
+    },
+    {
+        "id": 258,
+        "name": "King of the Aqua Zone (Lv3)",
+        "difficulty": 3,
+        "description": "Defeat the Water Sentinel.",
+        "creator": "NowayArtemus",
+        "type": "AQUA_ZONE"
+    },
+    {
+        "id": 259,
+        "name": "Dark Souls (Lv3)",
+        "difficulty": 3,
+        "description": "Defeat at least 4 Entities while you have the Soulroot Signet equipped.",
+        "creator": "NowayArtemus",
+        "type": "AQUA_ZONE"
+    },
+    {
+        "id": 260,
+        "name": "Be Kind, Rewind (Lv3)",
+        "difficulty": 3,
+        "description": "Return 4 Items to your Inventory by any means.",
+        "creator": "NowayArtemus",
+        "type": "AQUA_ZONE"
+    },
+    {
+        "id": 261,
+        "name": "Eye of the Storm (Lv3)",
+        "difficulty": 3,
+        "description": "Lose 15 Sanity to discard all entities from the FOP using the Tempest Sphere. At least 3 Entities must be Unfriendly.",
+        "creator": "NowayArtemus",
+        "type": "AQUA_ZONE"
+    },
+    {
+        "id": 262,
+        "name": "Eerie Enemies (Lv3)",
+        "difficulty": 3,
+        "description": "Defeat a Red Light or higher entity in the Sacrificial Fountain room.",
+        "creator": "NowayArtemus",
+        "type": "AQUA_ZONE"
+    },
+    {
+        "id": 263,
+        "name": "Friendly Fire (Lv3)",
+        "difficulty": 3,
+        "description": "Gain the Aquatic Faceling as a Companion, then use it as the final damage to defeat an entity.",
+        "creator": "NowayArtemus",
+        "type": "AQUA_ZONE"
+    },
+    {
+        "id": 264,
+        "name": "The Opposite of Drowning (Lv3)",
+        "difficulty": 3,
+        "description": "Lose at least 3 Hazards in a single Movement and Action Round.",
+        "creator": "NowayArtemus",
+        "type": "AQUA_ZONE"
+    },
+    {
+        "id": 265,
+        "name": "Foam Frenzy (Lv3)",
+        "difficulty": 3,
+        "description": "Deal at least 8 Damage using 2 or more Foam Swords.",
+        "creator": "NowayArtemus",
+        "type": "AQUA_ZONE"
+    },
+    {
+        "id": 266,
+        "name": "Ready for Anything (Lv3)",
+        "difficulty": 3,
+        "description": "Exit with 4 items in your inventory and no Hazards.",
+        "creator": "NowayArtemus",
+        "type": "AQUA_ZONE"
+    },
+    {
+        "id": 267,
+        "name": "Unrelenting Gaze (Lv3)",
+        "difficulty": 3,
+        "description": "Defeat Shadow Sighton in the same round after it blocks a concealment item from being used.",
+        "creator": "NowayArtemus",
+        "type": "AQUA_ZONE"
+    },
+    {
+        "id": 268,
+        "name": "Rat Friend (Lv3)",
+        "difficulty": 3,
+        "description": "Gain 2 Items from the Pack Rat, then gain the Pack Rat as a Companion.",
+        "creator": "NowayArtemus",
+        "type": "AQUA_ZONE"
+    },
+    {
+        "id": 269,
+        "name": "Filled to the Brim (Lv3)",
+        "difficulty": 3,
+        "description": "Have a full Inventory with two items on the Pack Rat as your Companion.",
+        "creator": "NowayArtemus",
+        "type": "AQUA_ZONE"
     }
 ]
